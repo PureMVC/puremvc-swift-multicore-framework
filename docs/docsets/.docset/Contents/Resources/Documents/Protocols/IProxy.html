@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>IProxy Protocol Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Protocol/IProxy" class="dashAnchor"></a>
+    <a title="IProxy Protocol Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html"> Docs</a> (100% documented)</p>
+        <p class="header-right"><a href="https://github.com/PureMVC/puremvc-swift-multicore-framework"><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html"> Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        IProxy Protocol Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+          <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/Controller.html">Controller</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Facade.html">Facade</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MacroCommand.html">MacroCommand</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Mediator.html">Mediator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Model.html">Model</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Notification.html">Notification</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Notifier.html">Notifier</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Observer.html">Observer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Proxy.html">Proxy</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SimpleCommand.html">SimpleCommand</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/View.html">View</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+          <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/ICommand.html">ICommand</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/IController.html">IController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/IFacade.html">IFacade</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/IMediator.html">IMediator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/IModel.html">IModel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/INotification.html">INotification</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/INotifier.html">INotifier</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/IObserver.html">IObserver</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/IProxy.html">IProxy</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/IView.html">IView</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>IProxy</h1>
+            <p>The interface definition for a PureMVC Proxy.</p>
+
+<p>In PureMVC, <code>IProxy</code> implementors assume these responsibilities:</p>
+
+<ul>
+<li>Implement a common method which returns the name of the Proxy.</li>
+<li>Provide methods for setting and getting the data object.</li>
+</ul>
+
+<p>Additionally, <code>IProxy</code>s typically:</p>
+
+<ul>
+<li>Maintain references to one or more pieces of model data.</li>
+<li>Provide methods for manipulating that data.</li>
+<li>Generate <code>INotifications</code> when their model data changes.</li>
+<li>Expose their name as a <code>public static const</code> called <code>NAME</code>, if they are not instantiated multiple times.</li>
+<li>Encapsulate interaction with local or remote services used to fetch and persist model data.</li>
+</ul>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vP7PureMVC6IProxy9proxyNameSS"></a>
+                    <a name="//apple_ref/swift/Property/proxyName" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vP7PureMVC6IProxy9proxyNameSS">proxyName</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Get the Proxy name</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">proxyName</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vP7PureMVC6IProxy4dataGSqP__"></a>
+                    <a name="//apple_ref/swift/Property/data" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vP7PureMVC6IProxy4dataGSqP__">data</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Get or set the data object</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">data</span><span class="p">:</span> <span class="kt">Any</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FP7PureMVC6IProxy10onRegisterUS0___FQPS0_FT_T_"></a>
+                    <a name="//apple_ref/swift/Method/onRegister()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FP7PureMVC6IProxy10onRegisterUS0___FQPS0_FT_T_">onRegister()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Called by the Model when the Proxy is registered</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">onRegister</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FP7PureMVC6IProxy8onRemoveUS0___FQPS0_FT_T_"></a>
+                    <a name="//apple_ref/swift/Method/onRemove()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FP7PureMVC6IProxy8onRemoveUS0___FQPS0_FT_T_">onRemove()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Called by the Model when the Proxy is removed</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">onRemove</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2015 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2015-05-12)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.2.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>IController Protocol Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Protocol/IController" class="dashAnchor"></a>
+    <a title="IController Protocol Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html"> Docs</a> (100% documented)</p>
+        <p class="header-right"><a href="https://github.com/PureMVC/puremvc-swift-multicore-framework"><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html"> Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        IController Protocol Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+          <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/Controller.html">Controller</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Facade.html">Facade</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MacroCommand.html">MacroCommand</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Mediator.html">Mediator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Model.html">Model</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Notification.html">Notification</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Notifier.html">Notifier</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Observer.html">Observer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Proxy.html">Proxy</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SimpleCommand.html">SimpleCommand</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/View.html">View</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+          <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/ICommand.html">ICommand</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/IController.html">IController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/IFacade.html">IFacade</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/IMediator.html">IMediator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/IModel.html">IModel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/INotification.html">INotification</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/INotifier.html">INotifier</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/IObserver.html">IObserver</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/IProxy.html">IProxy</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/IView.html">IView</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>IController</h1>
+            <p>The interface definition for a PureMVC Controller.</p>
+
+<p>In PureMVC, an <code>IController</code> implementor
+follows the &lsquo;Command and Controller&rsquo; strategy, and
+assumes these responsibilities:</p>
+
+<ul>
+<li>Remembering which <code>ICommand</code>s are intended to handle which <code>INotifications</code>.</li>
+<li>Registering itself as an <code>IObserver</code> with the <code>View</code> for each <code>INotification</code> that it has an <code>ICommand</code> mapping for.</li>
+<li>Creating a new instance of the proper <code>ICommand</code> to handle a given <code>INotification</code> when notified by the <code>View</code>.</li>
+<li>Calling the <code>ICommand</code>&rsquo;s <code>execute</code> method, passing in the <code>INotification</code>.</li>
+</ul>
+
+<p><code>@see org.puremvc.swift.multicore.interfaces INotification</code></p>
+
+<p><code>@see org.puremvc.swift.multicore.interfaces ICommand</code></p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FP7PureMVC11IController15registerCommandUS0___FQPS0_FTSS7closureFT_PS_8ICommand__T_"></a>
+                    <a name="//apple_ref/swift/Method/registerCommand(_:closure:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FP7PureMVC11IController15registerCommandUS0___FQPS0_FTSS7closureFT_PS_8ICommand__T_">registerCommand(_:closure:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Register a particular <code>ICommand</code> class as the handler
+for a particular <code>INotification</code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">registerCommand</span><span class="p">(</span><span class="nv">notificationName</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">closure</span><span class="p">:</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">ICommand</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>notificationName</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the name of the <code>INotification</code></p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>closure</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>reference that returns <code>ICommand</code></p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FP7PureMVC11IController14executeCommandUS0___FQPS0_FPS_13INotification_T_"></a>
+                    <a name="//apple_ref/swift/Method/executeCommand(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FP7PureMVC11IController14executeCommandUS0___FQPS0_FPS_13INotification_T_">executeCommand(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Execute the <code>ICommand</code> previously registered as the
+handler for <code>INotification</code>s with the given notification name.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">executeCommand</span><span class="p">(</span><span class="nv">notification</span><span class="p">:</span> <span class="kt">INotification</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>notification</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the <code>INotification</code> to execute the associated <code>ICommand</code> for</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FP7PureMVC11IController13removeCommandUS0___FQPS0_FSST_"></a>
+                    <a name="//apple_ref/swift/Method/removeCommand(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FP7PureMVC11IController13removeCommandUS0___FQPS0_FSST_">removeCommand(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Remove a previously registered <code>ICommand</code> to <code>INotification</code> mapping.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">removeCommand</span><span class="p">(</span><span class="nv">notificationName</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>notificationName</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the name of the <code>INotification</code> to remove the <code>ICommand</code> mapping for</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FP7PureMVC11IController10hasCommandUS0___FQPS0_FSSSb"></a>
+                    <a name="//apple_ref/swift/Method/hasCommand(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FP7PureMVC11IController10hasCommandUS0___FQPS0_FSSSb">hasCommand(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Check if a Command is registered for a given Notification</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">hasCommand</span><span class="p">(</span><span class="nv">notificationName</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>notificationName</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>whether a Command is currently registered for the given <code>notificationName</code>.</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2015 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2015-05-12)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.2.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

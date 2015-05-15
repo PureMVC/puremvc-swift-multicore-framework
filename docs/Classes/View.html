@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>View Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/View" class="dashAnchor"></a>
+    <a title="View Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html"> Docs</a> (100% documented)</p>
+        <p class="header-right"><a href="https://github.com/PureMVC/puremvc-swift-multicore-framework/wiki"><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html"> Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        View Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+          <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/Controller.html">Controller</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Facade.html">Facade</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MacroCommand.html">MacroCommand</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Mediator.html">Mediator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Model.html">Model</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Notification.html">Notification</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Notifier.html">Notifier</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Observer.html">Observer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Proxy.html">Proxy</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SimpleCommand.html">SimpleCommand</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/View.html">View</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+          <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/ICommand.html">ICommand</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/IController.html">IController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/IFacade.html">IFacade</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/IMediator.html">IMediator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/IModel.html">IModel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/INotification.html">INotification</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/INotifier.html">INotifier</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/IObserver.html">IObserver</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/IProxy.html">IProxy</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/IView.html">IView</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>View</h1>
+            <p>A Multiton <code>IView</code> implementation.</p>
+
+<p>In PureMVC, the <code>View</code> class assumes these responsibilities:</p>
+
+<ul>
+<li>Maintain a cache of <code>IMediator</code> instances.</li>
+<li>Provide methods for registering, retrieving, and removing <code>IMediators</code>.</li>
+<li>Notifiying <code>IMediators</code> when they are registered or removed.</li>
+<li>Managing the observer lists for each <code>INotification</code> in the application.</li>
+<li>Providing a method for attaching <code>IObservers</code> to an <code>INotification</code>&rsquo;s observer list.</li>
+<li>Providing a method for broadcasting an <code>INotification</code>.</li>
+<li>Notifying the <code>IObservers</code> of a given <code>INotification</code> when it broadcast.</li>
+</ul>
+
+<p><code>@see org.puremvc.swift.multicore.patterns.mediator.Mediator Mediator</code></p>
+
+<p><code>@see org.puremvc.swift.multicore.patterns.observer.Observer Observer</code></p>
+
+<p><code>@see org.puremvc.swift.multicore.patterns.observer.Notification Notification</code></p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:ZvC7PureMVC4View12MULTITON_MSGSS"></a>
+                    <a name="//apple_ref/swift/Variable/MULTITON_MSG" class="dashAnchor"></a>
+                    <a class="token" href="#/s:ZvC7PureMVC4View12MULTITON_MSGSS">MULTITON_MSG</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Message constant</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">MULTITON_MSG</span> <span class="o">=</span> <span class="s">"View instance for this Multiton key already constructed!"</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC7PureMVC4ViewcFMS0_FT3keySS_S0_"></a>
+                    <a name="//apple_ref/swift/Method/init(key:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC7PureMVC4ViewcFMS0_FT3keySS_S0_">init(key:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Constructor.</p>
+
+<p>This <code>IView</code> implementation is a Multiton,
+so you should not call the constructor
+directly, but instead call the static Multiton
+Factory method <code>View.getInstance( multitonKey )</code></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>key</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>multitonKey</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC7PureMVC4View14initializeViewFS0_FT_T_"></a>
+                    <a name="//apple_ref/swift/Method/initializeView()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC7PureMVC4View14initializeViewFS0_FT_T_">initializeView()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Initialize the Singleton View instance.</p>
+
+<p>Called automatically by the constructor, this
+is your opportunity to initialize the Singleton
+instance in your subclass without overriding the
+constructor.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">initializeView</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:ZFC7PureMVC4View11getInstanceFMS0_FTSS7closureFT_PS_5IView__PS1__"></a>
+                    <a name="//apple_ref/swift/Method/getInstance(_:closure:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:ZFC7PureMVC4View11getInstanceFMS0_FTSS7closureFT_PS_5IView__PS1__">getInstance(_:closure:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>View Singleton Factory method.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">getInstance</span><span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">closure</span><span class="p">:</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">IView</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">IView</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>key</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>multitonKey</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>closure</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>reference that returns <code>IView</code></p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>the Singleton instance returned by executing the passed closure</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC7PureMVC4View16registerObserverFS0_FTSS8observerPS_9IObserver__T_"></a>
+                    <a name="//apple_ref/swift/Method/registerObserver(_:observer:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC7PureMVC4View16registerObserverFS0_FTSS8observerPS_9IObserver__T_">registerObserver(_:observer:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Register an <code>IObserver</code> to be notified
+of <code>INotifications</code> with a given name.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">registerObserver</span><span class="p">(</span><span class="nv">notificationName</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">observer</span><span class="p">:</span> <span class="kt">IObserver</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>notificationName</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the name of the <code>INotifications</code> to notify this <code>IObserver</code> of</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>observer</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the <code>IObserver</code> to register</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC7PureMVC4View15notifyObserversFS0_FPS_13INotification_T_"></a>
+                    <a name="//apple_ref/swift/Method/notifyObservers(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC7PureMVC4View15notifyObserversFS0_FPS_13INotification_T_">notifyObservers(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Notify the <code>IObservers</code> for a particular <code>INotification</code>.</p>
+
+<p>All previously attached <code>IObservers</code> for this <code>INotification</code>&rsquo;s
+list are notified and are passed a reference to the <code>INotification</code> in
+the order in which they were registered.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">notifyObservers</span><span class="p">(</span><span class="nv">notification</span><span class="p">:</span> <span class="kt">INotification</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>notification</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the <code>INotification</code> to notify <code>IObservers</code> of.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC7PureMVC4View14removeObserverFS0_FTSS13notifyContextPSs9AnyObject__T_"></a>
+                    <a name="//apple_ref/swift/Method/removeObserver(_:notifyContext:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC7PureMVC4View14removeObserverFS0_FTSS13notifyContextPSs9AnyObject__T_">removeObserver(_:notifyContext:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Remove the observer for a given notifyContext from an observer list for a given Notification name.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">removeObserver</span><span class="p">(</span><span class="nv">notificationName</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">notifyContext</span><span class="p">:</span> <span class="kt">AnyObject</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>notificationName</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>which observer list to remove from</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>notifyContext</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>remove the observer with this object as its notifyContext</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC7PureMVC4View16registerMediatorFS0_FPS_9IMediator_T_"></a>
+                    <a name="//apple_ref/swift/Method/registerMediator(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC7PureMVC4View16registerMediatorFS0_FPS_9IMediator_T_">registerMediator(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Register an <code>IMediator</code> instance with the <code>View</code>.</p>
+
+<p>Registers the <code>IMediator</code> so that it can be retrieved by name,
+and further interrogates the <code>IMediator</code> for its
+<code>INotification</code> interests.</p>
+
+<p>If the <code>IMediator</code> returns any <code>INotification</code>
+names to be notified about, an <code>Observer</code> is created encapsulating
+the <code>IMediator</code> instance&rsquo;s <code>handleNotification</code> method
+and registering it as an <code>Observer</code> for all <code>INotifications</code> the
+<code>IMediator</code> is interested in.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">registerMediator</span><span class="p">(</span><span class="nv">mediator</span><span class="p">:</span> <span class="kt">IMediator</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>mediator</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>a reference to the <code>IMediator</code> instance</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC7PureMVC4View16retrieveMediatorFS0_FSSGSqPS_9IMediator__"></a>
+                    <a name="//apple_ref/swift/Method/retrieveMediator(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC7PureMVC4View16retrieveMediatorFS0_FSSGSqPS_9IMediator__">retrieveMediator(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Retrieve an <code>IMediator</code> from the <code>View</code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">retrieveMediator</span><span class="p">(</span><span class="nv">mediatorName</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">IMediator</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>mediatorName</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the name of the <code>IMediator</code> instance to retrieve.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>the <code>IMediator</code> instance previously registered with the given <code>mediatorName</code>.</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC7PureMVC4View14removeMediatorFS0_FSSGSqPS_9IMediator__"></a>
+                    <a name="//apple_ref/swift/Method/removeMediator(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC7PureMVC4View14removeMediatorFS0_FSSGSqPS_9IMediator__">removeMediator(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Remove an <code>IMediator</code> from the <code>View</code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">removeMediator</span><span class="p">(</span><span class="nv">mediatorName</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">IMediator</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>mediatorName</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>name of the <code>IMediator</code> instance to be removed.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>the <code>IMediator</code> that was removed from the <code>View</code></p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC7PureMVC4View11hasMediatorFS0_FSSSb"></a>
+                    <a name="//apple_ref/swift/Method/hasMediator(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC7PureMVC4View11hasMediatorFS0_FSSSb">hasMediator(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Check if a Mediator is registered or not</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">hasMediator</span><span class="p">(</span><span class="nv">mediatorName</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>mediatorName</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>whether a Mediator is registered with the given <code>mediatorName</code>.</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:ZFC7PureMVC4View10removeViewFMS0_FSST_"></a>
+                    <a name="//apple_ref/swift/Method/removeView(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:ZFC7PureMVC4View10removeViewFMS0_FSST_">removeView(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Remove an IView instance</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">removeView</span><span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>multitonKey</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>of IView instance to remove</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC7PureMVC4View11multitonKeySS"></a>
+                    <a name="//apple_ref/swift/Property/multitonKey" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC7PureMVC4View11multitonKeySS">multitonKey</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The Multiton Key</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">multitonKey</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2015 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2015-05-12)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.2.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

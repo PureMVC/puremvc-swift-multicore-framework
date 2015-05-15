@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>INotification Protocol Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Protocol/INotification" class="dashAnchor"></a>
+    <a title="INotification Protocol Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html"> Docs</a> (100% documented)</p>
+        <p class="header-right"><a href="https://github.com/PureMVC/puremvc-swift-multicore-framework"><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html"> Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        INotification Protocol Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+          <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/Controller.html">Controller</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Facade.html">Facade</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MacroCommand.html">MacroCommand</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Mediator.html">Mediator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Model.html">Model</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Notification.html">Notification</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Notifier.html">Notifier</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Observer.html">Observer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Proxy.html">Proxy</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SimpleCommand.html">SimpleCommand</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/View.html">View</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+          <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/ICommand.html">ICommand</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/IController.html">IController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/IFacade.html">IFacade</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/IMediator.html">IMediator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/IModel.html">IModel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/INotification.html">INotification</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/INotifier.html">INotifier</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/IObserver.html">IObserver</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/IProxy.html">IProxy</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/IView.html">IView</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>INotification</h1>
+            <p>The interface definition for a PureMVC Notification.</p>
+
+<p>PureMVC does not rely upon underlying event models such
+as the one provided with Flash, and ActionScript 3 does
+not have an inherent event model.</p>
+
+<p>The Observer Pattern as implemented within PureMVC exists
+to support event-driven communication between the
+application and the actors of the MVC triad.</p>
+
+<p>Notifications are not meant to be a replacement for Events
+in Flex/Flash/AIR. Generally, <code>IMediator</code> implementors
+place event listeners on their view components, which they
+then handle in the usual way. This may lead to the broadcast of <code>Notification</code>s to
+trigger <code>ICommand</code>s or to communicate with other <code>IMediators</code>. <code>IProxy</code> and <code>ICommand</code>
+instances communicate with each other and <code>IMediator</code>s
+by broadcasting <code>INotification</code>s.</p>
+
+<p>A key difference between Flash <code>Event</code>s and PureMVC
+<code>Notification</code>s is that <code>Event</code>s follow the
+&lsquo;Chain of Responsibility&rsquo; pattern, &lsquo;bubbling&rsquo; up the display hierarchy
+until some parent component handles the <code>Event</code>, while
+PureMVC <code>Notification</code>s follow a &#39;Publish/Subscribe&rsquo;
+pattern. PureMVC classes need not be related to each other in a
+parent/child relationship in order to communicate with one another
+using <code>Notification</code>s.</p>
+
+<p><code>@see org.puremvc.swift.multicore.interfaces.IView IView</code></p>
+
+<p><code>@see org.puremvc.swift.multicore.interfaces.IObserver IObserver</code></p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vP7PureMVC13INotification4nameSS"></a>
+                    <a name="//apple_ref/swift/Property/name" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vP7PureMVC13INotification4nameSS">name</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Get the name of the <code>INotification</code> instance.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">name</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vP7PureMVC13INotification4bodyGSqP__"></a>
+                    <a name="//apple_ref/swift/Property/body" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vP7PureMVC13INotification4bodyGSqP__">body</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Get or set the body of the <code>INotification</code> instance</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">body</span><span class="p">:</span> <span class="kt">Any</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vP7PureMVC13INotification4typeGSqSS_"></a>
+                    <a name="//apple_ref/swift/Property/type" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vP7PureMVC13INotification4typeGSqSS_">type</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Get or set the type of the <code>INotification</code> instance</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">type</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FP7PureMVC13INotification11descriptionUS0___FQPS0_FT_SS"></a>
+                    <a name="//apple_ref/swift/Method/description()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FP7PureMVC13INotification11descriptionUS0___FQPS0_FT_SS">description()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Get the string representation of the <code>INotification</code> instance</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">description</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2015 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2015-05-12)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.2.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

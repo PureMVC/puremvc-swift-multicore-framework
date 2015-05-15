@@ -1,0 +1,73 @@
+//
+//  FacadeExtendTest.swift
+//  PureMVC SWIFT Multicore
+//
+//  Copyright(c) 2015-2025 Saad Shams <saad.shams@puremvc.org>
+//  Your reuse is governed by the Creative Commons Attribution 3.0 License
+//
+
+import PureMVC
+import XCTest
+
+class FacadeExtendTest: XCTestCase {
+
+    override func setUp() {
+        super.setUp()
+        // Put setup code here. This method is called before the invocation of each test method in the class.
+    }
+    
+    override func tearDown() {
+        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        super.tearDown()
+    }
+
+    func testConstructor() {
+        var facadeExtend: FacadeExtend! = FacadeExtend.getInstance("Key1") as? FacadeExtend
+        
+        XCTAssertNotNil(facadeExtend as FacadeExtend, "Expecting facadeExtend not nil")
+        
+        FacadeExtend.removeCore("Key1")
+        facadeExtend = nil
+    }
+    
+    func testDeinit() {
+        var facadeResource = Resource()
+        var facadeExtend: FacadeExtend! = FacadeExtend.getInstance("Key1") as! FacadeExtend
+        facadeExtend.resource = facadeResource
+        
+        XCTAssertTrue(facadeResource.state == .ALLOCATED, "Expecting resource to be allocated")
+        
+        var controllerResource = Resource()
+        var controller: ControllerExtend! = ControllerExtend.getInstance("Key1") as! ControllerExtend
+        controller.resource = controllerResource
+        
+        var modelResource = Resource()
+        var model: ModelExtend! = ModelExtend.getInstance("Key1") as! ModelExtend
+        model.resource = modelResource
+        
+        var viewResource = Resource()
+        var view: ViewExtend! = ViewExtend.getInstance("Key1") as! ViewExtend
+        view.resource = viewResource
+        
+        controller.registerCommand("ControllerTest", closure: {ControllerTestCommand()}) //Observer has a weak reference to commands
+        
+        facadeExtend = nil
+        controller = nil
+        model = nil
+        view = nil
+        FacadeExtend.removeCore("Key1") //Facade.removeCore("Key1") //will work as well
+        
+        XCTAssertTrue(facadeResource.state == .RELEASED, "Expecting facadeResource to be relased")
+        XCTAssertTrue(controllerResource.state == .RELEASED, "Expecting controllerResource to be released")
+        XCTAssertTrue(modelResource.state == .RELEASED, "Expecting modelResource to be released")
+        XCTAssertTrue(viewResource.state == .RELEASED, "Expecting modelResource to be released")
+    }
+
+    func testPerformanceExample() {
+        // This is an example of a performance test case.
+        self.measureBlock() {
+            // Put the code you want to measure the time of here.
+        }
+    }
+
+}

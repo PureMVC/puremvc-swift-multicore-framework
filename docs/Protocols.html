@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Protocols  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+  </head>
+  <body>
+    <a title="Protocols  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="index.html"> Docs</a> (100% documented)</p>
+        <p class="header-right"><a href="https://github.com/PureMVC/puremvc-swift-multicore-framework/wiki"><img src="img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="index.html"> Reference</a>
+        <img id="carat" src="img/carat.png" />
+        Protocols  Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+          <a href="Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes/Controller.html">Controller</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/Facade.html">Facade</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/MacroCommand.html">MacroCommand</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/Mediator.html">Mediator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/Model.html">Model</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/Notification.html">Notification</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/Notifier.html">Notifier</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/Observer.html">Observer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/Proxy.html">Proxy</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/SimpleCommand.html">SimpleCommand</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/View.html">View</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+          <a href="Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Protocols/ICommand.html">ICommand</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/IController.html">IController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/IFacade.html">IFacade</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/IMediator.html">IMediator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/IModel.html">IModel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/INotification.html">INotification</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/INotifier.html">INotifier</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/IObserver.html">IObserver</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/IProxy.html">IProxy</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/IView.html">IView</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>Protocols</h1>
+            <p>The following protocols are available globally.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:P7PureMVC6IModel"></a>
+                    <a name="//apple_ref/swift/Protocol/IModel" class="dashAnchor"></a>
+                    <a class="token" href="#/s:P7PureMVC6IModel">IModel</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The interface definition for a PureMVC Model.</p>
+
+<p>In PureMVC, <code>IModel</code> implementors provide
+access to <code>IProxy</code> objects by named lookup.</p>
+
+<p>An <code>IModel</code> assumes these responsibilities:</p>
+
+<ul>
+<li>Maintain a cache of <code>IProxy</code> instances</li>
+<li>Provide methods for registering, retrieving, and removing <code>IProxy</code> instances</li>
+</ul>
+
+                        <a href="Protocols/IModel.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">IModel</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:P7PureMVC11IController"></a>
+                    <a name="//apple_ref/swift/Protocol/IController" class="dashAnchor"></a>
+                    <a class="token" href="#/s:P7PureMVC11IController">IController</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The interface definition for a PureMVC Controller.</p>
+
+<p>In PureMVC, an <code>IController</code> implementor
+follows the &lsquo;Command and Controller&rsquo; strategy, and
+assumes these responsibilities:</p>
+
+<ul>
+<li>Remembering which <code>ICommand</code>s are intended to handle which <code>INotifications</code>.</li>
+<li>Registering itself as an <code>IObserver</code> with the <code>View</code> for each <code>INotification</code> that it has an <code>ICommand</code> mapping for.</li>
+<li>Creating a new instance of the proper <code>ICommand</code> to handle a given <code>INotification</code> when notified by the <code>View</code>.</li>
+<li>Calling the <code>ICommand</code>&rsquo;s <code>execute</code> method, passing in the <code>INotification</code>.</li>
+</ul>
+
+<p><code>@see org.puremvc.swift.multicore.interfaces INotification</code></p>
+
+<p><code>@see org.puremvc.swift.multicore.interfaces ICommand</code></p>
+
+                        <a href="Protocols/IController.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">IController</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:P7PureMVC9IMediator"></a>
+                    <a name="//apple_ref/swift/Protocol/IMediator" class="dashAnchor"></a>
+                    <a class="token" href="#/s:P7PureMVC9IMediator">IMediator</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The interface definition for a PureMVC Mediator.</p>
+
+<p>In PureMVC, <code>IMediator</code> implementors assume these responsibilities:</p>
+
+<ul>
+<li>Implement a common method which returns a list of all <code>INotification</code>s the <code>IMediator</code> has interest in.</li>
+<li>Implement a notification callback method.</li>
+<li>Implement methods that are called when the IMediator is registered or removed from the View.</li>
+</ul>
+
+<p>Additionally, <code>IMediator</code>s typically:</p>
+
+<ul>
+<li>Act as an intermediary between one or more view components such as text boxes or list controls, maintaining references and coordinating their behavior.</li>
+<li>In Flash-based apps, this is often the place where event listeners are added to view components, and their handlers implemented.</li>
+<li>Respond to and generate <code>INotifications</code>, interacting with of the rest of the PureMVC app.</li>
+</ul>
+
+<p>When an <code>IMediator</code> is registered with the <code>IView</code>,
+the <code>IView</code> will call the <code>IMediator</code>&rsquo;s
+<code>listNotificationInterests</code> method. The <code>IMediator</code> will
+return an <code>Array</code> of <code>INotification</code> names which
+it wishes to be notified about.</p>
+
+<p>The <code>IView</code> will then create an <code>Observer</code> object
+encapsulating that <code>IMediator</code>&rsquo;s (<code>handleNotification</code>) method
+and register it as an Observer for each <code>INotification</code> name returned by
+<code>listNotificationInterests</code>.</p>
+
+<p><code>@see org.puremvc.swift.multicore.interfaces.INotification INotification</code></p>
+
+                        <a href="Protocols/IMediator.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">IMediator</span><span class="p">:</span> <span class="kt">INotifier</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:P7PureMVC13INotification"></a>
+                    <a name="//apple_ref/swift/Protocol/INotification" class="dashAnchor"></a>
+                    <a class="token" href="#/s:P7PureMVC13INotification">INotification</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The interface definition for a PureMVC Notification.</p>
+
+<p>PureMVC does not rely upon underlying event models such
+as the one provided with Flash, and ActionScript 3 does
+not have an inherent event model.</p>
+
+<p>The Observer Pattern as implemented within PureMVC exists
+to support event-driven communication between the
+application and the actors of the MVC triad.</p>
+
+<p>Notifications are not meant to be a replacement for Events
+in Flex/Flash/AIR. Generally, <code>IMediator</code> implementors
+place event listeners on their view components, which they
+then handle in the usual way. This may lead to the broadcast of <code>Notification</code>s to
+trigger <code>ICommand</code>s or to communicate with other <code>IMediators</code>. <code>IProxy</code> and <code>ICommand</code>
+instances communicate with each other and <code>IMediator</code>s
+by broadcasting <code>INotification</code>s.</p>
+
+<p>A key difference between Flash <code>Event</code>s and PureMVC
+<code>Notification</code>s is that <code>Event</code>s follow the
+&lsquo;Chain of Responsibility&rsquo; pattern, &lsquo;bubbling&rsquo; up the display hierarchy
+until some parent component handles the <code>Event</code>, while
+PureMVC <code>Notification</code>s follow a &#39;Publish/Subscribe&rsquo;
+pattern. PureMVC classes need not be related to each other in a
+parent/child relationship in order to communicate with one another
+using <code>Notification</code>s.</p>
+
+<p><code>@see org.puremvc.swift.multicore.interfaces.IView IView</code></p>
+
+<p><code>@see org.puremvc.swift.multicore.interfaces.IObserver IObserver</code></p>
+
+                        <a href="Protocols/INotification.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">INotification</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:P7PureMVC9INotifier"></a>
+                    <a name="//apple_ref/swift/Protocol/INotifier" class="dashAnchor"></a>
+                    <a class="token" href="#/s:P7PureMVC9INotifier">INotifier</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The interface definition for a PureMVC Notifier.</p>
+
+<p><code>MacroCommand, Command, Mediator</code> and <code>Proxy</code>
+all have a need to send <code>Notifications</code>.</p>
+
+<p>The <code>INotifier</code> interface provides a common method called
+<code>sendNotification</code> that relieves implementation code of
+the necessity to actually construct <code>Notifications</code>.</p>
+
+<p>The <code>Notifier</code> class, which all of the above mentioned classes
+extend, also provides an initialized reference to the <code>Facade</code>
+Singleton, which is required for the convienience method
+for sending <code>Notifications</code>, but also eases implementation as these
+classes have frequent <code>Facade</code> interactions and usually require
+access to the facade anyway.</p>
+
+<p><code>@see org.puremvc.swift.multicore.interfaces.IFacade IFacade</code></p>
+
+<p><code>@see org.puremvc.swift.multicore.interfaces.INotification INotification</code></p>
+
+                        <a href="Protocols/INotifier.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">INotifier</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:P7PureMVC8ICommand"></a>
+                    <a name="//apple_ref/swift/Protocol/ICommand" class="dashAnchor"></a>
+                    <a class="token" href="#/s:P7PureMVC8ICommand">ICommand</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The interface definition for a PureMVC Command.</p>
+
+<p>`@see org.puremvc.swift.multicore.interfaces INotification</p>
+
+                        <a href="Protocols/ICommand.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">ICommand</span><span class="p">:</span> <span class="kt">INotifier</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:P7PureMVC5IView"></a>
+                    <a name="//apple_ref/swift/Protocol/IView" class="dashAnchor"></a>
+                    <a class="token" href="#/s:P7PureMVC5IView">IView</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The interface definition for a PureMVC View.</p>
+
+<p>In PureMVC, <code>IView</code> implementors assume these responsibilities:</p>
+
+<p>In PureMVC, the <code>View</code> class assumes these responsibilities:</p>
+
+<ul>
+<li>Maintain a cache of <code>IMediator</code> instances.</li>
+<li>Provide methods for registering, retrieving, and removing <code>IMediators</code>.</li>
+<li>Managing the observer lists for each <code>INotification</code> in the application.</li>
+<li>Providing a method for attaching <code>IObservers</code> to an <code>INotification</code>&rsquo;s observer list.</li>
+<li>Providing a method for broadcasting an <code>INotification</code>.</li>
+<li>Notifying the <code>IObservers</code> of a given <code>INotification</code> when it broadcast.</li>
+</ul>
+
+<p><code>@see org.puremvc.swift.multicore.interfaces.IMediator IMediator</code></p>
+
+<p><code>@see org.puremvc.swift.multicore.interfaces.IObserver IObserver</code></p>
+
+<p><code>@see org.puremvc.swift.multicore.interfaces.INotification INotification</code></p>
+
+                        <a href="Protocols/IView.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">IView</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:P7PureMVC9IObserver"></a>
+                    <a name="//apple_ref/swift/Protocol/IObserver" class="dashAnchor"></a>
+                    <a class="token" href="#/s:P7PureMVC9IObserver">IObserver</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The interface definition for a PureMVC Observer.</p>
+
+<p>In PureMVC, <code>IObserver</code> implementors assume these responsibilities:</p>
+
+<ul>
+<li>Encapsulate the notification (callback) method of the interested object.</li>
+<li>Encapsulate the notification context (self) of the interested object.</li>
+<li>Provide methods for setting the interested object&rsquo; notification method and context.</li>
+<li>Provide a method for notifying the interested object.</li>
+</ul>
+
+<p>PureMVC does not rely upon underlying event
+models such as the one provided with Flash,
+and ActionScript 3 does not have an inherent
+event model.</p>
+
+<p>The Observer Pattern as implemented within
+PureMVC exists to support event driven communication
+between the application and the actors of the
+MVC triad.</p>
+
+<p>An Observer is an object that encapsulates information
+about an interested object with a notification method that
+should be called when an <code>INotification</code> is broadcast. The Observer then
+acts as a proxy for notifying the interested object.</p>
+
+<p>Observers can receive <code>Notification</code>s by having their
+<code>notifyObserver</code> method invoked, passing
+in an object implementing the <code>INotification</code> interface, such
+as a subclass of <code>Notification</code>.</p>
+
+<p><code>@see org.puremvc.swift.multicore.interfaces.IView IView</code></p>
+
+<p><code>@see org.puremvc.swift.multicore.interfaces.INotification INotification</code></p>
+
+                        <a href="Protocols/IObserver.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">IObserver</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:P7PureMVC7IFacade"></a>
+                    <a name="//apple_ref/swift/Protocol/IFacade" class="dashAnchor"></a>
+                    <a class="token" href="#/s:P7PureMVC7IFacade">IFacade</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The interface definition for a PureMVC Facade.</p>
+
+<p>The Facade Pattern suggests providing a single
+class to act as a central point of communication
+for a subsystem.</p>
+
+<p>In PureMVC, the Facade acts as an interface between
+the core MVC actors (Model, View, Controller) and
+the rest of your application.</p>
+
+<p><code>@see org.puremvc.swift.multicore.interfaces.IModel IModel</code></p>
+
+<p><code>@see org.puremvc.swift.multicore.interfaces.IView IView</code></p>
+
+<p><code>@see org.puremvc.swift.multicore.interfaces.IController IController</code></p>
+
+<p><code>@see org.puremvc.swift.multicore.interfaces.ICommand ICommand</code></p>
+
+<p><code>@see org.puremvc.swift.multicore.interfaces.INotification INotification</code></p>
+
+                        <a href="Protocols/IFacade.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">IFacade</span><span class="p">:</span> <span class="kt">INotifier</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:P7PureMVC6IProxy"></a>
+                    <a name="//apple_ref/swift/Protocol/IProxy" class="dashAnchor"></a>
+                    <a class="token" href="#/s:P7PureMVC6IProxy">IProxy</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The interface definition for a PureMVC Proxy.</p>
+
+<p>In PureMVC, <code>IProxy</code> implementors assume these responsibilities:</p>
+
+<ul>
+<li>Implement a common method which returns the name of the Proxy.</li>
+<li>Provide methods for setting and getting the data object.</li>
+</ul>
+
+<p>Additionally, <code>IProxy</code>s typically:</p>
+
+<ul>
+<li>Maintain references to one or more pieces of model data.</li>
+<li>Provide methods for manipulating that data.</li>
+<li>Generate <code>INotifications</code> when their model data changes.</li>
+<li>Expose their name as a <code>public static const</code> called <code>NAME</code>, if they are not instantiated multiple times.</li>
+<li>Encapsulate interaction with local or remote services used to fetch and persist model data.</li>
+</ul>
+
+                        <a href="Protocols/IProxy.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">IProxy</span> <span class="p">:</span> <span class="kt">INotifier</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2015 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2015-05-12)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.2.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>2F39CF85-14FD-47A6-95CF-F172BCEEDAA7</string>
+	<key>IDESourceControlProjectName</key>
+	<string>PureMVC</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>16B3CFBD841B7EA34234323CC6FEC1AB2EFF93C0</key>
+		<string>https://github.com/sshams/puremvc-swift-multicore-framework.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>PureMVC.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>16B3CFBD841B7EA34234323CC6FEC1AB2EFF93C0</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/sshams/puremvc-swift-multicore-framework.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>16B3CFBD841B7EA34234323CC6FEC1AB2EFF93C0</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>16B3CFBD841B7EA34234323CC6FEC1AB2EFF93C0</string>
+			<key>IDESourceControlWCCName</key>
+			<string>puremvc-swift-multicore-framework</string>
+		</dict>
+	</array>
+</dict>
+</plist>
