@@ -148,7 +148,7 @@ public class Controller: IController {
     public func registerCommand(notificationName: String, closure: () -> ICommand) {
         dispatch_barrier_sync(commandMapQueue) {
             if self.commandMap[notificationName] == nil { //weak reference to Controller (self) to avoid reference cycle with View and Observer
-                self.view!.registerObserver(notificationName, observer: Observer(notifyMethod: {[weak self] notification in self?.executeCommand(notification); return}, notifyContext: self))
+                self.view!.registerObserver(notificationName, observer: Observer(notifyMethod: {[weak self] notification in self!.executeCommand(notification)}, notifyContext: self))
             }
             self.commandMap[notificationName] = closure
         }
