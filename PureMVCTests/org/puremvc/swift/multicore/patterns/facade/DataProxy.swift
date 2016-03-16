@@ -8,7 +8,7 @@
 
 import PureMVC
 
-public class DataProxy: Proxy, IProxy {
+public class DataProxy: Proxy {
     
     public override class var NAME: String { return "DataProxy" }
     

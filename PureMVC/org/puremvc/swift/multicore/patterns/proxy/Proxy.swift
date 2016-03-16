@@ -24,7 +24,7 @@ when the `Proxy` has retrieved the data from the service.
 
 `@see org.puremvc.swift.multicore.core.Model Model`
 */
-public class Proxy: Notifier, IProxy, INotifier {
+public class Proxy: Notifier, IProxy {
     
     /// Default proxy name
     public class var NAME: String { return "Proxy" }

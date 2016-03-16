@@ -23,7 +23,7 @@ public class FacadeTestVO {
     /**
     Constructor.
     
-    :param: input the number to be fed to the FacadeTestCommand
+    - parameter input: the number to be fed to the FacadeTestCommand
     */
     public init(input: Int) {
         self.input = input

@@ -42,13 +42,13 @@ class SimpleCommandTest: XCTestCase {
     */
     func testSimpleCommandExecute() {
         // Create the VO
-        var vo:SimpleCommandTestVO = SimpleCommandTestVO(input: 5)
+        let vo:SimpleCommandTestVO = SimpleCommandTestVO(input: 5)
         
         // Create the Notification (note)
-        var note: Notification = Notification(name: "SimpleCommandTestNote", body: vo)
+        let note: Notification = Notification(name: "SimpleCommandTestNote", body: vo)
         
         // Create the SimpleCommand
-        var command: SimpleCommandTestCommand = SimpleCommandTestCommand()
+        let command: SimpleCommandTestCommand = SimpleCommandTestCommand()
         
         // Execute the SimpleCommand
         command.execute(note)

@@ -63,7 +63,7 @@ public class View: IView {
     directly, but instead call the static Multiton
     Factory method `View.getInstance( multitonKey )`
     
-    :param: key multitonKey
+    - parameter key: multitonKey
     
     @throws Error if instance for this Multiton key has already been constructed
     */
@@ -91,9 +91,9 @@ public class View: IView {
     /**
     View Singleton Factory method.
     
-    :param: key multitonKey
-    :param: closure reference that returns `IView`
-    :returns: the Singleton instance returned by executing the passed closure
+    - parameter key: multitonKey
+    - parameter closure: reference that returns `IView`
+    - returns: the Singleton instance returned by executing the passed closure
     */
     public class func getInstance(key: String, closure: () -> IView) -> IView {
         dispatch_barrier_sync(instanceQueue) {
@@ -108,8 +108,8 @@ public class View: IView {
     Register an `IObserver` to be notified
     of `INotifications` with a given name.
     
-    :param: notificationName the name of the `INotifications` to notify this `IObserver` of
-    :param: observer the `IObserver` to register
+    - parameter notificationName: the name of the `INotifications` to notify this `IObserver` of
+    - parameter observer: the `IObserver` to register
     */
     public func registerObserver(notificationName: String, observer: IObserver) {
         dispatch_barrier_sync(observerMapQueue) {
@@ -128,7 +128,7 @@ public class View: IView {
     list are notified and are passed a reference to the `INotification` in
     the order in which they were registered.
     
-    :param: notification the `INotification` to notify `IObservers` of.
+    - parameter notification: the `INotification` to notify `IObservers` of.
     */
     public func notifyObservers(notification: INotification) {
         var observers: [IObserver]?
@@ -153,8 +153,8 @@ public class View: IView {
     /**
     Remove the observer for a given notifyContext from an observer list for a given Notification name.
     
-    :param: notificationName which observer list to remove from
-    :param: notifyContext remove the observer with this object as its notifyContext
+    - parameter notificationName: which observer list to remove from
+    - parameter notifyContext: remove the observer with this object as its notifyContext
     */
     public func removeObserver(notificationName: String, notifyContext: AnyObject) {
         dispatch_barrier_sync(observerMapQueue) {
@@ -162,7 +162,7 @@ public class View: IView {
             if let observers = self.observerMap[notificationName] {
                 
                 // find the observer for the notifyContext
-                for (index, _) in enumerate(observers) {
+                for (index, _) in observers.enumerate() {
                     if observers[index].compareNotifyContext(notifyContext) {
                         // there can only be one Observer for a given notifyContext
                         // in any given Observer list, so remove it and break
@@ -174,7 +174,7 @@ public class View: IView {
                 // Also, when a Notification's Observer list length falls to
                 // zero, delete the notification key from the observer map
                 if observers.isEmpty {
-                    self.observerMap[notificationName] = nil
+                    self.observerMap.removeValueForKey(notificationName)
                 }
             }
         }
@@ -193,7 +193,7 @@ public class View: IView {
     and registering it as an `Observer` for all `INotifications` the
     `IMediator` is interested in.
     
-    :param: mediator a reference to the `IMediator` instance
+    - parameter mediator: a reference to the `IMediator` instance
     */
     public func registerMediator(mediator: IMediator) {
         // do not allow re-registration (you must removeMediator fist)
@@ -208,13 +208,13 @@ public class View: IView {
             self.mediatorMap[mediator.mediatorName] = mediator
             
             // Get Notification interests, if any.
-            var interests = mediator.listNotificationInterests()
+            let interests = mediator.listNotificationInterests()
             
             // Register Mediator as an observer for each notification of interests
             if !interests.isEmpty {
                 // Create Observer referencing this mediator's handlNotification method
                 
-                var observer = Observer(notifyMethod: {notification in mediator.handleNotification(notification)}, notifyContext: mediator as! Mediator)
+                let observer = Observer(notifyMethod: {notification in mediator.handleNotification(notification)}, notifyContext: mediator as! Mediator)
                 
                 // Register Mediator as Observer for its list of Notification interests
                 for notificationName in interests {
@@ -230,8 +230,8 @@ public class View: IView {
     /**
     Retrieve an `IMediator` from the `View`.
     
-    :param: mediatorName the name of the `IMediator` instance to retrieve.
-    :returns: the `IMediator` instance previously registered with the given `mediatorName`.
+    - parameter mediatorName: the name of the `IMediator` instance to retrieve.
+    - returns: the `IMediator` instance previously registered with the given `mediatorName`.
     */
     public func retrieveMediator(mediatorName: String) -> IMediator? {
         var mediator: IMediator?
@@ -244,15 +244,15 @@ public class View: IView {
     /**
     Remove an `IMediator` from the `View`.
     
-    :param: mediatorName name of the `IMediator` instance to be removed.
-    :returns: the `IMediator` that was removed from the `View`
+    - parameter mediatorName: name of the `IMediator` instance to be removed.
+    - returns: the `IMediator` that was removed from the `View`
     */
     public func removeMediator(mediatorName: String) -> IMediator? {
         var removed: IMediator?
         dispatch_barrier_sync(mediatorMapQueue) {
             if let mediator = self.mediatorMap[mediatorName] {
                 // for every notification this mediator is interested in...
-                var interests = mediator.listNotificationInterests()
+                let interests = mediator.listNotificationInterests()
                 
                 for notificationName in interests {
                     // remove the observer linking the mediator
@@ -261,11 +261,10 @@ public class View: IView {
                 }
                 
                 // remove the mediator from the map
-                self.mediatorMap[mediatorName] = nil
+                removed = self.mediatorMap.removeValueForKey(mediatorName)
                 
                 // alert the mediator that it has been removed
                 mediator.onRemove()
-                removed = mediator
             }
         }
         return removed
@@ -274,8 +273,8 @@ public class View: IView {
     /**
     Check if a Mediator is registered or not
     
-    :param: mediatorName
-    :returns: whether a Mediator is registered with the given `mediatorName`.
+    - parameter mediatorName:
+    - returns: whether a Mediator is registered with the given `mediatorName`.
     */
     public func hasMediator(mediatorName: String) -> Bool {
         var result = false
@@ -288,11 +287,11 @@ public class View: IView {
     /**
     Remove an IView instance
     
-    :param: multitonKey of IView instance to remove
+    - parameter multitonKey: of IView instance to remove
     */
     public class func removeView(key: String) {
         dispatch_barrier_sync(instanceQueue) {
-            self.instanceMap[key] = nil
+            self.instanceMap.removeValueForKey(key)
         }
     }
     

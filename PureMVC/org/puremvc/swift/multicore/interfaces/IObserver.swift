@@ -48,7 +48,7 @@ public protocol IObserver {
     
     The notification method should take one parameter of type `INotification`
     
-    :param: notifyMethod the notification (callback) method of the interested object
+    - parameter notifyMethod: the notification (callback) method of the interested object
     */
     var notifyMethod: ((notification: INotification) -> ())? { get set }
     
@@ -58,15 +58,15 @@ public protocol IObserver {
     /**
     Notify the interested object.
     
-    :param: notification the `INotification` to pass to the interested object's notification method
+    - parameter notification: the `INotification` to pass to the interested object's notification method
     */
     func notifyObserver(notification: INotification)
     
     /**
     Compare the given object to the notificaiton context object.
     
-    :param: object the object to compare.
-    :returns: boolean indicating if the notification context and the object are the same.
+    - parameter object: the object to compare.
+    - returns: boolean indicating if the notification context and the object are the same.
     */
     func compareNotifyContext(object: AnyObject) -> Bool
     

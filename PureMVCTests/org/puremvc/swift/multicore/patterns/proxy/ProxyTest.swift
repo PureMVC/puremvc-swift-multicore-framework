@@ -17,7 +17,7 @@ Test the PureMVC Proxy class.
 `@see org.puremvc.swift.multicore.patterns.proxy.Proxy Proxy`
 */
 class ProxyTest: XCTestCase {
-
+    
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -33,7 +33,7 @@ class ProxyTest: XCTestCase {
     */
     func testNameAccessor() {
         // Create a new Proxy and use accessors to set the proxy name
-        var proxy: Proxy = Proxy(proxyName: "TestProxy", data: nil)
+        let proxy: Proxy = Proxy(proxyName: "TestProxy", data: nil)
         
         // test assertions
         XCTAssertTrue(proxy.proxyName == "TestProxy", "Expecting proxy.proxyName == 'TestProxy'")
@@ -44,7 +44,7 @@ class ProxyTest: XCTestCase {
     */
     func testDataAccessors() {
         // Create a new Proxy and use accessors to set the data
-        var proxy: Proxy = Proxy(proxyName: "colors", data: nil)
+        let proxy: Proxy = Proxy(proxyName: "colors", data: nil)
         proxy.data = ["red", "green", "blue"]
         
         var data: [String] = proxy.data as! [String]
@@ -61,7 +61,7 @@ class ProxyTest: XCTestCase {
     */
     func testConstructor() {
         // Create a new Proxy using the Constructor to set the name and data
-        var proxy: Proxy = Proxy(proxyName: "colors", data: ["red", "green", "blue"])
+        let proxy: Proxy = Proxy(proxyName: "colors", data: ["red", "green", "blue"])
         
         var data: [String] = proxy.data as! [String]
         

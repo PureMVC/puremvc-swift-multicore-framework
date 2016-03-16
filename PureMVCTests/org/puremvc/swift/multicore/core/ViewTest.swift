@@ -41,7 +41,7 @@ public class ViewTest: XCTestCase {
     */
     func testGetInstance() {
         // Test Factory Method
-        var view: IView = View.getInstance("ViewTestKey1") { View(key: "ViewTestKey1") }
+        let view: IView = View.getInstance("ViewTestKey1") { View(key: "ViewTestKey1") }
         
         // test assertions
         XCTAssertNotNil(view as? View, "view != null")
@@ -67,10 +67,10 @@ public class ViewTest: XCTestCase {
     */
     func testRegisterAndNotifyObserver() {
         // Get the Multiton View instance
-        var view:IView = View.getInstance("viewTestKey2") { View(key: "viewTestKey2") }
+        let view:IView = View.getInstance("viewTestKey2") { View(key: "viewTestKey2") }
         
         // Create observer, passing in notification method and context
-        var observer = Observer(notifyMethod: self.viewTestMethod, notifyContext: self)
+        let observer = Observer(notifyMethod: self.viewTestMethod, notifyContext: self)
         
         // Register Observer's interest in a particulat Notification with the View
         view.registerObserver(ViewTestNote.NAME, observer: observer)
@@ -82,7 +82,7 @@ public class ViewTest: XCTestCase {
         // successful notification will result in our local
         // viewTestVar being set to the value we pass in
         // on the note body.
-        var note = ViewTestNote.create(10)
+        let note = ViewTestNote.create(10)
         view.notifyObservers(note)
         
         // test assertions
@@ -109,14 +109,14 @@ public class ViewTest: XCTestCase {
     */
     func testRegisterAndRetrieveMediator() {
         // Get the Multiton View instance
-        var view = View.getInstance("ViewTestKey3") { View(key: "ViewTestKey3") }
+        let view = View.getInstance("ViewTestKey3") { View(key: "ViewTestKey3") }
         
         // Create and register the test mediator
-        var viewTestMediator = ViewTestMediator(viewComponent: self)
+        let viewTestMediator = ViewTestMediator(viewComponent: self)
         view.registerMediator(viewTestMediator)
         
         // Retrieve the component
-        var mediator = view.retrieveMediator(ViewTestMediator.NAME)
+        let mediator = view.retrieveMediator(ViewTestMediator.NAME)
         
         // test assertions
         XCTAssertNotNil(mediator as? Mediator, "Expecting viewComponent not nil")
@@ -128,10 +128,10 @@ public class ViewTest: XCTestCase {
     */
     func testHasMediator() {
         // register a Mediator
-        var view: IView = View.getInstance("ViewTestKey4") { View(key: "ViewTestKey4") }
+        let view: IView = View.getInstance("ViewTestKey4") { View(key: "ViewTestKey4") }
         
         // Create and register the test mediator
-        var mediator = Mediator(mediatorName: "hasMediatorTest", viewComponent: self)
+        let mediator = Mediator(mediatorName: "hasMediatorTest", viewComponent: self)
         view.registerMediator(mediator)
         
         // assert that the view.hasMediator method returns true
@@ -150,14 +150,14 @@ public class ViewTest: XCTestCase {
     */
     func testRegisterAndRemoveMediator() {
         // Get the Multiton View instance
-        var view: IView = View.getInstance("ViewTestKey5") { View(key: "ViewTestKey5") }
+        let view: IView = View.getInstance("ViewTestKey5") { View(key: "ViewTestKey5") }
         
         // Create and register the test mediator
-        var mediator: IMediator = Mediator(mediatorName: "testing", viewComponent: self)
+        let mediator: IMediator = Mediator(mediatorName: "testing", viewComponent: self)
         view.registerMediator(mediator)
         
         // Remove the component
-        var removedMediator: IMediator = view.removeMediator("testing") as IMediator!
+        let removedMediator: IMediator = view.removeMediator("testing") as IMediator!
         
         // assert that we have removed the appropriate mediator
         XCTAssertTrue(removedMediator.mediatorName == "testing", "Expecting removedMediator.mediatorName == 'testing'")
@@ -171,10 +171,10 @@ public class ViewTest: XCTestCase {
     */
     func testOnRegisterAndOnRemove() {
         // Get the Multiton View instance
-        var view: IView = View.getInstance("ViewTestKey6") { View(key: "ViewTestKey6") }
+        let view: IView = View.getInstance("ViewTestKey6") { View(key: "ViewTestKey6") }
         
         // Create and register the test mediator
-        var mediator: IMediator = ViewTestMediator4(viewComponent: self)
+        let mediator: IMediator = ViewTestMediator4(viewComponent: self)
         view.registerMediator(mediator)
         
         // assert that onRegsiter was called, and the mediator responded by setting our boolean
@@ -192,7 +192,7 @@ public class ViewTest: XCTestCase {
     */
     func testSuccessiveRegisterAndRemoveMediator() {
         // Get the Multiton View instance
-        var view:IView = View.getInstance("ViewTestKey7") { View(key: "ViewTestKey7") }
+        let view:IView = View.getInstance("ViewTestKey7") { View(key: "ViewTestKey7") }
         
         // Create and register the test mediator,
         // but not so we have a reference to it
@@ -229,7 +229,7 @@ public class ViewTest: XCTestCase {
     */
     func testRemoveMediatorAndSubsequentNotify() {
         // Get the Multiton View instance
-        var view: IView = View.getInstance("ViewTestKey8") { View(key: "ViewTestKey8") }
+        let view: IView = View.getInstance("ViewTestKey8") { View(key: "ViewTestKey8") }
         
         // Create and register the test mediator to be removed.
         view.registerMediator(ViewTestMediator2(viewComponent: self))
@@ -268,7 +268,7 @@ public class ViewTest: XCTestCase {
     */
     func testRemoveOneOfTwoMediatorsAndSubsequentNotify() {
         // Get the Multiton View instance
-        var view: IView = View.getInstance("ViewTestKey9") { View(key: "ViewTestKey9") }
+        let view: IView = View.getInstance("ViewTestKey9") { View(key: "ViewTestKey9") }
         
         // Create and register that responds to notifications 1 and 2
         view.registerMediator(ViewTestMediator2(viewComponent: self))
@@ -319,7 +319,7 @@ public class ViewTest: XCTestCase {
     */
     func testMediatorReregistration() {
         // Get the Singleton View instance
-        var view: IView = View.getInstance("ViewTestKey10") { View(key: "ViewTestKey10") }
+        let view: IView = View.getInstance("ViewTestKey10") { View(key: "ViewTestKey10") }
         
         // Create and register that responds to notification 5
         view.registerMediator(ViewTestMediator5(viewComponent: self))
@@ -356,7 +356,7 @@ public class ViewTest: XCTestCase {
     */
     func testModifyObserverListDuringNotification() {
         // Get the Singleton View instance
-        var view: IView = View.getInstance("ViewTestKey11") { View(key: "ViewTestKey11") }
+        let view: IView = View.getInstance("ViewTestKey11") { View(key: "ViewTestKey11") }
         
         // Create and register several mediator instances that respond to notification 6
         // by removing themselves, which will cause the observer list for that notification
@@ -390,10 +390,10 @@ public class ViewTest: XCTestCase {
     }
     
     func testRegisterAndRemoveObserver() {
-        var view = View.getInstance("ViewTestKey12") { View(key: "ViewTestKey12") }
+        let view = View.getInstance("ViewTestKey12") { View(key: "ViewTestKey12") }
         
-        var vo = ViewTestVO(input: 5)
-        var note = Notification(name: "test", body: vo)
+        let vo = ViewTestVO(input: 5)
+        let note = Notification(name: "test", body: vo)
         
         view.registerObserver("test", observer: Observer(notifyMethod: self.handleNotification, notifyContext: self))
         
@@ -419,7 +419,7 @@ public class ViewTest: XCTestCase {
     }
     
     func handleNotification(notification: INotification) {
-        var vo = notification.body as! ViewTestVO
+        let vo = notification.body as! ViewTestVO
         vo.result = vo.input * 2
     }
 

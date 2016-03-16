@@ -24,7 +24,7 @@ class ControllerExtendTest: XCTestCase {
     }
 
     func testConstructor() {
-        var controllerExtend = ControllerExtend.getInstance("Key1")
+        let controllerExtend = ControllerExtend.getInstance("Key1")
         View.removeView("Key1")
         
         XCTAssertNotNil(controllerExtend as! ControllerExtend, "Expecting controllerExtend not nil")
@@ -32,7 +32,7 @@ class ControllerExtendTest: XCTestCase {
     
     func testDeinit() {
         //To ensure all allocated resources gets released without any memory leak via each actor's deinit method
-        var resource = Resource()
+        let resource = Resource()
         var controllerExtend: ControllerExtend! = ControllerExtend.getInstance("Key1") as! ControllerExtend
         controllerExtend.resource = resource
         
@@ -47,7 +47,7 @@ class ControllerExtendTest: XCTestCase {
     
     func testRegisterCommandAndDeinit() {
         //To ensure all allocated resources gets released without any memory leak via each actor's deinit method
-        var resource = Resource()
+        let resource = Resource()
         var controllerExtend: ControllerExtend! = ControllerExtend.getInstance("Key1") as! ControllerExtend
         controllerExtend.resource = resource
         

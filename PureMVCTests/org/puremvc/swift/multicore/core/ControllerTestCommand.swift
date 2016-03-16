@@ -20,10 +20,10 @@ public class ControllerTestCommand: SimpleCommand {
     /**
     Fabricate a result by multiplying the input by 2
 
-    :param: note the note carrying the ControllerTestVO
+    - parameter note: the note carrying the ControllerTestVO
     */
     public override func execute(notification: INotification) {
-        var vo: ControllerTestVO = notification.body as! ControllerTestVO
+        let vo: ControllerTestVO = notification.body as! ControllerTestVO
         
         // Fabricate a result
         vo.result = 2 * vo.input

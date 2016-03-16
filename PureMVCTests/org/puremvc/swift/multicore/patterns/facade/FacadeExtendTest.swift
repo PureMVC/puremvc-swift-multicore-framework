@@ -31,21 +31,21 @@ class FacadeExtendTest: XCTestCase {
     }
     
     func testDeinit() {
-        var facadeResource = Resource()
+        let facadeResource = Resource()
         var facadeExtend: FacadeExtend! = FacadeExtend.getInstance("Key1") as! FacadeExtend
         facadeExtend.resource = facadeResource
         
         XCTAssertTrue(facadeResource.state == .ALLOCATED, "Expecting resource to be allocated")
         
-        var controllerResource = Resource()
+        let controllerResource = Resource()
         var controller: ControllerExtend! = ControllerExtend.getInstance("Key1") as! ControllerExtend
         controller.resource = controllerResource
         
-        var modelResource = Resource()
+        let modelResource = Resource()
         var model: ModelExtend! = ModelExtend.getInstance("Key1") as! ModelExtend
         model.resource = modelResource
         
-        var viewResource = Resource()
+        let viewResource = Resource()
         var view: ViewExtend! = ViewExtend.getInstance("Key1") as! ViewExtend
         view.resource = viewResource
         

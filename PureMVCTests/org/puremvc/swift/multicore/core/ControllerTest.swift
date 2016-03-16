@@ -33,7 +33,7 @@ class ControllerTest: XCTestCase {
     */
     func testGetInstance() {
         // Test Factory Method
-        var controller: IController = Controller.getInstance("ControllerTestKey1") { Controller(key: "ControllerTestKey1") }
+        let controller: IController = Controller.getInstance("ControllerTestKey1") { Controller(key: "ControllerTestKey1") }
         
         // test assertions
         XCTAssertNotNil(controller as? Controller, "Expecting instance not nil")
@@ -54,12 +54,12 @@ class ControllerTest: XCTestCase {
     */
     func testRegisterAndExecuteCommand() {
         // Create the controller, register the ControllerTestCommand to handle 'ControllerTest' notes
-        var controller: IController = Controller.getInstance("ControllerTestKey1") { Controller(key: "ControllerTestKey1") }
+        let controller: IController = Controller.getInstance("ControllerTestKey1") { Controller(key: "ControllerTestKey1") }
         controller.registerCommand("ControllerTest", closure: {ControllerTestCommand()})
         
         // Create a 'ControllerTest' note
-        var vo: ControllerTestVO = ControllerTestVO(input: 12)
-        var note = Notification(name: "ControllerTest", body: vo)
+        let vo: ControllerTestVO = ControllerTestVO(input: 12)
+        let note = Notification(name: "ControllerTest", body: vo)
         
         // Tell the controller to execute the Command associated with the note
         // the ControllerTestCommand invoked will multiply the vo.input value
@@ -79,12 +79,12 @@ class ControllerTest: XCTestCase {
     */
     func testRegisterAndRemoveCommand() {
         // Create the controller, register the ControllerTestCommand to handle 'ControllerTest' notes
-        var controller: IController = Controller.getInstance("ControllerTestKey3") { Controller(key: "ControllerTestKey3") }
+        let controller: IController = Controller.getInstance("ControllerTestKey3") { Controller(key: "ControllerTestKey3") }
         controller.registerCommand("ControllerRemoveTest", closure: {ControllerTestCommand()})
         
         // Create a 'ControllerTest' note
-        var vo = ControllerTestVO(input: 12)
-        var note = Notification(name: "ControllerRemoveTest", body: vo)
+        let vo = ControllerTestVO(input: 12)
+        let note = Notification(name: "ControllerRemoveTest", body: vo)
         
         // Tell the controller to execute the Command associated with the note
         // the ControllerTestCommand invoked will multiply the vo.input value
@@ -114,7 +114,7 @@ class ControllerTest: XCTestCase {
     */
     func testHasCommand() {
         // register the ControllerTestCommand to handle 'hasCommandTest' notes
-        var controller = Controller.getInstance("ControllerTestKey4") { Controller(key: "ControllerTestKey4") }
+        let controller = Controller.getInstance("ControllerTestKey4") { Controller(key: "ControllerTestKey4") }
         controller.registerCommand("hasCommandTest", closure: {ControllerTestCommand()})
         
         // test that hasCommand returns true for hasCommandTest notifications
@@ -140,7 +140,7 @@ class ControllerTest: XCTestCase {
     */
     func testReregisterAndExecuteCommand() {
         // Fetch the controller, register the ControllerTestCommand2 to handle 'ControllerTest2' notes
-        var controller = Controller.getInstance("ControllerTestKey5") { Controller(key: "ControllerTestKey5") }
+        let controller = Controller.getInstance("ControllerTestKey5") { Controller(key: "ControllerTestKey5") }
         controller.registerCommand("ControllerTest2", closure: {ControllerTestCommand2()})
         
         // Remove the Command from the Controller
@@ -150,11 +150,11 @@ class ControllerTest: XCTestCase {
         controller.registerCommand("ControllerTest2", closure: {ControllerTestCommand2()})
         
         // Create a 'ControllerTest2' note
-        var vo = ControllerTestVO(input: 12)
-        var note = Notification(name: "ControllerTest2", body: vo)
+        let vo = ControllerTestVO(input: 12)
+        let note = Notification(name: "ControllerTest2", body: vo)
         
         // retrieve a reference to the View from the same core.
-        var view = View.getInstance("ControllerTestKey5") { View(key: "ControllerTestKey5") }
+        let view = View.getInstance("ControllerTestKey5") { View(key: "ControllerTestKey5") }
         
         // send the Notification
         view.notifyObservers(note)

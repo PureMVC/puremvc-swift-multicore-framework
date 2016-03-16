@@ -32,16 +32,16 @@ public protocol IView {
     Register an `IObserver` to be notified
     of `INotifications` with a given name.
     
-    :param: notificationName the name of the `INotifications` to notify this `IObserver` of
-    :param: observer the `IObserver` to register
+    - parameter notificationName: the name of the `INotifications` to notify this `IObserver` of
+    - parameter observer: the `IObserver` to register
     */
     func registerObserver(notificationName: String, observer: IObserver)
     
     /**
     Remove a group of observers from the observer list for a given Notification name.
     
-    :param: notificationName which observer list to remove from
-    :param: notifyContext removed the observers with this object as their notifyContext
+    - parameter notificationName: which observer list to remove from
+    - parameter notifyContext: removed the observers with this object as their notifyContext
     */
     func removeObserver(notificationName: String, notifyContext: AnyObject)
     
@@ -52,7 +52,7 @@ public protocol IView {
     list are notified and are passed a reference to the `INotification` in
     the order in which they were registered.
     
-    :param: notification the `INotification` to notify `IObservers` of.
+    - parameter notification: the `INotification` to notify `IObservers` of.
     */
     func notifyObservers(notification: INotification)
     
@@ -69,32 +69,32 @@ public protocol IView {
     and registering it as an `Observer` for all `INotifications` the
     `IMediator` is interested in.
     
-    :param: mediatorName the name to associate with this `IMediator` instance
-    :param: mediator a reference to the `IMediator` instance
+    - parameter mediatorName: the name to associate with this `IMediator` instance
+    - parameter mediator: a reference to the `IMediator` instance
     */
     func registerMediator(mediator: IMediator)
     
     /**
     Retrieve an `IMediator` from the `View`.
     
-    :param: mediatorName the name of the `IMediator` instance to retrieve.
-    :returns: the `IMediator` instance previously registered with the given `mediatorName`.
+    - parameter mediatorName: the name of the `IMediator` instance to retrieve.
+    - returns: the `IMediator` instance previously registered with the given `mediatorName`.
     */
     func retrieveMediator(mediatorName: String) -> IMediator?
     
     /**
     Remove an `IMediator` from the `View`.
     
-    :param: mediatorName name of the `IMediator` instance to be removed.
-    :returns: the `IMediator` that was removed from the `View`
+    - parameter mediatorName: name of the `IMediator` instance to be removed.
+    - returns: the `IMediator` that was removed from the `View`
     */
     func removeMediator(mediatorName:String) -> IMediator?
     
     /**
     Check if a Mediator is registered or not
     
-    :param: mediatorName
-    :returns: whether a Mediator is registered with the given `mediatorName`.
+    - parameter mediatorName:
+    - returns: whether a Mediator is registered with the given `mediatorName`.
     */
     func hasMediator(mediatorName:String) -> Bool
     

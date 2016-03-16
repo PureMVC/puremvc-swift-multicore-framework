@@ -72,9 +72,9 @@ public class Facade: IFacade {
     /**
     Facade Multiton Factory method
     
-    :param: key multitonKey
-    :param: closure reference that returns `IFacade`
-    :returns: the Multiton instance of the `IFacade`
+    - parameter key: multitonKey
+    - parameter closure: reference that returns `IFacade`
+    - returns: the Multiton instance of the `IFacade`
     */
     public class func getInstance(key: String, closure: (() -> IFacade)) -> IFacade {
         dispatch_barrier_sync(instanceMapQueue) {
@@ -163,8 +163,8 @@ public class Facade: IFacade {
     /**
     Register an `ICommand` with the `Controller` by Notification name.
     
-    :param: notificationName the name of the `INotification` to associate the `ICommand` with
-    :param: closure reference that returns `ICommand`
+    - parameter notificationName: the name of the `INotification` to associate the `ICommand` with
+    - parameter closure: reference that returns `ICommand`
     */
     public func registerCommand(notificationName: String, closure: () -> ICommand) {
         controller!.registerCommand(notificationName, closure: closure)
@@ -173,7 +173,7 @@ public class Facade: IFacade {
     /**
     Remove a previously registered `ICommand` to `INotification` mapping from the Controller.
     
-    :param: notificationName the name of the `INotification` to remove the `ICommand` mapping for
+    - parameter notificationName: the name of the `INotification` to remove the `ICommand` mapping for
     */
     public func removeCommand(notificationName: String) {
         controller!.removeCommand(notificationName)
@@ -182,8 +182,8 @@ public class Facade: IFacade {
     /**
     Check if a Command is registered for a given Notification
     
-    :param: notificationName
-    :returns: whether a Command is currently registered for the given `notificationName`.
+    - parameter notificationName:
+    - returns: whether a Command is currently registered for the given `notificationName`.
     */
     public func hasCommand(notificationName: String) -> Bool {
         return controller!.hasCommand(notificationName)
@@ -192,7 +192,7 @@ public class Facade: IFacade {
     /**
     Register an `IProxy` with the `Model` by name.
     
-    :param: proxy the `IProxy` instance to be registered with the `Model`.
+    - parameter proxy: the `IProxy` instance to be registered with the `Model`.
     */
     public func registerProxy(proxy: IProxy) {
         model!.registerProxy(proxy)
@@ -201,8 +201,8 @@ public class Facade: IFacade {
     /**
     Retrieve an `IProxy` from the `Model` by name.
     
-    :param: proxyName the name of the proxy to be retrieved.
-    :returns: the `IProxy` instance previously registered with the given `proxyName`.
+    - parameter proxyName: the name of the proxy to be retrieved.
+    - returns: the `IProxy` instance previously registered with the given `proxyName`.
     */
     public func retrieveProxy(proxyName: String) -> IProxy? {
         return model!.retrieveProxy(proxyName)
@@ -211,8 +211,8 @@ public class Facade: IFacade {
     /**
     Remove an `IProxy` from the `Model` by name.
     
-    :param: proxyName the `IProxy` to remove from the `Model`.
-    :returns: the `IProxy` that was removed from the `Model`
+    - parameter proxyName: the `IProxy` to remove from the `Model`.
+    - returns: the `IProxy` that was removed from the `Model`
     */
     public func removeProxy(proxyName: String) -> IProxy? {
         return model!.removeProxy(proxyName)
@@ -221,8 +221,8 @@ public class Facade: IFacade {
     /**
     Check if a Proxy is registered
     
-    :param: proxyName
-    :returns: whether a Proxy is currently registered with the given `proxyName`.
+    - parameter proxyName:
+    - returns: whether a Proxy is currently registered with the given `proxyName`.
     */
     public func hasProxy(proxyName: String) -> Bool {
         return model!.hasProxy(proxyName)
@@ -231,7 +231,7 @@ public class Facade: IFacade {
     /**
     Register a `IMediator` with the `View`.
     
-    :param: mediator a reference to the `IMediator`
+    - parameter mediator: a reference to the `IMediator`
     */
     public func registerMediator(mediator: IMediator) {
         view!.registerMediator(mediator)
@@ -240,8 +240,8 @@ public class Facade: IFacade {
     /**
     Retrieve an `IMediator` from the `View`.
     
-    :param: mediatorName
-    :returns: the `IMediator` previously registered with the given `mediatorName`.
+    - parameter mediatorName:
+    - returns: the `IMediator` previously registered with the given `mediatorName`.
     */
     public func retrieveMediator(mediatorName: String) -> IMediator? {
         return view!.retrieveMediator(mediatorName)
@@ -250,8 +250,8 @@ public class Facade: IFacade {
     /**
     Remove an `IMediator` from the `View`.
     
-    :param: mediatorName name of the `IMediator` to be removed.
-    :returns: the `IMediator` that was removed from the `View`
+    - parameter mediatorName: name of the `IMediator` to be removed.
+    - returns: the `IMediator` that was removed from the `View`
     */
     public func removeMediator(mediatorName: String) -> IMediator? {
         return view!.removeMediator(mediatorName)
@@ -260,8 +260,8 @@ public class Facade: IFacade {
     /**
     Check if a Mediator is registered or not
     
-    :param: mediatorName
-    :returns: whether a Mediator is registered with the given `mediatorName`.
+    - parameter mediatorName:
+    - returns: whether a Mediator is registered with the given `mediatorName`.
     */
     public func hasMediator(mediatorName: String) -> Bool {
         return view!.hasMediator(mediatorName)
@@ -273,9 +273,9 @@ public class Facade: IFacade {
     Keeps us from having to construct new notification
     instances in our implementation code.
     
-    :param: notificationName the name of the notiification to send
-    :param: body the body of the notification (optional)
-    :param: type the type of the notification (optional)
+    - parameter notificationName: the name of the notiification to send
+    - parameter body: the body of the notification (optional)
+    - parameter type: the type of the notification (optional)
     */
     public func sendNotification(notificationName: String, body: Any?=nil, type: String?=nil) {
         notifyObservers(Notification(name: notificationName, body: body, type: type))
@@ -292,7 +292,7 @@ public class Facade: IFacade {
     and pass the parameters, never having to
     construct the notification yourself.
     
-    :param: notification the `INotification` to have the `View` notify `Observers` of.
+    - parameter notification: the `INotification` to have the `View` notify `Observers` of.
     */
     public func notifyObservers(notification: INotification) {
         view!.notifyObservers(notification)
@@ -313,8 +313,8 @@ public class Facade: IFacade {
     /**
     Check if a Core is registered or not
     
-    :param: key the multiton key for the Core in question
-    :returns: whether a Core is registered with the given `key`.
+    - parameter key: the multiton key for the Core in question
+    - returns: whether a Core is registered with the given `key`.
     */
     public class func hasCore(key: String) -> Bool {
         var result = false
@@ -330,14 +330,14 @@ public class Facade: IFacade {
     Remove the Model, View, Controller and Facade
     instances for the given key.
     
-    :param: key multitonKey of the Core to remove
+    - parameter key: multitonKey of the Core to remove
     */
     public class func removeCore(key: String) {
-        Model.removeModel(key)
-        View.removeView(key)
-        Controller.removeController(key)
         dispatch_barrier_sync(instanceMapQueue) {
-            self.instanceMap[key] = nil
+            Model.removeModel(key)
+            View.removeView(key)
+            Controller.removeController(key)
+            self.instanceMap.removeValueForKey(key)
         }
     }
     

@@ -21,7 +21,7 @@ public class ControllerTestVO {
     /**
     Constructor.
     
-    :param: input the number to be fed to the ControllerTestCommand
+    - parameter input: the number to be fed to the ControllerTestCommand
     */
     public init(input: Int) {
         self.input = input

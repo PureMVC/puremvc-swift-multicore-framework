@@ -45,14 +45,14 @@ public protocol IMediator: INotifier {
     /**
     List `INotification` interests.
     
-    :returns: an `Array` of the `INotification` names this `IMediator` has an interest in.
+    - returns: an `Array` of the `INotification` names this `IMediator` has an interest in.
     */
     func listNotificationInterests() -> [String]
     
     /**
     Handle an `INotification`.
     
-    :param: notification the `INotification` to be handled
+    - parameter notification: the `INotification` to be handled
     */
     func handleNotification(notification: INotification)
     

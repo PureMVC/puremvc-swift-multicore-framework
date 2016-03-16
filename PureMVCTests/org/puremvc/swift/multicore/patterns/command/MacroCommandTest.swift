@@ -57,13 +57,13 @@ class MacroCommandTest: XCTestCase {
     */
     func testMacroCommandExecute() {
         // Create the VO
-        var vo = MacroCommandTestVO(input: 5)
+        let vo = MacroCommandTestVO(input: 5)
         
         // Create the Notification (note)
-        var notification = Notification(name: "my", body: vo)
+        let notification = Notification(name: "my", body: vo)
         
         // Create the SimpleCommand
-        var command = MacroCommandTestCommand()
+        let command = MacroCommandTestCommand()
         command.initializeNotifier("test")
         
         // Execute the SimpleCommand

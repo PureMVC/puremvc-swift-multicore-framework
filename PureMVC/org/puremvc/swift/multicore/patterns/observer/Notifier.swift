@@ -69,9 +69,9 @@ public class Notifier : INotifier {
     Keeps us from having to construct new INotification
     instances in our implementation code.
     
-    :param: notificationName the name of the notification to send
-    :param: body the body of the notification (optional)
-    :param: type the type of the notification (optional)
+    - parameter notificationName: the name of the notification to send
+    - parameter body: the body of the notification (optional)
+    - parameter type: the type of the notification (optional)
     */
     public func sendNotification(notificationName: String, body: Any?=nil, type: String?=nil) {
         facade.sendNotification(notificationName, body: body, type: type)
@@ -92,7 +92,7 @@ public class Notifier : INotifier {
     in their constructors, since this method will not
     yet have been called.
     
-    :param: key the multitonKey for this INotifier to use
+    - parameter key: the multitonKey for this INotifier to use
     */
     public func initializeNotifier(key: String) {
         _multitonKey = key
