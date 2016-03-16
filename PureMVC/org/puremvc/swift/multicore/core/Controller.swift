@@ -102,9 +102,9 @@ public class Controller: IController {
     /**
     `Controller` Multiton Factory method.
     
-    :param: key multitonKey
-    :param: closure reference that returns `IController`
-    :returns: the Multiton instance
+    - parameter key: multitonKey
+    - parameter closure: reference that returns `IController`
+    - returns: the Multiton instance
     */
     public class func getInstance(key:String, closure: () -> IController) -> IController {
         dispatch_barrier_sync(instanceQueue) {
@@ -119,12 +119,12 @@ public class Controller: IController {
     If an `ICommand` has previously been registered
     to handle a the given `INotification`, then it is executed.
     
-    :param: note an `INotification`
+    - parameter note: an `INotification`
     */
     public func executeCommand(notification: INotification) {
         dispatch_sync(commandMapQueue) {
             if let closure = self.commandMap[notification.name] {
-                var commandInstance = closure()
+                let commandInstance = closure()
                 commandInstance.initializeNotifier(self.multitonKey)
                 commandInstance.execute(notification)
             }
@@ -142,8 +142,8 @@ public class Controller: IController {
     The Observer for the new ICommand is only created if this the
     first time an ICommand has been regisered for this Notification name.
     
-    :param: notificationName the name of the `INotification`
-    :param: closure reference that returns `ICommand`
+    - parameter notificationName: the name of the `INotification`
+    - parameter closure: reference that returns `ICommand`
     */
     public func registerCommand(notificationName: String, closure: () -> ICommand) {
         dispatch_barrier_sync(commandMapQueue) {
@@ -157,8 +157,8 @@ public class Controller: IController {
     /**
     Check if a Command is registered for a given Notification
     
-    :param: notificationName
-    :returns: whether a Command is currently registered for the given `notificationName`.
+    - parameter notificationName:
+    - returns: whether a Command is currently registered for the given `notificationName`.
     */
     public func hasCommand(notificationName: String) -> Bool {
         var result = false
@@ -171,13 +171,13 @@ public class Controller: IController {
     /**
     Remove a previously registered `ICommand` to `INotification` mapping.
     
-    :param: notificationName the name of the `INotification` to remove the `ICommand` mapping for
+    - parameter notificationName: the name of the `INotification` to remove the `ICommand` mapping for
     */
     public func removeCommand(notificationName: String) {
         if self.hasCommand(notificationName) {
             dispatch_barrier_sync(commandMapQueue) {
                 self.view!.removeObserver(notificationName, notifyContext: self)
-                self.commandMap[notificationName] = nil
+                self.commandMap.removeValueForKey(notificationName)
             }
         }
     }
@@ -185,11 +185,11 @@ public class Controller: IController {
     /**
     Remove an IController instance
     
-    :param: multitonKey of IController instance to remove
+    - parameter multitonKey: of IController instance to remove
     */
     public class func removeController(key: String) {
         dispatch_barrier_sync(instanceQueue) {
-            self.instanceMap[key] = nil
+            self.instanceMap.removeValueForKey(key)
         }
     }
     

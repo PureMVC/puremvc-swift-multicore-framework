@@ -22,9 +22,9 @@ class ShellFacadeTest: XCTestCase {
     }
 
     func testShellFacade() {
-        var vo:FacadeTestVO = FacadeTestVO(input: 5)
+        let vo:FacadeTestVO = FacadeTestVO(input: 5)
         
-        var shellFacade = ShellFacade.getInstance("App") as! ShellFacade
+        let shellFacade = ShellFacade.getInstance("App") as! ShellFacade
         shellFacade.startup(vo)
         
         XCTAssertTrue(vo.result == 10, "Expecting v.result == 10")

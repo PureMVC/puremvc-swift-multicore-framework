@@ -20,10 +20,10 @@ public class FacadeTestCommand: SimpleCommand {
     /**
     Fabricate a result by multiplying the input by 2
     
-    :param: note the Notification carrying the FacadeTestVO
+    - parameter note: the Notification carrying the FacadeTestVO
     */
     public override func execute(notification: INotification) {
-        var vo:FacadeTestVO = notification.body as! FacadeTestVO
+        let vo:FacadeTestVO = notification.body as! FacadeTestVO
         
         //Fabricate a result
         vo.result = 2 * vo.input

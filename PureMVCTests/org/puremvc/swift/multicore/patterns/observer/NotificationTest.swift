@@ -31,7 +31,7 @@ class NotificationTest: XCTestCase {
     */
     func testNameAccessors() {
         // Create a new Notification and use accessors to set the note name
-        var note: INotification = Notification(name:"TestNote")
+        let note: INotification = Notification(name:"TestNote")
         
         //test assertions
         XCTAssertTrue(note.name == "TestNote", "Expecting note.name == 'TestNote'")
@@ -64,8 +64,8 @@ class NotificationTest: XCTestCase {
     */
     func testDescription() {
         // Create a new Notification and use accessors to set the note name
-        var note: INotification = Notification(name: "TestNote", body: [1, 3, 5], type: "TestType")
-        var ts: String = "Notification Name: TestNote Optional([1, 3, 5]) Optional(\"TestType\")"
+        let note: INotification = Notification(name: "TestNote", body: [1, 3, 5], type: "TestType")
+        let ts: String = "Notification Name: TestNote Optional([1, 3, 5]) Optional(\"TestType\")"
         
         // test assertions
         XCTAssertTrue(note.description() == ts, "Expecting note.description == '\(ts)'")

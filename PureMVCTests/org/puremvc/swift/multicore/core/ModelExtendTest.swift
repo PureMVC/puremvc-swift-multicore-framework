@@ -22,13 +22,13 @@ class ModelExtendTest: XCTestCase {
     }
 
     func testConstructor() {
-        var modelExtend = ModelExtend.getInstance("Key1") as! ModelExtend
+        let modelExtend = ModelExtend.getInstance("Key1") as! ModelExtend
         
         XCTAssertNotNil(modelExtend as ModelExtend, "Expecting modelExtend not nil")
     }
     
     func testDeinit() {
-        var resource = Resource()
+        let resource = Resource()
         var modelExtend: ModelExtend! = ModelExtend.getInstance("Key1") as! ModelExtend
         modelExtend.resource = resource
         
@@ -41,7 +41,7 @@ class ModelExtendTest: XCTestCase {
     }
     
     func testRegisterProxyAndDeinit() {
-        var resource = Resource()
+        let resource = Resource()
         var modelExtend: ModelExtend! = ModelExtend.getInstance("Key1") as! ModelExtend
         
         modelExtend.registerProxy(ResourceProxy(data: resource))

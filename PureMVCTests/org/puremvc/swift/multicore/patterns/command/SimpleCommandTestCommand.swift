@@ -19,10 +19,10 @@ public class SimpleCommandTestCommand: SimpleCommand {
     /**
     Fabricate a result by multiplying the input by 2
 
-    :param: event the `INotification` carrying the `SimpleCommandTestVO`
+    - parameter event: the `INotification` carrying the `SimpleCommandTestVO`
     */
     public override func execute(notification: INotification) {
-        var vo:SimpleCommandTestVO = notification.body as! SimpleCommandTestVO
+        let vo:SimpleCommandTestVO = notification.body as! SimpleCommandTestVO
 
         //Fabricate a result
         vo.result = 2 * vo.input

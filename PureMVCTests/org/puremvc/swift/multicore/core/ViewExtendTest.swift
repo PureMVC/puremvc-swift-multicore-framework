@@ -22,14 +22,14 @@ class ViewExtendTest: XCTestCase {
     }
 
     func testConstructor() {
-        var viewExtend = ViewExtend.getInstance("Key1")
+        let viewExtend = ViewExtend.getInstance("Key1")
         ViewExtend.removeView("Key1")
         
         XCTAssertNotNil(viewExtend as! ViewExtend, "Expecting viewExtend not nil")
     }
     
     func testDeinit() {
-        var resource = Resource()
+        let resource = Resource()
         var viewExtend: ViewExtend! = ViewExtend.getInstance("Key1") as! ViewExtend
         viewExtend.resource = resource
         
@@ -42,7 +42,7 @@ class ViewExtendTest: XCTestCase {
     }
     
     func testRegisterMediatorAndDeinit() {
-        var resource = Resource()
+        let resource = Resource()
         var viewExtend: ViewExtend! = ViewExtend.getInstance("Key1") as! ViewExtend
         
         viewExtend.registerMediator(ResourceMediator(viewComponent: resource))

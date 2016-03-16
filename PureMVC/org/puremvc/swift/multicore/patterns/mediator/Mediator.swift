@@ -11,7 +11,7 @@ A base `IMediator` implementation.
 
 `@see org.puremvc.swift.multicore.core.View View`
 */
-public class Mediator: Notifier, IMediator, INotifier {
+public class Mediator: Notifier, IMediator {
     
     /**
     The name of the `Mediator`.
@@ -31,8 +31,8 @@ public class Mediator: Notifier, IMediator, INotifier {
     /**
     Constructor.
     
-    :param: mediatorName the mediator name
-    :param: viewComponent viewComponent instance
+    - parameter mediatorName: the mediator name
+    - parameter viewComponent: viewComponent instance
     */
     public init(mediatorName: String?=nil, viewComponent: AnyObject?=nil) {
         _mediatorName = mediatorName ?? Mediator.NAME
@@ -43,7 +43,7 @@ public class Mediator: Notifier, IMediator, INotifier {
     List the `INotification` names this
     `Mediator` is interested in being notified of.
     
-    :returns: Array the list of `INotification` names
+    - returns: Array the list of `INotification` names
     */
     public func listNotificationInterests() -> [String] {
         return []

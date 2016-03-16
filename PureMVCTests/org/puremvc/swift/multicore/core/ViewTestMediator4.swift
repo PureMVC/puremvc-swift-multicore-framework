@@ -13,7 +13,7 @@ A Mediator class used by ViewTest.
 
 `@see org.puremvc.swift.multicore.core.view.ViewTest ViewTest`
 */
-public class ViewTestMediator4: Mediator, IMediator {
+public class ViewTestMediator4: Mediator {
 
     /**
     The Mediator name

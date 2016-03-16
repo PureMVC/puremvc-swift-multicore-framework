@@ -36,8 +36,8 @@ public class Observer: IObserver {
     The notification method on the interested object should take
     one parameter of type `INotification`
     
-    :param: notifyMethod the notification method of the interested object
-    :param: notifyContext the notification context of the interested object
+    - parameter notifyMethod: the notification method of the interested object
+    - parameter notifyContext: the notification context of the interested object
     */
     public init(notifyMethod: (INotification -> ())?, notifyContext: AnyObject?) {
         _notifyMethod = notifyMethod
@@ -47,7 +47,7 @@ public class Observer: IObserver {
     /**
     Notify the interested object.
     
-    :param: notification the `INotification` to pass to the interested object's notification method.
+    - parameter notification: the `INotification` to pass to the interested object's notification method.
     */
     public func notifyObserver(notification: INotification) {
         self.notifyMethod?(notification: notification)
@@ -56,8 +56,8 @@ public class Observer: IObserver {
     /**
     Compare an object to the notification context.
     
-    :param: object the object to compare
-    :returns: boolean indicating if the object and the notification context are the same
+    - parameter object: the object to compare
+    - returns: boolean indicating if the object and the notification context are the same
     */
     public func compareNotifyContext(object: AnyObject) -> Bool {
         return object === _notifyContext

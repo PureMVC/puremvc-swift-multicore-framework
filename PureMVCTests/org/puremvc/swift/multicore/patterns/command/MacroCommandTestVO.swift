@@ -26,7 +26,7 @@ public class MacroCommandTestVO {
     /**
     Constructor.
     *
-    :param: input the number to be fed to the MacroCommandTestCommand
+    - parameter input: the number to be fed to the MacroCommandTestCommand
     */
     init(input: Int) {
         self.input = input

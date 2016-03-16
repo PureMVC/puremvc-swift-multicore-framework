@@ -28,8 +28,8 @@ public protocol IController {
     Register a particular `ICommand` class as the handler
     for a particular `INotification`.
     
-    :param: notificationName the name of the `INotification`
-    :param: closure reference that returns `ICommand`
+    - parameter notificationName: the name of the `INotification`
+    - parameter closure: reference that returns `ICommand`
     */
     func registerCommand(notificationName: String, closure: () -> ICommand)
     
@@ -37,22 +37,22 @@ public protocol IController {
     Execute the `ICommand` previously registered as the
     handler for `INotification`s with the given notification name.
     
-    :param: notification the `INotification` to execute the associated `ICommand` for
+    - parameter notification: the `INotification` to execute the associated `ICommand` for
     */
     func executeCommand(notification: INotification)
     
     /**
     Remove a previously registered `ICommand` to `INotification` mapping.
     
-    :param: notificationName the name of the `INotification` to remove the `ICommand` mapping for
+    - parameter notificationName: the name of the `INotification` to remove the `ICommand` mapping for
     */
     func removeCommand(notificationName: String)
     
     /**
     Check if a Command is registered for a given Notification
     
-    :param: notificationName
-    :returns: whether a Command is currently registered for the given `notificationName`.
+    - parameter notificationName:
+    - returns: whether a Command is currently registered for the given `notificationName`.
     */
     func hasCommand(notificationName: String) -> Bool
     

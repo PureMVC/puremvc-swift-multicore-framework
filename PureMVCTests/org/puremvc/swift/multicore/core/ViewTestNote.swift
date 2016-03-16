@@ -13,7 +13,7 @@ A Notification class used by ViewTest.
 
 `@see org.puremvc.swift.multicore.core.view.ViewTest ViewTest`
 */
-public class ViewTestNote: Notification, INotification {
+public class ViewTestNote: Notification {
     
     /**
     The name of this Notification.
@@ -23,8 +23,8 @@ public class ViewTestNote: Notification, INotification {
     /**
     Constructor.
     *
-    :param: name Ignored and forced to NAME.
-    :param: body the body of the Notification to be constructed.
+    - parameter name: Ignored and forced to NAME.
+    - parameter body: the body of the Notification to be constructed.
     */
     public init(name: String, body: Any) {
         super.init(name: name, body: body, type: nil)
@@ -38,8 +38,8 @@ public class ViewTestNote: Notification, INotification {
     automatically setting the note name so you don't have to. Use
     this as an alternative to the constructor.
     *
-    :param: name the name of the Notification to be constructed.
-    :param: body the body of the Notification to be constructed.
+    - parameter name: the name of the Notification to be constructed.
+    - parameter body: the body of the Notification to be constructed.
     */
     public class func create (body: Any) -> INotification {
         return ViewTestNote(name: ViewTestNote.NAME, body: body)

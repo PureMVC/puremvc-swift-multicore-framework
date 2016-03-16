@@ -30,10 +30,10 @@ public class ControllerTestCommand2: SimpleCommand {
     
     This tests accumulation effect that would show if the command were executed more than once.
     
-    :param: note the note carrying the ControllerTestVO
+    - parameter note: the note carrying the ControllerTestVO
     */
     public override func execute(notification: INotification) {
-        var vo = notification.body as! ControllerTestVO
+        let vo = notification.body as! ControllerTestVO
         
         // Fabricate a result
         vo.result = vo.result + (2 * vo.input)

@@ -49,9 +49,9 @@ public class Notification : INotification {
     /**
     Constructor.
     
-    :param: name name of the `Notification` instance. (required)
-    :param: body the `Notification` body. (optional)
-    :param: type the type of the `Notification` (optional)
+    - parameter name: name of the `Notification` instance. (required)
+    - parameter body: the `Notification` body. (optional)
+    - parameter type: the type of the `Notification` (optional)
     */
     public init(name: String, body: Any?=nil, type: String?=nil) {
         _name = name
@@ -79,7 +79,7 @@ public class Notification : INotification {
     /**
     Get the string representation of the `Notification` instance.
     
-    :returns: the string representation of the `Notification` instance.
+    - returns: the string representation of the `Notification` instance.
     */
     public func description() -> String {
         return "Notification Name: \(self.name) \(self.body) \(self.type)"

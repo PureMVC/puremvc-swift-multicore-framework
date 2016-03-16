@@ -31,7 +31,7 @@ to be executed.
 
 `@see org.puremvc.swift.multicore.patterns.command.SimpleCommand SimpleCommand`
 */
-public class MacroCommand: Notifier, ICommand, INotifier {
+public class MacroCommand: Notifier, ICommand {
     
     private var subCommands: [() -> ICommand]
     
@@ -79,7 +79,7 @@ public class MacroCommand: Notifier, ICommand, INotifier {
     The *SubCommands* will be called in First In/First Out (FIFO)
     order.
     
-    :param: closure reference that returns `ICommand`.
+    - parameter closure: reference that returns `ICommand`.
     */
     public func addSubCommand(closure: () -> ICommand) {
         subCommands.append(closure)
@@ -91,13 +91,12 @@ public class MacroCommand: Notifier, ICommand, INotifier {
     The *SubCommands* will be called in First In/First Out (FIFO)
     order.
     
-    :param: notification the `INotification` object to be passsed to each *SubCommand*.
+    - parameter notification: the `INotification` object to be passsed to each *SubCommand*.
     */
     public final func execute(notification: INotification) {
         while (!subCommands.isEmpty) {
-            var closure = subCommands.removeAtIndex(0)
-            
-            var commandInstance = closure()
+            let closure = subCommands.removeAtIndex(0)
+            let commandInstance = closure()
             commandInstance.initializeNotifier(multitonKey!)
             commandInstance.execute(notification)
         }

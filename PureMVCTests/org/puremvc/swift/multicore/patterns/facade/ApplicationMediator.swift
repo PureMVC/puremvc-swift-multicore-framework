@@ -27,7 +27,7 @@ public class ApplicationMediator: Mediator {
     public override func handleNotification(notification: INotification) {
         switch(notification.name) {
             case ShellFacade.TestMediator:
-                var vo:FacadeTestVO = notification.body as! FacadeTestVO
+                let vo:FacadeTestVO = notification.body as! FacadeTestVO
                 
                 //Fabricate a result
                 vo.result = vo.input * vo.input

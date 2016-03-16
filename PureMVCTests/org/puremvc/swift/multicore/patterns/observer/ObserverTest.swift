@@ -43,7 +43,7 @@ class ObserverTest: XCTestCase {
     */
     func testObserverAccessors() {
         // Create observer
-        var observer:Observer = Observer(notifyMethod: nil, notifyContext: nil)
+        let observer:Observer = Observer(notifyMethod: nil, notifyContext: nil)
         observer.notifyMethod = self.observerTestMethod
         observer.notifyContext = self
         
@@ -53,7 +53,7 @@ class ObserverTest: XCTestCase {
         // successful notification will result in our local
         // observerTestVar being set to the value we pass in
         // on the note body.
-        var note: Notification = Notification(name: "ObserverTestNote", body: 10)
+        let note: Notification = Notification(name: "ObserverTestNote", body: 10)
         observer.notifyObserver(note)
         
         // test assertions
@@ -65,7 +65,7 @@ class ObserverTest: XCTestCase {
     */
     func testObserverConstructor() {
         // Create observer passing in notification method and context
-        var observer:Observer = Observer(notifyMethod: self.observerTestMethod, notifyContext: self)
+        let observer:Observer = Observer(notifyMethod: self.observerTestMethod, notifyContext: self)
         
         // create a test note, setting a body value and notify
         // the observer with it. since the observer is this class
@@ -73,7 +73,7 @@ class ObserverTest: XCTestCase {
         // successful notification will result in our local
         // observerTestVar being set to the value we pass in
         // on the note body.
-        var note: Notification = Notification(name: "ObserverTestNote", body: 5)
+        let note: Notification = Notification(name: "ObserverTestNote", body: 5)
         observer.notifyObserver(note)
         
         // test assertions
@@ -85,9 +85,9 @@ class ObserverTest: XCTestCase {
     */
     func testCompareNotifiyContext() {
         // Create observer passing in notification method and context
-        var observer = Observer(notifyMethod: self.observerTestMethod, notifyContext: self)
+        let observer = Observer(notifyMethod: self.observerTestMethod, notifyContext: self)
         
-        var negTestObject = Notification(name: "ObserverTestNote")
+        let negTestObject = Notification(name: "ObserverTestNote")
         
         // test assertions
         XCTAssertTrue(observer.compareNotifyContext(negTestObject) == false, "Expecting observer.compareNotifyContext(negTestObj) == false")

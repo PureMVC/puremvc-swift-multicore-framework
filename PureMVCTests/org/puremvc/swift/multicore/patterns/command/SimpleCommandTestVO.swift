@@ -21,7 +21,7 @@ public class SimpleCommandTestVO {
     /**
     Constructor.
     
-    :param: input the number to be fed to the SimpleCommandTestCommand
+    - parameter input: the number to be fed to the SimpleCommandTestCommand
     */
     init(input: Int) {
         self.input = input;

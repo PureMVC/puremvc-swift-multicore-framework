@@ -26,7 +26,7 @@ class ModelTest: XCTestCase {
 
     func testGetInstance() {
         // Test Factory Method
-        var model: IModel = Model.getInstance("ModelTestKey1") { Model(key: "ModelTestKey1") }
+        let model: IModel = Model.getInstance("ModelTestKey1") { Model(key: "ModelTestKey1") }
         
         // test assertions
         XCTAssertNotNil(model as? Model, "Expecting instance not null")
@@ -42,9 +42,9 @@ class ModelTest: XCTestCase {
     */
     func testRegisterAndRetrieveProxy() {
         // register a proxy and retrieve it.
-        var model: IModel = Model.getInstance("ModelTestKey2") { Model(key: "ModelTestKey2") }
+        let model: IModel = Model.getInstance("ModelTestKey2") { Model(key: "ModelTestKey2") }
         model.registerProxy(Proxy(proxyName: "colors", data: ["red", "green", "blue"]))
-        var proxy: Proxy = model.retrieveProxy("colors") as! Proxy
+        let proxy: Proxy = model.retrieveProxy("colors") as! Proxy
         var data: Array<String> = proxy.data as! Array<String>
         
         // test assertions
@@ -57,11 +57,11 @@ class ModelTest: XCTestCase {
     
     //Test with tuple
     func testRegisterAndRetrieveProxy2() {
-        var model: IModel = Model.getInstance("ModelTestKey2") { Model(key: "ModelTestKey2") }
+        let model: IModel = Model.getInstance("ModelTestKey2") { Model(key: "ModelTestKey2") }
         model.registerProxy(Proxy(proxyName: "tuple", data: (1, "abc", false)))
         
-        var proxy: Proxy = model.retrieveProxy("tuple") as! Proxy
-        var data: (Int, String, Bool)  = proxy.data as! (Int, String, Bool)
+        let proxy: Proxy = model.retrieveProxy("tuple") as! Proxy
+        let data: (Int, String, Bool)  = proxy.data as! (Int, String, Bool)
         
         XCTAssertTrue(data.0 == 1, "Expecting data.0 == 1")
         XCTAssertTrue(data.1 == "abc", "Expecting data.1 == 'abc'")
@@ -73,18 +73,18 @@ class ModelTest: XCTestCase {
     */
     func testRegisterAndRemoveProxy() {
         // register a proxy, remove it, then try to retrieve it
-        var model: IModel = Model.getInstance("ModelTestKey3") { Model(key: "ModelTestKey3") }
-        var proxy: IProxy = Proxy(proxyName: "sizes", data: ["7", "13", "21"])
+        let model: IModel = Model.getInstance("ModelTestKey3") { Model(key: "ModelTestKey3") }
+        let proxy: IProxy = Proxy(proxyName: "sizes", data: ["7", "13", "21"])
         model.registerProxy(proxy)
         
         // remove the proxy
-        var removedProxy = model.removeProxy("sizes")
+        let removedProxy = model.removeProxy("sizes")
         
         // assert that we removed the appropriate proxy
         XCTAssertTrue(removedProxy!.proxyName == "sizes", "Expecting removedProxy.getProxyName() == 'sizes'")
         
         // ensure that the proxy is no longer retrievable from the model
-        var nilProxy = model.retrieveProxy("sizes")
+        let nilProxy = model.retrieveProxy("sizes")
         
         // test assertions
         XCTAssertTrue(nilProxy == nil, "Expecting proxy is nil")
@@ -95,8 +95,8 @@ class ModelTest: XCTestCase {
     */
     func testHasProxy() {
         // register a proxy
-        var model: IModel = Model.getInstance("ModelTestKey4") { Model(key: "ModelTestKey4") }
-        var proxy: IProxy = Proxy(proxyName: "aces", data: ["clubs", "spades", "hearts", "diamonds"])
+        let model: IModel = Model.getInstance("ModelTestKey4") { Model(key: "ModelTestKey4") }
+        let proxy: IProxy = Proxy(proxyName: "aces", data: ["clubs", "spades", "hearts", "diamonds"])
         model.registerProxy(proxy)
         
         // assert that the model.hasProxy method returns true
@@ -116,7 +116,7 @@ class ModelTest: XCTestCase {
     */
     func testOnRegisterAndOnRemove() {
         // Get a Multiton View instance
-        var model: IModel = Model.getInstance("ModelTestKey4") { Model(key: "ModelTestKey4") }
+        let model: IModel = Model.getInstance("ModelTestKey4") { Model(key: "ModelTestKey4") }
         
         // Create and register the test mediator
         var proxy: IProxy = ModelTestProxy()

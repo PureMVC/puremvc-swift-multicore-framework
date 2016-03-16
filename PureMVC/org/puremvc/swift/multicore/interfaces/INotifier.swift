@@ -35,9 +35,9 @@ public protocol INotifier {
     Convenience method to prevent having to construct new
     notification instances in our implementation code.
     
-    :param: notificationName the name of the notification to send
-    :param: body the body of the notification (optional)
-    :param: type the type of the notification (optional)
+    - parameter notificationName: the name of the notification to send
+    - parameter body: the body of the notification (optional)
+    - parameter type: the type of the notification (optional)
     */
     func sendNotification(notificationName: String, body: Any?, type: String?)
     
@@ -49,7 +49,7 @@ public protocol INotifier {
     facade will fail until after this method
     has been called.
     
-    :param: key the multitonKey for this INotifier to use
+    - parameter key: the multitonKey for this INotifier to use
     */
     func initializeNotifier(key: String)
     
