@@ -15,7 +15,7 @@ public class MacroCommandTestSub1Command: SimpleCommand {
     
     - parameter event: the `IEvent` carrying the `MacroCommandTestVO`
     */
-    public override func execute(notification: INotification) {
+    public override func execute(_ notification: INotification) {
         let vo = notification.body as! MacroCommandTestVO
 
         // Fabricate a result

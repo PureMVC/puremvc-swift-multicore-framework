@@ -22,7 +22,7 @@ class FacadeExtendTest: XCTestCase {
     }
 
     func testConstructor() {
-        var facadeExtend: FacadeExtend! = FacadeExtend.getInstance("Key1") as? FacadeExtend
+        var facadeExtend: FacadeExtend! = FacadeExtend.getInstance(key: "Key1") as? FacadeExtend
         
         XCTAssertNotNil(facadeExtend as FacadeExtend, "Expecting facadeExtend not nil")
         
@@ -32,21 +32,21 @@ class FacadeExtendTest: XCTestCase {
     
     func testDeinit() {
         let facadeResource = Resource()
-        var facadeExtend: FacadeExtend! = FacadeExtend.getInstance("Key1") as! FacadeExtend
+        var facadeExtend: FacadeExtend! = FacadeExtend.getInstance(key: "Key1") as! FacadeExtend
         facadeExtend.resource = facadeResource
         
         XCTAssertTrue(facadeResource.state == .ALLOCATED, "Expecting resource to be allocated")
         
         let controllerResource = Resource()
-        var controller: ControllerExtend! = ControllerExtend.getInstance("Key1") as! ControllerExtend
+        var controller: ControllerExtend! = ControllerExtend.getInstance(key: "Key1") as! ControllerExtend
         controller.resource = controllerResource
         
         let modelResource = Resource()
-        var model: ModelExtend! = ModelExtend.getInstance("Key1") as! ModelExtend
+        var model: ModelExtend! = ModelExtend.getInstance(key: "Key1") as! ModelExtend
         model.resource = modelResource
         
         let viewResource = Resource()
-        var view: ViewExtend! = ViewExtend.getInstance("Key1") as! ViewExtend
+        var view: ViewExtend! = ViewExtend.getInstance(key: "Key1") as! ViewExtend
         view.resource = viewResource
         
         controller.registerCommand("ControllerTest", closure: {ControllerTestCommand()}) //Observer has a weak reference to commands
@@ -65,7 +65,7 @@ class FacadeExtendTest: XCTestCase {
 
     func testPerformanceExample() {
         // This is an example of a performance test case.
-        self.measureBlock() {
+        self.measure() {
             // Put the code you want to measure the time of here.
         }
     }

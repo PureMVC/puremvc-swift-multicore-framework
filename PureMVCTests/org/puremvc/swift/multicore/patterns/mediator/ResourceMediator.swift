@@ -18,7 +18,7 @@ class ResourceMediator: Mediator {
         return [ "abc", "xyz"]
     }
     
-    override func handleNotification(notification: INotification) {
+    override func handleNotification(_ notification: INotification) {
         
     }
     

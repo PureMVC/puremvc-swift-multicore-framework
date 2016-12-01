@@ -16,7 +16,7 @@ public class ViewExtend: View {
         return View.getInstance(key) { ViewExtend(key: key) }
     }
     
-    public override class func removeView(key: String) {
+    public override class func removeView(_ key: String) {
         View.removeView(key)
     }
     

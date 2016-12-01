@@ -33,7 +33,7 @@ public class ViewTestMediator3: Mediator {
         return [ ViewTest.NOTE3 ]
     }
     
-    public override func handleNotification(notification: INotification) {
+    public override func handleNotification(_ notification: INotification) {
         viewTest.lastNotification = notification.name
     }
     

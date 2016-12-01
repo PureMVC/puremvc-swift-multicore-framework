@@ -24,18 +24,18 @@ class ShellFacadeTest: XCTestCase {
     func testShellFacade() {
         let vo:FacadeTestVO = FacadeTestVO(input: 5)
         
-        let shellFacade = ShellFacade.getInstance("App") as! ShellFacade
-        shellFacade.startup(vo)
+        let shellFacade = ShellFacade.getInstance(key: "App") as! ShellFacade
+        shellFacade.startup(vo: vo)
         
         XCTAssertTrue(vo.result == 10, "Expecting v.result == 10")
         
-        shellFacade.testMediator(vo)
+        shellFacade.testMediator(vo: vo)
         XCTAssertTrue(vo.result == 25, "Expecting v.result == 25")
     }
 
     func testPerformanceExample() {
         // This is an example of a performance test case.
-        self.measureBlock() {
+        self.measure() {
             // Put the code you want to measure the time of here.
         }
     }

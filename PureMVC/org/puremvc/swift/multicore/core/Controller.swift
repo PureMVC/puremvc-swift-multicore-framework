@@ -37,29 +37,29 @@ registrations.
 
 `@see org.puremvc.swift.multicore.patterns.command.MacroCommand MacroCommand`
 */
-public class Controller: IController {
+open class Controller: IController {
     
     // Local reference to View
-    private var _view: IView?
+    fileprivate var _view: IView?
     
     // Mapping of Notification names to closures that returns `ICommand` Class instances
-    private var commandMap: [String: () -> ICommand]
+    fileprivate var commandMap: [String: () -> ICommand]
     
     // Concurrent queue for commandMap
     // for speed and convenience of running concurrently while reading, and thread safety of blocking while mutating
-    private let commandMapQueue = dispatch_queue_create("org.puremvc.controller.commandMapQueue", DISPATCH_QUEUE_CONCURRENT)
+    fileprivate let commandMapQueue = DispatchQueue(label: "org.puremvc.controller.commandMapQueue", attributes: DispatchQueue.Attributes.concurrent)
     
     // The Multiton Key for this Core
-    private var _multitonKey: String
+    fileprivate var _multitonKey: String
     
     // The Multiton Controller instanceMap.
-    private static var instanceMap = [String: IController]()
+    fileprivate static var instanceMap = [String: IController]()
     
     // instance Queue for thread safety
-    private static let instanceQueue = dispatch_queue_create("org.puremvc.controller.instanceQueue", DISPATCH_QUEUE_CONCURRENT)
+    fileprivate static let instanceQueue = DispatchQueue(label: "org.puremvc.controller.instanceQueue", attributes: DispatchQueue.Attributes.concurrent)
     
     /// Message constant
-    public static let MULTITON_MSG = "Controller instance for this Multiton key already constructed!"
+    open static let MULTITON_MSG = "Controller instance for this Multiton key already constructed!"
     
     /**
     Constructor.
@@ -95,7 +95,7 @@ public class Controller: IController {
             view = MyView.getInstance(multitonKey) { MyView(key: self.multitonKey) }
         }
     */
-    public func initializeController() {
+    open func initializeController() {
         view = View.getInstance(multitonKey) { View(key: self.multitonKey) }
     }
     
@@ -106,12 +106,12 @@ public class Controller: IController {
     - parameter closure: reference that returns `IController`
     - returns: the Multiton instance
     */
-    public class func getInstance(key:String, closure: () -> IController) -> IController {
-        dispatch_barrier_sync(instanceQueue) {
+    open class func getInstance(_ key:String, closure: () -> IController) -> IController {
+        instanceQueue.sync(flags: .barrier, execute: {
             if self.instanceMap[key] == nil {
                 self.instanceMap[key] = closure()
             }
-        }
+        })
         return instanceMap[key]!
     }
     
@@ -121,8 +121,8 @@ public class Controller: IController {
     
     - parameter note: an `INotification`
     */
-    public func executeCommand(notification: INotification) {
-        dispatch_sync(commandMapQueue) {
+    open func executeCommand(_ notification: INotification) {
+        commandMapQueue.sync {
             if let closure = self.commandMap[notification.name] {
                 let commandInstance = closure()
                 commandInstance.initializeNotifier(self.multitonKey)
@@ -145,13 +145,13 @@ public class Controller: IController {
     - parameter notificationName: the name of the `INotification`
     - parameter closure: reference that returns `ICommand`
     */
-    public func registerCommand(notificationName: String, closure: () -> ICommand) {
-        dispatch_barrier_sync(commandMapQueue) {
+    open func registerCommand(_ notificationName: String, closure: @escaping () -> ICommand) {
+        commandMapQueue.sync(flags: .barrier, execute: {
             if self.commandMap[notificationName] == nil { //weak reference to Controller (self) to avoid reference cycle with View and Observer
                 self.view!.registerObserver(notificationName, observer: Observer(notifyMethod: {[weak self] notification in self!.executeCommand(notification)}, notifyContext: self))
             }
             self.commandMap[notificationName] = closure
-        }
+        }) 
     }
     
     /**
@@ -160,9 +160,9 @@ public class Controller: IController {
     - parameter notificationName:
     - returns: whether a Command is currently registered for the given `notificationName`.
     */
-    public func hasCommand(notificationName: String) -> Bool {
+    open func hasCommand(_ notificationName: String) -> Bool {
         var result = false
-        dispatch_sync(commandMapQueue) {
+        commandMapQueue.sync {
             result = self.commandMap[notificationName] != nil
         }
         return result
@@ -173,12 +173,12 @@ public class Controller: IController {
     
     - parameter notificationName: the name of the `INotification` to remove the `ICommand` mapping for
     */
-    public func removeCommand(notificationName: String) {
+    open func removeCommand(_ notificationName: String) {
         if self.hasCommand(notificationName) {
-            dispatch_barrier_sync(commandMapQueue) {
+            commandMapQueue.sync(flags: .barrier, execute: {
                 self.view!.removeObserver(notificationName, notifyContext: self)
-                self.commandMap.removeValueForKey(notificationName)
-            }
+                self.commandMap.removeValue(forKey: notificationName)
+            }) 
         }
     }
     
@@ -187,20 +187,20 @@ public class Controller: IController {
     
     - parameter multitonKey: of IController instance to remove
     */
-    public class func removeController(key: String) {
-        dispatch_barrier_sync(instanceQueue) {
-            self.instanceMap.removeValueForKey(key)
-        }
+    open class func removeController(_ key: String) {
+        instanceQueue.sync(flags: .barrier, execute: {
+            _ = self.instanceMap.removeValue(forKey: key)
+        })
     }
     
     /// Local reference to View
-    public var view: IView? {
+    open var view: IView? {
         get { return _view }
         set { _view = newValue }
     }
     
     /// The Multiton Key
-    public var multitonKey: String {
+    open var multitonKey: String {
         return _multitonKey
     }
     

@@ -22,14 +22,14 @@ class ModelExtendTest: XCTestCase {
     }
 
     func testConstructor() {
-        let modelExtend = ModelExtend.getInstance("Key1") as! ModelExtend
+        let modelExtend = ModelExtend.getInstance(key: "Key1") as! ModelExtend
         
         XCTAssertNotNil(modelExtend as ModelExtend, "Expecting modelExtend not nil")
     }
     
     func testDeinit() {
         let resource = Resource()
-        var modelExtend: ModelExtend! = ModelExtend.getInstance("Key1") as! ModelExtend
+        var modelExtend: ModelExtend! = ModelExtend.getInstance(key: "Key1") as! ModelExtend
         modelExtend.resource = resource
         
         XCTAssertTrue(resource.state == .ALLOCATED, "Expecting resource to be allocated")
@@ -42,7 +42,7 @@ class ModelExtendTest: XCTestCase {
     
     func testRegisterProxyAndDeinit() {
         let resource = Resource()
-        var modelExtend: ModelExtend! = ModelExtend.getInstance("Key1") as! ModelExtend
+        var modelExtend: ModelExtend! = ModelExtend.getInstance(key: "Key1") as! ModelExtend
         
         modelExtend.registerProxy(ResourceProxy(data: resource))
         
@@ -54,7 +54,7 @@ class ModelExtendTest: XCTestCase {
 
     func testPerformanceExample() {
         // This is an example of a performance test case.
-        self.measureBlock() {
+        self.measure() {
             // Put the code you want to measure the time of here.
         }
     }

@@ -10,7 +10,7 @@ import PureMVC
 
 class ResourceCommand: SimpleCommand {
     
-    override func execute(notification: INotification) {
+    override func execute(_ notification: INotification) {
         let resource: Resource = notification.body as! Resource
         resource.state = .RELEASED
     }

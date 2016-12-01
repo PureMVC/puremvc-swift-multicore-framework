@@ -20,7 +20,7 @@ public class ControllerExtend: Controller {
         return Controller.getInstance(key) { ControllerExtend(key: key) }
     }
     
-    public override class func removeController(key: String) {
+    public override class func removeController(_ key: String) {
         Controller.removeController(key)
     }
     

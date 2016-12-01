@@ -24,16 +24,16 @@ when the `Proxy` has retrieved the data from the service.
 
 `@see org.puremvc.swift.multicore.core.Model Model`
 */
-public class Proxy: Notifier, IProxy {
+open class Proxy: Notifier, IProxy {
     
     /// Default proxy name
-    public class var NAME: String { return "Proxy" }
+    open class var NAME: String { return "Proxy" }
     
     // the proxy name
-    private var _proxyName: String
+    fileprivate var _proxyName: String
     
     // the data object
-    private var _data: Any?
+    fileprivate var _data: Any?
     
     /// Constructor
     public init(proxyName: String?=nil, data: Any?=nil) {
@@ -42,23 +42,23 @@ public class Proxy: Notifier, IProxy {
     }
     
     /// Get the proxy name
-    public var proxyName: String {
+    open var proxyName: String {
         return _proxyName
     }
     
     /// Get or set the data object
-    public var data: Any? {
+    open var data: Any? {
         get { return _data }
         set { _data = newValue }
     }
     
     /// Called by the Model when the Proxy is registered
-    public func onRegister() {
+    open func onRegister() {
         
     }
     
     /// Called by the Model when the Proxy is removed
-    public func onRemove() {
+    open func onRemove() {
         
     }
     

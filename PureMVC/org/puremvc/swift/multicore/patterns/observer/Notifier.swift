@@ -42,13 +42,13 @@ The multitonKey is set:
 
 `@see org.puremvc.swift.multicore.patterns.command.SimpleCommand SimpleCommand`
 */
-public class Notifier : INotifier {
+open class Notifier : INotifier {
     
     /// Message constant
-    public class var MULTITON_MSG: String { return "multitonKey for this Notifier not yet initialized!" }
+    open class var MULTITON_MSG: String { return "multitonKey for this Notifier not yet initialized!" }
     
     // The Multiton Key for this app
-    private var _multitonKey: String?
+    fileprivate var _multitonKey: String?
     
     /// Constructor
     public init() {
@@ -56,7 +56,7 @@ public class Notifier : INotifier {
     }
     
     /// Reference to the Facade Multiton
-    public var facade:IFacade {
+    open var facade:IFacade {
         assert(multitonKey != nil, Notifier.MULTITON_MSG)
         
         // returns instance mapped to multitonKey if it exists otherwise defaults to Facade
@@ -73,7 +73,7 @@ public class Notifier : INotifier {
     - parameter body: the body of the notification (optional)
     - parameter type: the type of the notification (optional)
     */
-    public func sendNotification(notificationName: String, body: Any?=nil, type: String?=nil) {
+    open func sendNotification(_ notificationName: String, body: Any?=nil, type: String?=nil) {
         facade.sendNotification(notificationName, body: body, type: type)
     }
     
@@ -94,12 +94,12 @@ public class Notifier : INotifier {
     
     - parameter key: the multitonKey for this INotifier to use
     */
-    public func initializeNotifier(key: String) {
+    open func initializeNotifier(_ key: String) {
         _multitonKey = key
     }
     
     /// The Multiton Key for this app
-    public var multitonKey: String? {
+    open var multitonKey: String? {
         return _multitonKey
     }
     

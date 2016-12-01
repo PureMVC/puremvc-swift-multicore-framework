@@ -53,7 +53,7 @@ class ObserverTest: XCTestCase {
         // successful notification will result in our local
         // observerTestVar being set to the value we pass in
         // on the note body.
-        let note: Notification = Notification(name: "ObserverTestNote", body: 10)
+        let note = Notification(name: "ObserverTestNote", body: 10)
         observer.notifyObserver(note)
         
         // test assertions
@@ -73,7 +73,7 @@ class ObserverTest: XCTestCase {
         // successful notification will result in our local
         // observerTestVar being set to the value we pass in
         // on the note body.
-        let note: Notification = Notification(name: "ObserverTestNote", body: 5)
+        let note = Notification(name: "ObserverTestNote", body: 5)
         observer.notifyObserver(note)
         
         // test assertions
@@ -96,7 +96,7 @@ class ObserverTest: XCTestCase {
 
     func testPerformanceExample() {
         // This is an example of a performance test case.
-        self.measureBlock() {
+        self.measure() {
             // Put the code you want to measure the time of here.
         }
     }

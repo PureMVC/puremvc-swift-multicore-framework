@@ -16,7 +16,7 @@ public class ModelExtend: Model {
         return Model.getInstance(key) { ModelExtend(key: key) }
     }
     
-    public override class func removeModel(key: String) {
+    public override class func removeModel(_ key: String) {
         Model.removeModel(key)
     }
     

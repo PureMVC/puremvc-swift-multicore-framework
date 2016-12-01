@@ -30,7 +30,7 @@ public class FacadeExtend: Facade {
         return Facade.getInstance(key) { FacadeExtend(key: key) }
     }
     
-    public override static func removeCore(key: String) {
+    public override static func removeCore(_ key: String) {
         Facade.removeCore(key)
     }
     

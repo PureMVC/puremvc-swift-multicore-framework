@@ -18,6 +18,6 @@ public protocol ICommand: INotifier {
     
     - parameter note: an `INotification` to handle.
     */
-    func execute(notification: INotification)
+    func execute(_ notification: INotification)
     
 }

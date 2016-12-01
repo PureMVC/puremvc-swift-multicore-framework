@@ -31,14 +31,14 @@ public class ViewTestMediator6: Mediator {
         return [ ViewTest.NOTE6 ]
     }
     
-    public override func handleNotification(notification: INotification) {
+    public override func handleNotification(_ notification: INotification) {
         //temp implementation until facade is developed
         let view: IView = View.getInstance("ViewTestKey11") { View(key: "ViewTestKey11") }
-        view.removeMediator(mediatorName)
+        _ = view.removeMediator(mediatorName)
     }
     
     public override func onRemove() {
-         viewTest.counter++
+         viewTest.counter += 1
     }
     
     public var viewTest: ViewTest {
