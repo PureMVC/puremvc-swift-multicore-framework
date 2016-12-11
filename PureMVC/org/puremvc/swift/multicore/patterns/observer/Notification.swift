@@ -37,14 +37,14 @@ using `Notification`s.
 `@see org.puremvc.swift.multicore.patterns.observer.Observer Observer`
 *
 */
-public class Notification : INotification {
+open class Notification : INotification {
     
     // the name of the notification instance
-    private var _name: String
+    fileprivate var _name: String
     // the body of the notification instance
-    private var _body: Any?
+    fileprivate var _body: Any?
     // the type of the notification instance
-    private var _type: String?
+    fileprivate var _type: String?
     
     /**
     Constructor.
@@ -60,18 +60,18 @@ public class Notification : INotification {
     }
     
     /// Get the name of notification instance
-    public var name: String {
+    open var name: String {
         return _name
     }
     
     /// Get or set the body of notification instance
-    public var body: Any? {
+    open var body: Any? {
         get { return _body }
         set { _body = newValue }
     }
     
     /// Get or set the type of notification instance
-    public var type: String? {
+    open var type: String? {
         get { return _type }
         set { _type = newValue }
     }
@@ -81,7 +81,7 @@ public class Notification : INotification {
     
     - returns: the string representation of the `Notification` instance.
     */
-    public func description() -> String {
+    open func description() -> String {
         return "Notification Name: \(self.name) \(self.body) \(self.type)"
     }
     

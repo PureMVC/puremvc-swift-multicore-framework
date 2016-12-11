@@ -21,7 +21,7 @@ public class SimpleCommandTestCommand: SimpleCommand {
 
     - parameter event: the `INotification` carrying the `SimpleCommandTestVO`
     */
-    public override func execute(notification: INotification) {
+    public override func execute(_ notification: INotification) {
         let vo:SimpleCommandTestVO = notification.body as! SimpleCommandTestVO
 
         //Fabricate a result

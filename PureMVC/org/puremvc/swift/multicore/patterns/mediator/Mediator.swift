@@ -11,7 +11,7 @@ A base `IMediator` implementation.
 
 `@see org.puremvc.swift.multicore.core.View View`
 */
-public class Mediator: Notifier, IMediator {
+open class Mediator: Notifier, IMediator {
     
     /**
     The name of the `Mediator`.
@@ -20,13 +20,13 @@ public class Mediator: Notifier, IMediator {
     one specific control or group controls and so,
     will not have a need to be dynamically named.
     */
-    public class var NAME: String { return "Mediator" }
+    open class var NAME: String { return "Mediator" }
     
     // the mediator name
-    private var _mediatorName: String
+    fileprivate var _mediatorName: String
     
     // The view component
-    private var _viewComponent: AnyObject?
+    fileprivate var _viewComponent: AnyObject?
     
     /**
     Constructor.
@@ -45,7 +45,7 @@ public class Mediator: Notifier, IMediator {
     
     - returns: Array the list of `INotification` names
     */
-    public func listNotificationInterests() -> [String] {
+    open func listNotificationInterests() -> [String] {
         return []
     }
     
@@ -56,27 +56,27 @@ public class Mediator: Notifier, IMediator {
     with one 'case' entry per `INotification`
     the `Mediator` is interested in.
     */
-    public func handleNotification(notification: INotification) {
+    open func handleNotification(_ notification: INotification) {
         
     }
     
     /// Called by the View when the Mediator is registered
-    public func onRegister() {
+    open func onRegister() {
         
     }
     
     /// Called by the View when the Mediator is removed
-    public func onRemove() {
+    open func onRemove() {
         
     }
     
     /// Get the name of the `Mediator`.
-    public var mediatorName: String {
+    open var mediatorName: String {
         return _mediatorName
     }
     
     /// Get or set the `IMediator`'s view component.
-    public var viewComponent: AnyObject? {
+    open var viewComponent: AnyObject? {
         get { return _viewComponent }
         set { _viewComponent = newValue }
     }

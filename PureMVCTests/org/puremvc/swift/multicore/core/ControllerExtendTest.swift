@@ -24,7 +24,7 @@ class ControllerExtendTest: XCTestCase {
     }
 
     func testConstructor() {
-        let controllerExtend = ControllerExtend.getInstance("Key1")
+        let controllerExtend = ControllerExtend.getInstance(key: "Key1")
         View.removeView("Key1")
         
         XCTAssertNotNil(controllerExtend as! ControllerExtend, "Expecting controllerExtend not nil")
@@ -33,7 +33,7 @@ class ControllerExtendTest: XCTestCase {
     func testDeinit() {
         //To ensure all allocated resources gets released without any memory leak via each actor's deinit method
         let resource = Resource()
-        var controllerExtend: ControllerExtend! = ControllerExtend.getInstance("Key1") as! ControllerExtend
+        var controllerExtend: ControllerExtend! = ControllerExtend.getInstance(key: "Key1") as! ControllerExtend
         controllerExtend.resource = resource
         
         XCTAssertTrue(resource.state == .ALLOCATED, "Expecting resource to be allocated")
@@ -48,7 +48,7 @@ class ControllerExtendTest: XCTestCase {
     func testRegisterCommandAndDeinit() {
         //To ensure all allocated resources gets released without any memory leak via each actor's deinit method
         let resource = Resource()
-        var controllerExtend: ControllerExtend! = ControllerExtend.getInstance("Key1") as! ControllerExtend
+        var controllerExtend: ControllerExtend! = ControllerExtend.getInstance(key: "Key1") as! ControllerExtend
         controllerExtend.resource = resource
         
         //Observer has weak reference to Command/Mediator as they form cyclic references
@@ -63,7 +63,7 @@ class ControllerExtendTest: XCTestCase {
 
     func testPerformanceExample() {
         // This is an example of a performance test case.
-        self.measureBlock() {
+        self.measure() {
             // Put the code you want to measure the time of here.
         }
     }

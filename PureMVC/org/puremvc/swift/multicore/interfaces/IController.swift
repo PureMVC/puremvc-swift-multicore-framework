@@ -31,7 +31,7 @@ public protocol IController {
     - parameter notificationName: the name of the `INotification`
     - parameter closure: reference that returns `ICommand`
     */
-    func registerCommand(notificationName: String, closure: () -> ICommand)
+    func registerCommand(_ notificationName: String, closure: @escaping () -> ICommand)
     
     /**
     Execute the `ICommand` previously registered as the
@@ -39,14 +39,14 @@ public protocol IController {
     
     - parameter notification: the `INotification` to execute the associated `ICommand` for
     */
-    func executeCommand(notification: INotification)
+    func executeCommand(_ notification: INotification)
     
     /**
     Remove a previously registered `ICommand` to `INotification` mapping.
     
     - parameter notificationName: the name of the `INotification` to remove the `ICommand` mapping for
     */
-    func removeCommand(notificationName: String)
+    func removeCommand(_ notificationName: String)
     
     /**
     Check if a Command is registered for a given Notification
@@ -54,6 +54,6 @@ public protocol IController {
     - parameter notificationName:
     - returns: whether a Command is currently registered for the given `notificationName`.
     */
-    func hasCommand(notificationName: String) -> Bool
+    func hasCommand(_ notificationName: String) -> Bool
     
 }

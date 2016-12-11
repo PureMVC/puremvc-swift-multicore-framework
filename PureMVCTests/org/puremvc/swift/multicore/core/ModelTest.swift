@@ -104,7 +104,7 @@ class ModelTest: XCTestCase {
         XCTAssertTrue(model.hasProxy("aces"), "Expecting model.hasProxy('aces') == true")
         
         // remove the proxy
-        model.removeProxy("aces")
+        _ = model.removeProxy("aces")
         
         // assert that the model.hasProxy method returns false
         // for that proxy name
@@ -126,7 +126,7 @@ class ModelTest: XCTestCase {
         XCTAssertTrue((proxy.data as! String) == ModelTestProxy.ON_REGISTER_CALLED, "Expecting proxy.data == ModelTestProxy.ON_REGISTER_CALLED")
         
         // Remove the component
-        model.removeProxy(ModelTestProxy.NAME)
+        _ = model.removeProxy(ModelTestProxy.NAME)
         
         // assert that onRemove was called, and the proxy responded by setting its data accordingly
         XCTAssertTrue((proxy.data as! String) == ModelTestProxy.ON_REMOVE_CALLED, "Expecting proxy.data == ModelTestProxy.ON_REMOVE_CALLED \(proxy.data)")
@@ -134,7 +134,7 @@ class ModelTest: XCTestCase {
 
     func testPerformanceExample() {
         // This is an example of a performance test case.
-        self.measureBlock() {
+        self.measure() {
             // Put the code you want to measure the time of here.
         }
     }

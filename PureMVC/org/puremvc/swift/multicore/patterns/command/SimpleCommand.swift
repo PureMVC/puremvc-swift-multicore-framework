@@ -18,7 +18,7 @@ method where your business logic will handle the `INotification`.
 
 `@see org.puremvc.swift.multicore.patterns.command.MacroCommand MacroCommand`
 */
-public class SimpleCommand: Notifier, ICommand {
+open class SimpleCommand: Notifier, ICommand {
     
     /**
     Fulfill the use-case initiated by the given `INotification`.
@@ -30,7 +30,7 @@ public class SimpleCommand: Notifier, ICommand {
     
     - parameter notification: the `INotification` to handle.
     */
-    public func execute(notification: INotification) {
+    open func execute(_ notification: INotification) {
         
     }
     

@@ -188,7 +188,7 @@ class FacadeTest: XCTestCase {
         // for that mediator name
         XCTAssertTrue(facade.hasMediator("facadeHasMediatorTest"), "Expecting facade.hasMediator('fasHasMediatorTest') == true")
         
-        facade.removeMediator("facadeHasMediatorTest")
+        _ = facade.removeMediator("facadeHasMediatorTest")
         
         // assert that the facade.hasMediator method returns false
         // for that mediator name
@@ -259,7 +259,7 @@ class FacadeTest: XCTestCase {
 
     func testPerformanceExample() {
         // This is an example of a performance test case.
-        self.measureBlock() {
+        self.measure() {
             // Put the code you want to measure the time of here.
         }
     }

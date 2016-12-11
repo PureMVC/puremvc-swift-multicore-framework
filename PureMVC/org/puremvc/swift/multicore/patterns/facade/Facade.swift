@@ -17,25 +17,25 @@ A base Multiton `IFacade` implementation.
 
 `@see org.puremvc.swift.multicore.core.Controller Controller`
 */
-public class Facade: IFacade {
+open class Facade: IFacade {
     
     // The Multiton Key for this app
-    private var _multitonKey: String
+    fileprivate var _multitonKey: String
     
     // References to Model, View and Controller
-    private var _controller: IController?
-    private var _model: IModel?
-    private var _view: IView?
+    fileprivate var _controller: IController?
+    fileprivate var _model: IModel?
+    fileprivate var _view: IView?
     
     // The Multiton Facade instanceMap.
-    private static var instanceMap = [String: IFacade]()
+    fileprivate static var instanceMap = [String: IFacade]()
     
     // Concurrent queue for instanceMap
     // for speed and convenience of running concurrently while reading, and thread safety of blocking while mutating
-    private static let instanceMapQueue = dispatch_queue_create("org.puremvc.facade.instanceMapQueue", DISPATCH_QUEUE_CONCURRENT)
+    fileprivate static let instanceMapQueue = DispatchQueue(label: "org.puremvc.facade.instanceMapQueue", attributes: DispatchQueue.Attributes.concurrent)
     
     /// Message constant
-    public static let MULTITON_MSG = "Facade instance for this Multiton key already constructed!"
+    open static let MULTITON_MSG = "Facade instance for this Multiton key already constructed!"
     
     /**
     Constructor.
@@ -63,7 +63,7 @@ public class Facade: IFacade {
     subclass to do any subclass specific initializations. Be
     sure to call `super.initializeFacade()`, though.
     */
-    public func initializeFacade() {
+    open func initializeFacade() {
         initializeModel()
         initializeController()
         initializeView()
@@ -76,12 +76,12 @@ public class Facade: IFacade {
     - parameter closure: reference that returns `IFacade`
     - returns: the Multiton instance of the `IFacade`
     */
-    public class func getInstance(key: String, closure: (() -> IFacade)) -> IFacade {
-        dispatch_barrier_sync(instanceMapQueue) {
+    open class func getInstance(_ key: String, closure: () -> IFacade) -> IFacade {
+        instanceMapQueue.sync(flags: .barrier, execute: {
             if self.instanceMap[key] == nil {
                 self.instanceMap[key] = closure()
             }
-        }
+        }) 
         return instanceMap[key]!
     }
     
@@ -99,7 +99,7 @@ public class Facade: IFacade {
     call `super.initializeController()` at the beginning of your
     method, then register `Command`s.
     */
-    public func initializeController() {
+    open func initializeController() {
         if controller != nil {
             return
         }
@@ -126,7 +126,7 @@ public class Facade: IFacade {
     need to send `INotification`s and thus will likely want to fetch a reference to
     the `Facade` during their construction.
     */
-    public func initializeModel() {
+    open func initializeModel() {
         if model != nil {
             return
         }
@@ -153,7 +153,7 @@ public class Facade: IFacade {
     `INotification`s and thus will likely want to fetch a reference
     to the `Facade` during their construction.
     */
-    public func initializeView() {
+    open func initializeView() {
         if view != nil {
             return
         }
@@ -166,7 +166,7 @@ public class Facade: IFacade {
     - parameter notificationName: the name of the `INotification` to associate the `ICommand` with
     - parameter closure: reference that returns `ICommand`
     */
-    public func registerCommand(notificationName: String, closure: () -> ICommand) {
+    open func registerCommand(_ notificationName: String, closure: @escaping () -> ICommand) {
         controller!.registerCommand(notificationName, closure: closure)
     }
     
@@ -175,7 +175,7 @@ public class Facade: IFacade {
     
     - parameter notificationName: the name of the `INotification` to remove the `ICommand` mapping for
     */
-    public func removeCommand(notificationName: String) {
+    open func removeCommand(_ notificationName: String) {
         controller!.removeCommand(notificationName)
     }
     
@@ -185,7 +185,7 @@ public class Facade: IFacade {
     - parameter notificationName:
     - returns: whether a Command is currently registered for the given `notificationName`.
     */
-    public func hasCommand(notificationName: String) -> Bool {
+    open func hasCommand(_ notificationName: String) -> Bool {
         return controller!.hasCommand(notificationName)
     }
     
@@ -194,7 +194,7 @@ public class Facade: IFacade {
     
     - parameter proxy: the `IProxy` instance to be registered with the `Model`.
     */
-    public func registerProxy(proxy: IProxy) {
+    open func registerProxy(_ proxy: IProxy) {
         model!.registerProxy(proxy)
     }
     
@@ -204,7 +204,7 @@ public class Facade: IFacade {
     - parameter proxyName: the name of the proxy to be retrieved.
     - returns: the `IProxy` instance previously registered with the given `proxyName`.
     */
-    public func retrieveProxy(proxyName: String) -> IProxy? {
+    open func retrieveProxy(_ proxyName: String) -> IProxy? {
         return model!.retrieveProxy(proxyName)
     }
     
@@ -214,7 +214,7 @@ public class Facade: IFacade {
     - parameter proxyName: the `IProxy` to remove from the `Model`.
     - returns: the `IProxy` that was removed from the `Model`
     */
-    public func removeProxy(proxyName: String) -> IProxy? {
+    open func removeProxy(_ proxyName: String) -> IProxy? {
         return model!.removeProxy(proxyName)
     }
     
@@ -224,7 +224,7 @@ public class Facade: IFacade {
     - parameter proxyName:
     - returns: whether a Proxy is currently registered with the given `proxyName`.
     */
-    public func hasProxy(proxyName: String) -> Bool {
+    open func hasProxy(_ proxyName: String) -> Bool {
         return model!.hasProxy(proxyName)
     }
     
@@ -233,7 +233,7 @@ public class Facade: IFacade {
     
     - parameter mediator: a reference to the `IMediator`
     */
-    public func registerMediator(mediator: IMediator) {
+    open func registerMediator(_ mediator: IMediator) {
         view!.registerMediator(mediator)
     }
     
@@ -243,7 +243,7 @@ public class Facade: IFacade {
     - parameter mediatorName:
     - returns: the `IMediator` previously registered with the given `mediatorName`.
     */
-    public func retrieveMediator(mediatorName: String) -> IMediator? {
+    open func retrieveMediator(_ mediatorName: String) -> IMediator? {
         return view!.retrieveMediator(mediatorName)
     }
     
@@ -253,7 +253,7 @@ public class Facade: IFacade {
     - parameter mediatorName: name of the `IMediator` to be removed.
     - returns: the `IMediator` that was removed from the `View`
     */
-    public func removeMediator(mediatorName: String) -> IMediator? {
+    open func removeMediator(_ mediatorName: String) -> IMediator? {
         return view!.removeMediator(mediatorName)
     }
     
@@ -263,7 +263,7 @@ public class Facade: IFacade {
     - parameter mediatorName:
     - returns: whether a Mediator is registered with the given `mediatorName`.
     */
-    public func hasMediator(mediatorName: String) -> Bool {
+    open func hasMediator(_ mediatorName: String) -> Bool {
         return view!.hasMediator(mediatorName)
     }
     
@@ -277,7 +277,7 @@ public class Facade: IFacade {
     - parameter body: the body of the notification (optional)
     - parameter type: the type of the notification (optional)
     */
-    public func sendNotification(notificationName: String, body: Any?=nil, type: String?=nil) {
+    open func sendNotification(_ notificationName: String, body: Any?=nil, type: String?=nil) {
         notifyObservers(Notification(name: notificationName, body: body, type: type))
     }
     
@@ -294,7 +294,7 @@ public class Facade: IFacade {
     
     - parameter notification: the `INotification` to have the `View` notify `Observers` of.
     */
-    public func notifyObservers(notification: INotification) {
+    open func notifyObservers(_ notification: INotification) {
         view!.notifyObservers(notification)
     }
     
@@ -306,7 +306,7 @@ public class Facade: IFacade {
     It is necessary to be public in order to
     implement INotifier.
     */
-    public func initializeNotifier(key: String) {
+    open func initializeNotifier(_ key: String) {
         _multitonKey = key
     }
     
@@ -316,9 +316,9 @@ public class Facade: IFacade {
     - parameter key: the multiton key for the Core in question
     - returns: whether a Core is registered with the given `key`.
     */
-    public class func hasCore(key: String) -> Bool {
+    open class func hasCore(_ key: String) -> Bool {
         var result = false
-        dispatch_sync(instanceMapQueue) {
+        instanceMapQueue.sync {
             result = self.instanceMap[key] != nil
         }
         return result
@@ -332,35 +332,35 @@ public class Facade: IFacade {
     
     - parameter key: multitonKey of the Core to remove
     */
-    public class func removeCore(key: String) {
-        dispatch_barrier_sync(instanceMapQueue) {
+    open class func removeCore(_ key: String) {
+        instanceMapQueue.sync(flags: .barrier, execute: {
             Model.removeModel(key)
             View.removeView(key)
             Controller.removeController(key)
-            self.instanceMap.removeValueForKey(key)
-        }
+            self.instanceMap.removeValue(forKey: key)
+        }) 
     }
     
     /// Reference to the Controller
-    public var controller: IController? {
+    open var controller: IController? {
         get { return _controller }
         set { _controller = newValue }
     }
     
     /// References to the Model
-    public var model: IModel? {
+    open var model: IModel? {
         get { return _model }
         set { _model = newValue }
     }
     
     /// References to the View
-    public var view: IView? {
+    open var view: IView? {
         get { return _view }
         set { _view = newValue }
     }
     
     /// The Multiton Key
-    public var multitonKey: String {
+    open var multitonKey: String {
         return _multitonKey
     }
 

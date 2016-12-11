@@ -82,7 +82,7 @@ public class ViewTest: XCTestCase {
         // successful notification will result in our local
         // viewTestVar being set to the value we pass in
         // on the note body.
-        let note = ViewTestNote.create(10)
+        let note = ViewTestNote.create(body: 10)
         view.notifyObservers(note)
         
         // test assertions
@@ -138,7 +138,7 @@ public class ViewTest: XCTestCase {
         // for that mediator name
         XCTAssertTrue(view.hasMediator("hasMediatorTest"), "Expecting view.hasMediator('hasMediatorTest') == true")
         
-        view.removeMediator("hasMediatorTest")
+        _ = view.removeMediator("hasMediatorTest")
         
         // assert that the view.hasMediator method returns false
         // for that mediator name
@@ -181,7 +181,7 @@ public class ViewTest: XCTestCase {
         XCTAssertTrue(onRegisterCalled, "Expecting onRegisterCalled == true")
         
         // Remove the component
-        view.removeMediator(ViewTestMediator4.NAME)
+        _ = view.removeMediator(ViewTestMediator4.NAME)
         
         // assert that the mediator is no longer retrievable
         XCTAssertTrue(onRemoveCalled, "Expecting onRemoveCalled == true")
@@ -202,7 +202,7 @@ public class ViewTest: XCTestCase {
         XCTAssertTrue(view.retrieveMediator(ViewTestMediator.NAME) is ViewTestMediator, "Expecting view.retrieveMediator(ViewTestMediator.NAME) is ViewTestMediator")
         
         // Remove the Mediator
-        view.removeMediator(ViewTestMediator.NAME)
+        _ = view.removeMediator(ViewTestMediator.NAME)
         
         // test that retrieving it now returns null
         XCTAssertTrue(view.retrieveMediator(ViewTestMediator.NAME) == nil, "Expecting view.retrieveMediator(ViewTestMediator.NAME ) == nil")
@@ -216,7 +216,7 @@ public class ViewTest: XCTestCase {
         XCTAssertTrue(view.retrieveMediator(ViewTestMediator.NAME) is ViewTestMediator, "Expecting view.retrieveMediator( ViewTestMediator.NAME ) is ViewTestMediator")
         
         // Remove the Mediator
-        view.removeMediator(ViewTestMediator.NAME);
+        _ = view.removeMediator(ViewTestMediator.NAME);
         
         // test that retrieving it now returns null
         XCTAssertTrue(view.retrieveMediator(ViewTestMediator.NAME) == nil, "Expecting view.retrieveMediator(ViewTestMediator.NAME) == nil")
@@ -242,7 +242,7 @@ public class ViewTest: XCTestCase {
         XCTAssertTrue(lastNotification == ViewTest.NOTE2, "Expecting lastNotification == NOTE2")
         
         // Remove the Mediator
-        view.removeMediator(ViewTestMediator2.NAME)
+        _ = view.removeMediator(ViewTestMediator2.NAME)
         
         // test that retrieving it now returns null
         XCTAssertTrue(view.retrieveMediator(ViewTestMediator2.NAME) == nil, "Expecting view.retrieveMediator(ViewTestMediator2.NAME ) == nil")
@@ -287,7 +287,7 @@ public class ViewTest: XCTestCase {
         XCTAssertTrue(lastNotification == ViewTest.NOTE3, "Expecting lastNotification == NOTE3")
         
         // Remove the Mediator that responds to 1 and 2
-        view.removeMediator(ViewTestMediator2.NAME)
+        _ = view.removeMediator(ViewTestMediator2.NAME)
         
         // test that retrieving it now returns nil
         XCTAssertTrue(view.retrieveMediator(ViewTestMediator2.NAME) == nil, "Expecting view.retrieveMediator(ViewTestMediator2.NAME ) == nil")
@@ -333,7 +333,7 @@ public class ViewTest: XCTestCase {
         XCTAssertEqual(1, counter, "Expecting counter == 1")
         
         // Remove the Mediator
-        view.removeMediator(ViewTestMediator5.NAME)
+        _ = view.removeMediator(ViewTestMediator5.NAME)
         
         // test that retrieving it now returns nil
         XCTAssertTrue(view.retrieveMediator(ViewTestMediator5.NAME) == nil, "Expecting view.retrieveMediator( ViewTestMediator5.NAME ) == nil")
@@ -425,7 +425,7 @@ public class ViewTest: XCTestCase {
 
     func testPerformanceExample() {
         // This is an example of a performance test case.
-        self.measureBlock() {
+        self.measure() {
             // Put the code you want to measure the time of here.
         }
     }

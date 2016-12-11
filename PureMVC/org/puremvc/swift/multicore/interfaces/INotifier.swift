@@ -39,7 +39,7 @@ public protocol INotifier {
     - parameter body: the body of the notification (optional)
     - parameter type: the type of the notification (optional)
     */
-    func sendNotification(notificationName: String, body: Any?, type: String?)
+    func sendNotification(_ notificationName: String, body: Any?, type: String?)
     
     /**
     Initialize this INotifier instance.
@@ -51,6 +51,6 @@ public protocol INotifier {
     
     - parameter key: the multitonKey for this INotifier to use
     */
-    func initializeNotifier(key: String)
+    func initializeNotifier(_ key: String)
     
 }

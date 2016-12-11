@@ -22,7 +22,7 @@ class ViewExtendTest: XCTestCase {
     }
 
     func testConstructor() {
-        let viewExtend = ViewExtend.getInstance("Key1")
+        let viewExtend = ViewExtend.getInstance(key: "Key1")
         ViewExtend.removeView("Key1")
         
         XCTAssertNotNil(viewExtend as! ViewExtend, "Expecting viewExtend not nil")
@@ -30,7 +30,7 @@ class ViewExtendTest: XCTestCase {
     
     func testDeinit() {
         let resource = Resource()
-        var viewExtend: ViewExtend! = ViewExtend.getInstance("Key1") as! ViewExtend
+        var viewExtend: ViewExtend! = ViewExtend.getInstance(key: "Key1") as! ViewExtend
         viewExtend.resource = resource
         
         XCTAssertTrue(resource.state == .ALLOCATED, "Expecting resource to be allocated")
@@ -43,7 +43,7 @@ class ViewExtendTest: XCTestCase {
     
     func testRegisterMediatorAndDeinit() {
         let resource = Resource()
-        var viewExtend: ViewExtend! = ViewExtend.getInstance("Key1") as! ViewExtend
+        var viewExtend: ViewExtend! = ViewExtend.getInstance(key: "Key1") as! ViewExtend
         
         viewExtend.registerMediator(ResourceMediator(viewComponent: resource))
         
@@ -55,7 +55,7 @@ class ViewExtendTest: XCTestCase {
 
     func testPerformanceExample() {
         // This is an example of a performance test case.
-        self.measureBlock() {
+        self.measure() {
             // Put the code you want to measure the time of here.
         }
     }

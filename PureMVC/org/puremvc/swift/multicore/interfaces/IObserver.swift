@@ -50,7 +50,7 @@ public protocol IObserver {
     
     - parameter notifyMethod: the notification (callback) method of the interested object
     */
-    var notifyMethod: ((notification: INotification) -> ())? { get set }
+    var notifyMethod: ((_ notification: INotification) -> ())? { get set }
     
     /// Get or set the notification context (self) of the interested object.
     var notifyContext: AnyObject? { get set }
@@ -60,7 +60,7 @@ public protocol IObserver {
     
     - parameter notification: the `INotification` to pass to the interested object's notification method
     */
-    func notifyObserver(notification: INotification)
+    func notifyObserver(_ notification: INotification)
     
     /**
     Compare the given object to the notificaiton context object.
@@ -68,6 +68,6 @@ public protocol IObserver {
     - parameter object: the object to compare.
     - returns: boolean indicating if the notification context and the object are the same.
     */
-    func compareNotifyContext(object: AnyObject) -> Bool
+    func compareNotifyContext(_ object: AnyObject) -> Bool
     
 }

@@ -31,9 +31,9 @@ to be executed.
 
 `@see org.puremvc.swift.multicore.patterns.command.SimpleCommand SimpleCommand`
 */
-public class MacroCommand: Notifier, ICommand {
+open class MacroCommand: Notifier, ICommand {
     
-    private var subCommands: [() -> ICommand]
+    fileprivate var subCommands: [() -> ICommand]
     
     /**
     Constructor.
@@ -69,7 +69,7 @@ public class MacroCommand: Notifier, ICommand {
     Note that *SubCommands* may be any closure returning `ICommand`
     implementor, `MacroCommands` or `SimpleCommands` are both acceptable.
     */
-    public func initializeMacroCommand() {
+    open func initializeMacroCommand() {
         
     }
     
@@ -81,7 +81,7 @@ public class MacroCommand: Notifier, ICommand {
     
     - parameter closure: reference that returns `ICommand`.
     */
-    public func addSubCommand(closure: () -> ICommand) {
+    open func addSubCommand(_ closure: @escaping () -> ICommand) {
         subCommands.append(closure)
     }
     
@@ -93,9 +93,9 @@ public class MacroCommand: Notifier, ICommand {
     
     - parameter notification: the `INotification` object to be passsed to each *SubCommand*.
     */
-    public final func execute(notification: INotification) {
+    public final func execute(_ notification: INotification) {
         while (!subCommands.isEmpty) {
-            let closure = subCommands.removeAtIndex(0)
+            let closure = subCommands.remove(at: 0)
             let commandInstance = closure()
             commandInstance.initializeNotifier(multitonKey!)
             commandInstance.execute(notification)

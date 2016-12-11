@@ -45,7 +45,7 @@ class SimpleCommandTest: XCTestCase {
         let vo:SimpleCommandTestVO = SimpleCommandTestVO(input: 5)
         
         // Create the Notification (note)
-        let note: Notification = Notification(name: "SimpleCommandTestNote", body: vo)
+        let note = Notification(name: "SimpleCommandTestNote", body: vo)
         
         // Create the SimpleCommand
         let command: SimpleCommandTestCommand = SimpleCommandTestCommand()
@@ -59,7 +59,7 @@ class SimpleCommandTest: XCTestCase {
 
     func testPerformanceExample() {
         // This is an example of a performance test case.
-        self.measureBlock() {
+        self.measure() {
             // Put the code you want to measure the time of here.
         }
     }

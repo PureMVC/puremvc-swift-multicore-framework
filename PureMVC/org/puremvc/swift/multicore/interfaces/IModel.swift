@@ -25,7 +25,7 @@ public protocol IModel {
     - parameter proxyName: the name to associate with this `IProxy` instance.
     - parameter proxy: an object reference to be held by the `Model`.
     */
-    func registerProxy(proxy: IProxy)
+    func registerProxy(_ proxy: IProxy)
     
     /**
     Retrieve an `IProxy` instance from the Model.
@@ -33,7 +33,7 @@ public protocol IModel {
     - parameter proxyName:
     - returns: the `IProxy` instance previously registered with the given `proxyName`.
     */
-    func retrieveProxy(proxyName: String) -> IProxy?
+    func retrieveProxy(_ proxyName: String) -> IProxy?
     
     /**
     Remove an `IProxy` instance from the Model.
@@ -41,7 +41,7 @@ public protocol IModel {
     - parameter proxyName: name of the `IProxy` instance to be removed.
     - returns: the `IProxy` that was removed from the `Model`
     */
-    func removeProxy(proxyName: String) -> IProxy?
+    func removeProxy(_ proxyName: String) -> IProxy?
     
     /**
     Check if a Proxy is registered
@@ -49,6 +49,6 @@ public protocol IModel {
     - parameter proxyName:
     - returns: whether a Proxy is currently registered with the given `proxyName`.
     */
-    func hasProxy(proxyName: String) -> Bool
+    func hasProxy(_ proxyName: String) -> Bool
     
 }

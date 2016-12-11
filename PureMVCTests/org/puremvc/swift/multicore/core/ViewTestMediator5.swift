@@ -31,8 +31,8 @@ public class ViewTestMediator5: Mediator {
         return [ ViewTest.NOTE5]
     }
     
-    public override func handleNotification(notification: INotification) {
-        viewTest.counter++
+    public override func handleNotification(_ notification: INotification) {
+        viewTest.counter += 1
     }
     
     public var viewTest: ViewTest {

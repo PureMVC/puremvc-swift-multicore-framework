@@ -15,7 +15,7 @@ public class FacadeTestCommand2: SimpleCommand {
     *
     - parameter note: the Notification carrying the FacadeTestVO
     */
-    public override func execute(notification: INotification) {
+    public override func execute(_ notification: INotification) {
         
         let vo:FacadeTestVO = notification.body as! FacadeTestVO
         

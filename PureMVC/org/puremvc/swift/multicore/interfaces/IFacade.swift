@@ -34,7 +34,7 @@ public protocol IFacade: INotifier {
     
     - parameter proxy: the `IProxy` to be registered with the `Model`.
     */
-    func registerProxy(proxy: IProxy)
+    func registerProxy(_ proxy: IProxy)
     
     /**
     Retrieve a `IProxy` from the `Model` by name.
@@ -42,7 +42,7 @@ public protocol IFacade: INotifier {
     - parameter proxyName: the name of the `IProxy` instance to be retrieved.
     - returns: the `IProxy` previously regisetered by `proxyName` with the `Model`.
     */
-    func retrieveProxy(proxyName: String) -> IProxy?
+    func retrieveProxy(_ proxyName: String) -> IProxy?
     
     /**
     Remove an `IProxy` instance from the `Model` by name.
@@ -50,7 +50,7 @@ public protocol IFacade: INotifier {
     - parameter proxyName: the `IProxy` to remove from the `Model`.
     - returns: the `IProxy` that was removed from the `Model`
     */
-    func removeProxy(proxyName: String) -> IProxy?
+    func removeProxy(_ proxyName: String) -> IProxy?
     
     /**
     Check if a Proxy is registered
@@ -58,7 +58,7 @@ public protocol IFacade: INotifier {
     - parameter proxyName:
     - returns: whether a Proxy is currently registered with the given `proxyName`.
     */
-    func hasProxy(proxyName: String) -> Bool
+    func hasProxy(_ proxyName: String) -> Bool
     
     /**
     Register an `ICommand` with the `Controller`.
@@ -66,14 +66,14 @@ public protocol IFacade: INotifier {
     - parameter noteName: the name of the `INotification` to associate the `ICommand` with.
     - parameter closure: reference that returns `ICommand`
     */
-    func registerCommand(notificationName: String, closure: () -> ICommand)
+    func registerCommand(_ notificationName: String, closure: @escaping () -> ICommand)
     
     /**
     Remove a previously registered `ICommand` to `INotification` mapping from the Controller.
     
     - parameter notificationName: the name of the `INotification` to remove the `ICommand` mapping for
     */
-    func removeCommand(notificationName: String)
+    func removeCommand(_ notificationName: String)
     
     /**
     Check if a Command is registered for a given Notification
@@ -81,14 +81,14 @@ public protocol IFacade: INotifier {
     - parameter notificationName:
     - returns: whether a Command is currently registered for the given `notificationName`.
     */
-    func hasCommand(notificationName: String) -> Bool
+    func hasCommand(_ notificationName: String) -> Bool
     
     /**
     Register an `IMediator` instance with the `View`.
     
     - parameter mediator: a reference to the `IMediator` instance
     */
-    func registerMediator(mediator: IMediator)
+    func registerMediator(_ mediator: IMediator)
     
     /**
     Retrieve an `IMediator` instance from the `View`.
@@ -96,7 +96,7 @@ public protocol IFacade: INotifier {
     - parameter mediatorName: the name of the `IMediator` instance to retrievve
     - returns: the `IMediator` previously registered with the given `mediatorName`.
     */
-    func retrieveMediator(mediatorName: String) -> IMediator?
+    func retrieveMediator(_ mediatorName: String) -> IMediator?
     
     /**
     Remove a `IMediator` instance from the `View`.
@@ -104,7 +104,7 @@ public protocol IFacade: INotifier {
     - parameter mediatorName: name of the `IMediator` instance to be removed.
     - returns: the `IMediator` instance previously registered with the given `mediatorName`.
     */
-    func removeMediator(mediatorName: String) -> IMediator?
+    func removeMediator(_ mediatorName: String) -> IMediator?
     
     /**
     Check if a Mediator is registered or not
@@ -113,7 +113,7 @@ public protocol IFacade: INotifier {
     - returns: whether a Mediator is registered with the given `mediatorName`.
     */
     
-    func hasMediator(mediatorName: String) -> Bool
+    func hasMediator(_ mediatorName: String) -> Bool
     
     /**
     Notify `Observer`s.
@@ -128,6 +128,6 @@ public protocol IFacade: INotifier {
     
     - parameter notification: the `INotification` to have the `View` notify `Observers` of.
     */
-    func notifyObservers(notification: INotification)
+    func notifyObservers(_ notification: INotification)
     
 }

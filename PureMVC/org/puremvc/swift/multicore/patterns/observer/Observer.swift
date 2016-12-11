@@ -24,11 +24,11 @@ In PureMVC, the `Observer` class assumes these responsibilities:
 
 `@see org.puremvc.swift.multicore.patterns.observer.Notification Notification`
 */
-public class Observer: IObserver {
+open class Observer: IObserver {
     
-    private var _notifyMethod: ((notification: INotification) -> ())?
+    fileprivate var _notifyMethod: ((_ notification: INotification) -> ())?
     
-    weak private var _notifyContext: AnyObject?
+    weak fileprivate var _notifyContext: AnyObject?
     
     /**
     Constructor.
@@ -39,7 +39,7 @@ public class Observer: IObserver {
     - parameter notifyMethod: the notification method of the interested object
     - parameter notifyContext: the notification context of the interested object
     */
-    public init(notifyMethod: (INotification -> ())?, notifyContext: AnyObject?) {
+    public init(notifyMethod: ((INotification) -> ())?, notifyContext: AnyObject?) {
         _notifyMethod = notifyMethod
         _notifyContext = notifyContext
     }
@@ -49,8 +49,8 @@ public class Observer: IObserver {
     
     - parameter notification: the `INotification` to pass to the interested object's notification method.
     */
-    public func notifyObserver(notification: INotification) {
-        self.notifyMethod?(notification: notification)
+    open func notifyObserver(_ notification: INotification) {
+        self.notifyMethod?(notification)
     }
     
     /**
@@ -59,18 +59,18 @@ public class Observer: IObserver {
     - parameter object: the object to compare
     - returns: boolean indicating if the object and the notification context are the same
     */
-    public func compareNotifyContext(object: AnyObject) -> Bool {
+    open func compareNotifyContext(_ object: AnyObject) -> Bool {
         return object === _notifyContext
     }
     
     /// Get or set the notification method.
-    public var notifyMethod: ((notification: INotification) -> ())? {
+    open var notifyMethod: ((_ notification: INotification) -> ())? {
         get { return _notifyMethod }
         set { _notifyMethod = newValue }
     }
     
     /// Get or set the notification context.
-    public var notifyContext: AnyObject? {
+    open var notifyContext: AnyObject? {
         get { return _notifyContext }
         set { _notifyContext = newValue }
     }

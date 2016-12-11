@@ -22,7 +22,7 @@ public class ControllerTestCommand: SimpleCommand {
 
     - parameter note: the note carrying the ControllerTestVO
     */
-    public override func execute(notification: INotification) {
+    public override func execute(_ notification: INotification) {
         let vo: ControllerTestVO = notification.body as! ControllerTestVO
         
         // Fabricate a result
