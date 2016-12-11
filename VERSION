@@ -1,9 +1,13 @@
 PureMVC MultiCore Framework for Swift (Ported)
 --------------------------------------------------------------------------
-Release Date: 5/15/15
+Release Date: 12/11/16
     Platform: Swift 
-     Version: 1 
+     Version: 1.2 
     Revision: 0
       Author: Saad Shams <saad.shams@puremvc.org>
 --------------------------------------------------------------------------
 1.0 - Initial upload of ported code, equivalent to AS3 MultiCore Version 1.0.5.
+
+1.1 - Swift 2.0 support added.
+
+1.2 - Swift 3.0 support added.
