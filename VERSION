@@ -14,3 +14,5 @@ Release Date: 03/16/16
       INotifer in it's declaration since it's already declared and conformed in 
       it's parent class Notifier. Update of var into let declarations for never 
       mutated variables.
+
+1.2 - Swift 3.0 support added.
