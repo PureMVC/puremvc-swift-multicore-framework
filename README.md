@@ -5,7 +5,6 @@ PureMVC is a lightweight framework for creating applications based upon the clas
 * [API Docs](http://puremvc.org/pages/docs/Swift/multicore/)
 * [Unit Tests](http://puremvc.github.io/images/Swift/unittest/multicore.png)
 * [Discussion](http://forums.puremvc.org/index.php?topic=2122.0)
-* [MultiCore Version Overview Presentation](http://puremvc.tv/#P002)
 
 ## Utilities
 * [Async Command](https://github.com/PureMVC/puremvc-swift-util-asynccommand/wiki)
@@ -16,14 +15,16 @@ PureMVC is a lightweight framework for creating applications based upon the clas
 ## Platforms / Technologies
 * [Swift](http://en.wikipedia.org/wiki/Swift_(programming_language))
 * [iOS](http://en.wikipedia.org/wiki/IOS)
-* [Mac OS](http://en.wikipedia.org/wiki/Mac_OS)
+* [watchOS](https://en.wikipedia.org/wiki/WatchOS)
+* [tvOS](https://en.wikipedia.org/wiki/TvOS)
+* [MacOS](https://en.wikipedia.org/wiki/MacOS)
 
 ## Status
-Production - [Version 1.2.0](https://github.com/PureMVC/puremvc-swift-multicore-framework/blob/master/VERSION)
+Production - [Version 1.3](https://github.com/PureMVC/puremvc-swift-multicore-framework/blob/master/VERSION)
 
 ## License
-* PureMVC MultiCore Framework for Swift - Copyright © 2015-2025 Saad Shams
-* PureMVC - Copyright © 2015-2025 [Futurescale, Inc.](http://futurescale.com/)
+* PureMVC MultiCore Framework for Swift - Copyright © 2015-2019 [Saad Shams](https://www.linkedin.com/in/muizz/)
+* PureMVC - Copyright © 2015-2019 [Futurescale, Inc.](http://futurescale.com/)
 * All rights reserved.
 
 * Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:

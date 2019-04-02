@@ -1,18 +1,21 @@
-PureMVC MultiCore Framework for Swift (Ported)
+PureMVC MultiCore Framework for Swift
 --------------------------------------------------------------------------
-Release Date: 03/16/16
+Release Date: 04/02/19
     Platform: Swift 
-     Version: 1.1
-    Revision: 0
+     Version: 1
+    Revision: 3
+       Minor: 0
       Author: Saad Shams <saad.shams@puremvc.org>
 --------------------------------------------------------------------------
-1.0 - Initial upload of ported code, equivalent to AS3 MultiCore Version 1.0.5.
-
-1.1 - Swift 2.0 support was added. Updated swift header documentation to newer 
-      standard for parameters and returns. Swift 2.0 compiler restricts 
-      using redundant conformance of protocols, for instance Proxy can't respecify 
-      INotifer in it's declaration since it's already declared and conformed in 
-      it's parent class Notifier. Update of var into let declarations for never 
-      mutated variables.
+1.3 - Swift Package Manager and Swift 5.0 support added.
 
 1.2 - Swift 3.0 support added.
+
+1.1 - Swift 2.0 support was added. Updated swift header documentation to newer
+standard for parameters and returns. Swift 2.0 compiler restricts
+using redundant conformance of protocols, for instance Proxy can't respecify
+INotifer in it's declaration since it's already declared and conformed in
+it's parent class Notifier. Update of var into let declarations for never
+mutated variables.
+
+1.0 - Initial upload of ported code, equivalent to AS3 MultiCore Version 1.0.5.
