@@ -9,7 +9,7 @@
 //
 
 import XCTest
-@testable import puremvc_swift_multicore_framework
+@testable import PureMVC
 
 class ControllerExtendTest: XCTestCase {
     

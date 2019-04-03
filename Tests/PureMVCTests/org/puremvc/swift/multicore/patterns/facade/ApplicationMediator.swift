@@ -6,7 +6,7 @@
 //  Your reuse is governed by the Creative Commons Attribution 3.0 License
 //
 
-@testable import puremvc_swift_multicore_framework
+@testable import PureMVC
 
 public class ApplicationMediator: Mediator {
     
