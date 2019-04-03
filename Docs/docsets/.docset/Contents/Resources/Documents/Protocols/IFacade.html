@@ -7,6 +7,7 @@
     <meta charset='utf-8'>
     <script src="../js/jquery.min.js" defer></script>
     <script src="../js/jazzy.js" defer></script>
+    
   </head>
   <body>
     <a name="//apple_ref/swift/Protocol/IFacade" class="dashAnchor"></a>
@@ -14,7 +15,6 @@
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html"> Docs</a> (100% documented)</p>
-        <p class="header-right"><a href="https://github.com/PureMVC/puremvc-swift-multicore-framework"><img src="../img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -28,7 +28,7 @@
       <nav class="sidebar">
         <ul class="nav-groups">
           <li class="nav-group-name">
-          <a href="../Classes.html">Classes</a>
+            <a href="../Classes.html">Classes</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="../Classes/Controller.html">Controller</a>
@@ -66,7 +66,7 @@
             </ul>
           </li>
           <li class="nav-group-name">
-          <a href="../Protocols.html">Protocols</a>
+            <a href="../Protocols.html">Protocols</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="../Protocols/ICommand.html">ICommand</a>
@@ -106,6 +106,12 @@
         <section>
           <section class="section">
             <h1>IFacade</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">IFacade</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/INotifier.html">INotifier</a></span></code></pre>
+
+                </div>
+              </div>
             <p>The interface definition for a PureMVC Facade.</p>
 
 <p>The Facade Pattern suggests providing a single
@@ -133,9 +139,9 @@ the rest of your application.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FP7PureMVC7IFacade13registerProxyUS0___FQPS0_FPS_6IProxy_T_"></a>
+                    <a name="/s:7PureMVC7IFacadeP13registerProxyyyAA6IProxy_pF"></a>
                     <a name="//apple_ref/swift/Method/registerProxy(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FP7PureMVC7IFacade13registerProxyUS0___FQPS0_FPS_6IProxy_T_">registerProxy(_:)</a>
+                    <a class="token" href="#/s:7PureMVC7IFacadeP13registerProxyyyAA6IProxy_pF">registerProxy(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -143,14 +149,14 @@ the rest of your application.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Register an <code>IProxy</code> with the <code>Model</code> by name.</p>
+                        <p>Register an <code><a href="../Protocols/IProxy.html">IProxy</a></code> with the <code><a href="../Classes/Model.html">Model</a></code> by name.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
-                        <div class="Swift">
+                        <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">registerProxy</span><span class="p">(</span><span class="nv">proxy</span><span class="p">:</span> <span class="kt">IProxy</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">registerProxy</span><span class="p">(</span><span class="n">_</span> <span class="nv">proxy</span><span class="p">:</span> <span class="kt"><a href="../Protocols/IProxy.html">IProxy</a></span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -166,8 +172,7 @@ the rest of your application.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>the <code>IProxy</code> to be registered with the <code>Model</code>.</p>
-
+                                  <p>the <code><a href="../Protocols/IProxy.html">IProxy</a></code> to be registered with the <code><a href="../Classes/Model.html">Model</a></code>.</p>
                                 </div>
                               </td>
                             </tr>
@@ -180,9 +185,9 @@ the rest of your application.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FP7PureMVC7IFacade13retrieveProxyUS0___FQPS0_FSSGSqPS_6IProxy__"></a>
+                    <a name="/s:7PureMVC7IFacadeP13retrieveProxyyAA6IProxy_pSgSSF"></a>
                     <a name="//apple_ref/swift/Method/retrieveProxy(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FP7PureMVC7IFacade13retrieveProxyUS0___FQPS0_FSSGSqPS_6IProxy__">retrieveProxy(_:)</a>
+                    <a class="token" href="#/s:7PureMVC7IFacadeP13retrieveProxyyAA6IProxy_pSgSSF">retrieveProxy(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -190,14 +195,14 @@ the rest of your application.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Retrieve a <code>IProxy</code> from the <code>Model</code> by name.</p>
+                        <p>Retrieve a <code><a href="../Protocols/IProxy.html">IProxy</a></code> from the <code><a href="../Classes/Model.html">Model</a></code> by name.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
-                        <div class="Swift">
+                        <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">retrieveProxy</span><span class="p">(</span><span class="nv">proxyName</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">IProxy</span><span class="p">?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">retrieveProxy</span><span class="p">(</span><span class="n">_</span> <span class="nv">proxyName</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/IProxy.html">IProxy</a></span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -213,8 +218,7 @@ the rest of your application.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>the name of the <code>IProxy</code> instance to be retrieved.</p>
-
+                                  <p>the name of the <code><a href="../Protocols/IProxy.html">IProxy</a></code> instance to be retrieved.</p>
                                 </div>
                               </td>
                             </tr>
@@ -223,8 +227,7 @@ the rest of your application.</p>
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>the <code>IProxy</code> previously regisetered by <code>proxyName</code> with the <code>Model</code>.</p>
-
+                        <p>the <code><a href="../Protocols/IProxy.html">IProxy</a></code> previously regisetered by <code>proxyName</code> with the <code><a href="../Classes/Model.html">Model</a></code>.</p>
                       </div>
                     </section>
                   </div>
@@ -232,9 +235,9 @@ the rest of your application.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FP7PureMVC7IFacade11removeProxyUS0___FQPS0_FSSGSqPS_6IProxy__"></a>
+                    <a name="/s:7PureMVC7IFacadeP11removeProxyyAA6IProxy_pSgSSF"></a>
                     <a name="//apple_ref/swift/Method/removeProxy(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FP7PureMVC7IFacade11removeProxyUS0___FQPS0_FSSGSqPS_6IProxy__">removeProxy(_:)</a>
+                    <a class="token" href="#/s:7PureMVC7IFacadeP11removeProxyyAA6IProxy_pSgSSF">removeProxy(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -242,14 +245,14 @@ the rest of your application.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Remove an <code>IProxy</code> instance from the <code>Model</code> by name.</p>
+                        <p>Remove an <code><a href="../Protocols/IProxy.html">IProxy</a></code> instance from the <code><a href="../Classes/Model.html">Model</a></code> by name.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
-                        <div class="Swift">
+                        <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">removeProxy</span><span class="p">(</span><span class="nv">proxyName</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">IProxy</span><span class="p">?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">removeProxy</span><span class="p">(</span><span class="n">_</span> <span class="nv">proxyName</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/IProxy.html">IProxy</a></span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -265,8 +268,7 @@ the rest of your application.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>the <code>IProxy</code> to remove from the <code>Model</code>.</p>
-
+                                  <p>the <code><a href="../Protocols/IProxy.html">IProxy</a></code> to remove from the <code><a href="../Classes/Model.html">Model</a></code>.</p>
                                 </div>
                               </td>
                             </tr>
@@ -275,8 +277,7 @@ the rest of your application.</p>
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>the <code>IProxy</code> that was removed from the <code>Model</code></p>
-
+                        <p>the <code><a href="../Protocols/IProxy.html">IProxy</a></code> that was removed from the <code><a href="../Classes/Model.html">Model</a></code></p>
                       </div>
                     </section>
                   </div>
@@ -284,9 +285,9 @@ the rest of your application.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FP7PureMVC7IFacade8hasProxyUS0___FQPS0_FSSSb"></a>
+                    <a name="/s:7PureMVC7IFacadeP8hasProxyySbSSF"></a>
                     <a name="//apple_ref/swift/Method/hasProxy(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FP7PureMVC7IFacade8hasProxyUS0___FQPS0_FSSSb">hasProxy(_:)</a>
+                    <a class="token" href="#/s:7PureMVC7IFacadeP8hasProxyySbSSF">hasProxy(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -299,9 +300,9 @@ the rest of your application.</p>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
-                        <div class="Swift">
+                        <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">hasProxy</span><span class="p">(</span><span class="nv">proxyName</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">hasProxy</span><span class="p">(</span><span class="n">_</span> <span class="nv">proxyName</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
 
                         </div>
                       </div>
@@ -317,7 +318,7 @@ the rest of your application.</p>
                               </td>
                               <td>
                                 <div>
-                                  
+                                  <p></p>
                                 </div>
                               </td>
                             </tr>
@@ -327,7 +328,6 @@ the rest of your application.</p>
                       <div>
                         <h4>Return Value</h4>
                         <p>whether a Proxy is currently registered with the given <code>proxyName</code>.</p>
-
                       </div>
                     </section>
                   </div>
@@ -335,9 +335,9 @@ the rest of your application.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FP7PureMVC7IFacade15registerCommandUS0___FQPS0_FTSS7closureFT_PS_8ICommand__T_"></a>
+                    <a name="/s:7PureMVC7IFacadeP15registerCommand_7closureySS_AA8ICommand_pyctF"></a>
                     <a name="//apple_ref/swift/Method/registerCommand(_:closure:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FP7PureMVC7IFacade15registerCommandUS0___FQPS0_FTSS7closureFT_PS_8ICommand__T_">registerCommand(_:closure:)</a>
+                    <a class="token" href="#/s:7PureMVC7IFacadeP15registerCommand_7closureySS_AA8ICommand_pyctF">registerCommand(_:closure:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -345,14 +345,14 @@ the rest of your application.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Register an <code>ICommand</code> with the <code>Controller</code>.</p>
+                        <p>Register an <code><a href="../Protocols/ICommand.html">ICommand</a></code> with the <code><a href="../Classes/Controller.html">Controller</a></code>.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
-                        <div class="Swift">
+                        <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">registerCommand</span><span class="p">(</span><span class="nv">notificationName</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">closure</span><span class="p">:</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">ICommand</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">registerCommand</span><span class="p">(</span><span class="n">_</span> <span class="nv">notificationName</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">closure</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/ICommand.html">ICommand</a></span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -368,8 +368,7 @@ the rest of your application.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>the name of the <code>INotification</code> to associate the <code>ICommand</code> with.</p>
-
+                                  <p>the name of the <code><a href="../Protocols/INotification.html">INotification</a></code> to associate the <code><a href="../Protocols/ICommand.html">ICommand</a></code> with.</p>
                                 </div>
                               </td>
                             </tr>
@@ -381,8 +380,7 @@ the rest of your application.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>reference that returns <code>ICommand</code></p>
-
+                                  <p>reference that returns <code><a href="../Protocols/ICommand.html">ICommand</a></code></p>
                                 </div>
                               </td>
                             </tr>
@@ -395,9 +393,9 @@ the rest of your application.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FP7PureMVC7IFacade13removeCommandUS0___FQPS0_FSST_"></a>
+                    <a name="/s:7PureMVC7IFacadeP13removeCommandyySSF"></a>
                     <a name="//apple_ref/swift/Method/removeCommand(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FP7PureMVC7IFacade13removeCommandUS0___FQPS0_FSST_">removeCommand(_:)</a>
+                    <a class="token" href="#/s:7PureMVC7IFacadeP13removeCommandyySSF">removeCommand(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -405,14 +403,14 @@ the rest of your application.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Remove a previously registered <code>ICommand</code> to <code>INotification</code> mapping from the Controller.</p>
+                        <p>Remove a previously registered <code><a href="../Protocols/ICommand.html">ICommand</a></code> to <code><a href="../Protocols/INotification.html">INotification</a></code> mapping from the Controller.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
-                        <div class="Swift">
+                        <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">removeCommand</span><span class="p">(</span><span class="nv">notificationName</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">removeCommand</span><span class="p">(</span><span class="n">_</span> <span class="nv">notificationName</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -428,8 +426,7 @@ the rest of your application.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>the name of the <code>INotification</code> to remove the <code>ICommand</code> mapping for</p>
-
+                                  <p>the name of the <code><a href="../Protocols/INotification.html">INotification</a></code> to remove the <code><a href="../Protocols/ICommand.html">ICommand</a></code> mapping for</p>
                                 </div>
                               </td>
                             </tr>
@@ -442,9 +439,9 @@ the rest of your application.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FP7PureMVC7IFacade10hasCommandUS0___FQPS0_FSSSb"></a>
+                    <a name="/s:7PureMVC7IFacadeP10hasCommandySbSSF"></a>
                     <a name="//apple_ref/swift/Method/hasCommand(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FP7PureMVC7IFacade10hasCommandUS0___FQPS0_FSSSb">hasCommand(_:)</a>
+                    <a class="token" href="#/s:7PureMVC7IFacadeP10hasCommandySbSSF">hasCommand(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -457,9 +454,9 @@ the rest of your application.</p>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
-                        <div class="Swift">
+                        <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">hasCommand</span><span class="p">(</span><span class="nv">notificationName</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">hasCommand</span><span class="p">(</span><span class="n">_</span> <span class="nv">notificationName</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
 
                         </div>
                       </div>
@@ -475,7 +472,7 @@ the rest of your application.</p>
                               </td>
                               <td>
                                 <div>
-                                  
+                                  <p></p>
                                 </div>
                               </td>
                             </tr>
@@ -485,7 +482,6 @@ the rest of your application.</p>
                       <div>
                         <h4>Return Value</h4>
                         <p>whether a Command is currently registered for the given <code>notificationName</code>.</p>
-
                       </div>
                     </section>
                   </div>
@@ -493,9 +489,9 @@ the rest of your application.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FP7PureMVC7IFacade16registerMediatorUS0___FQPS0_FPS_9IMediator_T_"></a>
+                    <a name="/s:7PureMVC7IFacadeP16registerMediatoryyAA9IMediator_pF"></a>
                     <a name="//apple_ref/swift/Method/registerMediator(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FP7PureMVC7IFacade16registerMediatorUS0___FQPS0_FPS_9IMediator_T_">registerMediator(_:)</a>
+                    <a class="token" href="#/s:7PureMVC7IFacadeP16registerMediatoryyAA9IMediator_pF">registerMediator(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -503,14 +499,14 @@ the rest of your application.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Register an <code>IMediator</code> instance with the <code>View</code>.</p>
+                        <p>Register an <code><a href="../Protocols/IMediator.html">IMediator</a></code> instance with the <code><a href="../Classes/View.html">View</a></code>.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
-                        <div class="Swift">
+                        <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">registerMediator</span><span class="p">(</span><span class="nv">mediator</span><span class="p">:</span> <span class="kt">IMediator</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">registerMediator</span><span class="p">(</span><span class="n">_</span> <span class="nv">mediator</span><span class="p">:</span> <span class="kt"><a href="../Protocols/IMediator.html">IMediator</a></span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -526,8 +522,7 @@ the rest of your application.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>a reference to the <code>IMediator</code> instance</p>
-
+                                  <p>a reference to the <code><a href="../Protocols/IMediator.html">IMediator</a></code> instance</p>
                                 </div>
                               </td>
                             </tr>
@@ -540,9 +535,9 @@ the rest of your application.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FP7PureMVC7IFacade16retrieveMediatorUS0___FQPS0_FSSGSqPS_9IMediator__"></a>
+                    <a name="/s:7PureMVC7IFacadeP16retrieveMediatoryAA9IMediator_pSgSSF"></a>
                     <a name="//apple_ref/swift/Method/retrieveMediator(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FP7PureMVC7IFacade16retrieveMediatorUS0___FQPS0_FSSGSqPS_9IMediator__">retrieveMediator(_:)</a>
+                    <a class="token" href="#/s:7PureMVC7IFacadeP16retrieveMediatoryAA9IMediator_pSgSSF">retrieveMediator(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -550,14 +545,14 @@ the rest of your application.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Retrieve an <code>IMediator</code> instance from the <code>View</code>.</p>
+                        <p>Retrieve an <code><a href="../Protocols/IMediator.html">IMediator</a></code> instance from the <code><a href="../Classes/View.html">View</a></code>.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
-                        <div class="Swift">
+                        <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">retrieveMediator</span><span class="p">(</span><span class="nv">mediatorName</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">IMediator</span><span class="p">?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">retrieveMediator</span><span class="p">(</span><span class="n">_</span> <span class="nv">mediatorName</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/IMediator.html">IMediator</a></span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -573,8 +568,7 @@ the rest of your application.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>the name of the <code>IMediator</code> instance to retrievve</p>
-
+                                  <p>the name of the <code><a href="../Protocols/IMediator.html">IMediator</a></code> instance to retrievve</p>
                                 </div>
                               </td>
                             </tr>
@@ -583,8 +577,7 @@ the rest of your application.</p>
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>the <code>IMediator</code> previously registered with the given <code>mediatorName</code>.</p>
-
+                        <p>the <code><a href="../Protocols/IMediator.html">IMediator</a></code> previously registered with the given <code>mediatorName</code>.</p>
                       </div>
                     </section>
                   </div>
@@ -592,9 +585,9 @@ the rest of your application.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FP7PureMVC7IFacade14removeMediatorUS0___FQPS0_FSSGSqPS_9IMediator__"></a>
+                    <a name="/s:7PureMVC7IFacadeP14removeMediatoryAA9IMediator_pSgSSF"></a>
                     <a name="//apple_ref/swift/Method/removeMediator(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FP7PureMVC7IFacade14removeMediatorUS0___FQPS0_FSSGSqPS_9IMediator__">removeMediator(_:)</a>
+                    <a class="token" href="#/s:7PureMVC7IFacadeP14removeMediatoryAA9IMediator_pSgSSF">removeMediator(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -602,14 +595,14 @@ the rest of your application.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Remove a <code>IMediator</code> instance from the <code>View</code>.</p>
+                        <p>Remove a <code><a href="../Protocols/IMediator.html">IMediator</a></code> instance from the <code><a href="../Classes/View.html">View</a></code>.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
-                        <div class="Swift">
+                        <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">removeMediator</span><span class="p">(</span><span class="nv">mediatorName</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">IMediator</span><span class="p">?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">removeMediator</span><span class="p">(</span><span class="n">_</span> <span class="nv">mediatorName</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/IMediator.html">IMediator</a></span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -625,8 +618,7 @@ the rest of your application.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>name of the <code>IMediator</code> instance to be removed.</p>
-
+                                  <p>name of the <code><a href="../Protocols/IMediator.html">IMediator</a></code> instance to be removed.</p>
                                 </div>
                               </td>
                             </tr>
@@ -635,8 +627,7 @@ the rest of your application.</p>
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>the <code>IMediator</code> instance previously registered with the given <code>mediatorName</code>.</p>
-
+                        <p>the <code><a href="../Protocols/IMediator.html">IMediator</a></code> instance previously registered with the given <code>mediatorName</code>.</p>
                       </div>
                     </section>
                   </div>
@@ -644,9 +635,9 @@ the rest of your application.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FP7PureMVC7IFacade11hasMediatorUS0___FQPS0_FSSSb"></a>
+                    <a name="/s:7PureMVC7IFacadeP11hasMediatorySbSSF"></a>
                     <a name="//apple_ref/swift/Method/hasMediator(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FP7PureMVC7IFacade11hasMediatorUS0___FQPS0_FSSSb">hasMediator(_:)</a>
+                    <a class="token" href="#/s:7PureMVC7IFacadeP11hasMediatorySbSSF">hasMediator(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -659,9 +650,9 @@ the rest of your application.</p>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
-                        <div class="Swift">
+                        <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">hasMediator</span><span class="p">(</span><span class="nv">mediatorName</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">hasMediator</span><span class="p">(</span><span class="n">_</span> <span class="nv">mediatorName</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
 
                         </div>
                       </div>
@@ -677,7 +668,7 @@ the rest of your application.</p>
                               </td>
                               <td>
                                 <div>
-                                  
+                                  <p></p>
                                 </div>
                               </td>
                             </tr>
@@ -687,7 +678,6 @@ the rest of your application.</p>
                       <div>
                         <h4>Return Value</h4>
                         <p>whether a Mediator is registered with the given <code>mediatorName</code>.</p>
-
                       </div>
                     </section>
                   </div>
@@ -695,9 +685,9 @@ the rest of your application.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FP7PureMVC7IFacade15notifyObserversUS0___FQPS0_FPS_13INotification_T_"></a>
+                    <a name="/s:7PureMVC7IFacadeP15notifyObserversyyAA13INotification_pF"></a>
                     <a name="//apple_ref/swift/Method/notifyObservers(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FP7PureMVC7IFacade15notifyObserversUS0___FQPS0_FPS_13INotification_T_">notifyObservers(_:)</a>
+                    <a class="token" href="#/s:7PureMVC7IFacadeP15notifyObserversyyAA13INotification_pF">notifyObservers(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -705,7 +695,7 @@ the rest of your application.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Notify <code>Observer</code>s.</p>
+                        <p>Notify <code><a href="../Classes/Observer.html">Observer</a></code>s.</p>
 
 <p>This method is left public mostly for backward
 compatibility, and to allow you to send custom
@@ -718,9 +708,9 @@ construct the notification yourself.</p>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
-                        <div class="Swift">
+                        <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">notifyObservers</span><span class="p">(</span><span class="nv">notification</span><span class="p">:</span> <span class="kt">INotification</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">notifyObservers</span><span class="p">(</span><span class="n">_</span> <span class="nv">notification</span><span class="p">:</span> <span class="kt"><a href="../Protocols/INotification.html">INotification</a></span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -736,8 +726,7 @@ construct the notification yourself.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>the <code>INotification</code> to have the <code>View</code> notify <code>Observers</code> of.</p>
-
+                                  <p>the <code><a href="../Protocols/INotification.html">INotification</a></code> to have the <code><a href="../Classes/View.html">View</a></code> notify <code>Observers</code> of.</p>
                                 </div>
                               </td>
                             </tr>
@@ -752,8 +741,8 @@ construct the notification yourself.</p>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2015 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2015-05-12)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.2.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2019 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2019-04-03)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

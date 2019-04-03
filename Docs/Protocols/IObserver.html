@@ -7,6 +7,7 @@
     <meta charset='utf-8'>
     <script src="../js/jquery.min.js" defer></script>
     <script src="../js/jazzy.js" defer></script>
+    
   </head>
   <body>
     <a name="//apple_ref/swift/Protocol/IObserver" class="dashAnchor"></a>
@@ -14,7 +15,6 @@
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html"> Docs</a> (100% documented)</p>
-        <p class="header-right"><a href="https://github.com/PureMVC/puremvc-swift-multicore-framework/wiki"><img src="../img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -28,7 +28,7 @@
       <nav class="sidebar">
         <ul class="nav-groups">
           <li class="nav-group-name">
-          <a href="../Classes.html">Classes</a>
+            <a href="../Classes.html">Classes</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="../Classes/Controller.html">Controller</a>
@@ -66,7 +66,7 @@
             </ul>
           </li>
           <li class="nav-group-name">
-          <a href="../Protocols.html">Protocols</a>
+            <a href="../Protocols.html">Protocols</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="../Protocols/ICommand.html">ICommand</a>
@@ -106,6 +106,12 @@
         <section>
           <section class="section">
             <h1>IObserver</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">IObserver</span></code></pre>
+
+                </div>
+              </div>
             <p>The interface definition for a PureMVC Observer.</p>
 
 <p>In PureMVC, <code>IObserver</code> implementors assume these responsibilities:</p>
@@ -129,13 +135,13 @@ MVC triad.</p>
 
 <p>An Observer is an object that encapsulates information
 about an interested object with a notification method that
-should be called when an <code>INotification</code> is broadcast. The Observer then
+should be called when an <code><a href="../Protocols/INotification.html">INotification</a></code> is broadcast. The Observer then
 acts as a proxy for notifying the interested object.</p>
 
-<p>Observers can receive <code>Notification</code>s by having their
+<p>Observers can receive <code><a href="../Classes/Notification.html">Notification</a></code>s by having their
 <code>notifyObserver</code> method invoked, passing
-in an object implementing the <code>INotification</code> interface, such
-as a subclass of <code>Notification</code>.</p>
+in an object implementing the <code><a href="../Protocols/INotification.html">INotification</a></code> interface, such
+as a subclass of <code><a href="../Classes/Notification.html">Notification</a></code>.</p>
 
 <p><code>@see org.puremvc.swift.multicore.interfaces.IView IView</code></p>
 
@@ -148,9 +154,9 @@ as a subclass of <code>Notification</code>.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:vP7PureMVC9IObserver12notifyMethodGSqFT12notificationPS_13INotification__T__"></a>
+                    <a name="/s:7PureMVC9IObserverP12notifyMethodyAA13INotification_pcSgvp"></a>
                     <a name="//apple_ref/swift/Property/notifyMethod" class="dashAnchor"></a>
-                    <a class="token" href="#/s:vP7PureMVC9IObserver12notifyMethodGSqFT12notificationPS_13INotification__T__">notifyMethod</a>
+                    <a class="token" href="#/s:7PureMVC9IObserverP12notifyMethodyAA13INotification_pcSgvp">notifyMethod</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -161,14 +167,14 @@ as a subclass of <code>Notification</code>.</p>
                         <p>Set the notification method.
 *</p>
 
-<p>The notification method should take one parameter of type <code>INotification</code></p>
+<p>The notification method should take one parameter of type <code><a href="../Protocols/INotification.html">INotification</a></code></p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
-                        <div class="Swift">
+                        <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">notifyMethod</span><span class="p">:</span> <span class="p">((</span><span class="nv">notification</span><span class="p">:</span> <span class="kt">INotification</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">())?</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">notifyMethod</span><span class="p">:</span> <span class="p">((</span><span class="n">_</span> <span class="nv">notification</span><span class="p">:</span> <span class="kt"><a href="../Protocols/INotification.html">INotification</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">())?</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -185,7 +191,6 @@ as a subclass of <code>Notification</code>.</p>
                               <td>
                                 <div>
                                   <p>the notification (callback) method of the interested object</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -198,9 +203,9 @@ as a subclass of <code>Notification</code>.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:vP7PureMVC9IObserver13notifyContextGSqPSs9AnyObject__"></a>
+                    <a name="/s:7PureMVC9IObserverP13notifyContextyXlSgvp"></a>
                     <a name="//apple_ref/swift/Property/notifyContext" class="dashAnchor"></a>
-                    <a class="token" href="#/s:vP7PureMVC9IObserver13notifyContextGSqPSs9AnyObject__">notifyContext</a>
+                    <a class="token" href="#/s:7PureMVC9IObserverP13notifyContextyXlSgvp">notifyContext</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -213,9 +218,9 @@ as a subclass of <code>Notification</code>.</p>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
-                        <div class="Swift">
+                        <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">notifyContext</span><span class="p">:</span> <span class="kt">AnyObject</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">notifyContext</span><span class="p">:</span> <span class="kt">AnyObject</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -225,9 +230,9 @@ as a subclass of <code>Notification</code>.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FP7PureMVC9IObserver14notifyObserverUS0___FQPS0_FPS_13INotification_T_"></a>
+                    <a name="/s:7PureMVC9IObserverP14notifyObserveryyAA13INotification_pF"></a>
                     <a name="//apple_ref/swift/Method/notifyObserver(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FP7PureMVC9IObserver14notifyObserverUS0___FQPS0_FPS_13INotification_T_">notifyObserver(_:)</a>
+                    <a class="token" href="#/s:7PureMVC9IObserverP14notifyObserveryyAA13INotification_pF">notifyObserver(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -240,9 +245,9 @@ as a subclass of <code>Notification</code>.</p>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
-                        <div class="Swift">
+                        <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">notifyObserver</span><span class="p">(</span><span class="nv">notification</span><span class="p">:</span> <span class="kt">INotification</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">notifyObserver</span><span class="p">(</span><span class="n">_</span> <span class="nv">notification</span><span class="p">:</span> <span class="kt"><a href="../Protocols/INotification.html">INotification</a></span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -258,8 +263,7 @@ as a subclass of <code>Notification</code>.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>the <code>INotification</code> to pass to the interested object&rsquo;s notification method</p>
-
+                                  <p>the <code><a href="../Protocols/INotification.html">INotification</a></code> to pass to the interested object&rsquo;s notification method</p>
                                 </div>
                               </td>
                             </tr>
@@ -272,9 +276,9 @@ as a subclass of <code>Notification</code>.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FP7PureMVC9IObserver20compareNotifyContextUS0___FQPS0_FPSs9AnyObject_Sb"></a>
+                    <a name="/s:7PureMVC9IObserverP20compareNotifyContextySbyXlF"></a>
                     <a name="//apple_ref/swift/Method/compareNotifyContext(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FP7PureMVC9IObserver20compareNotifyContextUS0___FQPS0_FPSs9AnyObject_Sb">compareNotifyContext(_:)</a>
+                    <a class="token" href="#/s:7PureMVC9IObserverP20compareNotifyContextySbyXlF">compareNotifyContext(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -287,9 +291,9 @@ as a subclass of <code>Notification</code>.</p>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
-                        <div class="Swift">
+                        <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">compareNotifyContext</span><span class="p">(</span><span class="nv">object</span><span class="p">:</span> <span class="kt">AnyObject</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">compareNotifyContext</span><span class="p">(</span><span class="n">_</span> <span class="nv">object</span><span class="p">:</span> <span class="kt">AnyObject</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
 
                         </div>
                       </div>
@@ -306,7 +310,6 @@ as a subclass of <code>Notification</code>.</p>
                               <td>
                                 <div>
                                   <p>the object to compare.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -316,7 +319,6 @@ as a subclass of <code>Notification</code>.</p>
                       <div>
                         <h4>Return Value</h4>
                         <p>boolean indicating if the notification context and the object are the same.</p>
-
                       </div>
                     </section>
                   </div>
@@ -326,8 +328,8 @@ as a subclass of <code>Notification</code>.</p>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2015 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2015-05-12)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.2.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2019 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2019-04-03)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

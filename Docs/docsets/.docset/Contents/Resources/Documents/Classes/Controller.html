@@ -7,6 +7,7 @@
     <meta charset='utf-8'>
     <script src="../js/jquery.min.js" defer></script>
     <script src="../js/jazzy.js" defer></script>
+    
   </head>
   <body>
     <a name="//apple_ref/swift/Class/Controller" class="dashAnchor"></a>
@@ -14,7 +15,6 @@
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html"> Docs</a> (100% documented)</p>
-        <p class="header-right"><a href="https://github.com/PureMVC/puremvc-swift-multicore-framework"><img src="../img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -28,7 +28,7 @@
       <nav class="sidebar">
         <ul class="nav-groups">
           <li class="nav-group-name">
-          <a href="../Classes.html">Classes</a>
+            <a href="../Classes.html">Classes</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="../Classes/Controller.html">Controller</a>
@@ -66,7 +66,7 @@
             </ul>
           </li>
           <li class="nav-group-name">
-          <a href="../Protocols.html">Protocols</a>
+            <a href="../Protocols.html">Protocols</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="../Protocols/ICommand.html">ICommand</a>
@@ -106,23 +106,29 @@
         <section>
           <section class="section">
             <h1>Controller</h1>
-            <p>A Multiton <code>IController</code> implementation.</p>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">Controller</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/IController.html">IController</a></span></code></pre>
+
+                </div>
+              </div>
+            <p>A Multiton <code><a href="../Protocols/IController.html">IController</a></code> implementation.</p>
 
 <p>In PureMVC, the <code>Controller</code> class follows the
 &lsquo;Command and Controller&rsquo; strategy, and assumes these
 responsibilities:</p>
 
 <ul>
-<li>Remembering which <code>ICommand</code>s are intended to handle which <code>INotifications</code>.</li>
-<li>Registering itself as an <code>IObserver</code> with the <code>View</code> for each <code>INotification</code> that it has an <code>ICommand</code> mapping for.</li>
-<li>Creating a new instance of the proper <code>ICommand</code> to handle a given <code>INotification</code> when notified by the <code>View</code>.</li>
-<li>Calling the <code>ICommand</code>&rsquo;s <code>execute</code> method, passing in the <code>INotification</code>.</li>
+<li>Remembering which <code><a href="../Protocols/ICommand.html">ICommand</a></code>s are intended to handle which <code>INotifications</code>.</li>
+<li>Registering itself as an <code><a href="../Protocols/IObserver.html">IObserver</a></code> with the <code><a href="../Classes/View.html">View</a></code> for each <code><a href="../Protocols/INotification.html">INotification</a></code> that it has an <code><a href="../Protocols/ICommand.html">ICommand</a></code> mapping for.</li>
+<li>Creating a new instance of the proper <code><a href="../Protocols/ICommand.html">ICommand</a></code> to handle a given <code><a href="../Protocols/INotification.html">INotification</a></code> when notified by the <code><a href="../Classes/View.html">View</a></code>.</li>
+<li>Calling the <code><a href="../Protocols/ICommand.html">ICommand</a></code>&lsquo;s <code>execute</code> method, passing in the <code><a href="../Protocols/INotification.html">INotification</a></code>.</li>
 </ul>
 
 <p>Your application must register <code>ICommands</code> with the
 Controller.</p>
 
-<p>The simplest way is to subclass <code>Facade</code>,
+<p>The simplest way is to subclass <code><a href="../Classes/Facade.html">Facade</a></code>,
 and use its <code>initializeController</code> method to add your
 registrations.</p>
 
@@ -143,9 +149,9 @@ registrations.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:ZvC7PureMVC10Controller12MULTITON_MSGSS"></a>
+                    <a name="/s:7PureMVC10ControllerC12MULTITON_MSGSSvpZ"></a>
                     <a name="//apple_ref/swift/Variable/MULTITON_MSG" class="dashAnchor"></a>
-                    <a class="token" href="#/s:ZvC7PureMVC10Controller12MULTITON_MSGSS">MULTITON_MSG</a>
+                    <a class="token" href="#/s:7PureMVC10ControllerC12MULTITON_MSGSSvpZ">MULTITON_MSG</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -158,9 +164,9 @@ registrations.</p>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
-                        <div class="Swift">
+                        <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">MULTITON_MSG</span> <span class="o">=</span> <span class="s">"Controller instance for this Multiton key already constructed!"</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">MULTITON_MSG</span><span class="p">:</span> <span class="kt">String</span></code></pre>
 
                         </div>
                       </div>
@@ -170,9 +176,9 @@ registrations.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC7PureMVC10ControllercFMS0_FT3keySS_S0_"></a>
+                    <a name="/s:7PureMVC10ControllerC3keyACSS_tcfc"></a>
                     <a name="//apple_ref/swift/Method/init(key:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC7PureMVC10ControllercFMS0_FT3keySS_S0_">init(key:)</a>
+                    <a class="token" href="#/s:7PureMVC10ControllerC3keyACSS_tcfc">init(key:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -182,7 +188,7 @@ registrations.</p>
                       <div class="abstract">
                         <p>Constructor.</p>
 
-<p>This <code>IController</code> implementation is a Multiton,
+<p>This <code><a href="../Protocols/IController.html">IController</a></code> implementation is a Multiton,
 so you should not call the constructor
 directly, but instead call the static Factory method,
 passing the unique key for this instance
@@ -193,9 +199,9 @@ passing the unique key for this instance
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
-                        <div class="Swift">
+                        <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -205,9 +211,9 @@ passing the unique key for this instance
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC7PureMVC10Controller20initializeControllerFS0_FT_T_"></a>
+                    <a name="/s:7PureMVC10ControllerC010initializeC0yyF"></a>
                     <a name="//apple_ref/swift/Method/initializeController()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC7PureMVC10Controller20initializeControllerFS0_FT_T_">initializeController()</a>
+                    <a class="token" href="#/s:7PureMVC10ControllerC010initializeC0yyF">initializeController()</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -219,23 +225,22 @@ passing the unique key for this instance
 
 <p>Called automatically by the constructor.</p>
 
-<p>Note that if you are using a subclass of <code>View</code>
+<p>Note that if you are using a subclass of <code><a href="../Classes/View.html">View</a></code>
 in your application, you should <em>also</em> subclass <code>Controller</code>
 and override the <code>initializeController</code> method in the
 following way:</p>
-
-<pre class="highlight plaintext"><code>// ensure that the Controller is talking to my IView implementation
-override public func initializeController(  ) {
-    view = MyView.getInstance(multitonKey) { MyView(key: self.multitonKey) }
-}
+<pre class="highlight swift"><code><span class="c1">// ensure that the Controller is talking to my IView implementation</span>
+<span class="k">override</span> <span class="kd">public</span> <span class="kd">func</span> <span class="nf">initializeController</span><span class="p">(</span>  <span class="p">)</span> <span class="p">{</span>
+    <span class="n">view</span> <span class="o">=</span> <span class="kt">MyView</span><span class="o">.</span><span class="nf">getInstance</span><span class="p">(</span><span class="n">multitonKey</span><span class="p">)</span> <span class="p">{</span> <span class="kt">MyView</span><span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="k">self</span><span class="o">.</span><span class="n">multitonKey</span><span class="p">)</span> <span class="p">}</span>
+<span class="p">}</span>
 </code></pre>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
-                        <div class="Swift">
+                        <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">initializeController</span><span class="p">()</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">initializeController</span><span class="p">()</span></code></pre>
 
                         </div>
                       </div>
@@ -245,9 +250,9 @@ override public func initializeController(  ) {
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:ZFC7PureMVC10Controller11getInstanceFMS0_FTSS7closureFT_PS_11IController__PS1__"></a>
+                    <a name="/s:7PureMVC10ControllerC11getInstance_7closureAA11IController_pSS_AaF_pyXEtFZ"></a>
                     <a name="//apple_ref/swift/Method/getInstance(_:closure:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:ZFC7PureMVC10Controller11getInstanceFMS0_FTSS7closureFT_PS_11IController__PS1__">getInstance(_:closure:)</a>
+                    <a class="token" href="#/s:7PureMVC10ControllerC11getInstance_7closureAA11IController_pSS_AaF_pyXEtFZ">getInstance(_:closure:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -260,9 +265,9 @@ override public func initializeController(  ) {
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
-                        <div class="Swift">
+                        <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">getInstance</span><span class="p">(</span><span class="nv">key</span><span class="p">:</span><span class="kt">String</span><span class="p">,</span> <span class="nv">closure</span><span class="p">:</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">IController</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">IController</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">getInstance</span><span class="p">(</span><span class="n">_</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">closure</span><span class="p">:</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/IController.html">IController</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/IController.html">IController</a></span></code></pre>
 
                         </div>
                       </div>
@@ -279,7 +284,6 @@ override public func initializeController(  ) {
                               <td>
                                 <div>
                                   <p>multitonKey</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -291,8 +295,7 @@ override public func initializeController(  ) {
                               </td>
                               <td>
                                 <div>
-                                  <p>reference that returns <code>IController</code></p>
-
+                                  <p>reference that returns <code><a href="../Protocols/IController.html">IController</a></code></p>
                                 </div>
                               </td>
                             </tr>
@@ -302,7 +305,6 @@ override public func initializeController(  ) {
                       <div>
                         <h4>Return Value</h4>
                         <p>the Multiton instance</p>
-
                       </div>
                     </section>
                   </div>
@@ -310,9 +312,9 @@ override public func initializeController(  ) {
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC7PureMVC10Controller14executeCommandFS0_FPS_13INotification_T_"></a>
+                    <a name="/s:7PureMVC10ControllerC14executeCommandyyAA13INotification_pF"></a>
                     <a name="//apple_ref/swift/Method/executeCommand(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC7PureMVC10Controller14executeCommandFS0_FPS_13INotification_T_">executeCommand(_:)</a>
+                    <a class="token" href="#/s:7PureMVC10ControllerC14executeCommandyyAA13INotification_pF">executeCommand(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -320,15 +322,15 @@ override public func initializeController(  ) {
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>If an <code>ICommand</code> has previously been registered
-to handle a the given <code>INotification</code>, then it is executed.</p>
+                        <p>If an <code><a href="../Protocols/ICommand.html">ICommand</a></code> has previously been registered
+to handle a the given <code><a href="../Protocols/INotification.html">INotification</a></code>, then it is executed.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
-                        <div class="Swift">
+                        <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">executeCommand</span><span class="p">(</span><span class="nv">notification</span><span class="p">:</span> <span class="kt">INotification</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">executeCommand</span><span class="p">(</span><span class="n">_</span> <span class="nv">notification</span><span class="p">:</span> <span class="kt"><a href="../Protocols/INotification.html">INotification</a></span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -344,8 +346,7 @@ to handle a the given <code>INotification</code>, then it is executed.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>an <code>INotification</code></p>
-
+                                  <p>an <code><a href="../Protocols/INotification.html">INotification</a></code></p>
                                 </div>
                               </td>
                             </tr>
@@ -358,9 +359,9 @@ to handle a the given <code>INotification</code>, then it is executed.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC7PureMVC10Controller15registerCommandFS0_FTSS7closureFT_PS_8ICommand__T_"></a>
+                    <a name="/s:7PureMVC10ControllerC15registerCommand_7closureySS_AA8ICommand_pyctF"></a>
                     <a name="//apple_ref/swift/Method/registerCommand(_:closure:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC7PureMVC10Controller15registerCommandFS0_FTSS7closureFT_PS_8ICommand__T_">registerCommand(_:closure:)</a>
+                    <a class="token" href="#/s:7PureMVC10ControllerC15registerCommand_7closureySS_AA8ICommand_pyctF">registerCommand(_:closure:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -368,12 +369,12 @@ to handle a the given <code>INotification</code>, then it is executed.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Register a particular <code>ICommand</code> class as the handler
-for a particular <code>INotification</code>.</p>
+                        <p>Register a particular <code><a href="../Protocols/ICommand.html">ICommand</a></code> class as the handler
+for a particular <code><a href="../Protocols/INotification.html">INotification</a></code>.</p>
 
-<p>If an <code>ICommand</code> has already been registered to
-handle <code>INotification</code>s with this name, it is no longer
-used, the new <code>ICommand</code> is used instead.</p>
+<p>If an <code><a href="../Protocols/ICommand.html">ICommand</a></code> has already been registered to
+handle <code><a href="../Protocols/INotification.html">INotification</a></code>s with this name, it is no longer
+used, the new <code><a href="../Protocols/ICommand.html">ICommand</a></code> is used instead.</p>
 
 <p>The Observer for the new ICommand is only created if this the
 first time an ICommand has been regisered for this Notification name.</p>
@@ -381,9 +382,9 @@ first time an ICommand has been regisered for this Notification name.</p>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
-                        <div class="Swift">
+                        <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">registerCommand</span><span class="p">(</span><span class="nv">notificationName</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">closure</span><span class="p">:</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">ICommand</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">registerCommand</span><span class="p">(</span><span class="n">_</span> <span class="nv">notificationName</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">closure</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/ICommand.html">ICommand</a></span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -399,8 +400,7 @@ first time an ICommand has been regisered for this Notification name.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>the name of the <code>INotification</code></p>
-
+                                  <p>the name of the <code><a href="../Protocols/INotification.html">INotification</a></code></p>
                                 </div>
                               </td>
                             </tr>
@@ -412,8 +412,7 @@ first time an ICommand has been regisered for this Notification name.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>reference that returns <code>ICommand</code></p>
-
+                                  <p>reference that returns <code><a href="../Protocols/ICommand.html">ICommand</a></code></p>
                                 </div>
                               </td>
                             </tr>
@@ -426,9 +425,9 @@ first time an ICommand has been regisered for this Notification name.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC7PureMVC10Controller10hasCommandFS0_FSSSb"></a>
+                    <a name="/s:7PureMVC10ControllerC10hasCommandySbSSF"></a>
                     <a name="//apple_ref/swift/Method/hasCommand(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC7PureMVC10Controller10hasCommandFS0_FSSSb">hasCommand(_:)</a>
+                    <a class="token" href="#/s:7PureMVC10ControllerC10hasCommandySbSSF">hasCommand(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -441,9 +440,9 @@ first time an ICommand has been regisered for this Notification name.</p>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
-                        <div class="Swift">
+                        <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">hasCommand</span><span class="p">(</span><span class="nv">notificationName</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">hasCommand</span><span class="p">(</span><span class="n">_</span> <span class="nv">notificationName</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
 
                         </div>
                       </div>
@@ -459,7 +458,7 @@ first time an ICommand has been regisered for this Notification name.</p>
                               </td>
                               <td>
                                 <div>
-                                  
+                                  <p></p>
                                 </div>
                               </td>
                             </tr>
@@ -469,7 +468,6 @@ first time an ICommand has been regisered for this Notification name.</p>
                       <div>
                         <h4>Return Value</h4>
                         <p>whether a Command is currently registered for the given <code>notificationName</code>.</p>
-
                       </div>
                     </section>
                   </div>
@@ -477,9 +475,9 @@ first time an ICommand has been regisered for this Notification name.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC7PureMVC10Controller13removeCommandFS0_FSST_"></a>
+                    <a name="/s:7PureMVC10ControllerC13removeCommandyySSF"></a>
                     <a name="//apple_ref/swift/Method/removeCommand(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC7PureMVC10Controller13removeCommandFS0_FSST_">removeCommand(_:)</a>
+                    <a class="token" href="#/s:7PureMVC10ControllerC13removeCommandyySSF">removeCommand(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -487,14 +485,14 @@ first time an ICommand has been regisered for this Notification name.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Remove a previously registered <code>ICommand</code> to <code>INotification</code> mapping.</p>
+                        <p>Remove a previously registered <code><a href="../Protocols/ICommand.html">ICommand</a></code> to <code><a href="../Protocols/INotification.html">INotification</a></code> mapping.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
-                        <div class="Swift">
+                        <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">removeCommand</span><span class="p">(</span><span class="nv">notificationName</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">removeCommand</span><span class="p">(</span><span class="n">_</span> <span class="nv">notificationName</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -510,8 +508,7 @@ first time an ICommand has been regisered for this Notification name.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>the name of the <code>INotification</code> to remove the <code>ICommand</code> mapping for</p>
-
+                                  <p>the name of the <code><a href="../Protocols/INotification.html">INotification</a></code> to remove the <code><a href="../Protocols/ICommand.html">ICommand</a></code> mapping for</p>
                                 </div>
                               </td>
                             </tr>
@@ -524,9 +521,9 @@ first time an ICommand has been regisered for this Notification name.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:ZFC7PureMVC10Controller16removeControllerFMS0_FSST_"></a>
+                    <a name="/s:7PureMVC10ControllerC06removeC0yySSFZ"></a>
                     <a name="//apple_ref/swift/Method/removeController(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:ZFC7PureMVC10Controller16removeControllerFMS0_FSST_">removeController(_:)</a>
+                    <a class="token" href="#/s:7PureMVC10ControllerC06removeC0yySSFZ">removeController(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -539,9 +536,9 @@ first time an ICommand has been regisered for this Notification name.</p>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
-                        <div class="Swift">
+                        <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">removeController</span><span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">removeController</span><span class="p">(</span><span class="n">_</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -558,7 +555,6 @@ first time an ICommand has been regisered for this Notification name.</p>
                               <td>
                                 <div>
                                   <p>of IController instance to remove</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -571,9 +567,9 @@ first time an ICommand has been regisered for this Notification name.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:vC7PureMVC10Controller4viewGSqPS_5IView__"></a>
+                    <a name="/s:7PureMVC10ControllerC4viewAA5IView_pSgvp"></a>
                     <a name="//apple_ref/swift/Property/view" class="dashAnchor"></a>
-                    <a class="token" href="#/s:vC7PureMVC10Controller4viewGSqPS_5IView__">view</a>
+                    <a class="token" href="#/s:7PureMVC10ControllerC4viewAA5IView_pSgvp">view</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -586,9 +582,9 @@ first time an ICommand has been regisered for this Notification name.</p>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
-                        <div class="Swift">
+                        <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">view</span><span class="p">:</span> <span class="kt">IView</span><span class="p">?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">view</span><span class="p">:</span> <span class="kt"><a href="../Protocols/IView.html">IView</a></span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -598,9 +594,9 @@ first time an ICommand has been regisered for this Notification name.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:vC7PureMVC10Controller11multitonKeySS"></a>
+                    <a name="/s:7PureMVC10ControllerC11multitonKeySSvp"></a>
                     <a name="//apple_ref/swift/Property/multitonKey" class="dashAnchor"></a>
-                    <a class="token" href="#/s:vC7PureMVC10Controller11multitonKeySS">multitonKey</a>
+                    <a class="token" href="#/s:7PureMVC10ControllerC11multitonKeySSvp">multitonKey</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -613,9 +609,9 @@ first time an ICommand has been regisered for this Notification name.</p>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
-                        <div class="Swift">
+                        <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">multitonKey</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">multitonKey</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -627,8 +623,8 @@ first time an ICommand has been regisered for this Notification name.</p>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2015 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2015-05-12)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.2.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2019 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2019-04-03)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

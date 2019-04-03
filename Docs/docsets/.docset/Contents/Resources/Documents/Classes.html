@@ -7,13 +7,14 @@
     <meta charset='utf-8'>
     <script src="js/jquery.min.js" defer></script>
     <script src="js/jazzy.js" defer></script>
+    
   </head>
   <body>
+    <a name="//apple_ref/swift/Section/Classes" class="dashAnchor"></a>
     <a title="Classes  Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="index.html"> Docs</a> (100% documented)</p>
-        <p class="header-right"><a href="https://github.com/PureMVC/puremvc-swift-multicore-framework"><img src="img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -27,7 +28,7 @@
       <nav class="sidebar">
         <ul class="nav-groups">
           <li class="nav-group-name">
-          <a href="Classes.html">Classes</a>
+            <a href="Classes.html">Classes</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="Classes/Controller.html">Controller</a>
@@ -65,7 +66,7 @@
             </ul>
           </li>
           <li class="nav-group-name">
-          <a href="Protocols.html">Protocols</a>
+            <a href="Protocols.html">Protocols</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="Protocols/ICommand.html">ICommand</a>
@@ -114,9 +115,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:C7PureMVC8Notifier"></a>
-                    <a name="//apple_ref/swift/Class/Notifier" class="dashAnchor"></a>
-                    <a class="token" href="#/s:C7PureMVC8Notifier">Notifier</a>
+                    <a name="/s:7PureMVC10ControllerC"></a>
+                    <a name="//apple_ref/swift/Class/Controller" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7PureMVC10ControllerC">Controller</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -124,30 +125,422 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>A Base <code>INotifier</code> implementation.</p>
+                        <p>A Multiton <code><a href="Protocols/IController.html">IController</a></code> implementation.</p>
 
-<p><code>MacroCommand, Command, Mediator</code> and <code>Proxy</code>
+<p>In PureMVC, the <code>Controller</code> class follows the
+&lsquo;Command and Controller&rsquo; strategy, and assumes these
+responsibilities:</p>
+
+<ul>
+<li>Remembering which <code><a href="Protocols/ICommand.html">ICommand</a></code>s are intended to handle which <code>INotifications</code>.</li>
+<li>Registering itself as an <code><a href="Protocols/IObserver.html">IObserver</a></code> with the <code><a href="Classes/View.html">View</a></code> for each <code><a href="Protocols/INotification.html">INotification</a></code> that it has an <code><a href="Protocols/ICommand.html">ICommand</a></code> mapping for.</li>
+<li>Creating a new instance of the proper <code><a href="Protocols/ICommand.html">ICommand</a></code> to handle a given <code><a href="Protocols/INotification.html">INotification</a></code> when notified by the <code><a href="Classes/View.html">View</a></code>.</li>
+<li>Calling the <code><a href="Protocols/ICommand.html">ICommand</a></code>&lsquo;s <code>execute</code> method, passing in the <code><a href="Protocols/INotification.html">INotification</a></code>.</li>
+</ul>
+
+<p>Your application must register <code>ICommands</code> with the
+Controller.</p>
+
+<p>The simplest way is to subclass <code><a href="Classes/Facade.html">Facade</a></code>,
+and use its <code>initializeController</code> method to add your
+registrations.</p>
+
+<p><code>@see org.puremvc.swift.multicore.core.View View</code></p>
+
+<p><code>@see org.puremvc.swift.multicore.patterns.observer.Observer Observer</code></p>
+
+<p><code>@see org.puremvc.swift.multicore.patterns.observer.Notification Notification</code></p>
+
+<p><code>@see org.puremvc.swift.multicore.patterns.command.SimpleCommand SimpleCommand</code></p>
+
+<p><code>@see org.puremvc.swift.multicore.patterns.command.MacroCommand MacroCommand</code></p>
+
+                        <a href="Classes/Controller.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">Controller</span> <span class="p">:</span> <span class="kt"><a href="Protocols/IController.html">IController</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7PureMVC5ModelC"></a>
+                    <a name="//apple_ref/swift/Class/Model" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7PureMVC5ModelC">Model</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A Multiton <code><a href="Protocols/IModel.html">IModel</a></code> implementation.</p>
+
+<p>In PureMVC, the <code>Model</code> class provides
+access to model objects (Proxies) by named lookup.</p>
+
+<p>The <code>Model</code> assumes these responsibilities:</p>
+
+<ul>
+<li>Maintain a cache of <code><a href="Protocols/IProxy.html">IProxy</a></code> instances.</li>
+<li>Provide methods for registering, retrieving, and removing <code><a href="Protocols/IProxy.html">IProxy</a></code> instances.</li>
+</ul>
+
+<p>Your application must register <code><a href="Protocols/IProxy.html">IProxy</a></code> instances
+with the <code>Model</code>. Typically, you use an
+<code><a href="Protocols/ICommand.html">ICommand</a></code> to create and register <code><a href="Protocols/IProxy.html">IProxy</a></code>
+instances once the <code><a href="Classes/Facade.html">Facade</a></code> has initialized the Core
+actors.</p>
+
+<p><code>@see org.puremvc.swift.multicore.patterns.proxy.Proxy Proxy</code></p>
+
+<p><code>@see org.puremvc.swift.multicore.interfaces.IProxy IProxy</code></p>
+
+                        <a href="Classes/Model.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">Model</span> <span class="p">:</span> <span class="kt"><a href="Protocols/IModel.html">IModel</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7PureMVC4ViewC"></a>
+                    <a name="//apple_ref/swift/Class/View" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7PureMVC4ViewC">View</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A Multiton <code><a href="Protocols/IView.html">IView</a></code> implementation.</p>
+
+<p>In PureMVC, the <code>View</code> class assumes these responsibilities:</p>
+
+<ul>
+<li>Maintain a cache of <code><a href="Protocols/IMediator.html">IMediator</a></code> instances.</li>
+<li>Provide methods for registering, retrieving, and removing <code>IMediators</code>.</li>
+<li>Notifiying <code>IMediators</code> when they are registered or removed.</li>
+<li>Managing the observer lists for each <code><a href="Protocols/INotification.html">INotification</a></code> in the application.</li>
+<li>Providing a method for attaching <code>IObservers</code> to an <code><a href="Protocols/INotification.html">INotification</a></code>&lsquo;s observer list.</li>
+<li>Providing a method for broadcasting an <code><a href="Protocols/INotification.html">INotification</a></code>.</li>
+<li>Notifying the <code>IObservers</code> of a given <code><a href="Protocols/INotification.html">INotification</a></code> when it broadcast.</li>
+</ul>
+
+<p><code>@see org.puremvc.swift.multicore.patterns.mediator.Mediator Mediator</code></p>
+
+<p><code>@see org.puremvc.swift.multicore.patterns.observer.Observer Observer</code></p>
+
+<p><code>@see org.puremvc.swift.multicore.patterns.observer.Notification Notification</code></p>
+
+                        <a href="Classes/View.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">View</span> <span class="p">:</span> <span class="kt"><a href="Protocols/IView.html">IView</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7PureMVC12MacroCommandC"></a>
+                    <a name="//apple_ref/swift/Class/MacroCommand" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7PureMVC12MacroCommandC">MacroCommand</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A base <code><a href="Protocols/ICommand.html">ICommand</a></code> implementation that executes other <code><a href="Protocols/ICommand.html">ICommand</a></code>s.</p>
+
+<p>A <code>MacroCommand</code> maintains an list of
+<code><a href="Protocols/ICommand.html">ICommand</a></code> Class references called <em>SubCommands</em>.</p>
+
+<p>When <code>execute</code> is called, the <code>MacroCommand</code>
+retrieves <code>ICommands</code> by executing closures and then calls 
+<code>execute</code> on each of its <em>SubCommands</em> turn.
+Each <em>SubCommand</em> will be passed a reference to the original
+<code><a href="Protocols/INotification.html">INotification</a></code> that was passed to the <code>MacroCommand</code>&lsquo;s
+<code>execute</code> method.</p>
+
+<p>Unlike <code><a href="Classes/SimpleCommand.html">SimpleCommand</a></code>, your subclass
+should not override <code>execute</code>, but instead, should
+override the <code>initializeMacroCommand</code> method,
+calling <code>addSubCommand</code> once for each <em>SubCommand</em>
+to be executed.</p>
+
+<p><code>@see org.puremvc.swift.multicore.core.Controller Controller</code></p>
+
+<p><code>@see org.puremvc.swift.multicore.patterns.observer.Notification Notification</code></p>
+
+<p><code>@see org.puremvc.swift.multicore.patterns.command.SimpleCommand SimpleCommand</code></p>
+
+                        <a href="Classes/MacroCommand.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">MacroCommand</span> <span class="p">:</span> <span class="kt"><a href="Classes/Notifier.html">Notifier</a></span><span class="p">,</span> <span class="kt"><a href="Protocols/ICommand.html">ICommand</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7PureMVC13SimpleCommandC"></a>
+                    <a name="//apple_ref/swift/Class/SimpleCommand" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7PureMVC13SimpleCommandC">SimpleCommand</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A base <code><a href="Protocols/ICommand.html">ICommand</a></code> implementation.</p>
+
+<p>Your subclass should override the <code>execute</code>
+method where your business logic will handle the <code><a href="Protocols/INotification.html">INotification</a></code>. </p>
+
+<p><code>@see org.puremvc.swift.multicore.core.Controller Controller</code></p>
+
+<p><code>@see org.puremvc.swift.multicore.patterns.observer.Notification Notification</code></p>
+
+<p><code>@see org.puremvc.swift.multicore.patterns.command.MacroCommand MacroCommand</code></p>
+
+                        <a href="Classes/SimpleCommand.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">SimpleCommand</span> <span class="p">:</span> <span class="kt"><a href="Classes/Notifier.html">Notifier</a></span><span class="p">,</span> <span class="kt"><a href="Protocols/ICommand.html">ICommand</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7PureMVC6FacadeC"></a>
+                    <a name="//apple_ref/swift/Class/Facade" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7PureMVC6FacadeC">Facade</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A base Multiton <code><a href="Protocols/IFacade.html">IFacade</a></code> implementation.</p>
+
+<p><code>@see org.puremvc.swift.multicore.core.Model Model</code></p>
+
+<p><code>@see org.puremvc.swift.multicore.core.View View</code></p>
+
+<p><code>@see org.puremvc.swift.multicore.core.Controller Controller</code></p>
+
+                        <a href="Classes/Facade.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">Facade</span> <span class="p">:</span> <span class="kt"><a href="Protocols/IFacade.html">IFacade</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7PureMVC8MediatorC"></a>
+                    <a name="//apple_ref/swift/Class/Mediator" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7PureMVC8MediatorC">Mediator</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A base <code><a href="Protocols/IMediator.html">IMediator</a></code> implementation.</p>
+
+<p><code>@see org.puremvc.swift.multicore.core.View View</code></p>
+
+                        <a href="Classes/Mediator.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">Mediator</span> <span class="p">:</span> <span class="kt"><a href="Classes/Notifier.html">Notifier</a></span><span class="p">,</span> <span class="kt"><a href="Protocols/IMediator.html">IMediator</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7PureMVC12NotificationC"></a>
+                    <a name="//apple_ref/swift/Class/Notification" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7PureMVC12NotificationC">Notification</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A base <code><a href="Protocols/INotification.html">INotification</a></code> implementation.</p>
+
+<p>PureMVC does not rely upon underlying event models such
+as the one provided with Flash, and ActionScript 3 does
+not have an inherent event model.</p>
+
+<p>The Observer Pattern as implemented within PureMVC exists
+to support event-driven communication between the
+application and the actors of the MVC triad.</p>
+
+<p>Notifications are not meant to be a replacement for Events
+in Flex/Flash/Apollo. Generally, <code><a href="Protocols/IMediator.html">IMediator</a></code> implementors
+place event listeners on their view components, which they
+then handle in the usual way. This may lead to the broadcast of <code>Notification</code>s to
+trigger <code><a href="Protocols/ICommand.html">ICommand</a></code>s or to communicate with other <code>IMediators</code>. <code><a href="Protocols/IProxy.html">IProxy</a></code> and <code><a href="Protocols/ICommand.html">ICommand</a></code>
+instances communicate with each other and <code><a href="Protocols/IMediator.html">IMediator</a></code>s
+by broadcasting <code><a href="Protocols/INotification.html">INotification</a></code>s.</p>
+
+<p>A key difference between Flash <code>Event</code>s and PureMVC
+<code>Notification</code>s is that <code>Event</code>s follow the
+&lsquo;Chain of Responsibility&rsquo; pattern, &lsquo;bubbling&rsquo; up the display hierarchy
+until some parent component handles the <code>Event</code>, while
+PureMVC <code>Notification</code>s follow a &lsquo;Publish/Subscribe&rsquo;
+pattern. PureMVC classes need not be related to each other in a
+parent/child relationship in order to communicate with one another
+using <code>Notification</code>s.</p>
+
+<p><code>@see org.puremvc.swift.multicore.patterns.observer.Observer Observer</code>
+*</p>
+
+                        <a href="Classes/Notification.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">Notification</span> <span class="p">:</span> <span class="kt"><a href="Protocols/INotification.html">INotification</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7PureMVC8NotifierC"></a>
+                    <a name="//apple_ref/swift/Class/Notifier" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7PureMVC8NotifierC">Notifier</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A Base <code><a href="Protocols/INotifier.html">INotifier</a></code> implementation.</p>
+
+<p><code>MacroCommand, Command, Mediator</code> and <code><a href="Classes/Proxy.html">Proxy</a></code>
 all have a need to send <code>Notifications</code>. </p>
 
-<p>The <code>INotifier</code> interface provides a common method called
+<p>The <code><a href="Protocols/INotifier.html">INotifier</a></code> interface provides a common method called
 <code>sendNotification</code> that relieves implementation code of
 the necessity to actually construct <code>Notifications</code>.</p>
 
 <p>The <code>Notifier</code> class, which all of the above mentioned classes
-extend, provides an initialized reference to the <code>Facade</code>
+extend, provides an initialized reference to the <code><a href="Classes/Facade.html">Facade</a></code>
 Multiton, which is required for the convienience method
 for sending <code>Notifications</code>, but also eases implementation as these
-classes have frequent <code>Facade</code> interactions and usually require
+classes have frequent <code><a href="Classes/Facade.html">Facade</a></code> interactions and usually require
 access to the facade anyway.</p>
 
 <p>NOTE: In the MultiCore version of the framework, there is one caveat to
 notifiers, they cannot send notifications or reach the facade until they
 have a valid multitonKey.</p>
 
-<p>The multitonKey is set:
-* on a Command when it is executed by the Controller
-* on a Mediator is registered with the View
-* on a Proxy is registered with the Model.</p>
+<p>The multitonKey is set:</p>
+
+<ul>
+<li>on a Command when it is executed by the Controller</li>
+<li>on a Mediator is registered with the View</li>
+<li>on a Proxy is registered with the Model.</li>
+</ul>
 
 <p><code>@see org.puremvc.swift.multicore.patterns.proxy.Proxy Proxy</code></p>
 
@@ -163,9 +556,9 @@ have a valid multitonKey.</p>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
-                        <div class="Swift">
+                        <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Notifier</span> <span class="p">:</span> <span class="kt">INotifier</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">Notifier</span> <span class="p">:</span> <span class="kt"><a href="Protocols/INotifier.html">INotifier</a></span></code></pre>
 
                         </div>
                       </div>
@@ -179,9 +572,9 @@ have a valid multitonKey.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:C7PureMVC8Observer"></a>
+                    <a name="/s:7PureMVC8ObserverC"></a>
                     <a name="//apple_ref/swift/Class/Observer" class="dashAnchor"></a>
-                    <a class="token" href="#/s:C7PureMVC8Observer">Observer</a>
+                    <a class="token" href="#/s:7PureMVC8ObserverC">Observer</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -189,11 +582,11 @@ have a valid multitonKey.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>A base <code>IObserver</code> implementation.</p>
+                        <p>A base <code><a href="Protocols/IObserver.html">IObserver</a></code> implementation.</p>
 
 <p>An <code>Observer</code> is an object that encapsulates information
 about an interested object with a method that should
-be called when a particular <code>INotification</code> is broadcast.</p>
+be called when a particular <code><a href="Protocols/INotification.html">INotification</a></code> is broadcast.</p>
 
 <p>In PureMVC, the <code>Observer</code> class assumes these responsibilities:</p>
 
@@ -212,9 +605,9 @@ be called when a particular <code>INotification</code> is broadcast.</p>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
-                        <div class="Swift">
+                        <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Observer</span><span class="p">:</span> <span class="kt">IObserver</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">Observer</span> <span class="p">:</span> <span class="kt"><a href="Protocols/IObserver.html">IObserver</a></span></code></pre>
 
                         </div>
                       </div>
@@ -228,217 +621,9 @@ be called when a particular <code>INotification</code> is broadcast.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:C7PureMVC8Mediator"></a>
-                    <a name="//apple_ref/swift/Class/Mediator" class="dashAnchor"></a>
-                    <a class="token" href="#/s:C7PureMVC8Mediator">Mediator</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>A base <code>IMediator</code> implementation.</p>
-
-<p><code>@see org.puremvc.swift.multicore.core.View View</code></p>
-
-                        <a href="Classes/Mediator.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="Swift">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Mediator</span><span class="p">:</span> <span class="kt">Notifier</span><span class="p">,</span> <span class="kt">IMediator</span><span class="p">,</span> <span class="kt">INotifier</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:C7PureMVC10Controller"></a>
-                    <a name="//apple_ref/swift/Class/Controller" class="dashAnchor"></a>
-                    <a class="token" href="#/s:C7PureMVC10Controller">Controller</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>A Multiton <code>IController</code> implementation.</p>
-
-<p>In PureMVC, the <code>Controller</code> class follows the
-&lsquo;Command and Controller&rsquo; strategy, and assumes these
-responsibilities:</p>
-
-<ul>
-<li>Remembering which <code>ICommand</code>s are intended to handle which <code>INotifications</code>.</li>
-<li>Registering itself as an <code>IObserver</code> with the <code>View</code> for each <code>INotification</code> that it has an <code>ICommand</code> mapping for.</li>
-<li>Creating a new instance of the proper <code>ICommand</code> to handle a given <code>INotification</code> when notified by the <code>View</code>.</li>
-<li>Calling the <code>ICommand</code>&rsquo;s <code>execute</code> method, passing in the <code>INotification</code>.</li>
-</ul>
-
-<p>Your application must register <code>ICommands</code> with the
-Controller.</p>
-
-<p>The simplest way is to subclass <code>Facade</code>,
-and use its <code>initializeController</code> method to add your
-registrations.</p>
-
-<p><code>@see org.puremvc.swift.multicore.core.View View</code></p>
-
-<p><code>@see org.puremvc.swift.multicore.patterns.observer.Observer Observer</code></p>
-
-<p><code>@see org.puremvc.swift.multicore.patterns.observer.Notification Notification</code></p>
-
-<p><code>@see org.puremvc.swift.multicore.patterns.command.SimpleCommand SimpleCommand</code></p>
-
-<p><code>@see org.puremvc.swift.multicore.patterns.command.MacroCommand MacroCommand</code></p>
-
-                        <a href="Classes/Controller.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="Swift">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Controller</span><span class="p">:</span> <span class="kt">IController</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:C7PureMVC12Notification"></a>
-                    <a name="//apple_ref/swift/Class/Notification" class="dashAnchor"></a>
-                    <a class="token" href="#/s:C7PureMVC12Notification">Notification</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>A base <code>INotification</code> implementation.</p>
-
-<p>PureMVC does not rely upon underlying event models such
-as the one provided with Flash, and ActionScript 3 does
-not have an inherent event model.</p>
-
-<p>The Observer Pattern as implemented within PureMVC exists
-to support event-driven communication between the
-application and the actors of the MVC triad.</p>
-
-<p>Notifications are not meant to be a replacement for Events
-in Flex/Flash/Apollo. Generally, <code>IMediator</code> implementors
-place event listeners on their view components, which they
-then handle in the usual way. This may lead to the broadcast of <code>Notification</code>s to
-trigger <code>ICommand</code>s or to communicate with other <code>IMediators</code>. <code>IProxy</code> and <code>ICommand</code>
-instances communicate with each other and <code>IMediator</code>s
-by broadcasting <code>INotification</code>s.</p>
-
-<p>A key difference between Flash <code>Event</code>s and PureMVC
-<code>Notification</code>s is that <code>Event</code>s follow the
-&lsquo;Chain of Responsibility&rsquo; pattern, &lsquo;bubbling&rsquo; up the display hierarchy
-until some parent component handles the <code>Event</code>, while
-PureMVC <code>Notification</code>s follow a &#39;Publish/Subscribe&rsquo;
-pattern. PureMVC classes need not be related to each other in a
-parent/child relationship in order to communicate with one another
-using <code>Notification</code>s.</p>
-
-<p><code>@see org.puremvc.swift.multicore.patterns.observer.Observer Observer</code>
-*</p>
-
-                        <a href="Classes/Notification.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="Swift">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Notification</span> <span class="p">:</span> <span class="kt">INotification</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:C7PureMVC12MacroCommand"></a>
-                    <a name="//apple_ref/swift/Class/MacroCommand" class="dashAnchor"></a>
-                    <a class="token" href="#/s:C7PureMVC12MacroCommand">MacroCommand</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>A base <code>ICommand</code> implementation that executes other <code>ICommand</code>s.</p>
-
-<p>A <code>MacroCommand</code> maintains an list of
-<code>ICommand</code> Class references called <em>SubCommands</em>.</p>
-
-<p>When <code>execute</code> is called, the <code>MacroCommand</code>
-retrieves <code>ICommands</code> by executing closures and then calls 
-<code>execute</code> on each of its <em>SubCommands</em> turn.
-Each <em>SubCommand</em> will be passed a reference to the original
-<code>INotification</code> that was passed to the <code>MacroCommand</code>&rsquo;s
-<code>execute</code> method.</p>
-
-<p>Unlike <code>SimpleCommand</code>, your subclass
-should not override <code>execute</code>, but instead, should
-override the <code>initializeMacroCommand</code> method,
-calling <code>addSubCommand</code> once for each <em>SubCommand</em>
-to be executed.</p>
-
-<p><code>@see org.puremvc.swift.multicore.core.Controller Controller</code></p>
-
-<p><code>@see org.puremvc.swift.multicore.patterns.observer.Notification Notification</code></p>
-
-<p><code>@see org.puremvc.swift.multicore.patterns.command.SimpleCommand SimpleCommand</code></p>
-
-                        <a href="Classes/MacroCommand.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="Swift">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">MacroCommand</span><span class="p">:</span> <span class="kt">Notifier</span><span class="p">,</span> <span class="kt">ICommand</span><span class="p">,</span> <span class="kt">INotifier</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:C7PureMVC5Proxy"></a>
+                    <a name="/s:7PureMVC5ProxyC"></a>
                     <a name="//apple_ref/swift/Class/Proxy" class="dashAnchor"></a>
-                    <a class="token" href="#/s:C7PureMVC5Proxy">Proxy</a>
+                    <a class="token" href="#/s:7PureMVC5ProxyC">Proxy</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -446,7 +631,7 @@ to be executed.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>A base <code>IProxy</code> implementation.</p>
+                        <p>A base <code><a href="Protocols/IProxy.html">IProxy</a></code> implementation.</p>
 
 <p>In PureMVC, <code>Proxy</code> classes are used to manage parts of the
 application&rsquo;s data model.</p>
@@ -458,7 +643,7 @@ getting of its data in synchronous fashion.</p>
 <p><code>Proxy</code> classes are also used to encapsulate the application&rsquo;s
 interaction with remote services to save or retrieve data, in which case,
 we adopt an asyncronous idiom; setting data (or calling a method) on the
-<code>Proxy</code> and listening for a <code>Notification</code> to be sent
+<code>Proxy</code> and listening for a <code><a href="Classes/Notification.html">Notification</a></code> to be sent
 when the <code>Proxy</code> has retrieved the data from the service. </p>
 
 <p><code>@see org.puremvc.swift.multicore.core.Model Model</code></p>
@@ -467,190 +652,9 @@ when the <code>Proxy</code> has retrieved the data from the service. </p>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
-                        <div class="Swift">
+                        <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Proxy</span><span class="p">:</span> <span class="kt">Notifier</span><span class="p">,</span> <span class="kt">IProxy</span><span class="p">,</span> <span class="kt">INotifier</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:C7PureMVC13SimpleCommand"></a>
-                    <a name="//apple_ref/swift/Class/SimpleCommand" class="dashAnchor"></a>
-                    <a class="token" href="#/s:C7PureMVC13SimpleCommand">SimpleCommand</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>A base <code>ICommand</code> implementation.</p>
-
-<p>Your subclass should override the <code>execute</code>
-method where your business logic will handle the <code>INotification</code>. </p>
-
-<p><code>@see org.puremvc.swift.multicore.core.Controller Controller</code></p>
-
-<p><code>@see org.puremvc.swift.multicore.patterns.observer.Notification Notification</code></p>
-
-<p><code>@see org.puremvc.swift.multicore.patterns.command.MacroCommand MacroCommand</code></p>
-
-                        <a href="Classes/SimpleCommand.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="Swift">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">SimpleCommand</span><span class="p">:</span> <span class="kt">Notifier</span><span class="p">,</span> <span class="kt">ICommand</span><span class="p">,</span> <span class="kt">INotifier</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:C7PureMVC6Facade"></a>
-                    <a name="//apple_ref/swift/Class/Facade" class="dashAnchor"></a>
-                    <a class="token" href="#/s:C7PureMVC6Facade">Facade</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>A base Multiton <code>IFacade</code> implementation.</p>
-
-<p><code>@see org.puremvc.swift.multicore.core.Model Model</code></p>
-
-<p><code>@see org.puremvc.swift.multicore.core.View View</code></p>
-
-<p><code>@see org.puremvc.swift.multicore.core.Controller Controller</code></p>
-
-                        <a href="Classes/Facade.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="Swift">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Facade</span><span class="p">:</span> <span class="kt">IFacade</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:C7PureMVC5Model"></a>
-                    <a name="//apple_ref/swift/Class/Model" class="dashAnchor"></a>
-                    <a class="token" href="#/s:C7PureMVC5Model">Model</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>A Multiton <code>IModel</code> implementation.</p>
-
-<p>In PureMVC, the <code>Model</code> class provides
-access to model objects (Proxies) by named lookup.</p>
-
-<p>The <code>Model</code> assumes these responsibilities:</p>
-
-<ul>
-<li>Maintain a cache of <code>IProxy</code> instances.</li>
-<li>Provide methods for registering, retrieving, and removing <code>IProxy</code> instances.</li>
-</ul>
-
-<p>Your application must register <code>IProxy</code> instances
-with the <code>Model</code>. Typically, you use an
-<code>ICommand</code> to create and register <code>IProxy</code>
-instances once the <code>Facade</code> has initialized the Core
-actors.</p>
-
-<p><code>@see org.puremvc.swift.multicore.patterns.proxy.Proxy Proxy</code></p>
-
-<p><code>@see org.puremvc.swift.multicore.interfaces.IProxy IProxy</code></p>
-
-                        <a href="Classes/Model.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="Swift">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Model</span><span class="p">:</span> <span class="kt">IModel</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:C7PureMVC4View"></a>
-                    <a name="//apple_ref/swift/Class/View" class="dashAnchor"></a>
-                    <a class="token" href="#/s:C7PureMVC4View">View</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>A Multiton <code>IView</code> implementation.</p>
-
-<p>In PureMVC, the <code>View</code> class assumes these responsibilities:</p>
-
-<ul>
-<li>Maintain a cache of <code>IMediator</code> instances.</li>
-<li>Provide methods for registering, retrieving, and removing <code>IMediators</code>.</li>
-<li>Notifiying <code>IMediators</code> when they are registered or removed.</li>
-<li>Managing the observer lists for each <code>INotification</code> in the application.</li>
-<li>Providing a method for attaching <code>IObservers</code> to an <code>INotification</code>&rsquo;s observer list.</li>
-<li>Providing a method for broadcasting an <code>INotification</code>.</li>
-<li>Notifying the <code>IObservers</code> of a given <code>INotification</code> when it broadcast.</li>
-</ul>
-
-<p><code>@see org.puremvc.swift.multicore.patterns.mediator.Mediator Mediator</code></p>
-
-<p><code>@see org.puremvc.swift.multicore.patterns.observer.Observer Observer</code></p>
-
-<p><code>@see org.puremvc.swift.multicore.patterns.observer.Notification Notification</code></p>
-
-                        <a href="Classes/View.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="Swift">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">View</span><span class="p">:</span> <span class="kt">IView</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">Proxy</span> <span class="p">:</span> <span class="kt"><a href="Classes/Notifier.html">Notifier</a></span><span class="p">,</span> <span class="kt"><a href="Protocols/IProxy.html">IProxy</a></span></code></pre>
 
                         </div>
                       </div>
@@ -662,8 +666,8 @@ actors.</p>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2015 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2015-05-12)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.2.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2019 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2019-04-03)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

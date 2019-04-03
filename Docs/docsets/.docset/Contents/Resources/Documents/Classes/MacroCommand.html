@@ -7,6 +7,7 @@
     <meta charset='utf-8'>
     <script src="../js/jquery.min.js" defer></script>
     <script src="../js/jazzy.js" defer></script>
+    
   </head>
   <body>
     <a name="//apple_ref/swift/Class/MacroCommand" class="dashAnchor"></a>
@@ -14,7 +15,6 @@
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html"> Docs</a> (100% documented)</p>
-        <p class="header-right"><a href="https://github.com/PureMVC/puremvc-swift-multicore-framework"><img src="../img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -28,7 +28,7 @@
       <nav class="sidebar">
         <ul class="nav-groups">
           <li class="nav-group-name">
-          <a href="../Classes.html">Classes</a>
+            <a href="../Classes.html">Classes</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="../Classes/Controller.html">Controller</a>
@@ -66,7 +66,7 @@
             </ul>
           </li>
           <li class="nav-group-name">
-          <a href="../Protocols.html">Protocols</a>
+            <a href="../Protocols.html">Protocols</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="../Protocols/ICommand.html">ICommand</a>
@@ -106,19 +106,25 @@
         <section>
           <section class="section">
             <h1>MacroCommand</h1>
-            <p>A base <code>ICommand</code> implementation that executes other <code>ICommand</code>s.</p>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">MacroCommand</span> <span class="p">:</span> <span class="kt"><a href="../Classes/Notifier.html">Notifier</a></span><span class="p">,</span> <span class="kt"><a href="../Protocols/ICommand.html">ICommand</a></span></code></pre>
+
+                </div>
+              </div>
+            <p>A base <code><a href="../Protocols/ICommand.html">ICommand</a></code> implementation that executes other <code><a href="../Protocols/ICommand.html">ICommand</a></code>s.</p>
 
 <p>A <code>MacroCommand</code> maintains an list of
-<code>ICommand</code> Class references called <em>SubCommands</em>.</p>
+<code><a href="../Protocols/ICommand.html">ICommand</a></code> Class references called <em>SubCommands</em>.</p>
 
 <p>When <code>execute</code> is called, the <code>MacroCommand</code>
 retrieves <code>ICommands</code> by executing closures and then calls 
 <code>execute</code> on each of its <em>SubCommands</em> turn.
 Each <em>SubCommand</em> will be passed a reference to the original
-<code>INotification</code> that was passed to the <code>MacroCommand</code>&rsquo;s
+<code><a href="../Protocols/INotification.html">INotification</a></code> that was passed to the <code>MacroCommand</code>&lsquo;s
 <code>execute</code> method.</p>
 
-<p>Unlike <code>SimpleCommand</code>, your subclass
+<p>Unlike <code><a href="../Classes/SimpleCommand.html">SimpleCommand</a></code>, your subclass
 should not override <code>execute</code>, but instead, should
 override the <code>initializeMacroCommand</code> method,
 calling <code>addSubCommand</code> once for each <em>SubCommand</em>
@@ -137,9 +143,9 @@ to be executed.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC7PureMVC12MacroCommandcFMS0_FT_S0_"></a>
+                    <a name="/s:7PureMVC12MacroCommandCACycfc"></a>
                     <a name="//apple_ref/swift/Method/init()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC7PureMVC12MacroCommandcFMS0_FT_S0_">init()</a>
+                    <a class="token" href="#/s:7PureMVC12MacroCommandCACycfc">init()</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -159,9 +165,9 @@ sure to call <code>super()</code>.</p>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
-                        <div class="Swift">
+                        <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">override</span> <span class="nf">init</span><span class="p">()</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">override</span> <span class="nf">init</span><span class="p">()</span></code></pre>
 
                         </div>
                       </div>
@@ -171,9 +177,9 @@ sure to call <code>super()</code>.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC7PureMVC12MacroCommand22initializeMacroCommandFS0_FT_T_"></a>
+                    <a name="/s:7PureMVC12MacroCommandC010initializecD0yyF"></a>
                     <a name="//apple_ref/swift/Method/initializeMacroCommand()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC7PureMVC12MacroCommand22initializeMacroCommandFS0_FT_T_">initializeMacroCommand()</a>
+                    <a class="token" href="#/s:7PureMVC12MacroCommandC010initializecD0yyF">initializeMacroCommand()</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -184,27 +190,26 @@ sure to call <code>super()</code>.</p>
                         <p>Initialize the <code>MacroCommand</code>.</p>
 
 <p>In your subclass, override this method to
-initialize the <code>MacroCommand</code>&rsquo;s <em>SubCommand</em>
+initialize the <code>MacroCommand</code>&lsquo;s <em>SubCommand</em>
 list with closure references like
 this:</p>
-
-<pre class="highlight plaintext"><code>// Initialize MyMacroCommand
-public func addSubCommand(closure: () -&gt; ICommand) {
-    addSubCommand( { FirstCommand() } );
-    addSubCommand( { SecondCommand() } );
-    addSubCommand( ) { ThirdCommand() }; //or by using a trailing closure
-}
+<pre class="highlight swift"><code><span class="c1">// Initialize MyMacroCommand</span>
+<span class="kd">public</span> <span class="kd">func</span> <span class="nf">addSubCommand</span><span class="p">(</span><span class="nv">closure</span><span class="p">:</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">ICommand</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nf">addSubCommand</span><span class="p">(</span> <span class="p">{</span> <span class="kt">FirstCommand</span><span class="p">()</span> <span class="p">}</span> <span class="p">);</span>
+    <span class="nf">addSubCommand</span><span class="p">(</span> <span class="p">{</span> <span class="kt">SecondCommand</span><span class="p">()</span> <span class="p">}</span> <span class="p">);</span>
+    <span class="nf">addSubCommand</span><span class="p">(</span> <span class="p">)</span> <span class="p">{</span> <span class="kt">ThirdCommand</span><span class="p">()</span> <span class="p">};</span> <span class="c1">//or by using a trailing closure</span>
+<span class="p">}</span>
 </code></pre>
 
-<p>Note that <em>SubCommands</em> may be any closure returning <code>ICommand</code>
+<p>Note that <em>SubCommands</em> may be any closure returning <code><a href="../Protocols/ICommand.html">ICommand</a></code>
 implementor, <code>MacroCommands</code> or <code>SimpleCommands</code> are both acceptable.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
-                        <div class="Swift">
+                        <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">initializeMacroCommand</span><span class="p">()</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">initializeMacroCommand</span><span class="p">()</span></code></pre>
 
                         </div>
                       </div>
@@ -214,9 +219,9 @@ implementor, <code>MacroCommands</code> or <code>SimpleCommands</code> are both 
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC7PureMVC12MacroCommand13addSubCommandFS0_FFT_PS_8ICommand_T_"></a>
+                    <a name="/s:7PureMVC12MacroCommandC06addSubD0yyAA8ICommand_pycF"></a>
                     <a name="//apple_ref/swift/Method/addSubCommand(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC7PureMVC12MacroCommand13addSubCommandFS0_FFT_PS_8ICommand_T_">addSubCommand(_:)</a>
+                    <a class="token" href="#/s:7PureMVC12MacroCommandC06addSubD0yyAA8ICommand_pycF">addSubCommand(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -232,9 +237,9 @@ order.</p>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
-                        <div class="Swift">
+                        <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">addSubCommand</span><span class="p">(</span><span class="nv">closure</span><span class="p">:</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">ICommand</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">addSubCommand</span><span class="p">(</span><span class="n">_</span> <span class="nv">closure</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/ICommand.html">ICommand</a></span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -250,8 +255,7 @@ order.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>reference that returns <code>ICommand</code>.</p>
-
+                                  <p>reference that returns <code><a href="../Protocols/ICommand.html">ICommand</a></code>.</p>
                                 </div>
                               </td>
                             </tr>
@@ -264,9 +268,9 @@ order.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC7PureMVC12MacroCommand7executeFS0_FPS_13INotification_T_"></a>
+                    <a name="/s:7PureMVC12MacroCommandC7executeyyAA13INotification_pF"></a>
                     <a name="//apple_ref/swift/Method/execute(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC7PureMVC12MacroCommand7executeFS0_FPS_13INotification_T_">execute(_:)</a>
+                    <a class="token" href="#/s:7PureMVC12MacroCommandC7executeyyAA13INotification_pF">execute(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -274,7 +278,7 @@ order.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Execute this <code>MacroCommand</code>&rsquo;s <em>SubCommands</em>.</p>
+                        <p>Execute this <code>MacroCommand</code>&lsquo;s <em>SubCommands</em>.</p>
 
 <p>The <em>SubCommands</em> will be called in First In/First Out (FIFO)
 order.</p>
@@ -282,9 +286,9 @@ order.</p>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
-                        <div class="Swift">
+                        <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">func</span> <span class="nf">execute</span><span class="p">(</span><span class="nv">notification</span><span class="p">:</span> <span class="kt">INotification</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">func</span> <span class="nf">execute</span><span class="p">(</span><span class="n">_</span> <span class="nv">notification</span><span class="p">:</span> <span class="kt"><a href="../Protocols/INotification.html">INotification</a></span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -300,8 +304,7 @@ order.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>the <code>INotification</code> object to be passsed to each <em>SubCommand</em>.</p>
-
+                                  <p>the <code><a href="../Protocols/INotification.html">INotification</a></code> object to be passsed to each <em>SubCommand</em>.</p>
                                 </div>
                               </td>
                             </tr>
@@ -316,8 +319,8 @@ order.</p>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2015 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2015-05-12)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.2.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2019 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2019-04-03)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

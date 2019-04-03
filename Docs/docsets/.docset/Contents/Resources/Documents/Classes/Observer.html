@@ -7,6 +7,7 @@
     <meta charset='utf-8'>
     <script src="../js/jquery.min.js" defer></script>
     <script src="../js/jazzy.js" defer></script>
+    
   </head>
   <body>
     <a name="//apple_ref/swift/Class/Observer" class="dashAnchor"></a>
@@ -14,7 +15,6 @@
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html"> Docs</a> (100% documented)</p>
-        <p class="header-right"><a href="https://github.com/PureMVC/puremvc-swift-multicore-framework"><img src="../img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -28,7 +28,7 @@
       <nav class="sidebar">
         <ul class="nav-groups">
           <li class="nav-group-name">
-          <a href="../Classes.html">Classes</a>
+            <a href="../Classes.html">Classes</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="../Classes/Controller.html">Controller</a>
@@ -66,7 +66,7 @@
             </ul>
           </li>
           <li class="nav-group-name">
-          <a href="../Protocols.html">Protocols</a>
+            <a href="../Protocols.html">Protocols</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="../Protocols/ICommand.html">ICommand</a>
@@ -106,11 +106,17 @@
         <section>
           <section class="section">
             <h1>Observer</h1>
-            <p>A base <code>IObserver</code> implementation.</p>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">Observer</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/IObserver.html">IObserver</a></span></code></pre>
+
+                </div>
+              </div>
+            <p>A base <code><a href="../Protocols/IObserver.html">IObserver</a></code> implementation.</p>
 
 <p>An <code>Observer</code> is an object that encapsulates information
 about an interested object with a method that should
-be called when a particular <code>INotification</code> is broadcast.</p>
+be called when a particular <code><a href="../Protocols/INotification.html">INotification</a></code> is broadcast.</p>
 
 <p>In PureMVC, the <code>Observer</code> class assumes these responsibilities:</p>
 
@@ -132,9 +138,9 @@ be called when a particular <code>INotification</code> is broadcast.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC7PureMVC8ObservercFMS0_FT12notifyMethodGSqFPS_13INotification_T__13notifyContextGSqPSs9AnyObject___S0_"></a>
+                    <a name="/s:7PureMVC8ObserverC12notifyMethod0D7ContextACyAA13INotification_pcSg_yXlSgtcfc"></a>
                     <a name="//apple_ref/swift/Method/init(notifyMethod:notifyContext:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC7PureMVC8ObservercFMS0_FT12notifyMethodGSqFPS_13INotification_T__13notifyContextGSqPSs9AnyObject___S0_">init(notifyMethod:notifyContext:)</a>
+                    <a class="token" href="#/s:7PureMVC8ObserverC12notifyMethod0D7ContextACyAA13INotification_pcSg_yXlSgtcfc">init(notifyMethod:notifyContext:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -145,14 +151,14 @@ be called when a particular <code>INotification</code> is broadcast.</p>
                         <p>Constructor.</p>
 
 <p>The notification method on the interested object should take
-one parameter of type <code>INotification</code></p>
+one parameter of type <code><a href="../Protocols/INotification.html">INotification</a></code></p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
-                        <div class="Swift">
+                        <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">notifyMethod</span><span class="p">:</span> <span class="p">(</span><span class="kt">INotification</span> <span class="o">-&gt;</span> <span class="p">())?,</span> <span class="nv">notifyContext</span><span class="p">:</span> <span class="kt">AnyObject</span><span class="p">?)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">notifyMethod</span><span class="p">:</span> <span class="p">((</span><span class="kt"><a href="../Protocols/INotification.html">INotification</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">())?,</span> <span class="nv">notifyContext</span><span class="p">:</span> <span class="kt">AnyObject</span><span class="p">?)</span></code></pre>
 
                         </div>
                       </div>
@@ -169,7 +175,6 @@ one parameter of type <code>INotification</code></p>
                               <td>
                                 <div>
                                   <p>the notification method of the interested object</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -182,7 +187,6 @@ one parameter of type <code>INotification</code></p>
                               <td>
                                 <div>
                                   <p>the notification context of the interested object</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -195,9 +199,9 @@ one parameter of type <code>INotification</code></p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC7PureMVC8Observer14notifyObserverFS0_FPS_13INotification_T_"></a>
+                    <a name="/s:7PureMVC8ObserverC06notifyC0yyAA13INotification_pF"></a>
                     <a name="//apple_ref/swift/Method/notifyObserver(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC7PureMVC8Observer14notifyObserverFS0_FPS_13INotification_T_">notifyObserver(_:)</a>
+                    <a class="token" href="#/s:7PureMVC8ObserverC06notifyC0yyAA13INotification_pF">notifyObserver(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -210,9 +214,9 @@ one parameter of type <code>INotification</code></p>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
-                        <div class="Swift">
+                        <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">notifyObserver</span><span class="p">(</span><span class="nv">notification</span><span class="p">:</span> <span class="kt">INotification</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">notifyObserver</span><span class="p">(</span><span class="n">_</span> <span class="nv">notification</span><span class="p">:</span> <span class="kt"><a href="../Protocols/INotification.html">INotification</a></span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -228,8 +232,7 @@ one parameter of type <code>INotification</code></p>
                               </td>
                               <td>
                                 <div>
-                                  <p>the <code>INotification</code> to pass to the interested object&rsquo;s notification method.</p>
-
+                                  <p>the <code><a href="../Protocols/INotification.html">INotification</a></code> to pass to the interested object&rsquo;s notification method.</p>
                                 </div>
                               </td>
                             </tr>
@@ -242,9 +245,9 @@ one parameter of type <code>INotification</code></p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC7PureMVC8Observer20compareNotifyContextFS0_FPSs9AnyObject_Sb"></a>
+                    <a name="/s:7PureMVC8ObserverC20compareNotifyContextySbyXlF"></a>
                     <a name="//apple_ref/swift/Method/compareNotifyContext(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC7PureMVC8Observer20compareNotifyContextFS0_FPSs9AnyObject_Sb">compareNotifyContext(_:)</a>
+                    <a class="token" href="#/s:7PureMVC8ObserverC20compareNotifyContextySbyXlF">compareNotifyContext(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -257,9 +260,9 @@ one parameter of type <code>INotification</code></p>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
-                        <div class="Swift">
+                        <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">compareNotifyContext</span><span class="p">(</span><span class="nv">object</span><span class="p">:</span> <span class="kt">AnyObject</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">compareNotifyContext</span><span class="p">(</span><span class="n">_</span> <span class="nv">object</span><span class="p">:</span> <span class="kt">AnyObject</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
 
                         </div>
                       </div>
@@ -276,7 +279,6 @@ one parameter of type <code>INotification</code></p>
                               <td>
                                 <div>
                                   <p>the object to compare</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -286,7 +288,6 @@ one parameter of type <code>INotification</code></p>
                       <div>
                         <h4>Return Value</h4>
                         <p>boolean indicating if the object and the notification context are the same</p>
-
                       </div>
                     </section>
                   </div>
@@ -294,9 +295,9 @@ one parameter of type <code>INotification</code></p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:vC7PureMVC8Observer12notifyMethodGSqFT12notificationPS_13INotification__T__"></a>
+                    <a name="/s:7PureMVC8ObserverC12notifyMethodyAA13INotification_pcSgvp"></a>
                     <a name="//apple_ref/swift/Property/notifyMethod" class="dashAnchor"></a>
-                    <a class="token" href="#/s:vC7PureMVC8Observer12notifyMethodGSqFT12notificationPS_13INotification__T__">notifyMethod</a>
+                    <a class="token" href="#/s:7PureMVC8ObserverC12notifyMethodyAA13INotification_pcSgvp">notifyMethod</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -309,9 +310,9 @@ one parameter of type <code>INotification</code></p>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
-                        <div class="Swift">
+                        <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">notifyMethod</span><span class="p">:</span> <span class="p">((</span><span class="nv">notification</span><span class="p">:</span> <span class="kt">INotification</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">())?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">notifyMethod</span><span class="p">:</span> <span class="p">((</span><span class="n">_</span> <span class="nv">notification</span><span class="p">:</span> <span class="kt"><a href="../Protocols/INotification.html">INotification</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">())?</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -321,9 +322,9 @@ one parameter of type <code>INotification</code></p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:vC7PureMVC8Observer13notifyContextGSqPSs9AnyObject__"></a>
+                    <a name="/s:7PureMVC8ObserverC13notifyContextyXlSgvp"></a>
                     <a name="//apple_ref/swift/Property/notifyContext" class="dashAnchor"></a>
-                    <a class="token" href="#/s:vC7PureMVC8Observer13notifyContextGSqPSs9AnyObject__">notifyContext</a>
+                    <a class="token" href="#/s:7PureMVC8ObserverC13notifyContextyXlSgvp">notifyContext</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -336,9 +337,9 @@ one parameter of type <code>INotification</code></p>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
-                        <div class="Swift">
+                        <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">notifyContext</span><span class="p">:</span> <span class="kt">AnyObject</span><span class="p">?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">notifyContext</span><span class="p">:</span> <span class="kt">AnyObject</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -350,8 +351,8 @@ one parameter of type <code>INotification</code></p>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2015 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2015-05-12)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.2.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2019 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2019-04-03)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

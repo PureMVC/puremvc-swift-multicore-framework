@@ -7,6 +7,7 @@
     <meta charset='utf-8'>
     <script src="../js/jquery.min.js" defer></script>
     <script src="../js/jazzy.js" defer></script>
+    
   </head>
   <body>
     <a name="//apple_ref/swift/Protocol/IView" class="dashAnchor"></a>
@@ -14,7 +15,6 @@
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html"> Docs</a> (100% documented)</p>
-        <p class="header-right"><a href="https://github.com/PureMVC/puremvc-swift-multicore-framework"><img src="../img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -28,7 +28,7 @@
       <nav class="sidebar">
         <ul class="nav-groups">
           <li class="nav-group-name">
-          <a href="../Classes.html">Classes</a>
+            <a href="../Classes.html">Classes</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="../Classes/Controller.html">Controller</a>
@@ -66,7 +66,7 @@
             </ul>
           </li>
           <li class="nav-group-name">
-          <a href="../Protocols.html">Protocols</a>
+            <a href="../Protocols.html">Protocols</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="../Protocols/ICommand.html">ICommand</a>
@@ -106,19 +106,25 @@
         <section>
           <section class="section">
             <h1>IView</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">IView</span></code></pre>
+
+                </div>
+              </div>
             <p>The interface definition for a PureMVC View.</p>
 
 <p>In PureMVC, <code>IView</code> implementors assume these responsibilities:</p>
 
-<p>In PureMVC, the <code>View</code> class assumes these responsibilities:</p>
+<p>In PureMVC, the <code><a href="../Classes/View.html">View</a></code> class assumes these responsibilities:</p>
 
 <ul>
-<li>Maintain a cache of <code>IMediator</code> instances.</li>
+<li>Maintain a cache of <code><a href="../Protocols/IMediator.html">IMediator</a></code> instances.</li>
 <li>Provide methods for registering, retrieving, and removing <code>IMediators</code>.</li>
-<li>Managing the observer lists for each <code>INotification</code> in the application.</li>
-<li>Providing a method for attaching <code>IObservers</code> to an <code>INotification</code>&rsquo;s observer list.</li>
-<li>Providing a method for broadcasting an <code>INotification</code>.</li>
-<li>Notifying the <code>IObservers</code> of a given <code>INotification</code> when it broadcast.</li>
+<li>Managing the observer lists for each <code><a href="../Protocols/INotification.html">INotification</a></code> in the application.</li>
+<li>Providing a method for attaching <code>IObservers</code> to an <code><a href="../Protocols/INotification.html">INotification</a></code>&lsquo;s observer list.</li>
+<li>Providing a method for broadcasting an <code><a href="../Protocols/INotification.html">INotification</a></code>.</li>
+<li>Notifying the <code>IObservers</code> of a given <code><a href="../Protocols/INotification.html">INotification</a></code> when it broadcast.</li>
 </ul>
 
 <p><code>@see org.puremvc.swift.multicore.interfaces.IMediator IMediator</code></p>
@@ -134,9 +140,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FP7PureMVC5IView16registerObserverUS0___FQPS0_FTSS8observerPS_9IObserver__T_"></a>
+                    <a name="/s:7PureMVC5IViewP16registerObserver_8observerySS_AA9IObserver_ptF"></a>
                     <a name="//apple_ref/swift/Method/registerObserver(_:observer:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FP7PureMVC5IView16registerObserverUS0___FQPS0_FTSS8observerPS_9IObserver__T_">registerObserver(_:observer:)</a>
+                    <a class="token" href="#/s:7PureMVC5IViewP16registerObserver_8observerySS_AA9IObserver_ptF">registerObserver(_:observer:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -144,15 +150,15 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Register an <code>IObserver</code> to be notified
+                        <p>Register an <code><a href="../Protocols/IObserver.html">IObserver</a></code> to be notified
 of <code>INotifications</code> with a given name.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
-                        <div class="Swift">
+                        <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">registerObserver</span><span class="p">(</span><span class="nv">notificationName</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">observer</span><span class="p">:</span> <span class="kt">IObserver</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">registerObserver</span><span class="p">(</span><span class="n">_</span> <span class="nv">notificationName</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">observer</span><span class="p">:</span> <span class="kt"><a href="../Protocols/IObserver.html">IObserver</a></span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -168,8 +174,7 @@ of <code>INotifications</code> with a given name.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>the name of the <code>INotifications</code> to notify this <code>IObserver</code> of</p>
-
+                                  <p>the name of the <code>INotifications</code> to notify this <code><a href="../Protocols/IObserver.html">IObserver</a></code> of</p>
                                 </div>
                               </td>
                             </tr>
@@ -181,8 +186,7 @@ of <code>INotifications</code> with a given name.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>the <code>IObserver</code> to register</p>
-
+                                  <p>the <code><a href="../Protocols/IObserver.html">IObserver</a></code> to register</p>
                                 </div>
                               </td>
                             </tr>
@@ -195,9 +199,9 @@ of <code>INotifications</code> with a given name.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FP7PureMVC5IView14removeObserverUS0___FQPS0_FTSS13notifyContextPSs9AnyObject__T_"></a>
+                    <a name="/s:7PureMVC5IViewP14removeObserver_13notifyContextySS_yXltF"></a>
                     <a name="//apple_ref/swift/Method/removeObserver(_:notifyContext:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FP7PureMVC5IView14removeObserverUS0___FQPS0_FTSS13notifyContextPSs9AnyObject__T_">removeObserver(_:notifyContext:)</a>
+                    <a class="token" href="#/s:7PureMVC5IViewP14removeObserver_13notifyContextySS_yXltF">removeObserver(_:notifyContext:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -210,9 +214,9 @@ of <code>INotifications</code> with a given name.</p>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
-                        <div class="Swift">
+                        <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">removeObserver</span><span class="p">(</span><span class="nv">notificationName</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">notifyContext</span><span class="p">:</span> <span class="kt">AnyObject</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">removeObserver</span><span class="p">(</span><span class="n">_</span> <span class="nv">notificationName</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">notifyContext</span><span class="p">:</span> <span class="kt">AnyObject</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -229,7 +233,6 @@ of <code>INotifications</code> with a given name.</p>
                               <td>
                                 <div>
                                   <p>which observer list to remove from</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -242,7 +245,6 @@ of <code>INotifications</code> with a given name.</p>
                               <td>
                                 <div>
                                   <p>removed the observers with this object as their notifyContext</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -255,9 +257,9 @@ of <code>INotifications</code> with a given name.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FP7PureMVC5IView15notifyObserversUS0___FQPS0_FPS_13INotification_T_"></a>
+                    <a name="/s:7PureMVC5IViewP15notifyObserversyyAA13INotification_pF"></a>
                     <a name="//apple_ref/swift/Method/notifyObservers(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FP7PureMVC5IView15notifyObserversUS0___FQPS0_FPS_13INotification_T_">notifyObservers(_:)</a>
+                    <a class="token" href="#/s:7PureMVC5IViewP15notifyObserversyyAA13INotification_pF">notifyObservers(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -265,18 +267,18 @@ of <code>INotifications</code> with a given name.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Notify the <code>IObservers</code> for a particular <code>INotification</code>.</p>
+                        <p>Notify the <code>IObservers</code> for a particular <code><a href="../Protocols/INotification.html">INotification</a></code>.</p>
 
-<p>All previously attached <code>IObservers</code> for this <code>INotification</code>&rsquo;s
-list are notified and are passed a reference to the <code>INotification</code> in
+<p>All previously attached <code>IObservers</code> for this <code><a href="../Protocols/INotification.html">INotification</a></code>&lsquo;s
+list are notified and are passed a reference to the <code><a href="../Protocols/INotification.html">INotification</a></code> in
 the order in which they were registered.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
-                        <div class="Swift">
+                        <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">notifyObservers</span><span class="p">(</span><span class="nv">notification</span><span class="p">:</span> <span class="kt">INotification</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">notifyObservers</span><span class="p">(</span><span class="n">_</span> <span class="nv">notification</span><span class="p">:</span> <span class="kt"><a href="../Protocols/INotification.html">INotification</a></span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -292,8 +294,7 @@ the order in which they were registered.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>the <code>INotification</code> to notify <code>IObservers</code> of.</p>
-
+                                  <p>the <code><a href="../Protocols/INotification.html">INotification</a></code> to notify <code>IObservers</code> of.</p>
                                 </div>
                               </td>
                             </tr>
@@ -306,9 +307,9 @@ the order in which they were registered.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FP7PureMVC5IView16registerMediatorUS0___FQPS0_FPS_9IMediator_T_"></a>
+                    <a name="/s:7PureMVC5IViewP16registerMediatoryyAA9IMediator_pF"></a>
                     <a name="//apple_ref/swift/Method/registerMediator(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FP7PureMVC5IView16registerMediatorUS0___FQPS0_FPS_9IMediator_T_">registerMediator(_:)</a>
+                    <a class="token" href="#/s:7PureMVC5IViewP16registerMediatoryyAA9IMediator_pF">registerMediator(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -316,24 +317,24 @@ the order in which they were registered.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Register an <code>IMediator</code> instance with the <code>View</code>.</p>
+                        <p>Register an <code><a href="../Protocols/IMediator.html">IMediator</a></code> instance with the <code><a href="../Classes/View.html">View</a></code>.</p>
 
-<p>Registers the <code>IMediator</code> so that it can be retrieved by name,
-and further interrogates the <code>IMediator</code> for its
-<code>INotification</code> interests.</p>
+<p>Registers the <code><a href="../Protocols/IMediator.html">IMediator</a></code> so that it can be retrieved by name,
+and further interrogates the <code><a href="../Protocols/IMediator.html">IMediator</a></code> for its
+<code><a href="../Protocols/INotification.html">INotification</a></code> interests.</p>
 
-<p>If the <code>IMediator</code> returns any <code>INotification</code>
-names to be notified about, an <code>Observer</code> is created encapsulating
-the <code>IMediator</code> instance&rsquo;s <code>handleNotification</code> method
-and registering it as an <code>Observer</code> for all <code>INotifications</code> the
-<code>IMediator</code> is interested in.</p>
+<p>If the <code><a href="../Protocols/IMediator.html">IMediator</a></code> returns any <code><a href="../Protocols/INotification.html">INotification</a></code>
+names to be notified about, an <code><a href="../Classes/Observer.html">Observer</a></code> is created encapsulating
+the <code><a href="../Protocols/IMediator.html">IMediator</a></code> instance&rsquo;s <code>handleNotification</code> method
+and registering it as an <code><a href="../Classes/Observer.html">Observer</a></code> for all <code>INotifications</code> the
+<code><a href="../Protocols/IMediator.html">IMediator</a></code> is interested in.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
-                        <div class="Swift">
+                        <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">registerMediator</span><span class="p">(</span><span class="nv">mediator</span><span class="p">:</span> <span class="kt">IMediator</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">registerMediator</span><span class="p">(</span><span class="n">_</span> <span class="nv">mediator</span><span class="p">:</span> <span class="kt"><a href="../Protocols/IMediator.html">IMediator</a></span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -349,8 +350,7 @@ and registering it as an <code>Observer</code> for all <code>INotifications</cod
                               </td>
                               <td>
                                 <div>
-                                  <p>the name to associate with this <code>IMediator</code> instance</p>
-
+                                  <p>the name to associate with this <code><a href="../Protocols/IMediator.html">IMediator</a></code> instance</p>
                                 </div>
                               </td>
                             </tr>
@@ -362,8 +362,7 @@ and registering it as an <code>Observer</code> for all <code>INotifications</cod
                               </td>
                               <td>
                                 <div>
-                                  <p>a reference to the <code>IMediator</code> instance</p>
-
+                                  <p>a reference to the <code><a href="../Protocols/IMediator.html">IMediator</a></code> instance</p>
                                 </div>
                               </td>
                             </tr>
@@ -376,9 +375,9 @@ and registering it as an <code>Observer</code> for all <code>INotifications</cod
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FP7PureMVC5IView16retrieveMediatorUS0___FQPS0_FSSGSqPS_9IMediator__"></a>
+                    <a name="/s:7PureMVC5IViewP16retrieveMediatoryAA9IMediator_pSgSSF"></a>
                     <a name="//apple_ref/swift/Method/retrieveMediator(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FP7PureMVC5IView16retrieveMediatorUS0___FQPS0_FSSGSqPS_9IMediator__">retrieveMediator(_:)</a>
+                    <a class="token" href="#/s:7PureMVC5IViewP16retrieveMediatoryAA9IMediator_pSgSSF">retrieveMediator(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -386,14 +385,14 @@ and registering it as an <code>Observer</code> for all <code>INotifications</cod
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Retrieve an <code>IMediator</code> from the <code>View</code>.</p>
+                        <p>Retrieve an <code><a href="../Protocols/IMediator.html">IMediator</a></code> from the <code><a href="../Classes/View.html">View</a></code>.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
-                        <div class="Swift">
+                        <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">retrieveMediator</span><span class="p">(</span><span class="nv">mediatorName</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">IMediator</span><span class="p">?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">retrieveMediator</span><span class="p">(</span><span class="n">_</span> <span class="nv">mediatorName</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/IMediator.html">IMediator</a></span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -409,8 +408,7 @@ and registering it as an <code>Observer</code> for all <code>INotifications</cod
                               </td>
                               <td>
                                 <div>
-                                  <p>the name of the <code>IMediator</code> instance to retrieve.</p>
-
+                                  <p>the name of the <code><a href="../Protocols/IMediator.html">IMediator</a></code> instance to retrieve.</p>
                                 </div>
                               </td>
                             </tr>
@@ -419,8 +417,7 @@ and registering it as an <code>Observer</code> for all <code>INotifications</cod
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>the <code>IMediator</code> instance previously registered with the given <code>mediatorName</code>.</p>
-
+                        <p>the <code><a href="../Protocols/IMediator.html">IMediator</a></code> instance previously registered with the given <code>mediatorName</code>.</p>
                       </div>
                     </section>
                   </div>
@@ -428,9 +425,9 @@ and registering it as an <code>Observer</code> for all <code>INotifications</cod
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FP7PureMVC5IView14removeMediatorUS0___FQPS0_FSSGSqPS_9IMediator__"></a>
+                    <a name="/s:7PureMVC5IViewP14removeMediatoryAA9IMediator_pSgSSF"></a>
                     <a name="//apple_ref/swift/Method/removeMediator(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FP7PureMVC5IView14removeMediatorUS0___FQPS0_FSSGSqPS_9IMediator__">removeMediator(_:)</a>
+                    <a class="token" href="#/s:7PureMVC5IViewP14removeMediatoryAA9IMediator_pSgSSF">removeMediator(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -438,14 +435,14 @@ and registering it as an <code>Observer</code> for all <code>INotifications</cod
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Remove an <code>IMediator</code> from the <code>View</code>.</p>
+                        <p>Remove an <code><a href="../Protocols/IMediator.html">IMediator</a></code> from the <code><a href="../Classes/View.html">View</a></code>.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
-                        <div class="Swift">
+                        <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">removeMediator</span><span class="p">(</span><span class="nv">mediatorName</span><span class="p">:</span><span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">IMediator</span><span class="p">?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">removeMediator</span><span class="p">(</span><span class="n">_</span> <span class="nv">mediatorName</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/IMediator.html">IMediator</a></span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -461,8 +458,7 @@ and registering it as an <code>Observer</code> for all <code>INotifications</cod
                               </td>
                               <td>
                                 <div>
-                                  <p>name of the <code>IMediator</code> instance to be removed.</p>
-
+                                  <p>name of the <code><a href="../Protocols/IMediator.html">IMediator</a></code> instance to be removed.</p>
                                 </div>
                               </td>
                             </tr>
@@ -471,8 +467,7 @@ and registering it as an <code>Observer</code> for all <code>INotifications</cod
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>the <code>IMediator</code> that was removed from the <code>View</code></p>
-
+                        <p>the <code><a href="../Protocols/IMediator.html">IMediator</a></code> that was removed from the <code><a href="../Classes/View.html">View</a></code></p>
                       </div>
                     </section>
                   </div>
@@ -480,9 +475,9 @@ and registering it as an <code>Observer</code> for all <code>INotifications</cod
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FP7PureMVC5IView11hasMediatorUS0___FQPS0_FSSSb"></a>
+                    <a name="/s:7PureMVC5IViewP11hasMediatorySbSSF"></a>
                     <a name="//apple_ref/swift/Method/hasMediator(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FP7PureMVC5IView11hasMediatorUS0___FQPS0_FSSSb">hasMediator(_:)</a>
+                    <a class="token" href="#/s:7PureMVC5IViewP11hasMediatorySbSSF">hasMediator(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -495,9 +490,9 @@ and registering it as an <code>Observer</code> for all <code>INotifications</cod
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
-                        <div class="Swift">
+                        <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">hasMediator</span><span class="p">(</span><span class="nv">mediatorName</span><span class="p">:</span><span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">hasMediator</span><span class="p">(</span><span class="n">_</span> <span class="nv">mediatorName</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
 
                         </div>
                       </div>
@@ -513,7 +508,7 @@ and registering it as an <code>Observer</code> for all <code>INotifications</cod
                               </td>
                               <td>
                                 <div>
-                                  
+                                  <p></p>
                                 </div>
                               </td>
                             </tr>
@@ -523,7 +518,6 @@ and registering it as an <code>Observer</code> for all <code>INotifications</cod
                       <div>
                         <h4>Return Value</h4>
                         <p>whether a Mediator is registered with the given <code>mediatorName</code>.</p>
-
                       </div>
                     </section>
                   </div>
@@ -533,8 +527,8 @@ and registering it as an <code>Observer</code> for all <code>INotifications</cod
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2015 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2015-05-12)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.2.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2019 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2019-04-03)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>
