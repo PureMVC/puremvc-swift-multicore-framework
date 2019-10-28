@@ -45,7 +45,7 @@ class ModelTest: XCTestCase {
         let model: IModel = Model.getInstance("ModelTestKey2") { Model(key: "ModelTestKey2") }
         model.registerProxy(Proxy(proxyName: "colors", data: ["red", "green", "blue"]))
         let proxy: Proxy = model.retrieveProxy("colors") as! Proxy
-        var data: Array<String> = proxy.data as! Array<String>
+        let data: Array<String> = proxy.data as! Array<String>
         
         // test assertions
         XCTAssertNotNil(data, "Expecting data not nil")
@@ -119,7 +119,7 @@ class ModelTest: XCTestCase {
         let model: IModel = Model.getInstance("ModelTestKey4") { Model(key: "ModelTestKey4") }
         
         // Create and register the test mediator
-        var proxy: IProxy = ModelTestProxy()
+        let proxy: IProxy = ModelTestProxy()
         model.registerProxy(proxy)
         
         // assert that onRegsiter was called, and the proxy responded by setting its data accordingly

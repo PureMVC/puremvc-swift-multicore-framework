@@ -47,7 +47,7 @@ class ProxyTest: XCTestCase {
         let proxy: Proxy = Proxy(proxyName: "colors", data: nil)
         proxy.data = ["red", "green", "blue"]
         
-        var data: [String] = proxy.data as! [String]
+        let data: [String] = proxy.data as! [String]
         
         // test assertions
         XCTAssertTrue(data.count == 3, "Expecting data.count == 3")
@@ -63,7 +63,7 @@ class ProxyTest: XCTestCase {
         // Create a new Proxy using the Constructor to set the name and data
         let proxy: Proxy = Proxy(proxyName: "colors", data: ["red", "green", "blue"])
         
-        var data: [String] = proxy.data as! [String]
+        let data: [String] = proxy.data as! [String]
         
         // test assertions
         XCTAssertNotNil(proxy, "Expecting proxy not nil")

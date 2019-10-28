@@ -105,10 +105,10 @@ class FacadeTest: XCTestCase {
         // register a proxy and retrieve it.
         let facade = Facade.getInstance("FacadeTestKey4", closure: {Facade(key: "FacadeTestKey4")})
         facade.registerProxy(Proxy(proxyName: "colors", data: ["red", "green", "blue"]))
-        var proxy = facade.retrieveProxy("colors")
+        let proxy = facade.retrieveProxy("colors")
         
         // retrieve data from proxy
-        var data: [String] = proxy?.data as! [String]
+        let data: [String] = proxy?.data as! [String]
         
         // test assertions
         XCTAssertNotNil(data, "Expecting data not nil")

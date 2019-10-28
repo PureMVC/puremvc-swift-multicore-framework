@@ -51,7 +51,7 @@ class NotificationTest: XCTestCase {
     
     func testConstructor() {
         // Create a new Notification using the Constructor to set the note name and body
-        var note:INotification = Notification(name: "TestNote", body:5, type:"TestNoteType")
+        let note:INotification = Notification(name: "TestNote", body:5, type:"TestNoteType")
         
         // test assertions
         XCTAssertTrue(note.name == "TestNote", "Expecting note.name == 'TestNote'")
