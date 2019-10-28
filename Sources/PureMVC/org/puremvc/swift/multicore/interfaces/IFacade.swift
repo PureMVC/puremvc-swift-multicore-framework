@@ -112,7 +112,6 @@ public protocol IFacade: INotifier {
     - parameter mediatorName:
     - returns: whether a Mediator is registered with the given `mediatorName`.
     */
-    
     func hasMediator(_ mediatorName: String) -> Bool
     
     /**

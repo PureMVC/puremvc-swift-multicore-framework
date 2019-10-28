@@ -225,7 +225,7 @@ public class ViewTest: XCTestCase {
     /**
     Tests registering a Mediator for 2 different notifications, removing the
     Mediator from the View, and seeing that neither notification causes the
-    Mediator to be notified. Added for the fix deployed in version 1.7
+    Mediator to be notified.
     */
     func testRemoveMediatorAndSubsequentNotify() {
         // Get the Multiton View instance
@@ -264,7 +264,6 @@ public class ViewTest: XCTestCase {
     /**
     Tests registering one of two registered Mediators and seeing
     that the remaining one still responds.
-    Added for the fix deployed in version 1.7.1
     */
     func testRemoveOneOfTwoMediatorsAndSubsequentNotify() {
         // Get the Multiton View instance
@@ -314,11 +313,9 @@ public class ViewTest: XCTestCase {
     was causing 2 observers to be created, ensure
     that after removal of the mediator there will
     be no further response.
-    
-    Added for the fix deployed in version 2.0.4
     */
     func testMediatorReregistration() {
-        // Get the Singleton View instance
+        // Get the Multiton View instance
         let view: IView = View.getInstance("ViewTestKey10") { View(key: "ViewTestKey10") }
         
         // Create and register that responds to notification 5
@@ -351,11 +348,9 @@ public class ViewTest: XCTestCase {
     happens most often when multiple Mediators
     respond to the same notification by removing
     themselves.
-    
-    Added for the fix deployed in version 2.0.4
     */
     func testModifyObserverListDuringNotification() {
-        // Get the Singleton View instance
+        // Get the Multiton View instance
         let view: IView = View.getInstance("ViewTestKey11") { View(key: "ViewTestKey11") }
         
         // Create and register several mediator instances that respond to notification 6

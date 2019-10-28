@@ -77,10 +77,10 @@ open class View: IView {
     }
     
     /**
-    Initialize the Singleton View instance.
+    Initialize the Multiton View instance.
     
     Called automatically by the constructor, this
-    is your opportunity to initialize the Singleton
+    is your opportunity to initialize the Multiton
     instance in your subclass without overriding the
     constructor.
     */
@@ -89,11 +89,11 @@ open class View: IView {
     }
     
     /**
-    View Singleton Factory method.
+    View Multiton Factory method.
     
     - parameter key: multitonKey
     - parameter closure: reference that returns `IView`
-    - returns: the Singleton instance returned by executing the passed closure
+    - returns: the Multiton instance returned by executing the passed closure
     */
     open class func getInstance(_ key: String, closure: () -> IView) -> IView {
         instanceQueue.sync(flags: .barrier, execute: {
@@ -162,8 +162,8 @@ open class View: IView {
             if let observers = self.observerMap[notificationName] {
                 
                 // find the observer for the notifyContext
-                for (index, _) in observers.enumerated() {
-                    if observers[index].compareNotifyContext(notifyContext) {
+                for (index, observer) in observers.enumerated() {
+                    if observer.compareNotifyContext(notifyContext) {
                         // there can only be one Observer for a given notifyContext
                         // in any given Observer list, so remove it and break
                         self.observerMap[notificationName]!.remove(at: index)

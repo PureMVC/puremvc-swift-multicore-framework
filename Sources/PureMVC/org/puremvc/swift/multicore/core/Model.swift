@@ -74,7 +74,7 @@ open class Model: IModel {
     Initialize the `Model` instance.
     
     Called automatically by the constructor, this
-    is your opportunity to initialize the Singleton
+    is your opportunity to initialize the Multiton
     instance in your subclass without overriding the
     constructor.
     */

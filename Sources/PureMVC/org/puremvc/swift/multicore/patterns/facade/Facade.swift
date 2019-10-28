@@ -347,13 +347,13 @@ open class Facade: IFacade {
         set { _controller = newValue }
     }
     
-    /// References to the Model
+    /// Reference to the Model
     open var model: IModel? {
         get { return _model }
         set { _model = newValue }
     }
     
-    /// References to the View
+    /// Reference to the View
     open var view: IView? {
         get { return _view }
         set { _view = newValue }
