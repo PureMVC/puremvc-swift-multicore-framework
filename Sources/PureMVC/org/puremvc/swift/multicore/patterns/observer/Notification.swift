@@ -2,7 +2,7 @@
 //  Notification.swift
 //  PureMVC SWIFT Multicore
 //
-//  Copyright(c) 2015-2025 Saad Shams <saad.shams@puremvc.org>
+//  Copyright(c) 2020 Saad Shams <saad.shams@puremvc.org>
 //  Your reuse is governed by the Creative Commons Attribution 3.0 License
 //
 
@@ -40,11 +40,13 @@ using `Notification`s.
 open class Notification : INotification {
     
     // the name of the notification instance
-    fileprivate var _name: String
+    public private(set) var name: String
+    
     // the body of the notification instance
-    fileprivate var _body: Any?
+    public var body: Any?
+    
     // the type of the notification instance
-    fileprivate var _type: String?
+    public var type: String?
     
     /**
     Constructor.
@@ -54,26 +56,9 @@ open class Notification : INotification {
     - parameter type: the type of the `Notification` (optional)
     */
     public init(name: String, body: Any?=nil, type: String?=nil) {
-        _name = name
-        _body = body
-        _type = type
-    }
-    
-    /// Get the name of notification instance
-    open var name: String {
-        return _name
-    }
-    
-    /// Get or set the body of notification instance
-    open var body: Any? {
-        get { return _body }
-        set { _body = newValue }
-    }
-    
-    /// Get or set the type of notification instance
-    open var type: String? {
-        get { return _type }
-        set { _type = newValue }
+        self.name = name
+        self.body = body
+        self.type = type
     }
     
     /**

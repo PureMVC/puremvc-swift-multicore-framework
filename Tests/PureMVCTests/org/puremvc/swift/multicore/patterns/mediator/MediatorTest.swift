@@ -2,7 +2,7 @@
 //  MediatorTest.swift
 //  PureMVC SWIFT Multicore
 //
-//  Copyright(c) 2015-2019 Saad Shams <saad.shams@puremvc.org>
+//  Copyright(c) 2020 Saad Shams <saad.shams@puremvc.org>
 //  Your reuse is governed by the Creative Commons Attribution 3.0 License
 //
 
@@ -36,7 +36,7 @@ class MediatorTest: XCTestCase {
         let mediator: Mediator = Mediator()
         
         // test assertions
-        XCTAssertTrue(mediator.mediatorName == Mediator.NAME, "Expecting mediator.mediatorName == Mediator.NAME()")
+        XCTAssertTrue(mediator.name == Mediator.NAME, "Expecting mediator.mediatorName == Mediator.NAME()")
     }
     
     /**
@@ -47,14 +47,14 @@ class MediatorTest: XCTestCase {
         let view = Notification(name: "test", body: 4)
         
         // Create a new Proxy and use accessors to set the proxy name
-        let mediator = Mediator(mediatorName: Mediator.NAME, viewComponent: view)
+        let mediator = Mediator(name: Mediator.NAME, viewComponent: view)
         
         // test assertions
         XCTAssertTrue(mediator.viewComponent === view, "Expecting mediator.viewComponent === view")
     }
     
     func testResourceMediator() {
-        var facade: Facade? = Facade.getInstance("mediatorKey1", closure: {Facade(key: "mediatorKey1")}) as? Facade
+        var facade: Facade? = Facade.getInstance("mediatorKey1", factory: {key in Facade(key: key)}) as? Facade
         let resource = Resource()
         
         facade?.registerMediator(ResourceMediator(viewComponent: resource))

@@ -2,7 +2,7 @@
 //  IFacade.swift
 //  PureMVC SWIFT Multicore
 //
-//  Copyright(c) 2015-2025 Saad Shams <saad.shams@puremvc.org>
+//  Copyright(c) 2020 Saad Shams <saad.shams@puremvc.org>
 //  Your reuse is governed by the Creative Commons Attribution 3.0 License
 //
 
@@ -45,20 +45,20 @@ public protocol IFacade: INotifier {
     func retrieveProxy(_ proxyName: String) -> IProxy?
     
     /**
-    Remove an `IProxy` instance from the `Model` by name.
-    
-    - parameter proxyName: the `IProxy` to remove from the `Model`.
-    - returns: the `IProxy` that was removed from the `Model`
-    */
-    func removeProxy(_ proxyName: String) -> IProxy?
-    
-    /**
     Check if a Proxy is registered
     
     - parameter proxyName:
     - returns: whether a Proxy is currently registered with the given `proxyName`.
     */
     func hasProxy(_ proxyName: String) -> Bool
+    
+    /**
+    Remove an `IProxy` instance from the `Model` by name.
+    
+    - parameter proxyName: the `IProxy` to remove from the `Model`.
+    - returns: the `IProxy` that was removed from the `Model`
+    */
+    func removeProxy(_ proxyName: String) -> IProxy?
     
     /**
     Register an `ICommand` with the `Controller`.
@@ -69,19 +69,19 @@ public protocol IFacade: INotifier {
     func registerCommand(_ notificationName: String, closure: @escaping () -> ICommand)
     
     /**
-    Remove a previously registered `ICommand` to `INotification` mapping from the Controller.
-    
-    - parameter notificationName: the name of the `INotification` to remove the `ICommand` mapping for
-    */
-    func removeCommand(_ notificationName: String)
-    
-    /**
     Check if a Command is registered for a given Notification
     
     - parameter notificationName:
     - returns: whether a Command is currently registered for the given `notificationName`.
     */
     func hasCommand(_ notificationName: String) -> Bool
+    
+    /**
+    Remove a previously registered `ICommand` to `INotification` mapping from the Controller.
+    
+    - parameter notificationName: the name of the `INotification` to remove the `ICommand` mapping for
+    */
+    func removeCommand(_ notificationName: String)
     
     /**
     Register an `IMediator` instance with the `View`.
@@ -99,20 +99,20 @@ public protocol IFacade: INotifier {
     func retrieveMediator(_ mediatorName: String) -> IMediator?
     
     /**
-    Remove a `IMediator` instance from the `View`.
-    
-    - parameter mediatorName: name of the `IMediator` instance to be removed.
-    - returns: the `IMediator` instance previously registered with the given `mediatorName`.
-    */
-    func removeMediator(_ mediatorName: String) -> IMediator?
-    
-    /**
     Check if a Mediator is registered or not
     
     - parameter mediatorName:
     - returns: whether a Mediator is registered with the given `mediatorName`.
     */
     func hasMediator(_ mediatorName: String) -> Bool
+    
+    /**
+    Remove a `IMediator` instance from the `View`.
+    
+    - parameter mediatorName: name of the `IMediator` instance to be removed.
+    - returns: the `IMediator` instance previously registered with the given `mediatorName`.
+    */
+    func removeMediator(_ mediatorName: String) -> IMediator?
     
     /**
     Notify `Observer`s.

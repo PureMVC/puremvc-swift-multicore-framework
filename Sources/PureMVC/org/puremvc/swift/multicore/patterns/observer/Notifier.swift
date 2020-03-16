@@ -2,7 +2,7 @@
 //  Notifier.swift
 //  PureMVC SWIFT Multicore
 //
-//  Copyright(c) 2015-2025 Saad Shams <saad.shams@puremvc.org>
+//  Copyright(c) 2020 Saad Shams <saad.shams@puremvc.org>
 //  Your reuse is governed by the Creative Commons Attribution 3.0 License
 //
 
@@ -47,21 +47,16 @@ open class Notifier : INotifier {
     /// Message constant
     open class var MULTITON_MSG: String { return "multitonKey for this Notifier not yet initialized!" }
     
-    // The Multiton Key for this app
-    fileprivate var _multitonKey: String?
-    
-    /// Constructor
-    public init() {
-        
-    }
-    
+    /// The Multiton Key for this app
+    internal var multitonKey: String?
+       
     /// Reference to the Facade Multiton
-    open var facade:IFacade {
+    open lazy var facade:IFacade = {
         assert(multitonKey != nil, Notifier.MULTITON_MSG)
         
         // returns instance mapped to multitonKey if it exists otherwise defaults to Facade
-        return Facade.getInstance(multitonKey!) { Facade(key: self.multitonKey!) }
-    }
+        return Facade.getInstance(multitonKey!) { key in Facade(key: key) }
+    }()
     
     /**
     Create and send an `INotification`.
@@ -73,8 +68,33 @@ open class Notifier : INotifier {
     - parameter body: the body of the notification (optional)
     - parameter type: the type of the notification (optional)
     */
-    open func sendNotification(_ notificationName: String, body: Any?=nil, type: String?=nil) {
+    open func sendNotification(_ notificationName: String, body: Any, type: String) {
         facade.sendNotification(notificationName, body: body, type: type)
+    }
+    
+    /**
+    Create and send an `INotification`.
+    
+    Keeps us from having to construct new INotification
+    instances in our implementation code.
+    
+    - parameter notificationName: the name of the notification to send
+    - parameter body: the body of the notification (optional)
+    */
+    open func sendNotification(_ notificationName: String, body: Any) {
+        facade.sendNotification(notificationName, body: body)
+    }
+    
+    /**
+    Create and send an `INotification`.
+    
+    Keeps us from having to construct new INotification
+    instances in our implementation code.
+    
+    - parameter notificationName: the name of the notification to send
+    */
+    open func sendNotification(_ notificationName: String) {
+        facade.sendNotification(notificationName)
     }
     
     /**
@@ -95,12 +115,7 @@ open class Notifier : INotifier {
     - parameter key: the multitonKey for this INotifier to use
     */
     open func initializeNotifier(_ key: String) {
-        _multitonKey = key
-    }
-    
-    /// The Multiton Key for this app
-    open var multitonKey: String? {
-        return _multitonKey
+        multitonKey = key
     }
     
 }

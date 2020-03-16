@@ -4,7 +4,7 @@
 //
 //  PureMVC SWIFT Multicore
 //
-//  Copyright(c) 2015-2019 Saad Shams <saad.shams@puremvc.org>
+//  Copyright(c) 2020 Saad Shams <saad.shams@puremvc.org>
 //  Your reuse is governed by the Creative Commons Attribution 3.0 License
 //
 
@@ -52,7 +52,7 @@ class ControllerExtendTest: XCTestCase {
         controllerExtend.resource = resource
         
         //Observer has weak reference to Command/Mediator as they form cyclic references
-        controllerExtend.registerCommand("ControllerTest", closure: {ControllerTestCommand()})
+        controllerExtend.registerCommand("ControllerTest", factory: {ControllerTestCommand()})
         
         Controller.removeController("Key1")
         View.removeView("Key1") //since view also gets initialized with the controller

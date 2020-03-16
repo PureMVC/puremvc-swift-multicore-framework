@@ -2,7 +2,7 @@
 //  Model.swift
 //  PureMVC SWIFT Multicore
 //
-//  Copyright(c) 2015-2025 Saad Shams <saad.shams@puremvc.org>
+//  Copyright(c) 2020 Saad Shams <saad.shams@puremvc.org>
 //  Your reuse is governed by the Creative Commons Attribution 3.0 License
 //
 
@@ -32,23 +32,23 @@ actors.
 open class Model: IModel {
     
     // Mapping of proxyNames to IProxy instances
-    fileprivate var proxyMap: [String: IProxy]
+    internal var proxyMap = [String: IProxy]()
     
     // Concurrent queue for proxyMap
     // for speed and convenience of running concurrently while reading, and thread safety of blocking while mutating
-    fileprivate let proxyMapQueue: DispatchQueue = DispatchQueue(label: "org.puremvc.model.proxyMapQueue", attributes: DispatchQueue.Attributes.concurrent)
+    internal let proxyMapQueue = DispatchQueue(label: "org.puremvc.model.proxyMapQueue", attributes: DispatchQueue.Attributes.concurrent)
     
-    // The Multiton Key for this Core
-    fileprivate var _multitonKey: String
+    /// The Multiton Key for this app
+    internal private(set) var multitonKey: String
     
     // The Multiton Model instanceMap.
-    fileprivate static var instanceMap = [String: IModel]()
+    private static var instanceMap = [String: IModel]()
     
     // instance Queue for thread safety
-    fileprivate static let instanceQueue: DispatchQueue = DispatchQueue(label: "org.puremvc.model.instanceQueue", attributes: DispatchQueue.Attributes.concurrent)
+    private static let instanceQueue = DispatchQueue(label: "org.puremvc.model.instanceQueue", attributes: DispatchQueue.Attributes.concurrent)
     
     /// Message constant
-    public static let MULTITON_MSG = "Model instance for this Multiton key already constructed!"
+    internal static let MULTITON_MSG = "Model instance for this Multiton key already constructed!"
     
     /**
     Constructor.
@@ -64,8 +64,7 @@ open class Model: IModel {
     */
     public init(key: String) {
         assert(Model.instanceMap[key] == nil, Model.MULTITON_MSG)
-        _multitonKey = key
-        proxyMap = [String: IProxy]()
+        multitonKey = key
         Model.instanceMap[key] = self
         initializeModel()
     }
@@ -86,15 +85,15 @@ open class Model: IModel {
     `Model` Multiton Factory method.
     
     - parameter key: multitonKey
-    - parameter closure: reference that returns `IModel`
+    - parameter factory: reference that returns `IModel`
     - returns: the instance returned by the passed closure
     */
-    open class func getInstance(_ key: String, closure: () -> IModel) -> IModel {
+    open class func getInstance(_ key: String, factory: (String) -> IModel) -> IModel {
         instanceQueue.sync(flags: .barrier, execute: {
-            if self.instanceMap[key] == nil {
-                self.instanceMap[key] = closure()
+            if instanceMap[key] == nil {
+                instanceMap[key] = factory(key)
             }
-        }) 
+        })
         return instanceMap[key]!
     }
     
@@ -105,8 +104,8 @@ open class Model: IModel {
     */
     open func registerProxy(_ proxy: IProxy) {
         proxyMapQueue.sync(flags: .barrier, execute: {
-            proxy.initializeNotifier(self.multitonKey)
-            self.proxyMap[proxy.proxyName] = proxy
+            proxy.initializeNotifier(multitonKey)
+            proxyMap[proxy.name] = proxy
             proxy.onRegister()
         }) 
     }
@@ -120,7 +119,7 @@ open class Model: IModel {
     open func retrieveProxy(_ proxyName: String) -> IProxy? {
         var proxy: IProxy?
         proxyMapQueue.sync {
-            proxy = self.proxyMap[proxyName]
+            proxy = proxyMap[proxyName]
         }
         return proxy
     }
@@ -134,7 +133,7 @@ open class Model: IModel {
     open func hasProxy(_ proxyName: String) -> Bool {
         var result = false
         proxyMapQueue.sync {
-            result = self.proxyMap[proxyName] != nil
+            result = proxyMap[proxyName] != nil
         }
         return result
     }
@@ -148,9 +147,9 @@ open class Model: IModel {
     open func removeProxy(_ proxyName: String) -> IProxy? {
         var removed: IProxy?
         proxyMapQueue.sync(flags: .barrier, execute: {
-            if let proxy = self.proxyMap[proxyName] {
+            if let proxy = proxyMap[proxyName] {
                 proxy.onRemove()
-                removed = self.proxyMap.removeValue(forKey: proxyName)
+                removed = proxyMap.removeValue(forKey: proxyName)
             }
         }) 
         return removed
@@ -163,13 +162,8 @@ open class Model: IModel {
     */
     open class func removeModel(_ key: String) {
         instanceQueue.sync(flags: .barrier, execute: {
-            _ = self.instanceMap.removeValue(forKey: key)
+            _ = instanceMap.removeValue(forKey: key)
         }) 
-    }
-    
-    /// The Multiton Key
-    open var multitonKey: String {
-        return _multitonKey
     }
     
 }

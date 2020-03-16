@@ -2,7 +2,7 @@
 //  FacadeExtend.swift
 //  PureMVC SWIFT Multicore
 //
-//  Copyright(c) 2015-2019 Saad Shams <saad.shams@puremvc.org>
+//  Copyright(c) 2020 Saad Shams <saad.shams@puremvc.org>
 //  Your reuse is governed by the Creative Commons Attribution 3.0 License
 //
 
@@ -13,21 +13,15 @@ public class FacadeExtend: Facade {
     public var resource: Resource?
     
     public override func initializeController() {
-        if controller != nil {
-            return
-        }
-        controller = Controller.getInstance(multitonKey) { ControllerExtend(key: self.multitonKey) }
+        controller = Controller.getInstance(multitonKey) { key in ControllerExtend(key: key) }
     }
     
     public override func initializeModel() {
-        if model != nil {
-            return
-        }
-        model = Model.getInstance(multitonKey) { ModelExtend(key: self.multitonKey) }
+        model = Model.getInstance(multitonKey) { key in ModelExtend(key: key) }
     }
     
     public class func getInstance(key: String) -> IFacade {
-        return Facade.getInstance(key) { FacadeExtend(key: key) }
+        return Facade.getInstance(key) { key in FacadeExtend(key: key) }
     }
     
     public override static func removeCore(_ key: String) {

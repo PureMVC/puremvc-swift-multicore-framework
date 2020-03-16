@@ -2,7 +2,7 @@
 //  Mediator.swift
 //  PureMVC SWIFT Multicore
 //
-//  Copyright(c) 2015-2025 Saad Shams <saad.shams@puremvc.org>
+//  Copyright(c) 2020 Saad Shams <saad.shams@puremvc.org>
 //  Your reuse is governed by the Creative Commons Attribution 3.0 License
 //
 
@@ -23,10 +23,10 @@ open class Mediator: Notifier, IMediator {
     open class var NAME: String { return "Mediator" }
     
     // the mediator name
-    fileprivate var _mediatorName: String
+    public private(set) var name: String
     
     // The view component
-    fileprivate var _viewComponent: AnyObject?
+    public var viewComponent: AnyObject?
     
     /**
     Constructor.
@@ -34,9 +34,9 @@ open class Mediator: Notifier, IMediator {
     - parameter mediatorName: the mediator name
     - parameter viewComponent: viewComponent instance
     */
-    public init(mediatorName: String?=nil, viewComponent: AnyObject?=nil) {
-        _mediatorName = mediatorName ?? Mediator.NAME
-        _viewComponent = viewComponent
+    public init(name: String?=nil, viewComponent: AnyObject?=nil) {
+        self.name = name ?? Mediator.NAME
+        self.viewComponent = viewComponent
     }
     
     /**
@@ -68,17 +68,6 @@ open class Mediator: Notifier, IMediator {
     /// Called by the View when the Mediator is removed
     open func onRemove() {
         
-    }
-    
-    /// Get the name of the `Mediator`.
-    open var mediatorName: String {
-        return _mediatorName
-    }
-    
-    /// Get or set the `IMediator`'s view component.
-    open var viewComponent: AnyObject? {
-        get { return _viewComponent }
-        set { _viewComponent = newValue }
     }
 
 }

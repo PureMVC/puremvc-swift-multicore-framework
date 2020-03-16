@@ -2,7 +2,7 @@
 //  ShellFacade.swift
 //  PureMVC SWIFT Multicore
 //
-//  Copyright(c) 2015-2019 Saad Shams <saad.shams@puremvc.org>
+//  Copyright(c) 2020 Saad Shams <saad.shams@puremvc.org>
 //  Your reuse is governed by the Creative Commons Attribution 3.0 License
 //
 
@@ -28,7 +28,7 @@ public class ShellFacade: Facade {
     }
     
     public class func getInstance(key: String) -> IFacade {
-        return Facade.getInstance(key) { ShellFacade(key: key) }
+        return Facade.getInstance(key) { key in ShellFacade(key: key) }
     }
     
 }

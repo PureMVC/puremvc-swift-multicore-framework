@@ -2,7 +2,7 @@
 //  ViewTestMediator5.swift
 //  PureMVC SWIFT Multicore
 //
-//  Copyright(c) 2015-2019 Saad Shams <saad.shams@puremvc.org>
+//  Copyright(c) 2020 Saad Shams <saad.shams@puremvc.org>
 //  Your reuse is governed by the Creative Commons Attribution 3.0 License
 //
 
@@ -24,7 +24,7 @@ public class ViewTestMediator5: Mediator {
     Constructor
     */
     public init(viewComponent: AnyObject?) {
-        super.init(mediatorName: ViewTestMediator5.NAME, viewComponent: viewComponent)
+        super.init(name: ViewTestMediator5.NAME, viewComponent: viewComponent)
     }
     
     public override func listNotificationInterests() -> [String] {

@@ -2,7 +2,7 @@
 //  IController.swift
 //  PureMVC SWIFT Multicore
 //
-//  Copyright(c) 2015-2025 Saad Shams <saad.shams@puremvc.org>
+//  Copyright(c) 2020 Saad Shams <saad.shams@puremvc.org>
 //  Your reuse is governed by the Creative Commons Attribution 3.0 License
 //
 
@@ -25,13 +25,18 @@ assumes these responsibilities:
 public protocol IController {
     
     /**
+     Initialize the `Controller` instance.
+     */
+    func initializeController()
+    
+    /**
     Register a particular `ICommand` class as the handler
     for a particular `INotification`.
     
     - parameter notificationName: the name of the `INotification`
     - parameter closure: reference that returns `ICommand`
     */
-    func registerCommand(_ notificationName: String, closure: @escaping () -> ICommand)
+    func registerCommand(_ notificationName: String, factory: @escaping () -> ICommand)
     
     /**
     Execute the `ICommand` previously registered as the
@@ -42,18 +47,18 @@ public protocol IController {
     func executeCommand(_ notification: INotification)
     
     /**
-    Remove a previously registered `ICommand` to `INotification` mapping.
-    
-    - parameter notificationName: the name of the `INotification` to remove the `ICommand` mapping for
-    */
-    func removeCommand(_ notificationName: String)
-    
-    /**
     Check if a Command is registered for a given Notification
     
     - parameter notificationName:
     - returns: whether a Command is currently registered for the given `notificationName`.
     */
     func hasCommand(_ notificationName: String) -> Bool
+    
+    /**
+    Remove a previously registered `ICommand` to `INotification` mapping.
+    
+    - parameter notificationName: the name of the `INotification` to remove the `ICommand` mapping for
+    */
+    func removeCommand(_ notificationName: String)
     
 }

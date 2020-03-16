@@ -2,7 +2,7 @@
 //  ProxyTest.swift
 //  PureMVC SWIFT Multicore
 //
-//  Copyright(c) 2015-2019 Saad Shams <saad.shams@puremvc.org>
+//  Copyright(c) 2020 Saad Shams <saad.shams@puremvc.org>
 //  Your reuse is governed by the Creative Commons Attribution 3.0 License
 //
 
@@ -33,10 +33,10 @@ class ProxyTest: XCTestCase {
     */
     func testNameAccessor() {
         // Create a new Proxy and use accessors to set the proxy name
-        let proxy: Proxy = Proxy(proxyName: "TestProxy", data: nil)
+        let proxy: Proxy = Proxy(name: "TestProxy", data: nil)
         
         // test assertions
-        XCTAssertTrue(proxy.proxyName == "TestProxy", "Expecting proxy.proxyName == 'TestProxy'")
+        XCTAssertTrue(proxy.name == "TestProxy", "Expecting proxy.proxyName == 'TestProxy'")
     }
     
     /**
@@ -44,7 +44,7 @@ class ProxyTest: XCTestCase {
     */
     func testDataAccessors() {
         // Create a new Proxy and use accessors to set the data
-        let proxy: Proxy = Proxy(proxyName: "colors", data: nil)
+        let proxy: Proxy = Proxy(name: "colors", data: nil)
         proxy.data = ["red", "green", "blue"]
         
         let data: [String] = proxy.data as! [String]
@@ -61,13 +61,13 @@ class ProxyTest: XCTestCase {
     */
     func testConstructor() {
         // Create a new Proxy using the Constructor to set the name and data
-        let proxy: Proxy = Proxy(proxyName: "colors", data: ["red", "green", "blue"])
+        let proxy: Proxy = Proxy(name: "colors", data: ["red", "green", "blue"])
         
         let data: [String] = proxy.data as! [String]
         
         // test assertions
         XCTAssertNotNil(proxy, "Expecting proxy not nil")
-        XCTAssertTrue(proxy.proxyName == "colors", "Expecting proxy.proxyName == 'colors'")
+        XCTAssertTrue(proxy.name == "colors", "Expecting proxy.proxyName == 'colors'")
         XCTAssertTrue(data.count == 3, "Expecting data.count == 3")
         XCTAssertTrue(data[0] == "red", "Expecting data[0] == 'red'")
         XCTAssertTrue(data[1] == "green", "Expecting data[1] == 'green'")

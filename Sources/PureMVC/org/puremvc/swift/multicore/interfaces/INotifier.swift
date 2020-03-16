@@ -2,7 +2,7 @@
 //  ICommand.swift
 //  PureMVC SWIFT Multicore
 //
-//  Copyright(c) 2015-2025 Saad Shams <saad.shams@puremvc.org>
+//  Copyright(c) 2020 Saad Shams <saad.shams@puremvc.org>
 //  Your reuse is governed by the Creative Commons Attribution 3.0 License
 //
 
@@ -36,10 +36,31 @@ public protocol INotifier {
     notification instances in our implementation code.
     
     - parameter notificationName: the name of the notification to send
-    - parameter body: the body of the notification (optional)
-    - parameter type: the type of the notification (optional)
+    - parameter body: the body of the notification
+    - parameter type: the type of the notification
     */
-    func sendNotification(_ notificationName: String, body: Any?, type: String?)
+    func sendNotification(_ notificationName: String, body: Any, type: String)
+    
+    /**
+    Send a `INotification`.
+    
+    Convenience method to prevent having to construct new
+    notification instances in our implementation code.
+    
+    - parameter notificationName: the name of the notification to send
+    - parameter body: the body of the notification
+    */
+    func sendNotification(_ notificationName: String, body: Any)
+    
+    /**
+    Send a `INotification`.
+    
+    Convenience method to prevent having to construct new
+    notification instances in our implementation code.
+    
+    - parameter notificationName: the name of the notification to send
+    */
+    func sendNotification(_ notificationName: String)
     
     /**
     Initialize this INotifier instance.

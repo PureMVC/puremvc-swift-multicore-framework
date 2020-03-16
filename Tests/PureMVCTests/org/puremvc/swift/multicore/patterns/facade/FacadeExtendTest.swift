@@ -2,7 +2,7 @@
 //  FacadeExtendTest.swift
 //  PureMVC SWIFT Multicore
 //
-//  Copyright(c) 2015-2019 Saad Shams <saad.shams@puremvc.org>
+//  Copyright(c) 2020 Saad Shams <saad.shams@puremvc.org>
 //  Your reuse is governed by the Creative Commons Attribution 3.0 License
 //
 
@@ -49,7 +49,7 @@ class FacadeExtendTest: XCTestCase {
         var view: ViewExtend! = (ViewExtend.getInstance(key: "Key1") as! ViewExtend)
         view.resource = viewResource
         
-        controller.registerCommand("ControllerTest", closure: {ControllerTestCommand()}) //Observer has a weak reference to commands
+        controller.registerCommand("ControllerTest", factory: {ControllerTestCommand()}) //Observer has a weak reference to commands
         
         facadeExtend = nil
         controller = nil

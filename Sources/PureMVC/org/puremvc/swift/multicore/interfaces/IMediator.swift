@@ -2,7 +2,7 @@
 //  IMediator.swift
 //  PureMVC SWIFT Multicore
 //
-//  Copyright(c) 2015-2025 Saad Shams <saad.shams@puremvc.org>
+//  Copyright(c) 2020 Saad Shams <saad.shams@puremvc.org>
 //  Your reuse is governed by the Creative Commons Attribution 3.0 License
 //
 
@@ -37,7 +37,7 @@ and register it as an Observer for each `INotification` name returned by
 public protocol IMediator: INotifier {
     
     /// Get the `IMediator` instance name
-    var mediatorName: String { get }
+    var name: String { get }
     
     /// Get or set the `IMediator`'s view component.
     var viewComponent: AnyObject? { get set }

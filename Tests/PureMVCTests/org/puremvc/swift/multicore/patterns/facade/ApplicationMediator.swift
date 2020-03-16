@@ -2,7 +2,7 @@
 //  ApplicationMediator.swift
 //  PureMVC SWIFT Multicore
 //
-//  Copyright(c) 2015-2019 Saad Shams <saad.shams@puremvc.org>
+//  Copyright(c) 2020 Saad Shams <saad.shams@puremvc.org>
 //  Your reuse is governed by the Creative Commons Attribution 3.0 License
 //
 
@@ -13,7 +13,7 @@ public class ApplicationMediator: Mediator {
     public override class var NAME: String { return "ApplicationMediator" }
     
     public init(viewComponent: AnyObject? = nil) {
-        super.init(mediatorName: ApplicationMediator.NAME, viewComponent: viewComponent)
+        super.init(name: ApplicationMediator.NAME, viewComponent: viewComponent)
     }
     
     public override func onRegister() {

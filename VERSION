@@ -1,12 +1,14 @@
 PureMVC MultiCore Framework for Swift
 --------------------------------------------------------------------------
-Release Date: 04/02/19
+Release Date: 03/16/20
     Platform: Swift 
      Version: 1
-    Revision: 3
+    Revision: 4
        Minor: 0
       Author: Saad Shams <saad.shams@puremvc.org>
 --------------------------------------------------------------------------
+1.4 - Refactor
+
 1.3 - Swift Package Manager and Swift 5.0 support added.
 
 1.2 - Swift 3.0 support added.

@@ -2,7 +2,7 @@
 //  Proxy.swift
 //  PureMVC SWIFT Multicore
 //
-//  Copyright(c) 2015-2025 Saad Shams <saad.shams@puremvc.org>
+//  Copyright(c) 2020 Saad Shams <saad.shams@puremvc.org>
 //  Your reuse is governed by the Creative Commons Attribution 3.0 License
 //
 
@@ -29,27 +29,16 @@ open class Proxy: Notifier, IProxy {
     /// Default proxy name
     open class var NAME: String { return "Proxy" }
     
-    // the proxy name
-    fileprivate var _proxyName: String
+    /// the proxy name
+    public private(set) var name: String
     
-    // the data object
-    fileprivate var _data: Any?
+    /// the data object
+    public var data: Any?
     
     /// Constructor
-    public init(proxyName: String?=nil, data: Any?=nil) {
-        _proxyName = proxyName ?? Proxy.NAME
-        _data = data
-    }
-    
-    /// Get the proxy name
-    open var proxyName: String {
-        return _proxyName
-    }
-    
-    /// Get or set the data object
-    open var data: Any? {
-        get { return _data }
-        set { _data = newValue }
+    public init(name: String?=nil, data: Any?=nil) {
+        self.name = name ?? Proxy.NAME
+        self.data = data
     }
     
     /// Called by the Model when the Proxy is registered

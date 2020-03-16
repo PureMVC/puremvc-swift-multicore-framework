@@ -2,7 +2,7 @@
 //  Observer.swift
 //  PureMVC SWIFT Multicore
 //
-//  Copyright(c) 2015-2025 Saad Shams <saad.shams@puremvc.org>
+//  Copyright(c) 2020 Saad Shams <saad.shams@puremvc.org>
 //  Your reuse is governed by the Creative Commons Attribution 3.0 License
 //
 
@@ -26,9 +26,9 @@ In PureMVC, the `Observer` class assumes these responsibilities:
 */
 open class Observer: IObserver {
     
-    fileprivate var _notifyMethod: ((_ notification: INotification) -> ())?
+    public var notifyMethod: ((_ notification: INotification) -> ())?
     
-    weak fileprivate var _notifyContext: AnyObject?
+    weak public var notifyContext: AnyObject?
     
     /**
     Constructor.
@@ -40,8 +40,8 @@ open class Observer: IObserver {
     - parameter notifyContext: the notification context of the interested object
     */
     public init(notifyMethod: ((INotification) -> ())?, notifyContext: AnyObject?) {
-        _notifyMethod = notifyMethod
-        _notifyContext = notifyContext
+        self.notifyMethod = notifyMethod
+        self.notifyContext = notifyContext
     }
     
     /**
@@ -50,7 +50,7 @@ open class Observer: IObserver {
     - parameter notification: the `INotification` to pass to the interested object's notification method.
     */
     open func notifyObserver(_ notification: INotification) {
-        self.notifyMethod?(notification)
+        notifyMethod?(notification)
     }
     
     /**
@@ -60,19 +60,7 @@ open class Observer: IObserver {
     - returns: boolean indicating if the object and the notification context are the same
     */
     open func compareNotifyContext(_ object: AnyObject) -> Bool {
-        return object === _notifyContext
-    }
-    
-    /// Get or set the notification method.
-    open var notifyMethod: ((_ notification: INotification) -> ())? {
-        get { return _notifyMethod }
-        set { _notifyMethod = newValue }
-    }
-    
-    /// Get or set the notification context.
-    open var notifyContext: AnyObject? {
-        get { return _notifyContext }
-        set { _notifyContext = newValue }
+        return object === notifyContext
     }
     
 }

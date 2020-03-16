@@ -2,7 +2,7 @@
 //  IView.swift
 //  PureMVC SWIFT Multicore
 //
-//  Copyright(c) 2015-2025 Saad Shams <saad.shams@puremvc.org>
+//  Copyright(c) 2020 Saad Shams <saad.shams@puremvc.org>
 //  Your reuse is governed by the Creative Commons Attribution 3.0 License
 //
 
@@ -29,6 +29,11 @@ In PureMVC, the `View` class assumes these responsibilities:
 public protocol IView {
     
     /**
+     Initialize the  `View` instance.
+     */
+    func initializeView()
+    
+    /**
     Register an `IObserver` to be notified
     of `INotifications` with a given name.
     
@@ -36,14 +41,6 @@ public protocol IView {
     - parameter observer: the `IObserver` to register
     */
     func registerObserver(_ notificationName: String, observer: IObserver)
-    
-    /**
-    Remove a group of observers from the observer list for a given Notification name.
-    
-    - parameter notificationName: which observer list to remove from
-    - parameter notifyContext: removed the observers with this object as their notifyContext
-    */
-    func removeObserver(_ notificationName: String, notifyContext: AnyObject)
     
     /**
     Notify the `IObservers` for a particular `INotification`.
@@ -55,6 +52,14 @@ public protocol IView {
     - parameter notification: the `INotification` to notify `IObservers` of.
     */
     func notifyObservers(_ notification: INotification)
+    
+    /**
+    Remove a group of observers from the observer list for a given Notification name.
+    
+    - parameter notificationName: which observer list to remove from
+    - parameter notifyContext: removed the observers with this object as their notifyContext
+    */
+    func removeObserver(_ notificationName: String, notifyContext: AnyObject)
     
     /**
     Register an `IMediator` instance with the `View`.
@@ -83,19 +88,19 @@ public protocol IView {
     func retrieveMediator(_ mediatorName: String) -> IMediator?
     
     /**
-    Remove an `IMediator` from the `View`.
-    
-    - parameter mediatorName: name of the `IMediator` instance to be removed.
-    - returns: the `IMediator` that was removed from the `View`
-    */
-    func removeMediator(_ mediatorName:String) -> IMediator?
-    
-    /**
     Check if a Mediator is registered or not
     
     - parameter mediatorName:
     - returns: whether a Mediator is registered with the given `mediatorName`.
     */
     func hasMediator(_ mediatorName:String) -> Bool
+    
+    /**
+    Remove an `IMediator` from the `View`.
+    
+    - parameter mediatorName: name of the `IMediator` instance to be removed.
+    - returns: the `IMediator` that was removed from the `View`
+    */
+    func removeMediator(_ mediatorName:String) -> IMediator?
     
 }

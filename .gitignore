@@ -12,6 +12,7 @@ xcuserdata
 .swiftpm
 Package.resolved
 build
+.build
 
 .idea/
 

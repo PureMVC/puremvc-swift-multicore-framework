@@ -2,7 +2,7 @@
 //  ResourceMediator.swift
 //  PureMVC SWIFT Multicore
 //
-//  Copyright(c) 2015-2019 Saad Shams <saad.shams@puremvc.org>
+//  Copyright(c) 2020 Saad Shams <saad.shams@puremvc.org>
 //  Your reuse is governed by the Creative Commons Attribution 3.0 License
 //
 
@@ -11,7 +11,7 @@
 class ResourceMediator: Mediator {
     
     init(viewComponent: Resource) {
-        super.init(mediatorName: Mediator.NAME, viewComponent: viewComponent)
+        super.init(name: Mediator.NAME, viewComponent: viewComponent)
     }
     
     override func listNotificationInterests() -> [String] {

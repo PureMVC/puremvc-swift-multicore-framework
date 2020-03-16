@@ -2,7 +2,7 @@
 //  IObserver.swift
 //  PureMVC SWIFT Multicore
 //
-//  Copyright(c) 2015-2025 Saad Shams <saad.shams@puremvc.org>
+//  Copyright(c) 2020 Saad Shams <saad.shams@puremvc.org>
 //  Your reuse is governed by the Creative Commons Attribution 3.0 License
 //
 
@@ -44,7 +44,6 @@ public protocol IObserver {
     
     /**
     Set the notification method.
-    *
     
     The notification method should take one parameter of type `INotification`
     

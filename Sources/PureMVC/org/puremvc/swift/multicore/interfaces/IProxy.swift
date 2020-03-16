@@ -2,7 +2,7 @@
 //  IProxy.swift
 //  PureMVC SWIFT Multicore
 //
-//  Copyright(c) 2015-2025 Saad Shams <saad.shams@puremvc.org>
+//  Copyright(c) 2020 Saad Shams <saad.shams@puremvc.org>
 //  Your reuse is governed by the Creative Commons Attribution 3.0 License
 //
 
@@ -25,7 +25,7 @@ Additionally, `IProxy`s typically:
 public protocol IProxy : INotifier {
     
     /// Get the Proxy name
-    var proxyName: String { get }
+    var name: String { get }
     
     /// Get or set the data object
     var data: Any? { get set }

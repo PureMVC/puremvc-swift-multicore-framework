@@ -2,7 +2,7 @@
 //  NotifierTest.swift
 //  PureMVC SWIFT Multicore
 //
-//  Copyright(c) 2015-2019 Saad Shams <saad.shams@puremvc.org>
+//  Copyright(c) 2020 Saad Shams <saad.shams@puremvc.org>
 //  Your reuse is governed by the Creative Commons Attribution 3.0 License
 //
 
@@ -25,7 +25,7 @@ class NotifierTest: XCTestCase {
     Tests notifier methods.
     */
     func testNotifier() {
-        let facade = Facade.getInstance("notifierTest") { Facade(key: "notifierTest") }
+        let facade = Facade.getInstance("notifierTest") { key in Facade(key: key) }
         
         XCTAssertTrue(Facade.hasCore("notifierTest"), "Expecting Facade.hasCore('notifierTest') == true")
         
