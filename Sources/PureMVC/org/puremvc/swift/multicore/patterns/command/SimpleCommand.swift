@@ -20,6 +20,10 @@ method where your business logic will handle the `INotification`.
 */
 open class SimpleCommand: Notifier, ICommand {
     
+    public override init() {
+        
+    }
+    
     /**
     Fulfill the use-case initiated by the given `INotification`.
     

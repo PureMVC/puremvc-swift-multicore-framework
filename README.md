@@ -23,7 +23,7 @@ PureMVC is a lightweight framework for creating applications based upon the clas
 * [MacOS](https://en.wikipedia.org/wiki/MacOS)
 
 ## Status
-Production - [Version 1.4](https://github.com/PureMVC/puremvc-swift-multicore-framework/blob/master/VERSION)
+Production - [Version 1.5](https://github.com/PureMVC/puremvc-swift-multicore-framework/blob/master/VERSION)
 
 ## License
 * PureMVC MultiCore Framework for Swift - Copyright © 2020 [Saad Shams](https://www.linkedin.com/in/muizz/)

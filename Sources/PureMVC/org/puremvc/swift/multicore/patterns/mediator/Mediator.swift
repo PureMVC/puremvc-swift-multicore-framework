@@ -26,7 +26,7 @@ open class Mediator: Notifier, IMediator {
     public private(set) var name: String
     
     // The view component
-    public var viewComponent: AnyObject?
+    public weak var viewComponent: AnyObject?
     
     /**
     Constructor.
