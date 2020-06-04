@@ -259,7 +259,7 @@ open class View: IView {
     - parameter mediatorName: name of the `IMediator` instance to be removed.
     - returns: the `IMediator` that was removed from the `View`
     */
-    open func removeMediator(_ mediatorName: String) -> IMediator? {
+    @discardableResult open func removeMediator(_ mediatorName: String) -> IMediator? {
         var removed: IMediator?
         mediatorMapQueue.sync(flags: .barrier, execute: {
             if let mediator = mediatorMap[mediatorName] {

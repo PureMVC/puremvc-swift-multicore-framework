@@ -58,7 +58,7 @@ public protocol IFacade: INotifier {
     - parameter proxyName: the `IProxy` to remove from the `Model`.
     - returns: the `IProxy` that was removed from the `Model`
     */
-    func removeProxy(_ proxyName: String) -> IProxy?
+    @discardableResult func removeProxy(_ proxyName: String) -> IProxy?
     
     /**
     Register an `ICommand` with the `Controller`.
@@ -112,7 +112,7 @@ public protocol IFacade: INotifier {
     - parameter mediatorName: name of the `IMediator` instance to be removed.
     - returns: the `IMediator` instance previously registered with the given `mediatorName`.
     */
-    func removeMediator(_ mediatorName: String) -> IMediator?
+    @discardableResult func removeMediator(_ mediatorName: String) -> IMediator?
     
     /**
     Notify `Observer`s.

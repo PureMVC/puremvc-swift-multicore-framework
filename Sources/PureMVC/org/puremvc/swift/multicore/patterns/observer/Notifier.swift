@@ -58,6 +58,7 @@ open class Notifier : INotifier {
         return Facade.getInstance(multitonKey!) { key in Facade(key: key) }
     }()
     
+    /// Constructor
     public init() {
         
     }

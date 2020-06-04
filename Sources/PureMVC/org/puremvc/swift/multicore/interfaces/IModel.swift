@@ -54,6 +54,6 @@ public protocol IModel {
     - parameter proxyName: name of the `IProxy` instance to be removed.
     - returns: the `IProxy` that was removed from the `Model`
     */
-    func removeProxy(_ proxyName: String) -> IProxy?
+    @discardableResult func removeProxy(_ proxyName: String) -> IProxy?
     
 }

@@ -219,7 +219,7 @@ open class Facade: IFacade {
     - parameter proxyName: the `IProxy` to remove from the `Model`.
     - returns: the `IProxy` that was removed from the `Model`
     */
-    open func removeProxy(_ proxyName: String) -> IProxy? {
+    @discardableResult open func removeProxy(_ proxyName: String) -> IProxy? {
         return model.removeProxy(proxyName)
     }
     
@@ -258,7 +258,7 @@ open class Facade: IFacade {
     - parameter mediatorName: name of the `IMediator` to be removed.
     - returns: the `IMediator` that was removed from the `View`
     */
-    open func removeMediator(_ mediatorName: String) -> IMediator? {
+    @discardableResult open func removeMediator(_ mediatorName: String) -> IMediator? {
         return view.removeMediator(mediatorName)
     }
     
