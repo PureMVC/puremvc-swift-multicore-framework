@@ -144,7 +144,7 @@ open class Model: IModel {
     - parameter proxyName: name of the `IProxy` instance to be removed.
     - returns: the `IProxy` that was removed from the `Model`
     */
-    open func removeProxy(_ proxyName: String) -> IProxy? {
+    @discardableResult open func removeProxy(_ proxyName: String) -> IProxy? {
         var removed: IProxy?
         proxyMapQueue.sync(flags: .barrier, execute: {
             if let proxy = proxyMap[proxyName] {

@@ -101,6 +101,6 @@ public protocol IView {
     - parameter mediatorName: name of the `IMediator` instance to be removed.
     - returns: the `IMediator` that was removed from the `View`
     */
-    func removeMediator(_ mediatorName:String) -> IMediator?
+    @discardableResult func removeMediator(_ mediatorName:String) -> IMediator?
     
 }
