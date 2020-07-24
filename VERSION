@@ -1,15 +1,14 @@
 PureMVC MultiCore Framework for Swift
 --------------------------------------------------------------------------
-Release Date: 06/03/20
+Release Date: 07/23/20
     Platform: Swift 
      Version: 1
-    Revision: 5
-       Minor: 1
-      Author: John Nyquist <john@nyquist.net>
+    Revision: 6
+       Minor: 0
+      Author: Saad Shams <saad.shams@puremvc.org>
 --------------------------------------------------------------------------
-1.5.1 - Added the @discardableResult attribute to the methods that remove
-a value and return the removed value. This way returned value does not
-have to be used once it is removed.
+1.6 - Updated swift syntax, Updated Docs. Added the @discardableResult
+attribute to suppress the compiler's unused result warning.
 
 1.5 - Applied weak reference for viewComponent in Mediator.
 
