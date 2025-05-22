@@ -31,7 +31,7 @@ open class Mediator: Notifier, IMediator {
     /**
     Constructor.
     
-    - parameter mediatorName: the mediator name
+    - parameter name: the mediator name
     - parameter viewComponent: viewComponent instance
     */
     public init(name: String?=nil, viewComponent: AnyObject?=nil) {

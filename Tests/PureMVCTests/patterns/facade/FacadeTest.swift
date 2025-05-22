@@ -52,7 +52,7 @@ class FacadeTest: XCTestCase {
         // Create the Facade, register the FacadeTestCommand to
         // handle 'FacadeTest' notifications
         let facade = Facade.getInstance("FacadeTestKey2", factory: { key in Facade(key: key) })
-        facade.registerCommand("FacadeTestNote", closure: { FacadeTestCommand()} )
+        facade.registerCommand("FacadeTestNote", factory: { FacadeTestCommand()} )
         
         // Send notification. The Command associated with the event
         // (FacadeTestCommand) will be invoked, and will multiply
@@ -80,7 +80,7 @@ class FacadeTest: XCTestCase {
         // Create the Facade, register the FacadeTestCommand to
         // handle 'FacadeTest' events
         let facade = Facade.getInstance("FacadeTestKey3", factory: {key in Facade(key: key)}) as! Facade
-        facade.registerCommand("FacadeTestNote", closure: {FacadeTestCommand()})
+        facade.registerCommand("FacadeTestNote", factory: {FacadeTestCommand()})
         facade.removeCommand("FacadeTestNote")
         
         // Send notification. The Command associated with the event
@@ -200,7 +200,7 @@ class FacadeTest: XCTestCase {
     func testHasCommand() {
         // register the ControllerTestCommand to handle 'hasCommandTest' notes
         let facade = Facade.getInstance("FacadeTestKey10", factory: { key in Facade(key: key) })
-        facade.registerCommand("facadeHasCommandTest", closure: {FacadeTestCommand()})
+        facade.registerCommand("facadeHasCommandTest", factory: {FacadeTestCommand()})
         
         // test that hasCommand returns true for hasCommandTest notifications
         XCTAssertTrue(facade.hasCommand("facadeHasCommandTest"), "Expecting facade.hasCommand('facadeHasCommandTest') == true")

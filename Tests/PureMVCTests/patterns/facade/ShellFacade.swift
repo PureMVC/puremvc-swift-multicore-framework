@@ -16,7 +16,7 @@ public class ShellFacade: Facade {
     
     public override func initializeController() {
         super.initializeController()
-        registerCommand(ShellFacade.TestCommand, closure: {FacadeTestCommand2()})
+        registerCommand(ShellFacade.TestCommand, factory: {FacadeTestCommand2()})
     }
     
     public func startup(vo: FacadeTestVO) {

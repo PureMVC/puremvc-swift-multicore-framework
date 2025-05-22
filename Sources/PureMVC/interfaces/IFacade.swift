@@ -64,9 +64,9 @@ public protocol IFacade: INotifier {
     Register an `ICommand` with the `Controller`.
     
     - parameter noteName: the name of the `INotification` to associate the `ICommand` with.
-    - parameter closure: reference that returns `ICommand`
+    - parameter factory: closure that returns `ICommand`
     */
-    func registerCommand(_ notificationName: String, closure: @escaping () -> ICommand)
+    func registerCommand(_ notificationName: String, factory: @escaping () -> ICommand)
     
     /**
     Check if a Command is registered for a given Notification

@@ -30,7 +30,7 @@ class NotifierTest: XCTestCase {
         XCTAssertTrue(Facade.hasCore("notifierTest"), "Expecting Facade.hasCore('notifierTest') == true")
         
         let vo = FacadeTestVO(input: 5)
-        facade.registerCommand("testCommand", closure: {FacadeTestCommand()})
+        facade.registerCommand("testCommand", factory: {FacadeTestCommand()})
         
         let notifier = Notifier()
         notifier.initializeNotifier("notifierTest")

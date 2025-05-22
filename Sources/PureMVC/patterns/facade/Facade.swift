@@ -47,7 +47,7 @@ open class Facade: IFacade {
     This `IFacade` implementation is a Multiton,
     so you should not call the constructor
     directly, but instead call the static Factory method,
-    passing the unique key for this instance and the closure reference
+    passing the unique key for this instance and the factory closure
     that returns the `IFacade` implementation.
     `Facade.getInstance( multitonKey ) { Facade(key: multitonKey) }`
     
@@ -159,10 +159,10 @@ open class Facade: IFacade {
     Register an `ICommand` with the `Controller` by Notification name.
     
     - parameter notificationName: the name of the `INotification` to associate the `ICommand` with
-    - parameter closure: reference that returns `ICommand`
+    - parameter factory: reference that returns `ICommand`
     */
-    open func registerCommand(_ notificationName: String, closure: @escaping () -> ICommand) {
-        controller.registerCommand(notificationName, factory: closure)
+    open func registerCommand(_ notificationName: String, factory: @escaping () -> ICommand) {
+        controller.registerCommand(notificationName, factory: factory)
     }
     
     /**
