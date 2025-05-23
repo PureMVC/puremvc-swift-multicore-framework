@@ -62,7 +62,7 @@ open class MacroCommand: Notifier, ICommand {
         public func addSubCommand(closure: () -> ICommand) {
             addSubCommand( { FirstCommand() } );
             addSubCommand( { SecondCommand() } );
-            addSubCommand( ) { ThirdCommand() }; //or by using a trailing closure
+            addSubCommand { ThirdCommand() }; // or by using a trailing closure
         }
     
     Note that *SubCommands* may be any closure returning `ICommand`

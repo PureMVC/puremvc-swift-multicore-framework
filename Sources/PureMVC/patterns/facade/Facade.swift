@@ -80,13 +80,13 @@ open class Facade: IFacade {
     - parameter factory: reference that returns `IFacade`
     - returns: the Multiton instance of the `IFacade`
     */
-    open class func getInstance(_ key: String, factory: (String) -> IFacade) -> IFacade {
+    open class func getInstance(_ key: String, factory: (String) -> IFacade) -> IFacade? {
         instanceMapQueue.sync(flags: .barrier) {
             if instanceMap[key] == nil {
                 instanceMap[key] = factory(key)
             }
         }
-        return instanceMap[key]!
+        return instanceMap[key]
     }
     
     /**

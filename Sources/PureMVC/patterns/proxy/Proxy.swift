@@ -36,7 +36,7 @@ open class Proxy: Notifier, IProxy {
     public var data: Any?
     
     /// Constructor
-    public init(name: String?=nil, data: Any?=nil) {
+    public init(name: String? = nil, data: Any? = nil) {
         self.name = name ?? Proxy.NAME
         self.data = data
     }

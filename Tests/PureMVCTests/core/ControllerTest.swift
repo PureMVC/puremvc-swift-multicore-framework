@@ -33,7 +33,7 @@ class ControllerTest: XCTestCase {
     */
     func testGetInstance() {
         // Test Factory Method
-        let controller: IController = Controller.getInstance("ControllerTestKey1") { key in Controller(key: key) }
+        let controller: IController? = Controller.getInstance("ControllerTestKey1") { key in Controller(key: key) }
         
         // test assertions
         XCTAssertNotNil(controller as? Controller, "Expecting instance not nil")
@@ -54,8 +54,8 @@ class ControllerTest: XCTestCase {
     */
     func testRegisterAndExecuteCommand() {
         // Create the controller, register the ControllerTestCommand to handle 'ControllerTest' notes
-        let controller: IController = Controller.getInstance("ControllerTestKey1") { key in Controller(key: key) }
-        controller.registerCommand("ControllerTest", factory: {ControllerTestCommand()})
+        let controller: IController? = Controller.getInstance("ControllerTestKey1") { key in Controller(key: key) }
+        controller?.registerCommand("ControllerTest", factory: {ControllerTestCommand()})
         
         // Create a 'ControllerTest' note
         let vo: ControllerTestVO = ControllerTestVO(input: 12)
@@ -64,7 +64,7 @@ class ControllerTest: XCTestCase {
         // Tell the controller to execute the Command associated with the note
         // the ControllerTestCommand invoked will multiply the vo.input value
         // by 2 and set the result on vo.result
-        controller.executeCommand(note)
+        controller?.executeCommand(note)
         
         // test assertions
         XCTAssertTrue(vo.result == 24, "Expecting vo.result == 24")
@@ -79,8 +79,8 @@ class ControllerTest: XCTestCase {
     */
     func testRegisterAndRemoveCommand() {
         // Create the controller, register the ControllerTestCommand to handle 'ControllerTest' notes
-        let controller: IController = Controller.getInstance("ControllerTestKey3") { key in Controller(key: key) }
-        controller.registerCommand("ControllerRemoveTest", factory: {ControllerTestCommand()})
+        let controller: IController? = Controller.getInstance("ControllerTestKey3") { key in Controller(key: key) }
+        controller?.registerCommand("ControllerRemoveTest", factory: {ControllerTestCommand()})
         
         // Create a 'ControllerTest' note
         let vo = ControllerTestVO(input: 12)
@@ -89,7 +89,7 @@ class ControllerTest: XCTestCase {
         // Tell the controller to execute the Command associated with the note
         // the ControllerTestCommand invoked will multiply the vo.input value
         // by 2 and set the result on vo.result
-        controller.executeCommand(note)
+        controller?.executeCommand(note)
         
         // test assertions
         XCTAssertTrue(vo.result == 24, "Expecting vo.result == 24")
@@ -98,12 +98,12 @@ class ControllerTest: XCTestCase {
         vo.result = 0
         
         // Remove the Command from the Controller
-        controller.removeCommand("ControllerRemoveTest")
+        controller?.removeCommand("ControllerRemoveTest")
         
         // Tell the controller to execute the Command associated with the
         // note. This time, it should not be registered, and our vo result
         // will not change
-        controller.executeCommand(note)
+        controller?.executeCommand(note)
         
         // test assertions
         XCTAssertTrue(vo.result == 0, "Expecting vo.result == 0")
@@ -115,16 +115,16 @@ class ControllerTest: XCTestCase {
     func testHasCommand() {
         // register the ControllerTestCommand to handle 'hasCommandTest' notes
         let controller = Controller.getInstance("ControllerTestKey4") { key in Controller(key: key) }
-        controller.registerCommand("hasCommandTest", factory: {ControllerTestCommand()})
+        controller?.registerCommand("hasCommandTest", factory: {ControllerTestCommand()})
         
         // test that hasCommand returns true for hasCommandTest notifications
-        XCTAssertTrue(controller.hasCommand("hasCommandTest"), "Expecting controller.hasCommand('hasCommandTest') == true")
+        XCTAssertTrue(controller?.hasCommand("hasCommandTest") == true, "Expecting controller.hasCommand('hasCommandTest') == true")
         
         // Remove the Command from the Controller
-        controller.removeCommand("hasCommandTest")
+        controller?.removeCommand("hasCommandTest")
         
         // test that hasCommand returns false for hasCommandTest notifications
-        XCTAssertTrue(controller.hasCommand("hasCommandTest") == false, "Expecting controller.hasCommand('hasCommandTest') == false")
+        XCTAssertTrue(controller?.hasCommand("hasCommandTest") == false, "Expecting controller.hasCommand('hasCommandTest') == false")
     }
     
     /**
@@ -141,13 +141,13 @@ class ControllerTest: XCTestCase {
     func testReregisterAndExecuteCommand() {
         // Fetch the controller, register the ControllerTestCommand2 to handle 'ControllerTest2' notes
         let controller = Controller.getInstance("ControllerTestKey5") { key in Controller(key: key) }
-        controller.registerCommand("ControllerTest2", factory: {ControllerTestCommand2()})
+        controller?.registerCommand("ControllerTest2", factory: {ControllerTestCommand2()})
         
         // Remove the Command from the Controller
-        controller.removeCommand("ControllerTest2")
+        controller?.removeCommand("ControllerTest2")
         
         // Re-register the Command with the Controller
-        controller.registerCommand("ControllerTest2", factory: {ControllerTestCommand2()})
+        controller?.registerCommand("ControllerTest2", factory: {ControllerTestCommand2()})
         
         // Create a 'ControllerTest2' note
         let vo = ControllerTestVO(input: 12)
@@ -157,14 +157,14 @@ class ControllerTest: XCTestCase {
         let view = View.getInstance("ControllerTestKey5") { key in View(key: key) }
         
         // send the Notification
-        view.notifyObservers(note)
+        view?.notifyObservers(note)
         
         // test assertions
         // if the command is executed once the value will be 24
         XCTAssertTrue(vo.result == 24, "Expecting vo.result == 24")
         
         // Prove that accumulation works in the VO by sending the notification again
-        view.notifyObservers(note)
+        view?.notifyObservers(note)
         
         // if the command is executed twice the value will be 48
         XCTAssertTrue(vo.result == 48, "Expecting vo.result == 48")

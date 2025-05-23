@@ -12,7 +12,7 @@ public class ViewExtend: View {
     
     public var resource: Resource?
     
-    public class func getInstance(key: String) -> IView {
+    public class func getInstance(key: String) -> IView? {
         return View.getInstance(key) { key in ViewExtend(key: key) }
     }
     

@@ -88,13 +88,13 @@ open class Model: IModel {
     - parameter factory: reference that returns `IModel`
     - returns: the instance returned by the passed closure
     */
-    open class func getInstance(_ key: String, factory: (String) -> IModel) -> IModel {
+    open class func getInstance(_ key: String, factory: (String) -> IModel) -> IModel? {
         instanceQueue.sync(flags: .barrier) {
             if instanceMap[key] == nil {
                 instanceMap[key] = factory(key)
             }
         }
-        return instanceMap[key]!
+        return instanceMap[key]
     }
     
     /**

@@ -20,7 +20,7 @@ public class FacadeExtend: Facade {
         model = Model.getInstance(multitonKey) { key in ModelExtend(key: key) }
     }
     
-    public class func getInstance(key: String) -> IFacade {
+    public class func getInstance(key: String) -> IFacade? {
         return Facade.getInstance(key) { key in FacadeExtend(key: key) }
     }
     

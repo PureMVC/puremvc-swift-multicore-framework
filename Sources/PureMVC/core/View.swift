@@ -93,13 +93,13 @@ open class View: IView {
     - parameter factory: reference that returns `IView`
     - returns: the Multiton instance returned by executing the passed closure
     */
-    open class func getInstance(_ key: String, factory: (String) -> IView) -> IView {
+    open class func getInstance(_ key: String, factory: (String) -> IView) -> IView? {
         instanceQueue.sync(flags: .barrier) {
             if instanceMap[key] == nil {
                 instanceMap[key] = factory(key)
             }
         }
-        return instanceMap[key]!
+        return instanceMap[key]
     }
     
     /**

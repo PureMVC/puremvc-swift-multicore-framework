@@ -33,8 +33,8 @@ public class ViewTestMediator6: Mediator {
     
     public override func handleNotification(_ notification: INotification) {
         //temp implementation until facade is developed
-        let view: IView = View.getInstance("ViewTestKey11") { key in View(key: key) }
-        _ = view.removeMediator(name)
+        let view: IView? = View.getInstance("ViewTestKey11") { key in View(key: key) }
+        _ = view?.removeMediator(name)
     }
     
     public override func onRemove() {

@@ -16,7 +16,7 @@ public class ControllerExtend: Controller {
         view = View.getInstance(multitonKey) { key in ViewExtend(key: key) }
     }
     
-    public class func getInstance(key: String) -> IController {
+    public class func getInstance(key: String) -> IController? {
         return Controller.getInstance(key) { key in ControllerExtend(key: key) }
     }
     

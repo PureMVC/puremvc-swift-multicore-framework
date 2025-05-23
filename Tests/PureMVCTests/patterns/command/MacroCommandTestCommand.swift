@@ -26,8 +26,8 @@ public class MacroCommandTestCommand: MacroCommand {
     its 2 SubCommands.
     */
     public override func initializeMacroCommand() {
-		self.addSubCommand() { MacroCommandTestSub1Command() }
-		self.addSubCommand() { MacroCommandTestSub2Command() }
+		self.addSubCommand { MacroCommandTestSub1Command() }
+		self.addSubCommand { MacroCommandTestSub2Command() }
     }
     
 }

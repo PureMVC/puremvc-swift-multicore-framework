@@ -22,8 +22,8 @@ public class FacadeTestCommand2: SimpleCommand {
         //Fabricate a result
         vo.result = 2 * vo.input
         
-        facade.registerMediator(ApplicationMediator())
-        facade.registerProxy(DataProxy())
+        facade?.registerMediator(ApplicationMediator())
+        facade?.registerProxy(DataProxy())
     }
     
 }

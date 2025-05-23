@@ -51,7 +51,7 @@ open class Notifier : INotifier {
     internal var multitonKey: String?
        
     /// Reference to the Facade Multiton
-    open lazy var facade:IFacade = {
+    open lazy var facade: IFacade? = {
         assert(multitonKey != nil, Notifier.MULTITON_MSG)
         
         // returns instance mapped to multitonKey if it exists otherwise defaults to Facade
@@ -74,7 +74,7 @@ open class Notifier : INotifier {
     - parameter type: the type of the notification (optional)
     */
     open func sendNotification(_ notificationName: String, body: Any, type: String) {
-        facade.sendNotification(notificationName, body: body, type: type)
+        facade?.sendNotification(notificationName, body: body, type: type)
     }
     
     /**
@@ -87,7 +87,7 @@ open class Notifier : INotifier {
     - parameter body: the body of the notification (optional)
     */
     open func sendNotification(_ notificationName: String, body: Any) {
-        facade.sendNotification(notificationName, body: body)
+        facade?.sendNotification(notificationName, body: body)
     }
     
     /**
@@ -99,7 +99,7 @@ open class Notifier : INotifier {
     - parameter notificationName: the name of the notification to send
     */
     open func sendNotification(_ notificationName: String) {
-        facade.sendNotification(notificationName)
+        facade?.sendNotification(notificationName)
     }
     
     /**

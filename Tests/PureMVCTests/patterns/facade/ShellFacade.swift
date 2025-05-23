@@ -27,7 +27,7 @@ public class ShellFacade: Facade {
         sendNotification(ShellFacade.TestMediator, body: vo)
     }
     
-    public class func getInstance(key: String) -> IFacade {
+    public class func getInstance(key: String) -> IFacade? {
         return Facade.getInstance(key) { key in ShellFacade(key: key) }
     }
     

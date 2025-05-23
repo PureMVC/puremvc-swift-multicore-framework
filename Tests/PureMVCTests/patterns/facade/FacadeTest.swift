@@ -12,9 +12,9 @@ import XCTest
 /**
 Test the PureMVC Facade class.
 
-`@see org.puremvc.as3.multicore.patterns.facade.FacadeTestVO FacadeTestVO`
+`@see org.puremvc.as3.multicore.patterns.facade?.FacadeTestVO FacadeTestVO`
 
-`@see org.puremvc.as3.multicore.patterns.facade.FacadeTestCommand FacadeTestCommand`
+`@see org.puremvc.as3.multicore.patterns.facade?.FacadeTestCommand FacadeTestCommand`
 */
 class FacadeTest: XCTestCase {
 
@@ -30,7 +30,7 @@ class FacadeTest: XCTestCase {
 
     func testGetInstance() {
         // Test Factory Method
-        let facade: IFacade = Facade.getInstance("FacadeTestKey1", factory: {key in Facade(key: key)})
+        let facade: IFacade? = Facade.getInstance("FacadeTestKey1", factory: {key in Facade(key: key)})
         
         // test assertions
         XCTAssertNotNil(facade as? Facade, "Expecting instance not nil")
@@ -52,13 +52,13 @@ class FacadeTest: XCTestCase {
         // Create the Facade, register the FacadeTestCommand to
         // handle 'FacadeTest' notifications
         let facade = Facade.getInstance("FacadeTestKey2", factory: { key in Facade(key: key) })
-        facade.registerCommand("FacadeTestNote", factory: { FacadeTestCommand()} )
+        facade?.registerCommand("FacadeTestNote", factory: { FacadeTestCommand()} )
         
         // Send notification. The Command associated with the event
         // (FacadeTestCommand) will be invoked, and will multiply
         // the vo.input value by 2 and set the result on vo.result
         let vo = FacadeTestVO(input: 32)
-        facade.sendNotification("FacadeTestNote", body: vo)
+        facade?.sendNotification("FacadeTestNote", body: vo)
         
         // test assertions
         XCTAssertTrue(vo.result == 64, "Expecting vo.result == 64)")
@@ -79,15 +79,15 @@ class FacadeTest: XCTestCase {
     func testRegisterAndRemoveCommandAndSendNotification() {
         // Create the Facade, register the FacadeTestCommand to
         // handle 'FacadeTest' events
-        let facade = Facade.getInstance("FacadeTestKey3", factory: {key in Facade(key: key)}) as! Facade
-        facade.registerCommand("FacadeTestNote", factory: {FacadeTestCommand()})
-        facade.removeCommand("FacadeTestNote")
+        let facade = Facade.getInstance("FacadeTestKey3", factory: {key in Facade(key: key)}) as? Facade
+        facade?.registerCommand("FacadeTestNote", factory: {FacadeTestCommand()})
+        facade?.removeCommand("FacadeTestNote")
         
         // Send notification. The Command associated with the event
         // (FacadeTestCommand) will NOT be invoked, and will NOT multiply
         // the vo.input value by 2
         let vo = FacadeTestVO(input: 32)
-        facade.sendNotification("FacadeTestNote", body: vo)
+        facade?.sendNotification("FacadeTestNote", body: vo)
         
         // test assertions
         XCTAssertTrue(vo.result != 64, "Expecting vo.result != 64")
@@ -104,8 +104,8 @@ class FacadeTest: XCTestCase {
     func testRegisterAndRetrieveProxy() {
         // register a proxy and retrieve it.
         let facade = Facade.getInstance("FacadeTestKey4", factory: {key in Facade(key: key)})
-        facade.registerProxy(Proxy(name: "colors", data: ["red", "green", "blue"]))
-        let proxy = facade.retrieveProxy("colors")
+        facade?.registerProxy(Proxy(name: "colors", data: ["red", "green", "blue"]))
+        let proxy = facade?.retrieveProxy("colors")
         
         // retrieve data from proxy
         let data: [String] = proxy?.data as! [String]
@@ -126,16 +126,16 @@ class FacadeTest: XCTestCase {
         // register a proxy, remove it, then try to retrieve it
         let facade = Facade.getInstance("FacadeTestKey5") { key in Facade(key: key) }
         let proxy: IProxy = Proxy(name: "sizes", data: ["7", "13", "21"])
-        facade.registerProxy(proxy)
+        facade?.registerProxy(proxy)
         
         // remove the proxy
-        let removedProxy = facade.removeProxy("sizes")
+        let removedProxy = facade?.removeProxy("sizes")
         
         // assert that we removed the appropriate proxy
         XCTAssertTrue(removedProxy?.name == "sizes", "Expecting removedProxy.proxyName == 'sizes' \(String(describing: removedProxy?.name))")
         
         // make sure we can no longer retrieve the proxy from the model
-        let proxy2: IProxy? = facade.retrieveProxy("sizes")
+        let proxy2: IProxy? = facade?.retrieveProxy("sizes")
         
         // test assertions
         XCTAssertNil(proxy2 as? Proxy, "Expecing proxy is nil")
@@ -147,19 +147,19 @@ class FacadeTest: XCTestCase {
     func testRegisterRetrieveAndRemoveMediator() {
         // register a mediator, remove it, then try to retrieve it
         let facade = Facade.getInstance("FacadeTestKey6") { key in Facade(key: key) }
-        facade.registerMediator(Mediator(name: Mediator.NAME, viewComponent: Mediator()))
+        facade?.registerMediator(Mediator(name: Mediator.NAME, viewComponent: Mediator()))
         
         // retrieve the mediator
-        XCTAssertNotNil(facade.retrieveMediator(Mediator.NAME) as? Mediator, "Expecting mediator is not nil")
+        XCTAssertNotNil(facade?.retrieveMediator(Mediator.NAME) as? Mediator, "Expecting mediator is not nil")
         
         // remove the mediator
-        let removedMediator = facade.removeMediator(Mediator.NAME)
+        let removedMediator = facade?.removeMediator(Mediator.NAME)
         
         // assert that we have removed the appropriate mediator
         XCTAssertTrue(removedMediator?.name == Mediator.NAME, "Expecting removedMediator.mediatorName == Mediator.NAME")
         
         // assert that the mediator is no longer retrievable
-        XCTAssertNil(facade.retrieveMediator(Mediator.NAME) as? Mediator, "facade.retrieveMediator(Mediator.NAME) is nil")
+        XCTAssertNil(facade?.retrieveMediator(Mediator.NAME) as? Mediator, "facade?.retrieveMediator(Mediator.NAME) is nil")
     }
     
     /**
@@ -168,11 +168,11 @@ class FacadeTest: XCTestCase {
     func testHasProxy() {
         // register a Proxy
         let facade = Facade.getInstance("FacadeTestKey7", factory: { key in Facade(key: key) })
-        facade.registerProxy(Proxy(name: "hasProxyTest", data: [1, 2, 3]))
+        facade?.registerProxy(Proxy(name: "hasProxyTest", data: [1, 2, 3]))
         
         // assert that the model.hasProxy method returns true
         // for that proxy name
-        XCTAssertTrue(facade.hasProxy("hasProxyTest"), "Expecting facade.hasProxy('hasProxyTest') == true")
+        XCTAssertTrue(facade?.hasProxy("hasProxyTest") == true, "Expecting facade?.hasProxy('hasProxyTest') == true")
     }
     
     /**
@@ -181,17 +181,17 @@ class FacadeTest: XCTestCase {
     func testHasMediator() {
         // register a Mediator
         let facade = Facade.getInstance("FacadeTestKey8") { key in Facade(key: key) }
-        facade.registerMediator(Mediator(name: "facadeHasMediatorTest", viewComponent: Mediator()))
+        facade?.registerMediator(Mediator(name: "facadeHasMediatorTest", viewComponent: Mediator()))
         
-        // assert that the facade.hasMediator method returns true
+        // assert that the facade?.hasMediator method returns true
         // for that mediator name
-        XCTAssertTrue(facade.hasMediator("facadeHasMediatorTest"), "Expecting facade.hasMediator('fasHasMediatorTest') == true")
+        XCTAssertTrue(facade?.hasMediator("facadeHasMediatorTest") == true, "Expecting facade?.hasMediator('fasHasMediatorTest') == true")
         
-        _ = facade.removeMediator("facadeHasMediatorTest")
+        _ = facade?.removeMediator("facadeHasMediatorTest")
         
-        // assert that the facade.hasMediator method returns false
+        // assert that the facade?.hasMediator method returns false
         // for that mediator name
-        XCTAssertTrue(facade.hasMediator("facadeHasMediatorTest") == false, "Expecting facade.hasMediator('facadeHasMediatorTest') == false")
+        XCTAssertTrue(facade?.hasMediator("facadeHasMediatorTest") == false, "Expecting facade?.hasMediator('facadeHasMediatorTest') == false")
     }
     
     /**
@@ -200,16 +200,16 @@ class FacadeTest: XCTestCase {
     func testHasCommand() {
         // register the ControllerTestCommand to handle 'hasCommandTest' notes
         let facade = Facade.getInstance("FacadeTestKey10", factory: { key in Facade(key: key) })
-        facade.registerCommand("facadeHasCommandTest", factory: {FacadeTestCommand()})
+        facade?.registerCommand("facadeHasCommandTest", factory: {FacadeTestCommand()})
         
         // test that hasCommand returns true for hasCommandTest notifications
-        XCTAssertTrue(facade.hasCommand("facadeHasCommandTest"), "Expecting facade.hasCommand('facadeHasCommandTest') == true")
+        XCTAssertTrue(facade?.hasCommand("facadeHasCommandTest") == true, "Expecting facade?.hasCommand('facadeHasCommandTest') == true")
         
         // Remove the Command from the Controller
-        facade.removeCommand("facadeHasCommandTest")
+        facade?.removeCommand("facadeHasCommandTest")
         
         // test that hasCommand returns false for hasCommandTest notifications
-        XCTAssertTrue(facade.hasCommand("facadeHasCommandTest") == false, "Expecting facade.hasCommand('facadeHasCommandTest') == false")
+        XCTAssertTrue(facade?.hasCommand("facadeHasCommandTest") == false, "Expecting facade?.hasCommand('facadeHasCommandTest') == false")
     }
     
     /**
@@ -217,27 +217,27 @@ class FacadeTest: XCTestCase {
     */
     func testHasCoreAndRemoveCore() {
         // assert that the Facade.hasCore method returns false first
-        XCTAssertTrue(Facade.hasCore("FacadeTestKey11") == false, "Expecting facade.hasCore('FacadeTestKey11') == false")
+        XCTAssertTrue(Facade.hasCore("FacadeTestKey11") == false, "Expecting facade?.hasCore('FacadeTestKey11') == false")
         
         // register a Core
         _ = Facade.getInstance("FacadeTestKey11") { key in Facade(key: key) }
         
         // assert that the Facade.hasCore method returns true now that a Core is registered
-        XCTAssertTrue(Facade.hasCore("FacadeTestKey11"), "Expecting facade.hasCore('FacadeTestKey11') == true")
+        XCTAssertTrue(Facade.hasCore("FacadeTestKey11"), "Expecting facade?.hasCore('FacadeTestKey11') == true")
         
         // remove the Core
         Facade.removeCore("FacadeTestKey11")
         
         // assert that the Facade.hasCore method returns false now that the core has been removed.
-        XCTAssertTrue(Facade.hasCore("FacadeTestKey11") == false, "Expecting facade.hasCore('FacadeTestKey11') == false")
+        XCTAssertTrue(Facade.hasCore("FacadeTestKey11") == false, "Expecting facade?.hasCore('FacadeTestKey11') == false")
     }
     
     
     func testInvalidNotification() {
         // register a Core
-        let facade = Facade.getInstance("FacadeTestKey12") { key in Facade(key: key) } as! Facade
+        let facade = Facade.getInstance("FacadeTestKey12") { key in Facade(key: key) } as? Facade
         
-        facade.sendNotification("InvalidNotificationName") //shouldn't crash
+        facade?.sendNotification("InvalidNotificationName") //shouldn't crash
     }
     
     

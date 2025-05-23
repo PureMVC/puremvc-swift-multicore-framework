@@ -12,7 +12,7 @@ public class ModelExtend: Model {
     
     public var resource: Resource?
     
-    public class func getInstance(key: String) -> IModel {
+    public class func getInstance(key: String) -> IModel? {
         return Model.getInstance(key) { key in ModelExtend(key: key) }
     }
     

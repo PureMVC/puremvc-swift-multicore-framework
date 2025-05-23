@@ -105,13 +105,13 @@ open class Controller: IController {
     - parameter factory: reference that returns `IController`
     - returns: the Multiton instance
     */
-    open class func getInstance(_ key:String, factory: (String) -> IController) -> IController {
+    open class func getInstance(_ key:String, factory: (String) -> IController) -> IController? {
         instanceQueue.sync(flags: .barrier) {
             if instanceMap[key] == nil {
                 instanceMap[key] = factory(key)
             }
         }
-        return instanceMap[key]!
+        return instanceMap[key]
     }
 
     /**

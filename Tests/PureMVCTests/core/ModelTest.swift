@@ -26,7 +26,7 @@ class ModelTest: XCTestCase {
 
     func testGetInstance() {
         // Test Factory Method
-        let model: IModel = Model.getInstance("ModelTestKey4") { key in Model(key: key) }
+        let model: IModel? = Model.getInstance("ModelTestKey4") { key in Model(key: key) }
         
         // test assertions
         XCTAssertNotNil(model as? Model, "Expecting instance not null")
@@ -42,9 +42,9 @@ class ModelTest: XCTestCase {
     */
     func testRegisterAndRetrieveProxy() {
         // register a proxy and retrieve it.
-        let model: IModel = Model.getInstance("ModelTestKey2") { key in Model(key: key) }
-        model.registerProxy(Proxy(name: "colors", data: ["red", "green", "blue"]))
-        let proxy: Proxy = model.retrieveProxy("colors") as! Proxy
+        let model: IModel? = Model.getInstance("ModelTestKey2") { key in Model(key: key) }
+        model?.registerProxy(Proxy(name: "colors", data: ["red", "green", "blue"]))
+        let proxy: Proxy = model?.retrieveProxy("colors") as! Proxy
         let data: Array<String> = proxy.data as! Array<String>
         
         // test assertions
@@ -57,10 +57,10 @@ class ModelTest: XCTestCase {
     
     //Test with tuple
     func testRegisterAndRetrieveProxy2() {
-        let model: IModel = Model.getInstance("ModelTestKey2") { key in Model(key: key) }
-        model.registerProxy(Proxy(name: "tuple", data: (1, "abc", false)))
+        let model: IModel? = Model.getInstance("ModelTestKey2") { key in Model(key: key) }
+        model?.registerProxy(Proxy(name: "tuple", data: (1, "abc", false)))
         
-        let proxy: Proxy = model.retrieveProxy("tuple") as! Proxy
+        let proxy: Proxy = model?.retrieveProxy("tuple") as! Proxy
         let data: (Int, String, Bool)  = proxy.data as! (Int, String, Bool)
         
         XCTAssertTrue(data.0 == 1, "Expecting data.0 == 1")
@@ -73,18 +73,18 @@ class ModelTest: XCTestCase {
     */
     func testRegisterAndRemoveProxy() {
         // register a proxy, remove it, then try to retrieve it
-        let model: IModel = Model.getInstance("ModelTestKey3") { key in Model(key: key) }
+        let model: IModel? = Model.getInstance("ModelTestKey3") { key in Model(key: key) }
         let proxy: IProxy = Proxy(name: "sizes", data: ["7", "13", "21"])
-        model.registerProxy(proxy)
+        model?.registerProxy(proxy)
         
         // remove the proxy
-        let removedProxy = model.removeProxy("sizes")
+        let removedProxy = model?.removeProxy("sizes")
         
         // assert that we removed the appropriate proxy
         XCTAssertTrue(removedProxy!.name == "sizes", "Expecting removedProxy.getProxyName() == 'sizes'")
         
         // ensure that the proxy is no longer retrievable from the model
-        let nilProxy = model.retrieveProxy("sizes")
+        let nilProxy = model?.retrieveProxy("sizes")
         
         // test assertions
         XCTAssertTrue(nilProxy == nil, "Expecting proxy is nil")
@@ -95,20 +95,20 @@ class ModelTest: XCTestCase {
     */
     func testHasProxy() {
         // register a proxy
-        let model: IModel = Model.getInstance("ModelTestKey4") { key in Model(key: key) }
+        let model: IModel? = Model.getInstance("ModelTestKey4") { key in Model(key: key) }
         let proxy: IProxy = Proxy(name: "aces", data: ["clubs", "spades", "hearts", "diamonds"])
-        model.registerProxy(proxy)
+        model?.registerProxy(proxy)
         
         // assert that the model.hasProxy method returns true
         // for that proxy name
-        XCTAssertTrue(model.hasProxy("aces"), "Expecting model.hasProxy('aces') == true")
+        XCTAssertTrue(model?.hasProxy("aces") == true, "Expecting model.hasProxy('aces') == true")
         
         // remove the proxy
-        _ = model.removeProxy("aces")
+        _ = model?.removeProxy("aces")
         
         // assert that the model.hasProxy method returns false
         // for that proxy name
-        XCTAssertTrue(model.hasProxy("aces") == false, "Expecting model.hasProxy('aces') == false")
+        XCTAssertTrue(model?.hasProxy("aces") == false, "Expecting model.hasProxy('aces') == false")
     }
     
     /**
@@ -116,17 +116,17 @@ class ModelTest: XCTestCase {
     */
     func testOnRegisterAndOnRemove() {
         // Get a Multiton View instance
-        let model: IModel = Model.getInstance("ModelTestKey4") { key in Model(key: key) }
+        let model: IModel? = Model.getInstance("ModelTestKey4") { key in Model(key: key) }
         
         // Create and register the test mediator
         let proxy: IProxy = ModelTestProxy()
-        model.registerProxy(proxy)
+        model?.registerProxy(proxy)
         
         // assert that onRegsiter was called, and the proxy responded by setting its data accordingly
         XCTAssertTrue((proxy.data as! String) == ModelTestProxy.ON_REGISTER_CALLED, "Expecting proxy.data == ModelTestProxy.ON_REGISTER_CALLED")
         
         // Remove the component
-        _ = model.removeProxy(ModelTestProxy.NAME)
+        _ = model?.removeProxy(ModelTestProxy.NAME)
         
         // assert that onRemove was called, and the proxy responded by setting its data accordingly
         XCTAssertTrue((proxy.data as! String) == ModelTestProxy.ON_REMOVE_CALLED, "Expecting proxy.data == ModelTestProxy.ON_REMOVE_CALLED \(String(describing: proxy.data))")
