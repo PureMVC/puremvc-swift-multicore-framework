@@ -262,7 +262,7 @@ open class View: IView {
     /**
     Remove an IView instance
     
-    - parameter multitonKey: of IView instance to remove
+    - parameter key: of IView instance to remove
     */
     open class func removeView(_ key: String) {
         instanceQueue.sync(flags: .barrier) {

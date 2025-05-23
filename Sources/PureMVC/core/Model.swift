@@ -153,7 +153,7 @@ open class Model: IModel {
     /**
     Remove an IModel instance
     
-    - parameter multitonKey: of IModel instance to remove
+    - parameter key: of IModel instance to remove
     */
     open class func removeModel(_ key: String) {
         instanceQueue.sync(flags: .barrier) {

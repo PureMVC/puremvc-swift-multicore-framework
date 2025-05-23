@@ -34,7 +34,7 @@ public protocol IController {
     for a particular `INotification`.
     
     - parameter notificationName: the name of the `INotification`
-    - parameter closure: reference that returns `ICommand`
+    - parameter factory: reference that returns `ICommand`
     */
     func registerCommand(_ notificationName: String, factory: @escaping () -> ICommand)
     

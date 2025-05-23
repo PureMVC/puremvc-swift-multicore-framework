@@ -16,7 +16,7 @@ public protocol ICommand: INotifier {
     /**
     Execute the `ICommand`'s logic to handle a given `INotification`.
     
-    - parameter note: an `INotification` to handle.
+    - parameter notification: an `INotification` to handle.
     */
     func execute(_ notification: INotification)
     

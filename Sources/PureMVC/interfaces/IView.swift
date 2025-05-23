@@ -74,7 +74,6 @@ public protocol IView {
     and registering it as an `Observer` for all `INotifications` the
     `IMediator` is interested in.
     
-    - parameter mediatorName: the name to associate with this `IMediator` instance
     - parameter mediator: a reference to the `IMediator` instance
     */
     func registerMediator(_ mediator: IMediator)

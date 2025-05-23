@@ -68,7 +68,7 @@ open class Controller: IController {
     so you should not call the constructor
     directly, but instead call the static Factory method,
     passing the unique key for this instance
-    `Controller.getInstance( multitonKey )`
+    `Controller.getInstance(multitonKey) { key in Controller(key: key) }`
 
     @throws Error if instance for this Multiton key has already been constructed
     */
@@ -91,7 +91,7 @@ open class Controller: IController {
 
         // ensure that the Controller is talking to my IView implementation
         override public func initializeController(  ) {
-            view = MyView.getInstance(multitonKey) { MyView(key: self.multitonKey) }
+            view = MyView.getInstance(multitonKey) { key in MyView(key: key) }
         }
     */
     open func initializeController() {
@@ -183,7 +183,7 @@ open class Controller: IController {
     /**
     Remove an IController instance
 
-    - parameter multitonKey: of IController instance to remove
+    - parameter key: of IController instance to remove
     */
     open class func removeController(_ key: String) {
         instanceQueue.sync(flags: .barrier) {

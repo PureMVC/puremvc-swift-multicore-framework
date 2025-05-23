@@ -27,7 +27,6 @@ public protocol IModel {
     /**
     Register an `IProxy` instance with the `Model`.
     
-    - parameter proxyName: the name to associate with this `IProxy` instance.
     - parameter proxy: an object reference to be held by the `Model`.
     */
     func registerProxy(_ proxy: IProxy)
