@@ -73,33 +73,8 @@ open class Notifier : INotifier {
     - parameter body: the body of the notification (optional)
     - parameter type: the type of the notification (optional)
     */
-    open func sendNotification(_ notificationName: String, body: Any, type: String) {
+    open func sendNotification(_ notificationName: String, body: Any? = nil, type: String? = nil) {
         facade?.sendNotification(notificationName, body: body, type: type)
-    }
-    
-    /**
-    Create and send an `INotification`.
-    
-    Keeps us from having to construct new INotification
-    instances in our implementation code.
-    
-    - parameter notificationName: the name of the notification to send
-    - parameter body: the body of the notification (optional)
-    */
-    open func sendNotification(_ notificationName: String, body: Any) {
-        facade?.sendNotification(notificationName, body: body)
-    }
-    
-    /**
-    Create and send an `INotification`.
-    
-    Keeps us from having to construct new INotification
-    instances in our implementation code.
-    
-    - parameter notificationName: the name of the notification to send
-    */
-    open func sendNotification(_ notificationName: String) {
-        facade?.sendNotification(notificationName)
     }
     
     /**

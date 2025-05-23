@@ -58,7 +58,7 @@ class FacadeTest: XCTestCase {
         // (FacadeTestCommand) will be invoked, and will multiply
         // the vo.input value by 2 and set the result on vo.result
         let vo = FacadeTestVO(input: 32)
-        facade?.sendNotification("FacadeTestNote", body: vo)
+        facade?.sendNotification("FacadeTestNote", body: vo, type: nil)
         
         // test assertions
         XCTAssertTrue(vo.result == 64, "Expecting vo.result == 64)")

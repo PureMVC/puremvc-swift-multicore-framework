@@ -39,28 +39,7 @@ public protocol INotifier {
     - parameter body: the body of the notification
     - parameter type: the type of the notification
     */
-    func sendNotification(_ notificationName: String, body: Any, type: String)
-    
-    /**
-    Send a `INotification`.
-    
-    Convenience method to prevent having to construct new
-    notification instances in our implementation code.
-    
-    - parameter notificationName: the name of the notification to send
-    - parameter body: the body of the notification
-    */
-    func sendNotification(_ notificationName: String, body: Any)
-    
-    /**
-    Send a `INotification`.
-    
-    Convenience method to prevent having to construct new
-    notification instances in our implementation code.
-    
-    - parameter notificationName: the name of the notification to send
-    */
-    func sendNotification(_ notificationName: String)
+    func sendNotification(_ notificationName: String, body: Any?, type: String?)
     
     /**
     Initialize this INotifier instance.

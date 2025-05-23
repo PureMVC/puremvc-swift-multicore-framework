@@ -272,33 +272,8 @@ open class Facade: IFacade {
     - parameter body: the body of the notification (
     - parameter type: the type of the notification
     */
-    open func sendNotification(_ notificationName: String, body: Any, type: String) {
+    open func sendNotification(_ notificationName: String, body: Any? = nil, type: String? = nil) {
         notifyObservers(Notification(name: notificationName, body: body, type: type))
-    }
-    
-    /**
-    Create and send an `INotification`.
-    
-    Keeps us from having to construct new notification
-    instances in our implementation code.
-    
-    - parameter notificationName: the name of the notiification to send
-    - parameter body: the body of the notification (optional)
-    */
-    open func sendNotification(_ notificationName: String, body: Any) {
-        notifyObservers(Notification(name: notificationName, body: body))
-    }
-    
-    /**
-    Create and send an `INotification`.
-    
-    Keeps us from having to construct new notification
-    instances in our implementation code.
-    
-    - parameter notificationName: the name of the notiification to send
-    */
-    open func sendNotification(_ notificationName: String) {
-        notifyObservers(Notification(name: notificationName))
     }
     
     /**
