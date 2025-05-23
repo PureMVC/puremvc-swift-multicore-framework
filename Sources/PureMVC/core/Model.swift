@@ -103,11 +103,11 @@ open class Model: IModel {
     - parameter proxy: an `IProxy` to be held by the `Model`.
     */
     open func registerProxy(_ proxy: IProxy) {
+        proxy.initializeNotifier(multitonKey)
         proxyMapQueue.sync(flags: .barrier) {
-            proxy.initializeNotifier(multitonKey)
             proxyMap[proxy.name] = proxy
-            proxy.onRegister()
         }
+        proxy.onRegister()
     }
     
     /**
@@ -117,11 +117,9 @@ open class Model: IModel {
     - returns: the `IProxy` instance previously registered with the given `proxyName`.
     */
     open func retrieveProxy(_ proxyName: String) -> IProxy? {
-        var proxy: IProxy?
         proxyMapQueue.sync {
-            proxy = proxyMap[proxyName]
+            proxyMap[proxyName]
         }
-        return proxy
     }
     
     /**
@@ -131,11 +129,9 @@ open class Model: IModel {
     - returns: whether a Proxy is currently registered with the given `proxyName`.
     */
     open func hasProxy(_ proxyName: String) -> Bool {
-        var result = false
         proxyMapQueue.sync {
-            result = proxyMap[proxyName] != nil
+            proxyMap[proxyName] != nil
         }
-        return result
     }
     
     /**
@@ -147,11 +143,10 @@ open class Model: IModel {
     @discardableResult open func removeProxy(_ proxyName: String) -> IProxy? {
         var removed: IProxy?
         proxyMapQueue.sync(flags: .barrier) {
-            if let proxy = proxyMap[proxyName] {
-                proxy.onRemove()
-                removed = proxyMap.removeValue(forKey: proxyName)
-            }
+            removed = proxyMap.removeValue(forKey: proxyName)
         }
+        
+        removed?.onRemove()
         return removed
     }
     

@@ -129,22 +129,14 @@ open class View: IView {
     - parameter notification: the `INotification` to notify `IObservers` of.
     */
     open func notifyObservers(_ notification: INotification) {
-        var observers: [IObserver]?
-        
-        observerMapQueue.sync {
-            // An immutable/constant reference to the observers list for this notification name
-            // Swift Arrays are copied by value, and observers in this case a constant/immutable array
-            // The original array may change during the notification loop but irrespective of that all observers will be notified
-            if let observers_ref = observerMap[notification.name] {
-                observers = observers_ref
-            }
+        // Iteration Safe, the original array may change during the notification loop but irrespective of that all observers will be notified
+        let observers = observerMapQueue.sync {
+            observerMap[notification.name]
         }
         
         // Notify Observers
-        if observers != nil {
-            for observer in observers! {
-                observer.notifyObserver(notification)
-            }
+        observers?.forEach { observer in
+            observer.notifyObserver(notification)
         }
     }
     
@@ -157,23 +149,21 @@ open class View: IView {
     open func removeObserver(_ notificationName: String, notifyContext: AnyObject) {
         observerMapQueue.sync(flags: .barrier) {
             // the observer list for the notification under inspection
-            if let observers = observerMap[notificationName] {
-                
-                // find the observer for the notifyContext
-                for (index, observer) in observers.enumerated() {
-                    if observer.compareNotifyContext(notifyContext) {
-                        // there can only be one Observer for a given notifyContext
-                        // in any given Observer list, so remove it and break
-                        observerMap[notificationName]!.remove(at: index)
-                        break;
-                    }
-                }
-                
-                // Also, when a Notification's Observer list length falls to
-                // zero, delete the notification key from the observer map
-                if observers.isEmpty {
-                    observerMap.removeValue(forKey: notificationName)
-                }
+            guard var observers = observerMap[notificationName] else { return }
+            
+            // find the observer for the notifyContext
+            if let index = observers.firstIndex(where: { observer in observer.compareNotifyContext(notifyContext) }) {
+                // there can only be one Observer for a given notifyContext
+                // in any given Observer list, so remove it and break
+                observers.remove(at: index)
+            }
+            
+            // Also, when a Notification's Observer list length falls to
+            // zero, delete the notification key from the observer map
+            if observers.isEmpty {
+                observerMap.removeValue(forKey: notificationName)
+            } else {
+                observerMap[notificationName] = observers
             }
         }
     }
@@ -194,35 +184,28 @@ open class View: IView {
     - parameter mediator: a reference to the `IMediator` instance
     */
     open func registerMediator(_ mediator: IMediator) {
-        // do not allow re-registration (you must removeMediator fist)
-        if (hasMediator(mediator.name)) {
-            return
-        }
+        // do not allow re-registration (you must removeMediator first)
+        if hasMediator(mediator.name) { return }
+        
+        mediator.initializeNotifier(multitonKey)
         
         mediatorMapQueue.sync(flags: .barrier) {
-            mediator.initializeNotifier(multitonKey)
-            
             // Register the Mediator for retrieval by name
             mediatorMap[mediator.name] = mediator
-            
-            // Get Notification interests, if any.
-            let interests = mediator.listNotificationInterests()
-            
-            // Register Mediator as an observer for each notification of interests
-            if !interests.isEmpty {
-                // Create Observer referencing this mediator's handlNotification method
-                
-                let observer = Observer(notifyMethod: mediator.handleNotification, notifyContext: mediator as! Mediator)
-                
-                // Register Mediator as Observer for its list of Notification interests
-                for notificationName in interests {
-                    registerObserver(notificationName, observer: observer)
-                }
-            }
-            
-            // alert the mediator that it has been registered
-            mediator.onRegister()
-        } 
+        }
+        
+        // Create Observer referencing this mediator's handlNotification method
+        let observer = Observer(notifyMethod: mediator.handleNotification, notifyContext: mediator as! Mediator)
+        
+        let interests = mediator.listNotificationInterests()
+        
+        // Register Mediator as an observer for each notification of interests
+        for notificationName in interests {
+            registerObserver(notificationName, observer: observer)
+        }
+        
+        // alert the mediator that it has been registered
+        mediator.onRegister()
     }
 
     /**
@@ -232,11 +215,9 @@ open class View: IView {
     - returns: the `IMediator` instance previously registered with the given `mediatorName`.
     */
     open func retrieveMediator(_ mediatorName: String) -> IMediator? {
-        var mediator: IMediator?
         mediatorMapQueue.sync {
-            mediator = mediatorMap[mediatorName]
+            mediatorMap[mediatorName]
         }
-        return mediator
     }
     
     /**
@@ -246,11 +227,9 @@ open class View: IView {
     - returns: whether a Mediator is registered with the given `mediatorName`.
     */
     open func hasMediator(_ mediatorName: String) -> Bool {
-        var result = false
         mediatorMapQueue.sync {
-            result = mediatorMap[mediatorName] != nil
+            mediatorMap[mediatorName] != nil
         }
-        return result
     }
 
     /**
@@ -260,26 +239,24 @@ open class View: IView {
     - returns: the `IMediator` that was removed from the `View`
     */
     @discardableResult open func removeMediator(_ mediatorName: String) -> IMediator? {
-        var removed: IMediator?
-        mediatorMapQueue.sync(flags: .barrier) {
-            if let mediator = mediatorMap[mediatorName] {
-                // for every notification this mediator is interested in...
-                let interests = mediator.listNotificationInterests()
-                
-                for notificationName in interests {
-                    // remove the observer linking the mediator
-                    // to the notification interest
-                    removeObserver(notificationName, notifyContext: mediator as! Mediator)
-                }
-                
-                // remove the mediator from the map
-                removed = mediatorMap.removeValue(forKey: mediatorName)
-                
-                // alert the mediator that it has been removed
-                mediator.onRemove()
-            }
+        // remove the mediator from the map
+        let removed = mediatorMapQueue.sync(flags: .barrier) {
+            mediatorMap.removeValue(forKey: mediatorName)
         }
-        return removed
+    
+        guard let mediator = removed else { return nil }
+        
+        // for every notification this mediator is interested in...
+        let interests = mediator.listNotificationInterests()
+        for notificationName in interests {
+            // remove the observer linking the mediator
+            // to the notification interest
+            removeObserver(notificationName, notifyContext: mediator as! Mediator)
+        }
+        
+        // alert the mediator that it has been removed
+        mediator.onRemove()
+        return mediator
     }
     
     /**
