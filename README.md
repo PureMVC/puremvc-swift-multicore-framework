@@ -2,9 +2,17 @@
 
 PureMVC is a lightweight framework for creating applications based upon the classic [Model-View-Controller](http://en.wikipedia.org/wiki/Model-view-controller) design meta-pattern. It supports [modular programming](http://en.wikipedia.org/wiki/Modular_programming) through the use of [Multiton](http://en.wikipedia.org/wiki/Multiton) Core actors instead of the [Singletons](http://en.wikipedia.org/wiki/Singleton_pattern) used in the [Standard](https://github.com/PureMVC/puremvc-swift-standard-framework/wiki) Version.
 
-* [API Docs](http://puremvc.org/pages/docs/Swift/multicore/)
+* [API Docs](https://puremvc.org/puremvc-swift-multicore-framework/documentation/puremvc/)
 * [Unit Tests](http://puremvc.github.io/images/Swift/unittest/multicore.png)
-* [Discussion](http://forums.puremvc.org/index.php?topic=2122.0)
+
+<!--
+swift package --allow-writing-to-directory ./docs \
+  generate-documentation --target PureMVC \
+  --disable-indexing \
+  --transform-for-static-hosting \
+  --hosting-base-path puremvc-swift-multicore-framework \
+  --output-path ./docs
+-->
 
 ## Demos
 * [Employee Admin](https://github.com/PureMVC/puremvc-swift-demo-uikit-employeeadmin/wiki)
@@ -23,7 +31,7 @@ PureMVC is a lightweight framework for creating applications based upon the clas
 * [MacOS](https://en.wikipedia.org/wiki/MacOS)
 
 ## Status
-Production - [Version 1.6](https://github.com/PureMVC/puremvc-swift-multicore-framework/blob/master/VERSION)
+Production - [Version 1.7](https://github.com/PureMVC/puremvc-swift-multicore-framework/blob/master/VERSION)
 
 ## License
 * PureMVC MultiCore Framework for Swift - Copyright © 2020 [Saad Shams](https://www.linkedin.com/in/muizz/)
