@@ -26,7 +26,7 @@ In PureMVC, the `View` class assumes these responsibilities:
 
 `@see org.puremvc.swift.multicore.interfaces.INotification INotification`
 */
-public protocol IView {
+public protocol IView: AnyObject {
     
     /**
      Initialize the  `View` instance.

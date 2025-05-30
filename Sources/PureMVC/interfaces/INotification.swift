@@ -38,7 +38,7 @@ using `Notification`s.
 
 `@see org.puremvc.swift.multicore.interfaces.IObserver IObserver`
 */
-public protocol INotification {
+public protocol INotification: AnyObject {
     
     /// Get the name of the `INotification` instance.
     var name: String { get }

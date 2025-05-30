@@ -195,7 +195,7 @@ open class View: IView {
         }
         
         // Create Observer referencing this mediator's handlNotification method
-        let observer = Observer(notifyMethod: mediator.handleNotification, notifyContext: mediator as! Mediator)
+        let observer = Observer(notifyMethod: mediator.handleNotification, notifyContext: mediator)
         
         let interests = mediator.listNotificationInterests()
         

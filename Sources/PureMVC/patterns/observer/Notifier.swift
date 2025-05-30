@@ -52,10 +52,12 @@ open class Notifier : INotifier {
        
     /// Reference to the Facade Multiton
     open lazy var facade: IFacade? = {
-        assert(multitonKey != nil, Notifier.MULTITON_MSG)
+        guard let key = multitonKey else {
+            fatalError(Notifier.MULTITON_MSG)
+        }
         
         // returns instance mapped to multitonKey if it exists otherwise defaults to Facade
-        return Facade.getInstance(multitonKey!) { key in Facade(key: key) }
+        return Facade.getInstance(key) { key in Facade(key: key) }
     }()
     
     /// Constructor

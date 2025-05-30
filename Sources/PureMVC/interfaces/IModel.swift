@@ -17,7 +17,7 @@ An `IModel` assumes these responsibilities:
 * Maintain a cache of `IProxy` instances
 * Provide methods for registering, retrieving, and removing `IProxy` instances
 */
-public protocol IModel {
+public protocol IModel: AnyObject {
     
     /**
      Initialize the `Model` instance.

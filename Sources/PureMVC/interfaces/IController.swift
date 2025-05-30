@@ -22,7 +22,7 @@ assumes these responsibilities:
 
 `@see org.puremvc.swift.multicore.interfaces ICommand`
 */
-public protocol IController {
+public protocol IController: AnyObject {
     
     /**
      Initialize the `Controller` instance.

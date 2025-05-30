@@ -40,7 +40,7 @@ as a subclass of `Notification`.
 
 `@see org.puremvc.swift.multicore.interfaces.INotification INotification`
 */
-public protocol IObserver {
+public protocol IObserver: AnyObject {
     
     /**
     Set the notification method.

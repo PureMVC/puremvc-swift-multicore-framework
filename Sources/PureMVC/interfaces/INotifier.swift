@@ -27,7 +27,7 @@ access to the facade anyway.
 
 `@see org.puremvc.swift.multicore.interfaces.INotification INotification`
 */
-public protocol INotifier {
+public protocol INotifier: AnyObject {
     
     /**
     Send a `INotification`.
