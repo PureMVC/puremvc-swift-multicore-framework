@@ -15,7 +15,8 @@ swift package --allow-writing-to-directory ./docs \
 -->
 
 ## Demos
-* [Employee Admin](https://github.com/PureMVC/puremvc-swift-demo-uikit-employeeadmin/wiki)
+* [Employee Admin SwiftUI](https://github.com/PureMVC/puremvc-swift-demo-swiftui-employeeadmin/wiki)
+* [Employee Admin UIKit](https://github.com/PureMVC/puremvc-swift-demo-uikit-employeeadmin/wiki)
 
 ## Utilities
 * [Async Command](https://github.com/PureMVC/puremvc-swift-util-asynccommand/wiki)
@@ -31,10 +32,11 @@ swift package --allow-writing-to-directory ./docs \
 * [MacOS](https://en.wikipedia.org/wiki/MacOS)
 
 ## Status
-Production - [Version 1.7](https://github.com/PureMVC/puremvc-swift-multicore-framework/blob/master/VERSION)
+Production - [Version 1.8](https://github.com/PureMVC/puremvc-swift-multicore-framework/blob/master/VERSION)
 
 ## License
-* PureMVC MultiCore Framework for Swift - Copyright © 2020 [Saad Shams](https://www.linkedin.com/in/muizz/)
+* PureMVC MultiCore Framework for Swift 
+* PureMVC - Copyright © 2020 [Saad Shams](https://www.linkedin.com/in/muizz/)
 * PureMVC - Copyright © 2020 [Futurescale, Inc.](http://futurescale.com/)
 * All rights reserved.
 

@@ -1,13 +1,16 @@
 PureMVC MultiCore Framework for Swift
 --------------------------------------------------------------------------
-Release Date: 05/22/25
-    Platform: Swift 
+Release Date: 05/30/25
+    Platform: Swift
      Version: 1
-    Revision: 7
+    Revision: 8
        Minor: 0
       Author: Saad Shams <saad.shams@puremvc.org>
 --------------------------------------------------------------------------
-1.7 - Improvements and minor updates, updated docs generated from swift 
+1.8 - SwiftUI compatibility fixes
+
+1.7 - Improvements and minor updates, updated docs generated from swift
+
 1.6 - Updated swift syntax, Updated Docs. Added the @discardableResult
 attribute to suppress the compiler's unused result warning.
 
