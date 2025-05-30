@@ -12,6 +12,8 @@ swift package --allow-writing-to-directory ./docs \
   --transform-for-static-hosting \
   --hosting-base-path puremvc-swift-multicore-framework \
   --output-path ./docs
+  
+open docs/documentation/puremvc/index.html
 -->
 
 ## Demos
