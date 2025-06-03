@@ -185,7 +185,9 @@ open class View: IView {
     */
     open func registerMediator(_ mediator: IMediator) {
         let exists = mediatorMapQueue.sync(flags: .barrier) {
+            // do not allow re-registration (you must to removeMediator fist)
             guard mediatorMap[mediator.name] == nil else { return true }
+            // Register the Mediator for retrieval by name
             mediatorMap[mediator.name] = mediator
             return false
         }
