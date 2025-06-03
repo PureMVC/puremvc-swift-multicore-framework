@@ -85,8 +85,8 @@ open class Facade: IFacade {
             if instanceMap[key] == nil {
                 instanceMap[key] = factory(key)
             }
+            return instanceMap[key]
         }
-        return instanceMap[key]
     }
     
     /**
@@ -312,11 +312,9 @@ open class Facade: IFacade {
     - returns: whether a Core is registered with the given `key`.
     */
     open class func hasCore(_ key: String) -> Bool {
-        var result = false
         instanceMapQueue.sync {
-            result = instanceMap[key] != nil
+            instanceMap[key] != nil
         }
-        return result
     }
     
     /**

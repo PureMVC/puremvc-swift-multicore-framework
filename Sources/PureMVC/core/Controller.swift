@@ -110,8 +110,8 @@ open class Controller: IController {
             if instanceMap[key] == nil {
                 instanceMap[key] = factory(key)
             }
+            return instanceMap[key]
         }
-        return instanceMap[key]
     }
 
     /**

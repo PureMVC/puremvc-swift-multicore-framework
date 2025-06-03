@@ -98,8 +98,8 @@ open class View: IView {
             if instanceMap[key] == nil {
                 instanceMap[key] = factory(key)
             }
+            return instanceMap[key]
         }
-        return instanceMap[key]
     }
     
     /**
@@ -192,7 +192,7 @@ open class View: IView {
             return false
         }
 
-        if exists { return }
+        guard !exists else { return }
         
         mediator.initializeNotifier(multitonKey)
         
