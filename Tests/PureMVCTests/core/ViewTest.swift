@@ -112,7 +112,7 @@ public class ViewTest: XCTestCase {
         let view = View.getInstance("ViewTestKey3") { key in View(key: key) }
         
         // Create and register the test mediator
-        let viewTestMediator = ViewTestMediator(viewComponent: self)
+        let viewTestMediator = ViewTestMediator(view: self)
         view?.registerMediator(viewTestMediator)
         
         // Retrieve the component
@@ -131,7 +131,7 @@ public class ViewTest: XCTestCase {
         let view: IView? = View.getInstance("ViewTestKey4") { key in View(key: key) }
         
         // Create and register the test mediator
-        let mediator = Mediator(name: "hasMediatorTest", viewComponent: self)
+        let mediator = Mediator(name: "hasMediatorTest", view: self)
         view?.registerMediator(mediator)
         
         // assert that the view?hasMediator method returns true
@@ -153,7 +153,7 @@ public class ViewTest: XCTestCase {
         let view: IView? = View.getInstance("ViewTestKey5") { key in View(key: key) }
         
         // Create and register the test mediator
-        let mediator: IMediator = Mediator(name: "testing", viewComponent: self)
+        let mediator: IMediator = Mediator(name: "testing", view: self)
         view?.registerMediator(mediator)
         
         // Remove the component
@@ -174,7 +174,7 @@ public class ViewTest: XCTestCase {
         let view: IView? = View.getInstance("ViewTestKey6") { key in View(key: key) }
         
         // Create and register the test mediator
-        let mediator: IMediator = ViewTestMediator4(viewComponent: self)
+        let mediator: IMediator = ViewTestMediator4(view: self)
         view?.registerMediator(mediator)
         
         // assert that onRegsiter was called, and the mediator responded by setting our boolean
@@ -196,7 +196,7 @@ public class ViewTest: XCTestCase {
         
         // Create and register the test mediator,
         // but not so we have a reference to it
-        view?.registerMediator(ViewTestMediator(viewComponent: self))
+        view?.registerMediator(ViewTestMediator(view: self))
         
         // test that we can retrieve it
         XCTAssertTrue(view?.retrieveMediator(ViewTestMediator.NAME) is ViewTestMediator, "Expecting view?.retrieveMediator(ViewTestMediator.NAME) is ViewTestMediator")
@@ -211,7 +211,7 @@ public class ViewTest: XCTestCase {
         XCTAssertTrue(view?.removeMediator(ViewTestMediator.NAME) == nil, "Expecting view?.removeMediator( ViewTestMediator.NAME ) doesn't crash")
         
         // Create and register another instance of the test mediator,
-        view?.registerMediator(ViewTestMediator(viewComponent: self))
+        view?.registerMediator(ViewTestMediator(view: self))
         
         XCTAssertTrue(view?.retrieveMediator(ViewTestMediator.NAME) is ViewTestMediator, "Expecting view?.retrieveMediator( ViewTestMediator.NAME ) is ViewTestMediator")
         
@@ -232,7 +232,7 @@ public class ViewTest: XCTestCase {
         let view: IView? = View.getInstance("ViewTestKey8") { key in View(key: key) }
         
         // Create and register the test mediator to be removed.
-        view?.registerMediator(ViewTestMediator2(viewComponent: self))
+        view?.registerMediator(ViewTestMediator2(view: self))
         
         // test that notifications work
         view?.notifyObservers(Notification(name: ViewTest.NOTE1))
@@ -270,10 +270,10 @@ public class ViewTest: XCTestCase {
         let view: IView? = View.getInstance("ViewTestKey9") { key in View(key: key) }
         
         // Create and register that responds to notifications 1 and 2
-        view?.registerMediator(ViewTestMediator2(viewComponent: self))
+        view?.registerMediator(ViewTestMediator2(view: self))
         
         // Create and register that responds to notification 3
-        view?.registerMediator(ViewTestMediator3(viewComponent: self))
+        view?.registerMediator(ViewTestMediator3(view: self))
         
         // test that all notifications work
         view?.notifyObservers(Notification(name: ViewTest.NOTE1))
@@ -319,10 +319,10 @@ public class ViewTest: XCTestCase {
         let view: IView? = View.getInstance("ViewTestKey10") { key in View(key: key) }
         
         // Create and register that responds to notification 5
-        view?.registerMediator(ViewTestMediator5(viewComponent: self))
+        view?.registerMediator(ViewTestMediator5(view: self))
         
         // try to register another instance of that mediator (uses the same NAME constant).
-        view?.registerMediator(ViewTestMediator5(viewComponent: self))
+        view?.registerMediator(ViewTestMediator5(view: self))
         
         // test that the counter is only incremented once (mediator 5's response)
         counter = 0
@@ -357,14 +357,14 @@ public class ViewTest: XCTestCase {
         // by removing themselves, which will cause the observer list for that notification
         // to change. versions prior to MultiCore Version 2.0.5 will see every other mediator
         // fails to be notified.
-        view?.registerMediator(ViewTestMediator6(name: ViewTestMediator6.NAME + "/1", viewComponent: self))
-        view?.registerMediator(ViewTestMediator6(name: ViewTestMediator6.NAME + "/2", viewComponent: self))
-        view?.registerMediator(ViewTestMediator6(name: ViewTestMediator6.NAME + "/3", viewComponent: self))
-        view?.registerMediator(ViewTestMediator6(name: ViewTestMediator6.NAME + "/4", viewComponent: self))
-        view?.registerMediator(ViewTestMediator6(name: ViewTestMediator6.NAME + "/5", viewComponent: self))
-        view?.registerMediator(ViewTestMediator6(name: ViewTestMediator6.NAME + "/6", viewComponent: self))
-        view?.registerMediator(ViewTestMediator6(name: ViewTestMediator6.NAME + "/7", viewComponent: self))
-        view?.registerMediator(ViewTestMediator6(name: ViewTestMediator6.NAME + "/8", viewComponent: self))
+        view?.registerMediator(ViewTestMediator6(name: ViewTestMediator6.NAME + "/1", view: self))
+        view?.registerMediator(ViewTestMediator6(name: ViewTestMediator6.NAME + "/2", view: self))
+        view?.registerMediator(ViewTestMediator6(name: ViewTestMediator6.NAME + "/3", view: self))
+        view?.registerMediator(ViewTestMediator6(name: ViewTestMediator6.NAME + "/4", view: self))
+        view?.registerMediator(ViewTestMediator6(name: ViewTestMediator6.NAME + "/5", view: self))
+        view?.registerMediator(ViewTestMediator6(name: ViewTestMediator6.NAME + "/6", view: self))
+        view?.registerMediator(ViewTestMediator6(name: ViewTestMediator6.NAME + "/7", view: self))
+        view?.registerMediator(ViewTestMediator6(name: ViewTestMediator6.NAME + "/8", view: self))
         
         // clear the counter
         counter = 0

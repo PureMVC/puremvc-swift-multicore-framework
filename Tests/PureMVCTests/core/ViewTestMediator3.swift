@@ -23,8 +23,8 @@ public class ViewTestMediator3: Mediator {
     /**
     Constructor
     */
-    public init(viewComponent: AnyObject?) {
-        super.init(name: ViewTestMediator3.NAME, viewComponent: viewComponent)
+    public init(view: AnyObject?) {
+        super.init(name: ViewTestMediator3.NAME, view: view)
     }
     
     // be sure that the mediator has some Observers created
@@ -38,7 +38,7 @@ public class ViewTestMediator3: Mediator {
     }
     
     public var viewTest: ViewTest {
-        return viewComponent as! ViewTest
+        return view as! ViewTest
     }
     
 }

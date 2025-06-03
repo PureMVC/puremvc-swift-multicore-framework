@@ -40,7 +40,7 @@ public protocol IMediator: INotifier {
     var name: String { get }
     
     /// Get or set the `IMediator`'s view component.
-    var viewComponent: AnyObject? { get set }
+    var view: AnyObject? { get set }
     
     /**
     List `INotification` interests.

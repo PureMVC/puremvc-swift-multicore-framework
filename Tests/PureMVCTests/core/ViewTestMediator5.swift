@@ -23,8 +23,8 @@ public class ViewTestMediator5: Mediator {
     /**
     Constructor
     */
-    public init(viewComponent: AnyObject?) {
-        super.init(name: ViewTestMediator5.NAME, viewComponent: viewComponent)
+    public init(view: AnyObject?) {
+        super.init(name: ViewTestMediator5.NAME, view: view)
     }
     
     public override func listNotificationInterests() -> [String] {
@@ -36,7 +36,7 @@ public class ViewTestMediator5: Mediator {
     }
     
     public var viewTest: ViewTest {
-        return viewComponent as! ViewTest
+        return view as! ViewTest
     }
     
 }

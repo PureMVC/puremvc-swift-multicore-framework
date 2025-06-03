@@ -184,17 +184,17 @@ open class View: IView {
     - parameter mediator: a reference to the `IMediator` instance
     */
     open func registerMediator(_ mediator: IMediator) {
-        // do not allow re-registration (you must removeMediator first)
-        if hasMediator(mediator.name) { return }
+        let exists = mediatorMapQueue.sync(flags: .barrier) {
+            guard mediatorMap[mediator.name] == nil else { return true }
+            mediatorMap[mediator.name] = mediator
+            return false
+        }
+
+        if exists { return }
         
         mediator.initializeNotifier(multitonKey)
         
-        mediatorMapQueue.sync(flags: .barrier) {
-            // Register the Mediator for retrieval by name
-            mediatorMap[mediator.name] = mediator
-        }
-        
-        // Create Observer referencing this mediator's handlNotification method
+        // Create Observer referencing this mediator's handleNotification method
         let observer = Observer(notifyMethod: mediator.handleNotification, notifyContext: mediator)
         
         let interests = mediator.listNotificationInterests()

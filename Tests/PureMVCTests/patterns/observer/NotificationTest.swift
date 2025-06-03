@@ -42,7 +42,7 @@ class NotificationTest: XCTestCase {
     */
     func testBodyAccessors() {
         // Create a new Notification and use accessors to set the body
-        var note: INotification = Notification(name: "TestNote")
+        let note: INotification = Notification(name: "TestNote")
         note.body = 5
         
         // test assertions

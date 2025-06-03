@@ -20,8 +20,8 @@ public class ViewTestMediator4: Mediator {
     */
     public override class var NAME: String { return "ViewTestMediator4" }
     
-    public init(viewComponent: AnyObject?) {
-        super.init(name: ViewTestMediator4.NAME, viewComponent: viewComponent)
+    public init(view: AnyObject?) {
+        super.init(name: ViewTestMediator4.NAME, view: view)
     }
     
     public override func onRegister() {
@@ -33,7 +33,7 @@ public class ViewTestMediator4: Mediator {
     }
     
     public var viewTest: ViewTest {
-        return viewComponent as! ViewTest
+        return view as! ViewTest
     }
     
 }

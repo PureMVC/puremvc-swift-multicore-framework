@@ -26,7 +26,7 @@ open class Mediator: Notifier, IMediator {
     public private(set) var name: String
     
     // The view component
-    public weak var viewComponent: AnyObject?
+    public weak var view: AnyObject?
     
     /**
     Constructor.
@@ -34,9 +34,9 @@ open class Mediator: Notifier, IMediator {
     - parameter name: the mediator name
     - parameter viewComponent: viewComponent instance
     */
-    public init(name: String? = nil, viewComponent: AnyObject? = nil) {
+    public init(name: String? = nil, view: AnyObject? = nil) {
         self.name = name ?? Mediator.NAME
-        self.viewComponent = viewComponent
+        self.view = view
     }
     
     /**

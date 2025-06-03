@@ -12,8 +12,8 @@ public class ApplicationMediator: Mediator {
     
     public override class var NAME: String { return "ApplicationMediator" }
     
-    public init(viewComponent: AnyObject? = nil) {
-        super.init(name: ApplicationMediator.NAME, viewComponent: viewComponent)
+    public init(view: AnyObject? = nil) {
+        super.init(name: ApplicationMediator.NAME, view: view)
     }
     
     public override func onRegister() {

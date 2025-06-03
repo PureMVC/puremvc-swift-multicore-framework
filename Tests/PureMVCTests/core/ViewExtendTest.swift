@@ -45,7 +45,7 @@ class ViewExtendTest: XCTestCase {
         let resource = Resource()
         var viewExtend: ViewExtend! = (ViewExtend.getInstance(key: "Key1") as! ViewExtend)
         
-        viewExtend.registerMediator(ResourceMediator(viewComponent: resource))
+        viewExtend.registerMediator(ResourceMediator(view: resource))
         
         View.removeView("Key1")
         viewExtend = nil

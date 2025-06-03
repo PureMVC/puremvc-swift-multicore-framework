@@ -47,17 +47,17 @@ class MediatorTest: XCTestCase {
         let view = Notification(name: "test", body: 4)
         
         // Create a new Proxy and use accessors to set the proxy name
-        let mediator = Mediator(name: Mediator.NAME, viewComponent: view)
+        let mediator = Mediator(name: Mediator.NAME, view: view)
         
         // test assertions
-        XCTAssertTrue(mediator.viewComponent === view, "Expecting mediator.viewComponent === view")
+        XCTAssertTrue(mediator.view === view, "Expecting mediator.viewComponent === view")
     }
     
     func testResourceMediator() {
         var facade: Facade? = Facade.getInstance("mediatorKey1", factory: {key in Facade(key: key)}) as? Facade
         let resource = Resource()
         
-        facade?.registerMediator(ResourceMediator(viewComponent: resource))
+        facade?.registerMediator(ResourceMediator(view: resource))
         Facade.removeCore("mediatorKey1")
         facade = nil
         

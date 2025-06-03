@@ -10,8 +10,8 @@
 
 class ResourceMediator: Mediator {
     
-    init(viewComponent: Resource) {
-        super.init(name: Mediator.NAME, viewComponent: viewComponent)
+    init(view: Resource) {
+        super.init(name: Mediator.NAME, view: view)
     }
     
     override func listNotificationInterests() -> [String] {
@@ -23,7 +23,7 @@ class ResourceMediator: Mediator {
     }
     
     deinit {
-        (viewComponent as! Resource).state = .RELEASED
+        (view as! Resource).state = .RELEASED
     }
     
 }

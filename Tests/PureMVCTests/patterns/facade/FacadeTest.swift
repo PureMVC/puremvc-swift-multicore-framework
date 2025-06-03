@@ -147,7 +147,7 @@ class FacadeTest: XCTestCase {
     func testRegisterRetrieveAndRemoveMediator() {
         // register a mediator, remove it, then try to retrieve it
         let facade = Facade.getInstance("FacadeTestKey6") { key in Facade(key: key) }
-        facade?.registerMediator(Mediator(name: Mediator.NAME, viewComponent: Mediator()))
+        facade?.registerMediator(Mediator(name: Mediator.NAME, view: Mediator()))
         
         // retrieve the mediator
         XCTAssertNotNil(facade?.retrieveMediator(Mediator.NAME) as? Mediator, "Expecting mediator is not nil")
@@ -181,7 +181,7 @@ class FacadeTest: XCTestCase {
     func testHasMediator() {
         // register a Mediator
         let facade = Facade.getInstance("FacadeTestKey8") { key in Facade(key: key) }
-        facade?.registerMediator(Mediator(name: "facadeHasMediatorTest", viewComponent: Mediator()))
+        facade?.registerMediator(Mediator(name: "facadeHasMediatorTest", view: Mediator()))
         
         // assert that the facade?.hasMediator method returns true
         // for that mediator name
@@ -248,7 +248,7 @@ class FacadeTest: XCTestCase {
         facade!.registerProxy(ResourceProxy(data: resource))
         
         let resource2 = Resource()
-        facade!.registerMediator(ResourceMediator(viewComponent: resource2))
+        facade!.registerMediator(ResourceMediator(view: resource2))
         
         Facade.removeCore("FacadeTestKey13")
         facade = nil

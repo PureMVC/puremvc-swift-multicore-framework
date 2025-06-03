@@ -95,9 +95,9 @@ open class MacroCommand: Notifier, ICommand {
     public final func execute(_ notification: INotification) {
         while (!subCommands.isEmpty) {
             let factory = subCommands.remove(at: 0)
-            let commandInstance = factory()
-            commandInstance.initializeNotifier(multitonKey!)
-            commandInstance.execute(notification)
+            let command = factory()
+            command.initializeNotifier(multitonKey!)
+            command.execute(notification)
         }
     }
     
