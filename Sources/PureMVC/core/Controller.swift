@@ -39,8 +39,8 @@ registrations.
 */
 open class Controller: IController {
 
-    /// Local reference to View
-    internal var view: IView!
+    /// Weak reference to the View to avoid a retain cycle from Observer back to Controller
+    internal weak var view: IView?
 
     // Mapping of Notification names to factories that instanties and returns `ICommand` Class instances
     internal var commandMap = [String: () -> ICommand]()
@@ -131,7 +131,8 @@ open class Controller: IController {
     open func registerCommand(_ notificationName: String, factory: @escaping () -> ICommand) {
         commandMapQueue.sync(flags: .barrier) {
             if commandMap[notificationName] == nil { // weak reference to Controller (self) to avoid reference cycle with View and Observer
-                view.registerObserver(notificationName, observer: Observer(notifyMethod: {[weak self] notification in self?.executeCommand(notification)}, notifyContext: self))
+                view?.registerObserver(notificationName, observer: Observer(notifyMethod: {[weak self] notification in
+                    self?.executeCommand(notification)}, notifyContext: self))
             }
             commandMap[notificationName] = factory
         }
@@ -174,7 +175,7 @@ open class Controller: IController {
     open func removeCommand(_ notificationName: String) {
         commandMapQueue.sync(flags: .barrier) {
             guard commandMap[notificationName] != nil else { return }
-            view.removeObserver(notificationName, notifyContext: self)
+            view?.removeObserver(notificationName, notifyContext: self)
             commandMap.removeValue(forKey: notificationName)
         }
     
